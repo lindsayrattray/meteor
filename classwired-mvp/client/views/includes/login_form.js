@@ -7,8 +7,13 @@ Template.loginForm.events({
 
 		Session.set('username', username);
 		Session.set('userId', userId);
-		Session.set('alert', username);
-		
+
 		return false;
+	}
+});
+
+Template.loginForm.helpers({
+	isLoggedIn: function() {
+		return Session.get('userId') == true;
 	}
 });

@@ -1,5 +1,9 @@
 <template name='loginForm'>
-	<form id="login-form">
-		<input id="username-input" type="text" name="username-input">
-	</form>
+	{{#if isLoggedIn}}
+		<form id="login-form">
+			<input id="username-input" type="text" name="username-input">
+		</form>
+	{{else}}
+		
+	{{/if}}
 </template>
