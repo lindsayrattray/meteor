@@ -4,5 +4,8 @@ Template.loginForm.events({
 		Users.insert({
 			name: username
 		});
+		Session.set('username', username);
+		alert(username);
+		alert(Session.get('username'));
 	}
 });
