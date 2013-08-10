@@ -1,6 +1,8 @@
 <template name="activity">
+	<div style="height:8em; overflow:scroll;">
 	{{#each inputs}}
-		{{> InputItem}}
+		{{> activityInputItem}}
 	{{/each}}
+	</div>
 	{{> activityForm}}
 </template>
