@@ -1,6 +1,8 @@
 <template name="activity">
-	<form id="word-form">
-		<input type="text" name="myWord"><br />
-		<input type="submit" id="submitWord"><br />
-	</form>
+	<div style="height:8em; overflow:scroll;">
+	{{#each inputs}}
+		{{> activityInputItem}}
+	{{/each}}
+	</div>
+	{{> activityForm}}
 </template>
