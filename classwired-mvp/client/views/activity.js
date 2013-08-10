@@ -1,6 +1,11 @@
 Template.activity.events({
 	'submit' : function() {
-		alert($('#myInput').val())
+		var myInputValue = $('#myInput').val();
+		alert(myInputValue);
+		Inputs.insert({
+			content: myInputValue,
+			author: 'me'
+		});
 	}
 });
 
