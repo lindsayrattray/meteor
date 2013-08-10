@@ -5,7 +5,9 @@ Template.loginForm.events({
 			name: username
 		});
 		Session.set('username', username);
+		Session.set('alert', username);
 		alert(username);
 		alert(Session.get('username'));
+		return false;
 	}
 });
