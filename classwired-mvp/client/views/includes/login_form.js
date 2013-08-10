@@ -9,11 +9,15 @@ Template.loginForm.events({
 		Session.set('userId', userId);
 
 		return false;
+	},
+	'click #logout': function() {
+		Session.set('username', undefined);
+		Session.set('userId', undefined);
 	}
 });
 
 Template.loginForm.helpers({
 	isLoggedIn: function() {
-		return Session.get('userId') == true;
+		return !(Session.equals('userId', undefined))
 	}
 });
