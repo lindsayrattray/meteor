@@ -1,11 +1,11 @@
 Template.activity.events({
 	'submit' : function() {
-		alert($('#myWord').val())
+		alert($('#myInput').val())
 	}
 });
 
 Template.activity.helpers({
 	currentWord: function() {
-		return $('#myWord').val();
+		return $('#myInput').val();
 	}
 });
