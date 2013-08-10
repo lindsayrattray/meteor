@@ -1,3 +1,3 @@
 Meteor.Router.add({
-	'/': 'login'
+	'/': 'activity'
 });

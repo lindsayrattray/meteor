@@ -5,5 +5,6 @@ Template.activityForm.events({
 			content: myInputValue,
 			author: 'me'
 		});
+		return false;
 	}
 });
