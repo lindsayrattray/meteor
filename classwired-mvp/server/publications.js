@@ -1,7 +1,8 @@
-Meteor.publish('inputs', function() {
-	return Inputs.find();
-});
-
-Meteor.publish('userInputs', function(user) {
-	return Inputs.find({author: user});
+Meteor.publish('inputs', function(username) {
+	if (username == undefined) {
+		return Inputs.find();	
+	}
+	else {
+		return Inputs.find({author: username});
+	}
 });

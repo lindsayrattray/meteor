@@ -1,4 +1,5 @@
 Template.loginForm.events({
+
 	'submit': function() {
 		var username = $('#username-input').val();
 		var userId = Users.insert({
@@ -7,7 +8,6 @@ Template.loginForm.events({
 
 		Session.set('username', username);
 		Session.set('userId', userId);
-		Meteor.subscribe('userInputs', username)
 
 		return false;
 	},
