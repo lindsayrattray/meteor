@@ -1,3 +1,12 @@
+Template.activity.events({
+	'click #list-state-btn': function() {
+		Rooms.update(Session.get('room-id'), { $set: { state: "list" } })
+	},
+	'click #share-state-btn': function() {
+		Rooms.update(Session.get('room-id'), { $set: { state: "share" } })
+	}
+});
+
 Template.activity.helpers({
 	inputs: function() {
 		return Inputs.find();
