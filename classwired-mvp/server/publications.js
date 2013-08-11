@@ -1,7 +1,7 @@
 Meteor.publish('inputs', function() {
-	return Posts.find();
+	return Inputs.find();
 });
 
 Meteor.publish('userInputs', function(user) {
-	return Posts.find({author: user});
+	return Inputs.find({author: user});
 });
