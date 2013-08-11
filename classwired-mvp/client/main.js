@@ -5,6 +5,7 @@ Deps.autorun(function() {
 		var currentRoom = Rooms.findOne();
 		if(currentRoom != undefined) {
 			Session.set('room-id', currentRoom._id);
+			Session.set('room-state', currentRoom.state);
 		}
 	}
 });
