@@ -1,8 +1,13 @@
 <template name="activity">
-	<div id="input-list" style="height:8em; overflow:scroll;">
-	{{#each inputs}}
-		{{> activityInputItem}}
-	{{/each}}
-	</div>
-	{{> activityForm}}
+	{{room.name}} <a id="list-state-btn">List</a><a id="share-state-btn">Share</a>
+	<br /><br />
+	{{> login}}
+	{{#if roomIsInListState}}
+		<div style="height:8em; overflow:auto;">
+		{{#each inputs}}
+			{{> activityInputItem}}
+		{{/each}}
+		</div>
+		{{> activityForm}}
+	{{/if}}
 </template>

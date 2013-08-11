@@ -3,14 +3,15 @@ Template.activityForm.events({
 		var myInput = $('#myInput');
 		var myInputValue = myInput.val();
 		var username = Session.get('username');
+		var roomId = Session.get('room-id');
 		
 		if(username != undefined)
 		{
 			Inputs.insert({
 				content: myInputValue,
-				author: username
+				author: username,
+				room: roomId
 			});
-			Session.set('new-input-available', 'true');
 		}
 
 		myInput.val('');
