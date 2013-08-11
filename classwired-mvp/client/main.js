@@ -1,10 +1,14 @@
+Meteor.subscribe('rooms');
+
+Deps.autorun(function() {
+	if(Session.get('room-id') == undefined) {
+		var currentRoom = Rooms.findOne();
+		if(currentRoom != undefined) {
+			Session.set('room-id', currentRoom._id);
+		}
+	}
+});
+
 Deps.autorun(function() {
 	Meteor.subscribe('inputs', Session.get('username'));
-});
-Deps.autorun(function() {
-	if(Session.get('new-input-available') == 'true') {
-		alert('new input');
-		Session.set('new-input-available', 'false');
-		$("#input-list").scrollTop($("#input-list")[0].scrollHeight);
-	}
 });
