@@ -7,6 +7,7 @@ Template.loginForm.events({
 
 		Session.set('username', username);
 		Session.set('userId', userId);
+		Meteor.subscribe('userInputs', username)
 
 		return false;
 	},
