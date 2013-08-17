@@ -20,5 +20,5 @@ Deps.autorun(function() {
 });
 
 Deps.autorun(function() {
-	Meteor.subscribe('inputs', Session.get('username'));
+	Meteor.subscribe('inputs');
 });

@@ -13,6 +13,19 @@ Template.login.events({
 				alert(error.reason || "Unknown error");
 			}
 		});
+	},
+	'click #login-btn': function()
+	{
+		var username = {username: $('#username-field').val()};
+		var password = $('#password-field').val();
+
+		Meteor.loginWithPassword(username, password, function(error, result) 
+		{
+			if(error)
+			{
+				alert(error.reason || "Unknown Error");
+			}
+		});
 	}
 });
 
