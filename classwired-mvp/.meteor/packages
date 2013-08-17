@@ -9,6 +9,5 @@ bootstrap
 standard-app-packages
 bootstrap-3
 page-js-ie-support
-router
 accounts-base
 accounts-password
