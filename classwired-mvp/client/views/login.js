@@ -12,6 +12,10 @@ Template.login.events({
 			{
 				alert(error.reason || "Unknown error");
 			}
+			else
+			{
+				console.log('signed up successfully');
+			}
 		});
 	},
 	'click #login-btn': function()
@@ -24,6 +28,24 @@ Template.login.events({
 			if(error)
 			{
 				alert(error.reason || "Unknown Error");
+			}
+			else
+			{
+				console.log('logged in successfully');
+			}
+		});
+	},
+	'click #logout-btn': function()
+	{
+		Meteor.logout(function(error)
+		{
+			if(error)
+			{
+				alert(error.reason || "Unknown Error");
+			}
+			else
+			{
+				console.log('logged out successfully');
 			}
 		});
 	}
