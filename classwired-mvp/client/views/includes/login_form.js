@@ -1,8 +1,8 @@
 Template.loginForm.events({
 
 	'submit': function() {
-		var username = $('#username-input').val();
-		var userId = Users.insert({
+			var username = $('#username-input').val();
+			var userId = Users.insert({
 			name: username
 		});
 
