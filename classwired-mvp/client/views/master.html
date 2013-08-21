@@ -1,15 +1,9 @@
-<head>
-	<title>Classwired</title>
-</head>
-<body>
+<template name="master">
 	<div class="container">
 		<section id="main" class="row-fluid">
 			{{yield "login"}}
 			{{yield "messages"}}
 			{{yield "activity"}}
-
-			{{> login}}
-			{{> messages}}
 		</section>
 	</div>
-</body>
+</template>

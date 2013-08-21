@@ -1,6 +1,10 @@
 Router.map(function() {
-	this.route('activity', { path: '/'});
-
-	this.route('login');
-	this.route('messages');
+	this.route('home', {
+	path: '/',
+	template: 'master',
+	renderTemplates: {
+		'activity': { to: 'activity' },
+		'login': { to: 'login' },
+		'messages': { to: 'messages'}
+	}});
 });
