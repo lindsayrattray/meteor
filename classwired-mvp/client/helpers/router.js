@@ -10,7 +10,6 @@ Router.map(function()
 		template: 'activity',
 		renderTemplates: 
 		{
-			'activity': { to: 'activity' },
 			'login': { to: 'login' },
 			'messages': { to: 'messages'}
 		}
