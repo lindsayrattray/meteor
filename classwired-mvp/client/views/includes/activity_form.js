@@ -2,10 +2,10 @@ Template.activityForm.events({
 	'submit' : function() {
 		var myInput = $('#myInput');
 		var myInputValue = myInput.val();
-		var username = Session.get('username');
+		var username = Meteor.user().username;
 		var roomId = Session.get('roomId');
 		
-		if(username != undefined)
+		if(username)
 		{
 			Inputs.insert({
 				content: myInputValue,
