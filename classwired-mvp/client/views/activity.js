@@ -1,9 +1,9 @@
 Template.activity.events({
 	'click #list-state-btn': function() {
-		Rooms.update(Session.get('room-id'), { $set: { state: "list" } })
+		Rooms.update(Session.get('roomId'), { $set: { state: "list" } })
 	},
 	'click #share-state-btn': function() {
-		Rooms.update(Session.get('room-id'), { $set: { state: "share" } })
+		Rooms.update(Session.get('roomId'), { $set: { state: "share" } })
 	}
 });
 
@@ -13,10 +13,10 @@ Template.activity.helpers({
 	},
 
 	room: function() {
-		return Rooms.findOne(Session.get('room-id'));
+		return Rooms.findOne(Session.get('roomId'));
 	},
 
 	roomIsInListState: function() {
-		return Session.get('room-state') == "list";
+		return Session.get('roomState') == "list";
 	}
 });

@@ -6,6 +6,7 @@ Meteor.publish('inputs', function(username) {
 		return Inputs.find({author: username});
 	}
 });
+
 Meteor.publish('rooms', function() {
 	return Rooms.find();
 });

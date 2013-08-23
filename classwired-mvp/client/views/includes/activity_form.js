@@ -3,7 +3,7 @@ Template.activityForm.events({
 		var myInput = $('#myInput');
 		var myInputValue = myInput.val();
 		var username = Session.get('username');
-		var roomId = Session.get('room-id');
+		var roomId = Session.get('roomId');
 		
 		if(username != undefined)
 		{

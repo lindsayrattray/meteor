@@ -1,7 +1,6 @@
 <template name="activity">
 	{{room.name}} <a id="list-state-btn">List</a><a id="share-state-btn">Share</a>
 	<br /><br />
-	{{> login}}
 	{{#if roomIsInListState}}
 		<div style="height:8em; overflow:auto;">
 		{{#each inputs}}
