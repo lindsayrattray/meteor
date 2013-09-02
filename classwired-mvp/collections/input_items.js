@@ -1,1 +1,1 @@
-InputItems = new Meteor.Collection('InputItems');
+InputItems = new Meteor.Collection('inputItems');

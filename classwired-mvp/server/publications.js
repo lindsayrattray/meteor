@@ -1,5 +1,5 @@
 Meteor.publish('inputs', function(username) {
-	if (username == undefined) {
+	if (!username) {
 		return Inputs.find();	
 	}
 	else {
@@ -9,4 +9,8 @@ Meteor.publish('inputs', function(username) {
 
 Meteor.publish('rooms', function() {
 	return Rooms.find();
+});
+
+Meteor.publish('inputItems', function() {
+	return InputItems.find();
 });
