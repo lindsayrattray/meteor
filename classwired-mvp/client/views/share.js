@@ -1,5 +1,16 @@
 Meteor.subscribe('inputItems');
 
+Template.share.events({
+	'click #btn-tick': function() {
+		InputItems.update(Session.get('inputItem'), {$set: {answer: true}});
+		console.log(InputItems.findOne({userId: Meteor.userId()}).answer);
+	},
+	'click #btn-cross': function() {
+		InputItems.update(Session.get('inputItem'), {$set: {answer: false}});
+		console.log(InputItems.findOne({userId: Meteor.userId()}).answer);
+	}
+});
+
 Template.share.helpers({
 	shareResult: function() {
 		var thisResult = InputItems.findOne({userId: Meteor.userId()});
@@ -10,8 +21,7 @@ Template.share.helpers({
 				thisResult = result;
 			});
 		}
-
-		console.log(thisResult);
+		Session.set('inputItem', thisResult._id)
 		return thisResult.input;
 	}
 });
