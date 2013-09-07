@@ -11,7 +11,17 @@ Router.map(function()
 		renderTemplates: 
 		{
 			'login': { to: 'login' },
-			'messages': { to: 'messages'}
+			'messages': { to: 'messages' }
+		}
+	});
+	this.route('share',
+	{
+		path: '/share',
+		template: 'share',
+		renderTemplates:
+		{
+			'login': { to: 'login' },
+			'messages': { to: 'messages' }
 		}
 	});
 });
