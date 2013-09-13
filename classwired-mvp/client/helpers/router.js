@@ -24,4 +24,14 @@ Router.map(function()
 			'messages': { to: 'messages' }
 		}
 	});
+	this.route('userAdmin',
+	{
+		path: '/useradmin',
+		template: '',
+		renderTemplates:
+		{
+			'login': { to: 'login' },
+			'messages': { to: 'messages' }
+		}
+	});
 });
