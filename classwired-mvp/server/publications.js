@@ -18,8 +18,5 @@ Meteor.publish('inputItems', function() {
 });
 
 Meteor.publish('systemUsers', function() {
-	if(this.userId)
-	{
-		return Meteor.users.find({username: {$ne: 'administrator'}}, {sort: {userId: 1}, fields: {username: 1, profile: 1, emails: 1, permissions: 1}});
-	}
+	return Meteor.users.find({}, {sort: {userId: 1}, fields: {username: 1, profile: 1, emails: 1, permissions: 1}});
 });

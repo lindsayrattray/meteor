@@ -32,4 +32,3 @@ Template.login.events({
 		Meteor.logout(function(error) { debugLogin(error); });
 	}
 });
-

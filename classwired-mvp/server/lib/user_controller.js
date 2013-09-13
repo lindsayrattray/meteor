@@ -3,6 +3,7 @@ Meteor.startup(function() {
 	var admin = Meteor.users.findOne({username: 'administrator'});
 	if(!admin)
 	{
-		Accounts.createUser({username: 'administrator', password: '', profile: { name: "Administrator" } });
+		admin = Accounts.createUser({ username: 'administrator', password: 'cwAdministrator', profile: { name: "Administrator" } });
+		Meteor.users.update(admin, { $set: { permissions: UserController.availablePermissions()[0] } });
 	}
 });

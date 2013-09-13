@@ -1,8 +1,6 @@
 UserController = {
 	availablePermissions: function() {
-		return { administrator: 'administrator role',
-				 teacher: 	   	'teacher role',
-				 student:       'student role'};
+		return ['administrator','teacher','student'];
 	},
 
 	isAdmin: function() {
