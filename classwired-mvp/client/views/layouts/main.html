@@ -1,7 +1,13 @@
 <template name="main">
 	<div class="container">
 		<section id="main" class="row-fluid">
+			<!-- Example permission based conditional
+			{{#if hasPermission "administrator"}}
+			test
+			{{/if}} -->
+
 			{{#if currentUser}}
+			{{yield "login"}}
 			{{yield "messages"}}
 			{{yield}}
 			{{else}}
