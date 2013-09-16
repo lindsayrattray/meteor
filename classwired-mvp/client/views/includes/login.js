@@ -17,11 +17,10 @@ Template.login.events({
 	},
 	'submit': function(event, template)
 	{
-		var options = {};
 		var emailAddress = template.find('#email-field').value;
 		var name = template.find('#name-field').value;
 		var password = template.find('#password-field').value;
-		var user = Meteor.users.findOne({emails: { $elemMatch: { address: emailAddress } } });
+		var user = Meteor.users.findOne({ emails: { $elemMatch: { address: emailAddress } } });
 
 		if(user)
 		{
@@ -33,7 +32,7 @@ Template.login.events({
 			else
 			{
 				console.log(emailAddress + ' ' + password);
-				//log in
+				Meteor.loginWithPassword({email: emailAddress}, password, function(error) { debugLogin(error) });
 			}
 		}
 		else
@@ -51,7 +50,7 @@ Template.login.events({
 			else
 			{
 				console.log(emailAddress + ' ' + name + ' ' + password);
-				//sign up
+				Accounts.createUser({ email: emailAddress, password: password, profile: { name: name } });
 			}
 		}
 
