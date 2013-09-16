@@ -1,0 +1,11 @@
+<template name="adminUserDashboardItem">
+	<tr id="{{_id}}">
+		<td><span class='userId'>{{_id}}</span></td>
+		<td>{{emailAddress this}}</td>
+		<td>{{profile.name}}</td>
+		<td>{{permissions}}</td>
+		{{#each availablePermissions this._id}}
+			<td><input id="chk-role-{{this}}" class="chk-role" name="chk-role-{{this}}" type="checkbox" /></td>
+		{{/each}}
+	</tr>
+</template>
