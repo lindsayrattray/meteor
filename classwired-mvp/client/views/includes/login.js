@@ -27,12 +27,12 @@ Template.login.events({
 			if(!password)
 			{
 				$('#login-email-container').addClass('hidden');
-				$('#login-password-container').removeClass('hidden');
+				$('#login-password-container').removeClass('hidden').focus();
+				$('#password-field').focus();
 			}
 			else
 			{
-				console.log(emailAddress + ' ' + password);
-				Meteor.loginWithPassword({email: emailAddress}, password, function(error) { debugLogin(error) });
+				Meteor.loginWithPassword({ email: emailAddress }, password, function(error) { debugLogin(error) });
 			}
 		}
 		else
@@ -40,16 +40,17 @@ Template.login.events({
 			if(!name && !password)
 			{
 				$('#login-email-container').addClass('hidden');
-				$('#login-name-container').removeClass('hidden');
+				$('#login-name-container').removeClass('hidden').focus();
+				$('#name-field').focus();
 			}
 			else if(name && !password)
 			{
 				$('#login-name-container').addClass('hidden');
-				$('#login-password-container').removeClass('hidden');
+				$('#login-password-container').removeClass('hidden').focus();
+				$('#password-field').focus();
 			}
 			else
 			{
-				console.log(emailAddress + ' ' + name + ' ' + password);
 				Accounts.createUser({ email: emailAddress, password: password, profile: { name: name } });
 			}
 		}

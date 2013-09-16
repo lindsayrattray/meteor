@@ -3,11 +3,20 @@ UserController = {
 		return ['administrator','teacher','student'];
 	},
 
-	isAdmin: function() {
-		return (Meteor.user() && Meteor.user().username === 'administrator');
+	roleExists: function(rolename) {
+		return UserController.availablePermissions().indexOf(rolename) !== -1;
 	},
 
-	hasPermission: function(permission) {
-		return (Meteor.user() && ((Meteor.user().username === 'administrator') || (Meteor.user().permissions && Meteor.user().permissions[permission] == true)))
+	isAdmin: function() {
+		return (Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('administrator') !== -1);
+	},
+
+	userHasRole: function(userId, rolename) {
+		var user = Meteor.users.findOne(userId);
+		return (user && user.permissions && (user.permissions.indexOf(rolename) !== -1));
+	},
+
+	thisUserHasRole: function(rolename) {
+		return userHasRole(Meteor.user()._id, rolename);
 	}
 }

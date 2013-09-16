@@ -4,6 +4,10 @@ Handlebars.registerHelper('isAdmin', function() {
 	return UserController.isAdmin();
 });
 
+Handlebars.registerHelper('availablePermissions', function() {
+	return UserController.availablePermissions();
+});
+
 Handlebars.registerHelper('profileName', function() {
 	if(Meteor.user() && Meteor.user().profile && Meteor.user().profile.name)
 	{
@@ -18,6 +22,6 @@ Handlebars.registerHelper('emailAddress', function(user) {
 	}
 });
 
-Handlebars.registerHelper('hasPermission', function(permission) {
-	return UserController.hasPermission(permission);
+Handlebars.registerHelper('thisUserHasRole', function(rolename) {
+	return UserController.thisUserHasRole(rolename);
 });

@@ -20,7 +20,7 @@ Deps.autorun(function() {
 });
 
 Deps.autorun(function() {
-	var userName = Meteor.user().profile.name ? Meteor.user().profile.name : undefined;
+	var userName = Meteor.user() ? Meteor.user().profile.name : undefined;
 	console.log(userName);
 	Meteor.subscribe('inputs', userName);
 });

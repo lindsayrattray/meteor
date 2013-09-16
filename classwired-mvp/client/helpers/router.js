@@ -27,7 +27,7 @@ Router.map(function()
 	this.route('userAdmin',
 	{
 		path: '/useradmin',
-		template: '',
+		template: 'adminUserDashboard',
 		renderTemplates:
 		{
 			'login': { to: 'login' },
