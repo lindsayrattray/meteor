@@ -11,25 +11,50 @@ function debugLogin(error)
 }
 
 Template.login.events({
-	'click #signup-btn': function() 
-	{
-		var options = {};
-
-		options.username = $('#username-field').val();
-		options.password = $('#password-field').val();
-
-		Accounts.createUser(options, function(error) { debugLogin(error); });
-	},
-	'click #login-btn': function()
-	{
-		var username = {username: $('#username-field').val()};
-		var password = $('#password-field').val();
-
-		Meteor.loginWithPassword(username, password, function(error, result) { debugLogin(error); });
-	},
 	'click #logout-btn': function()
 	{
 		Meteor.logout(function(error) { debugLogin(error); });
+	},
+	'submit': function(event, template)
+	{
+		var emailAddress = template.find('#email-field').value;
+		var name = template.find('#name-field').value;
+		var password = template.find('#password-field').value;
+		var user = Meteor.users.findOne({ emails: { $elemMatch: { address: emailAddress } } });
+
+		if(user)
+		{
+			if(!password)
+			{
+				$('#login-email-container').addClass('hidden');
+				$('#login-password-container').removeClass('hidden').focus();
+				$('#password-field').focus();
+			}
+			else
+			{
+				Meteor.loginWithPassword({ email: emailAddress }, password, function(error) { debugLogin(error) });
+			}
+		}
+		else
+		{
+			if(!name && !password)
+			{
+				$('#login-email-container').addClass('hidden');
+				$('#login-name-container').removeClass('hidden').focus();
+				$('#name-field').focus();
+			}
+			else if(name && !password)
+			{
+				$('#login-name-container').addClass('hidden');
+				$('#login-password-container').removeClass('hidden').focus();
+				$('#password-field').focus();
+			}
+			else
+			{
+				Accounts.createUser({ email: emailAddress, password: password, profile: { name: name } });
+			}
+		}
+
+		event.preventDefault();
 	}
 });
-
