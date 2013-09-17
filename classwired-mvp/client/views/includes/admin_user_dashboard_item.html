@@ -5,7 +5,7 @@
 		<td>{{profile.name}}</td>
 		<td>{{permissions}}</td>
 		{{#each availablePermissions this._id}}
-			<td><input id="chk-role-{{this}}" class="chk-role" name="chk-role-{{this}}" type="checkbox" /></td>
+			<td><input id="chk-role-{{this}}" class="chk-role" name="chk-role-{{this}}" type="checkbox" checked="false" /></td>
 		{{/each}}
 	</tr>
 </template>
