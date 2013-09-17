@@ -1,5 +1,5 @@
 Template.classroomManager.rendered = function() {
-	if(Meteor.user() && Meteor.user().currentRoom && !Session.get('clearCurrentRoom'))
+	if(Meteor.user() && Meteor.user().currentRoom && !Session.get('leavingCurrentRoom'))
 	{
 		var userCurrentClassroom = Classrooms.findOne(Meteor.user().currentRoom);
 		if(userCurrentClassroom.open)
@@ -37,7 +37,7 @@ Template.classroomManager.events({
 	},
 	'click .classroom-link': function(event, template) {
 		var destination = Classrooms.findOne(this._id);
-		Session.set('clearCurrentRoom', false);
+		Session.set('leavingCurrentRoom', false);
 		Meteor.call('setUserCurrentRoom', Meteor.user()._id, this._id);
 		Router.go('classroom', destination);
 	}

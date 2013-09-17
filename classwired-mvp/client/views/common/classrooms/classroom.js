@@ -1,7 +1,7 @@
 Template.classroom.rendered = function() {
 	if(Meteor.user())
 	{
-		if(!Session.get('clearCurrentRoom'))
+		if(!Session.get('leavingCurrentRoom'))
 		{
 			Meteor.call('setUserCurrentRoom', Meteor.user()._id, this.data._id);
 		}
@@ -12,7 +12,7 @@ Template.classroom.rendered = function() {
 
 Template.classroom.events({
 	'click #btn-remove-user-from-room': function() {
-		Session.set('clearCurrentRoom', true);
+		Session.set('leavingCurrentRoom', true);
 		Meteor.call('setUserCurrentRoom', Meteor.user()._id, null);
 		Router.go('/');
 	}
