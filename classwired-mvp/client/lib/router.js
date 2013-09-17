@@ -33,7 +33,7 @@ Router.map(function()
 	this.route('classroom',
 	{
 		path: '/:name',
-		data: function() { return Classrooms.findOne(this.params.name); },
+		data: function() { return Classrooms.findOne({name: this.params.name}); },
 		template: 'classroom',
 		renderTemplates:
 		{

@@ -2,26 +2,24 @@ Meteor.methods({
 	addUserToRole: function(userId, rolename) {
 		if(UserController.roleExists(rolename) && !UserController.userHasRole(userId, rolename))
 		{
-			var permissions = Meteor.users.findOne(userId).permissions;
-			if(permissions)
-			{
-				permissions.push(rolename);
-			}
-			else
-			{
-				permissions = [rolename];
-			}
-
-			Meteor.users.update(userId, { $set: { permissions: permissions } });
+			Meteor.users.update(userId, { $push: { permissions: rolename } });
 		}
 	},
 	removeUserFromRole: function(userId, rolename) {
 		if(UserController.roleExists(rolename) && UserController.userHasRole(userId, rolename))
 		{
-			var permissions = Meteor.users.findOne(userId).permissions;
-			permissions.splice(permissions.indexOf(rolename), 1);
-
-			Meteor.users.update(userId, { $set: { permissions: permissions } });
+			Meteor.users.update(userId, { $pull: { permissions: rolename } });
+		}
+	},
+	setUserCurrentRoom: function(userId, classroomId) {
+		var classroom = Classrooms.findOne(classroomId);
+		if(classroom && classroom.open)
+		{
+			Meteor.users.update(userId, { $set: { currentRoom: classroomId } });
+		}
+		else if(!classroomId)
+		{
+			Meteor.users.update(userId, { $set: { currentRoom: classroomId } });
 		}
 	}
 });

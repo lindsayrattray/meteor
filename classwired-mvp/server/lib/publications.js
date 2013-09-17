@@ -22,5 +22,5 @@ Meteor.publish('inputItems', function() {
 });
 
 Meteor.publish('systemUsers', function() {
-	return Meteor.users.find({}, {sort: {userId: 1}, fields: {username: 1, profile: 1, emails: 1, permissions: 1}});
+	return Meteor.users.find({}, {sort: {userId: 1}, fields: {username: 1, profile: 1, emails: 1, permissions: 1, currentRoom: 1 } });
 });
