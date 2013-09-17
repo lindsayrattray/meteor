@@ -2,7 +2,7 @@ Meteor.methods({
 	createClassroom: function(name, userId) {
 		if(!Classrooms.findOne({ name: name }))
 		{
-			Classrooms.insert({name: name, owner: userId, currentActivity: 'classroom', participants: [], open: true});
+			Classrooms.insert({ name: name, owner: userId, currentActivity: 'classroom', participants: [], open: true });
 		}
 	},
 	addParticipantToClassroom: function(classroomId, userId) {

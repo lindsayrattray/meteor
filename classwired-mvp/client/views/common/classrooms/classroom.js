@@ -18,7 +18,3 @@ Template.classroom.events({
 		Router.go('/');
 	}
 });
-
-Template.classroom.helpers({
-
-});
