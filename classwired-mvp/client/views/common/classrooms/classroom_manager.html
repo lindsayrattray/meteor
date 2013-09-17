@@ -1,0 +1,14 @@
+<template name="classroomManager">
+	{{#each classrooms}}
+		<div><a class="clickable classroom-link" data-classroom"{{name}}">{{name}} | {{ownerName this}}</a></div>
+	{{/each}}
+	{{#if currentUser}}
+		<button id="btn-add-classroom" name="btn-add-classroom">+</button>
+		<div id="add-classroom-container" class="hidden">
+			<form id="add-classroom" name="add-classroom">
+				<input id="add-classroom-name" name="add-classroom-name" type="text" placeholder="classroom name" />
+				<button class="submit" name="submit">Submit</button>
+			</form>
+		</div>
+	{{/if}}
+</template>
