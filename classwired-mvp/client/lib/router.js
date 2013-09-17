@@ -4,20 +4,10 @@ Router.configure({
 
 Router.map(function()
 {	
-	this.route('home', 
-	{	
-		path: '/',
-		template: 'activity',
-		renderTemplates: 
-		{
-			'login': { to: 'login' },
-			'messages': { to: 'messages' }
-		}
-	});
-	this.route('share',
+	this.route('classroomManager',
 	{
-		path: '/share',
-		template: 'share',
+		path: '/',
+		template: 'classroomManager',
 		renderTemplates:
 		{
 			'login': { to: 'login' },
@@ -28,6 +18,23 @@ Router.map(function()
 	{
 		path: '/useradmin',
 		template: 'adminUserDashboard',
+		renderTemplates:
+		{
+			'login': { to: 'login' },
+			'messages': { to: 'messages' }
+		}
+	});
+	this.route('activity',
+	{
+		path:'/:name/:activity',
+		//data: function() { return Activities.findOne(this.params.activity); }
+	});
+	//this needs to be at the bottom otherwise it will match all routes
+	this.route('classroom',
+	{
+		path: '/:name',
+		data: function() { return Classrooms.findOne(this.params.name); },
+		template: 'classroom',
 		renderTemplates:
 		{
 			'login': { to: 'login' },

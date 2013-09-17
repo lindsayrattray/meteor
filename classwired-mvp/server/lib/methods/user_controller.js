@@ -24,4 +24,4 @@ Meteor.methods({
 			Meteor.users.update(userId, { $set: { permissions: permissions } });
 		}
 	}
-})
+});

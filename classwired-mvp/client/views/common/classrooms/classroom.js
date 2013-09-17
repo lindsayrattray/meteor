@@ -1,0 +1,3 @@
+Template.classroom.helpers({
+
+});
