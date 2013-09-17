@@ -3,14 +3,12 @@ Template.activityForm.events({
 		var myInput = $('#myInput');
 		var myInputValue = myInput.val();
 		var username = Meteor.user().username;
-		var roomId = Session.get('roomId');
 		
 		if(username)
 		{
 			Inputs.insert({
 				content: myInputValue,
-				author: username,
-				room: roomId
+				author: username
 			});
 		}
 
