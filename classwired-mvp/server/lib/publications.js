@@ -9,10 +9,6 @@ Meteor.publish('inputs', function(username) {
 	}
 });
 
-Meteor.publish('rooms', function() {
-	return Rooms.find();
-});
-
 Meteor.publish('classrooms', function() {
 	return Classrooms.find();
 });
