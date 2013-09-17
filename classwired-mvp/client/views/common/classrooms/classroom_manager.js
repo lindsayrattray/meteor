@@ -1,7 +1,5 @@
 Template.classroomManager.rendered = function() {
-	Session.set('clearCurrentRoom', false);
-	
-	if(Meteor.user() && Meteor.user().currentRoom)
+	if(Meteor.user() && Meteor.user().currentRoom && !Session.get('clearCurrentRoom'))
 	{
 		var userCurrentClassroom = Classrooms.findOne(Meteor.user().currentRoom);
 		if(userCurrentClassroom.open)
@@ -38,6 +36,9 @@ Template.classroomManager.events({
 		event.preventDefault();
 	},
 	'click .classroom-link': function(event, template) {
+		var destination = Classrooms.findOne(this._id);
+		Session.set('clearCurrentRoom', false);
 		Meteor.call('setUserCurrentRoom', Meteor.user()._id, this._id);
+		Router.go('classroom', destination);
 	}
 });

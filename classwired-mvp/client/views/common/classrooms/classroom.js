@@ -3,11 +3,10 @@ Template.classroom.rendered = function() {
 	{
 		if(!Session.get('clearCurrentRoom'))
 		{
-			console.log('setting current room');
-			Meteor.call('setUserCurrentRoom', Meteor.user()._id, this._id);
+			Meteor.call('setUserCurrentRoom', Meteor.user()._id, this.data._id);
 		}
 
-		Meteor.call('addParticipantToClassroom', this._id, Meteor.user()._id);
+		Meteor.call('addParticipantToClassroom', this.data._id, Meteor.user()._id);
 	}
 }
 
