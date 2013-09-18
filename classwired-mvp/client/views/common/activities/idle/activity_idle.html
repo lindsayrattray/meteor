@@ -1,0 +1,7 @@
+<template name="activityIdle">
+	Activity: {{activityName}}
+
+	{{#each activities}}
+		<div><a data-activity="{{this.name}}" class="activity-selector">{{this.name}}</a></div>
+	{{/each}}
+</template>
