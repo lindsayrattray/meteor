@@ -1,3 +1,5 @@
+Meteor.subscribe('activities');
+
 Template.classroom.rendered = function() {
 	if(Meteor.user())
 	{
