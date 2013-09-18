@@ -1,3 +1,5 @@
-Template.activityIdle.rendered = function () {
-	console.log(this);
-}
+Template.activityIdle.helpers({
+	activityName: function() {
+		return this.activity.name;
+	}
+})

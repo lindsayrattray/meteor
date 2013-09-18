@@ -11,7 +11,7 @@ Template.classroomManager.rendered = function() {
 
 Template.classroomManager.helpers({
 	classrooms: function() {
-		return Classrooms.find();
+		return Classrooms.find({}, { $sort: { date_created: -1 } });
 	},
 	ownerName: function(classroom) {
 		return Meteor.users.findOne(classroom.owner).profile.name;
