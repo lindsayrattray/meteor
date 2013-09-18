@@ -22,6 +22,7 @@ Template.classroom.events({
 
 Template.classroom.helpers({
 	activityName: function(name) {
+		console.log(name);
 		console.log(Activities.findOne({name: name}));
 	}
 });
