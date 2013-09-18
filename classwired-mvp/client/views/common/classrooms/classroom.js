@@ -21,8 +21,17 @@ Template.classroom.events({
 });
 
 Template.classroom.helpers({
-	activityName: function(name) {
-		console.log(name);
-		console.log(Activities.findOne({name: name}));
+	activity: function() {
+		var activity = Activities.findOne({name: this.currentActivity});
+		if(!activity)
+		{
+			activity = Activities.findOne({name: 'idle'});
+		}
+
+		var fragment = Meteor.render(function() {
+			Template[activity.template];
+		});
+
+		return Template[activity.template]({ activity: activity, classroom: this });
 	}
 });
