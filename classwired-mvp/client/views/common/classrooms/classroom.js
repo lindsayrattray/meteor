@@ -19,3 +19,9 @@ Template.classroom.events({
 		Router.go('/');
 	}
 });
+
+Template.classroom.helpers({
+	activityName: function(name) {
+		console.log(Activities.findOne({name: name}));
+	}
+});
