@@ -19,7 +19,7 @@ Template.classroomManager.helpers({
 });
 
 Template.classroomManager.events({
-	'click #btn-add-classroom': function() {
+	'click #btn-add-classroom': function(event, template) {
 		var $addClassroomContainer = $('#add-classroom-container');
 		if($addClassroomContainer.hasClass('hidden'))
 		{
@@ -27,12 +27,14 @@ Template.classroomManager.events({
 		}
 		else
 		{
+			template.find('#add-classroom-name').value = '';
 			$addClassroomContainer.addClass('hidden');
 		}
 	},
 	'submit #add-classroom': function(event, template) {
 		var name = template.find('#add-classroom-name').value;
 		Meteor.call('createClassroom', name, Meteor.user()._id);
+		template.find('#add-classroom-name').value = '';
 		event.preventDefault();
 	},
 	'click .classroom-link': function(event, template) {
