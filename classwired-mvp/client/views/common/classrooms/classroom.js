@@ -13,7 +13,7 @@ Template.classroom.rendered = function() {
 
 	Session.set('currentClassroom', this.data._id);
 	
-	var currentGroup = Groups.findOne();
+	var currentGroup = Groups.findOne({members: Meteor.user()._id});
 	if(!currentGroup)
 	{
 		Meteor.call('createGroup', this.data._id, Meteor.user()._id);
@@ -39,7 +39,7 @@ Template.classroom.helpers({
 
 		return Template[activity.template]({ activity: activity, classroom: this });
 	},
-	participants: function() {
-		return this.participants;	
+	groups: function() {
+		return Groups.find();	
 	}
 });

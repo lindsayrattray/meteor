@@ -23,6 +23,13 @@ Meteor.publish('groups', function(userId, classroomId) {
 	{
 		return Groups.find(query);
 	}
+});
+
+Meteor.publish('classroomGroups', function(classroomId) {
+	if(classroomId)
+	{
+		return Groups.find({classroomId: classroomId});
+	}
 })
 
 Meteor.publish('classrooms', function() {
