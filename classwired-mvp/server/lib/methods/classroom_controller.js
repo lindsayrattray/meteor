@@ -10,5 +10,12 @@ Meteor.methods({
 		{
 			Classrooms.update(classroomId, { $push: { participants: userId } });
 		}
+	},
+	setCurrentActivity: function(classroomId, activityName) {
+		var classroom = Classrooms.findOne(classroomId)
+		if(classroom && classroom.currentActivity !== activityName && Activities.findOne({ name: activityName }))
+		{
+			Classrooms.update(classroomId, { $set: { currentActivity: activityName } });
+		}
 	}
 });

@@ -17,6 +17,6 @@ UserController = {
 	},
 
 	thisUserHasRole: function(rolename) {
-		return userHasRole(Meteor.user()._id, rolename);
+		return UserController.userHasRole(Meteor.user()._id, rolename);
 	}
 }

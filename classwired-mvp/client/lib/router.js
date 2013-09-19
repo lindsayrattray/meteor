@@ -24,12 +24,6 @@ Router.map(function()
 			'messages': { to: 'messages' }
 		}
 	});
-	this.route('activity',
-	{
-		path:'/:name/:activity',
-		/*data: function() { return {activity: Activities.findOne(this.params.activity),
-						 			 room:     Classrooms.findOne(this.params.name) } }*/
-	});
 	//this needs to be at the bottom otherwise it will match all routes
 	this.route('classroom',
 	{
