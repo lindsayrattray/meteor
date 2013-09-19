@@ -10,6 +10,7 @@ Template.classroom.rendered = function() {
 
 		Meteor.call('addParticipantToClassroom', this.data._id, Meteor.user()._id);
 	}
+	Meteor.subscribe('groups', this.data._id, Meteor.user()._id);
 }
 
 Template.classroom.events({

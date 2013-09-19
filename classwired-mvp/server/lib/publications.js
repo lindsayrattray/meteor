@@ -9,6 +9,22 @@ Meteor.publish('inputs', function(username) {
 	}
 });
 
+Meteor.publish('groups', function(classroomId, userId) {
+	var query = {}
+	if(classroomId)
+	{
+		query.classroomId = classroomId;
+	}
+	if(userId)
+	{
+		query.members = userId;
+	}
+	if(query.classroomId || query.members)
+	{
+		return Groups.find(query);
+	}
+})
+
 Meteor.publish('classrooms', function() {
 	return Classrooms.find();
 });
