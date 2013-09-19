@@ -1,10 +1,17 @@
 <template name="activityExplainTheWordMain">
-	{{#if thisUserHasRole 'teacher'}}
-		teacher
-	{{/if}}
-	{{#if thisUserHasRole 'student'}}
-		student
-	{{/if}}
-
-	{{{component}}}
+	<button class="activity-selector" name="btn-leave-activity">Back to classroom</button>
+	<section id="activity-container">
+		{{#if thisUserHasRole 'teacher'}}
+			<div class="teacher-viewport">
+				teacher
+			</div>
+		{{/if}}
+		
+		{{#if thisUserHasRole 'student'}}
+			<div class="student-viewport">		
+				student
+			</div>		
+		{{/if}}
+		{{{component}}}
+	</section>
 </template>
