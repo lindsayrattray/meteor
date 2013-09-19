@@ -1,3 +1,10 @@
 <template name="activityExplainTheWordMain">
+	{{#if thisUserHasRole 'teacher'}}
+		teacher
+	{{/if}}
+	{{#if thisUserHasRole 'student'}}
+		student
+	{{/if}}
+
 	{{{component}}}
 </template>
