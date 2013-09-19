@@ -9,7 +9,7 @@ Meteor.publish('inputs', function(username) {
 	}
 });
 
-Meteor.publish('groups', function(classroomId, userId) {
+Meteor.publish('groups', function(userId, classroomId) {
 	var query = {}
 	if(classroomId)
 	{

@@ -1,4 +1,9 @@
 Deps.autorun(function() {
-	var userName = Meteor.user() ? Meteor.user().profile.name : undefined;
-	Meteor.subscribe('inputs', userName);
+	var user = Meteor.user();
+
+	if(user)
+	{
+		var classroom = Session.get('currentClassroom');
+		Meteor.subscribe('groups', user._id, classroom);
+	}
 });

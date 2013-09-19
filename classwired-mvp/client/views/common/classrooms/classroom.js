@@ -10,12 +10,20 @@ Template.classroom.rendered = function() {
 
 		Meteor.call('addParticipantToClassroom', this.data._id, Meteor.user()._id);
 	}
-	Meteor.subscribe('groups', this.data._id, Meteor.user()._id);
+
+	Session.set('currentClassroom', this.data._id);
+	
+	var currentGroup = Groups.findOne();
+	if(!currentGroup)
+	{
+		Meteor.call('createGroup', this.data._id, Meteor.user()._id);
+	}
 }
 
 Template.classroom.events({
 	'click #btn-remove-user-from-room': function() {
 		Session.set('leavingCurrentRoom', true);
+		Session.set('currentRoom', null);
 		Meteor.call('setUserCurrentRoom', Meteor.user()._id, null);
 		Router.go('/');
 	}
@@ -29,10 +37,9 @@ Template.classroom.helpers({
 			activity = Activities.findOne({name: 'idle'});
 		}
 
-		var fragment = Meteor.render(function() {
-			Template[activity.template];
-		});
-
 		return Template[activity.template]({ activity: activity, classroom: this });
+	},
+	participants: function() {
+		return this.participants;	
 	}
 });
