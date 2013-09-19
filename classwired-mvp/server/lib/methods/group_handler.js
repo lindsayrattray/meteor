@@ -13,7 +13,9 @@ Meteor.methods({
 		}
 	},
 	removeUserFromGroup: function(groupId, userId) {
+		var classroom = Groups.findOne(groupId).classroomId;
 		Groups.update(groupId, { $pull: { members: userId } });
+		Groups.insert({ classroomId: classroom, members: [userId] });
 	},
 	mergeGroups: function(fromGroupId, toGroupId) {
 		var fromMembers = Groups.findOne(fromGroupId).members;
