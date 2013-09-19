@@ -21,11 +21,11 @@ Meteor.methods({
 		var fromMembers = Groups.findOne(fromGroupId).members;
 		var toMembers = Groups.findOne(toGroupId).members;
 
-		if(fromMembers > toMembers)
+		if(fromMembers.length > toMembers.length)
 		{
 			for(memberIndex in toMembers)
 			{
-				Groups.update(fromGroupId, { $push: { members: fromMembers[memberIndex] } });
+				Groups.update(fromGroupId, { $push: { members: toMembers[memberIndex] } });
 			}
 			Groups.remove(toGroupId);
 		}

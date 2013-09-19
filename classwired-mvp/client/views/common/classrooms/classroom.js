@@ -14,7 +14,6 @@ Template.classroom.rendered = function() {
 	var currentGroup = Groups.findOne({members: Meteor.user()._id});
 	if(!currentGroup)
 	{
-		console.log(Meteor.user()._id);
 		Meteor.call('createGroup', this.data._id, Meteor.user()._id);
 	}
 }
