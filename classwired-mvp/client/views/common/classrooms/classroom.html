@@ -1,5 +1,20 @@
 <template name="classroom">
 	<button id="btn-remove-user-from-room" name="btn-remove-user-from-room">Leave classroom</button>
+	{{#each groups}}
+		<div>
+			{{#each this.members}}
+				<div>
+					{{profileName this}} 
+					{{#if userGroupHasMoreThanOneMember this}}
+						{{#if isCurrentUserOrRole this 'teacher'}}
+							<button data-member="{{this}}" class="btn-remove-user-from-group">-</button>
+						{{/if}}
+					{{/if}}
+				</div>
+			{{/each}}
+			<button class="btn-join-group">Join</button>
+		</div>
+	{{/each}}
 	<div class="activity-viewport">
 		{{{activity}}}
 	</div>

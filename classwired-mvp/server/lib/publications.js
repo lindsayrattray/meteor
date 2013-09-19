@@ -9,6 +9,29 @@ Meteor.publish('inputs', function(username) {
 	}
 });
 
+Meteor.publish('groups', function(userId, classroomId) {
+	var query = {}
+	if(classroomId)
+	{
+		query.classroomId = classroomId;
+	}
+	if(userId)
+	{
+		query.members = userId;
+	}
+	if(query.classroomId || query.members)
+	{
+		return Groups.find(query);
+	}
+});
+
+Meteor.publish('classroomGroups', function(classroomId) {
+	if(classroomId)
+	{
+		return Groups.find({classroomId: classroomId});
+	}
+})
+
 Meteor.publish('classrooms', function() {
 	return Classrooms.find();
 });
