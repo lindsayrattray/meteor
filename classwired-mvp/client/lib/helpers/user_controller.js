@@ -4,6 +4,30 @@ Handlebars.registerHelper('isAdmin', function() {
 	return UserController.isAdmin();
 });
 
+Handlebars.registerHelper('isCurrentUser', function(userId) {
+	var currentUser = Meteor.user();
+	if(currentUser)
+	{
+		return currentUser._id === userId;
+	}
+});
+
+Handlebars.registerHelper('isNotCurrentUser', function(userId) {
+	var currentUser = Meteor.user();
+	if(currentUser)
+	{
+		return currentUser._id !== userId;
+	}
+});
+
+Handlebars.registerHelper('isCurrentUserOrRole', function(userId, rolename) {
+	var currentUser = Meteor.user();
+	if(currentUser)
+	{
+		return currentUser._id !== userId || currentUser.permissions.indexOf(rolename) !== -1;
+	}
+});
+
 Handlebars.registerHelper('availablePermissions', function() {
 	return UserController.availablePermissions();
 });
