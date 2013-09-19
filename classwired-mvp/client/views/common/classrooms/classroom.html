@@ -5,8 +5,10 @@
 			{{#each this.members}}
 				<div>
 					{{profileName this}} 
-					{{#if isCurrentUserOrRole this 'teacher'}}
-						<button data-member="{{this}}" class="btn-remove-user-from-group">-</button>
+					{{#if userGroupHasMoreThanOneMember this}}
+						{{#if isCurrentUserOrRole this 'teacher'}}
+							<button data-member="{{this}}" class="btn-remove-user-from-group">-</button>
+						{{/if}}
 					{{/if}}
 				</div>
 			{{/each}}
