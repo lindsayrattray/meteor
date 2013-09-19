@@ -16,6 +16,7 @@ Template.classroom.rendered = function() {
 	var currentGroup = Groups.findOne({members: Meteor.user()._id});
 	if(!currentGroup)
 	{
+		console.log(Meteor.user()._id);
 		Meteor.call('createGroup', this.data._id, Meteor.user()._id);
 	}
 }
@@ -26,6 +27,17 @@ Template.classroom.events({
 		Session.set('currentRoom', null);
 		Meteor.call('setUserCurrentRoom', Meteor.user()._id, null);
 		Router.go('/');
+	},
+	'click .classroom-group': function(event, template) {
+		var user = Meteor.user();
+		var classroom = Session.get('currentClassroom');
+		var targetId = this._id;
+		var currentGroup = Groups.findOne({ classroomId: classroom, members: user._id });
+		console.log(currentGroup);
+		if(targetId !== currentGroup._id)
+		{
+			Meteor.call('mergeGroups', currentGroup._id, targetId);
+		}
 	}
 });
 

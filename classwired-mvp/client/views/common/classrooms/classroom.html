@@ -1,9 +1,11 @@
 <template name="classroom">
 	<button id="btn-remove-user-from-room" name="btn-remove-user-from-room">Leave classroom</button>
 	{{#each groups}}
-		{{#each this.members}}
-			{{profileName this}}
-		{{/each}}
+		<a class="classroom-group">
+			{{#each this.members}}
+				{{profileName this}}
+			{{/each}}
+		</a>
 	{{/each}}
 	<div class="activity-viewport">
 		{{{activity}}}

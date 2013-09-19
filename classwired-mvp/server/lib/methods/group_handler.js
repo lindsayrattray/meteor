@@ -1,6 +1,9 @@
 Meteor.methods({
 	createGroup: function(classroomId, userId) {
-		Groups.insert({ classroomId: classroomId, members: [userId] });
+		if(!Groups.findOne({ classroomId: classroomId, members: userId }))
+		{
+			Groups.insert({ classroomId: classroomId, members: [userId] });
+		}
 	},
 	addUserToGroup: function(groupId, userToAddEmailAddress) {
 		var userToAdd = Meteor.users.find({ "emails.address": userToAddEmailAddress });
@@ -18,17 +21,17 @@ Meteor.methods({
 
 		if(fromMembers > toMembers)
 		{
-			for(member in toMembers)
+			for(memberIndex in toMembers)
 			{
-				Groups.update(fromGroupId, { $push: { members: member } });
+				Groups.update(fromGroupId, { $push: { members: fromMembers[memberIndex] } });
 			}
 			Groups.remove(toGroupId);
 		}
 		else
 		{
-			for(member in fromMembers)
+			for(memberIndex in fromMembers)
 			{
-				Groups.update(toGroupId, { $push: { members: member } });
+				Groups.update(toGroupId, { $push: { members: fromMembers[memberIndex] } });
 			}
 			Groups.remove(fromGroupId);
 		}
@@ -37,9 +40,9 @@ Meteor.methods({
 		var groupToDisband = Groups.findOne(groupId);
 		var members = groupToDisband.members;
 
-		for(member in members)
+		for(memberIndex in members)
 		{
-			Groups.insert({ classroomId: groupToDisband.classroomId, members: [member] });
+			Groups.insert({ classroomId: groupToDisband.classroomId, members: [members[memberIndex]] });
 		}
 
 		Groups.remove(groupId);
