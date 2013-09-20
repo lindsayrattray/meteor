@@ -23,6 +23,6 @@ Template.activityExplainTheWord_Wordlist_Wordlist.events({
 
 Template.activityExplainTheWord_Wordlist_Wordlist.helpers({
 	wordlistItems: function() {
-		return ExplainTheWord_WordlistItems.find();
+		return ExplainTheWord_WordlistItems.find({}, { sort: { created_timestamp: 1 } });
 	}
 });
