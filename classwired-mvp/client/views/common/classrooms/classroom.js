@@ -43,8 +43,9 @@ Template.classroom.events({
 		Meteor.call('removeUserFromGroup', group._id, user._id);
 	},
 	'click .component-selector': function(event, template) {
-		var classroomId = template.data._id;
-		var componentId = this._id;
+		var classroom = template.data._id;
+		var component = this.name;
+		Meteor.call('setCurrentComponent', classroom, component);
 	}
 });
 

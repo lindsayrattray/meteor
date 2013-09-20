@@ -5,7 +5,7 @@ if(!explainTheWordActivityId)
 	explainTheWordActivityId = Activities.insert({ name: 'explainTheWord', title: 'Explain the Word', template: 'activityExplainTheWord_Main'});
 }
 
-var explainTheWordComponentsObjects =  [{ name: 'wordlist_entry', title: 'Wordlist', template: 'activityExplainTheWord_WordlistEntry', activityId: explainTheWordActivityId },
+var explainTheWordComponentsObjects =  [{ name: 'wordlist_entry', title: 'Wordlist', template: 'activityExplainTheWord_Wordlist_Entry', activityId: explainTheWordActivityId },
 										{ name: '', template: '', activityId: explainTheWordActivityId },
 										{ name: '', template: '', activityId: explainTheWordActivityId },
 										{ name: '', template: '', activityId: explainTheWordActivityId }];
