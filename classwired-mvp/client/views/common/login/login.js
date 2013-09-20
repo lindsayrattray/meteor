@@ -6,7 +6,7 @@ function debugLogin(error)
 	}
 	else
 	{
-		console.log("event success")
+		
 	}
 }
 
@@ -51,11 +51,13 @@ Template.login.events({
 			}
 			else
 			{
-				Accounts.createUser({ email: emailAddress, password: password, profile: { name: name }, permissions: ['student'] }, function()  { 
-																																					var userId = Meteor.users.findOne({ "emails.address": emailAddress });
-																																					console.log(Meteor.users.findOne({ "emails.address": emailAddress }));
-																																					Meteor.call('addUserToRole', userId, 'student'); 
-																																				});
+				Accounts.createUser({ email: emailAddress,
+									  password: password,
+									  profile: { name: name } },
+									  function()  { 
+														var userId = Meteor.users.findOne({ "emails.address": emailAddress });
+														Meteor.call('addUserToRole', userId, 'student'); 
+												  });
 			}
 		}
 
