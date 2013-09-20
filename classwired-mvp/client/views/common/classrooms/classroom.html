@@ -15,6 +15,11 @@
 			<button class="btn-join-group">Join</button>
 		</div>
 	{{/each}}
+	<div class="component-selector-nav">
+		{{#each components}}
+			<a class="component-selector" data-component="{{this._id}}">{{this.title}}</a>
+		{{/each}}
+	</div>
 	<div class="activity-viewport">
 		{{{activity}}}
 	</div>

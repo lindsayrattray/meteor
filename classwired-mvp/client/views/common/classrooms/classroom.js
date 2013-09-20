@@ -27,7 +27,7 @@ Template.classroom.events({
 	},
 	'click .btn-join-group': function(event, template) {
 		var user = Meteor.user();
-		var classroom = Session.get('currentClassroom');
+		var classroom = template.data._id;
 		var targetId = this._id;
 		var currentGroup = Groups.findOne({ classroomId: classroom, members: user._id });
 
@@ -38,9 +38,13 @@ Template.classroom.events({
 	},
 	'click .btn-remove-user-from-group': function(event, template) {
 		var user = Meteor.users.findOne(event.srcElement.dataset.member);
-		var classroom = Session.get('currentClassroom');
+		var classroom = template.data._id;
 		var group = Groups.findOne({ classroomId: classroom, members: user._id });
 		Meteor.call('removeUserFromGroup', group._id, user._id);
+	},
+	'click .component-selector': function(event, template) {
+		var classroomId = template.data._id;
+		var componentId = this._id;
 	}
 });
 
@@ -53,6 +57,9 @@ Template.classroom.helpers({
 		}
 
 		return Template[activity.template]({ activity: activity, classroom: this });
+	},
+	components: function() {
+		return Components.find();
 	},
 	groups: function() {
 		return Groups.find();	

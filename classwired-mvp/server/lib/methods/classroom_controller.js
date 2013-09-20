@@ -6,10 +6,17 @@ Meteor.methods({
 		}
 	},
 	setCurrentActivity: function(classroomId, activityName) {
-		var classroom = Classrooms.findOne(classroomId)
+		var classroom = Classrooms.findOne(classroomId);
 		if(classroom && classroom.currentActivity !== activityName && Activities.findOne({ name: activityName }))
 		{
 			Classrooms.update(classroomId, { $set: { currentActivity: activityName } });
+		}
+	},
+	setCurrentComponent: function(classroomId, componentName) {
+		var classroom = Classrooms.findOne(classroomId);
+		if(classroom && classroom.currentComponent !== componentName && Components.findOne({ name: componentName }))
+		{
+			Classrooms.update(classroomId, { $set: { currentComponent: componentName } });
 		}
 	}
 });

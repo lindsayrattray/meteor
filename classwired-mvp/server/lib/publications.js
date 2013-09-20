@@ -49,5 +49,5 @@ Meteor.publish('activities', function() {
 });
 
 Meteor.publish('components', function(activityId) {
-	return Components.find({activityId: activityId});
+	return Components.find({ activityId: activityId });
 });
