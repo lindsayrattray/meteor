@@ -46,4 +46,8 @@ Meteor.publish('systemUsers', function() {
 
 Meteor.publish('activities', function() {
 	return Activities.find();
-})
+});
+
+Meteor.publish('components', function(activityId) {
+	return Components.find({activityId: activityId});
+});

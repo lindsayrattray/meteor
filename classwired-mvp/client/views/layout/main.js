@@ -7,7 +7,10 @@ Deps.autorun(function() {
 		Meteor.subscribe('groups', user._id, classroom);
 		if(classroom)
 		{
+			var currentClassroom = Classrooms.findOne(classroom);
+			var currentActivity = Activities.findOne({ name: currentClassroom.currentActivity });
 			Meteor.subscribe('classroomGroups', classroom);
+			Meteor.subscribe('components', currentActivity);
 		}
 	}
 });
