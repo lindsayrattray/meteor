@@ -2,10 +2,10 @@ var explainTheWordActivity = Activities.findOne({ name: 'explainTheWord' })
 var explainTheWordActivityId = explainTheWordActivity ? explainTheWordActivity._id : null;
 if(!explainTheWordActivityId)
 {
-	explainTheWordActivityId = Activities.insert({ name: 'explainTheWord', template: 'activityExplainTheWordMain'});
+	explainTheWordActivityId = Activities.insert({ name: 'explainTheWord', title: 'Explain the Word', template: 'activityExplainTheWord_Main'});
 }
 
-var explainTheWordComponentsObjects =  [{ name: '', template: '', activityId: explainTheWordActivityId },
+var explainTheWordComponentsObjects =  [{ name: 'wordlist_entry', title: 'Wordlist', template: 'activityExplainTheWord_WordlistEntry', activityId: explainTheWordActivityId },
 										{ name: '', template: '', activityId: explainTheWordActivityId },
 										{ name: '', template: '', activityId: explainTheWordActivityId },
 										{ name: '', template: '', activityId: explainTheWordActivityId }];
