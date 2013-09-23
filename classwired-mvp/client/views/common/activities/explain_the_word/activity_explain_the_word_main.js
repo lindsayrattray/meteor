@@ -4,7 +4,8 @@ Deps.autorun(function() {
 	{	
 		var group = Groups.findOne({ members: user, classroomId: Session.get('currentClassroom') });
 		group = group ? group._id : null;
-		Meteor.subscribe('explainTheWord_WordlistItems', group, Session.get('currentClassroom'), user);	
+		Meteor.subscribe('explainTheWord_WordlistItems', group, Session.get('currentClassroom'), user);
+		Meteor.subscribe('explainTheWord_ExplainItems', group, Session.get('currentClassroom'), user);
 	}
 });
 

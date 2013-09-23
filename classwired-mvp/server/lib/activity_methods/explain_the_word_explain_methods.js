@@ -1,10 +1,14 @@
 var ensureUniqueItem = function(wordlistItems, explainItems)
 {
-	var result = _.sample(wordlistItems);
-	explainItems = _.reject(explainItems, {item: result.item});
-	if(explainItems.length > 0)
+	var result = Random.choice(wordlistItems);
+	console.log(wordlistItems);
+	if(_.findWhere(explainItems, { item: result.item }))
 	{
-		result = ensureUniqueItem(wordlistItems, explainItems);
+		explainItems = _.reject(explainItems, function(explainItem){ explainItem == result.item });
+		if(explainItems.length > 0)
+		{
+			result = ensureUniqueItem(wordlistItems, explainItems);
+		}
 	}
 	return result;
 }

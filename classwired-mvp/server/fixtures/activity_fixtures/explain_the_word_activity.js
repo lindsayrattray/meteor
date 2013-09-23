@@ -6,7 +6,7 @@ if(!explainTheWordActivityId)
 }
 
 var explainTheWordComponentsObjects =  [{ name: 'wordlist_entry', title: 'Wordlist', template: 'activityExplainTheWord_Wordlist_Entry', activityId: explainTheWordActivityId },
-										{ name: '', template: '', activityId: explainTheWordActivityId },
+										{ name: 'explain', title: 'Explain', template: 'activityExplainTheWord_Explain', activityId: explainTheWordActivityId },
 										{ name: '', template: '', activityId: explainTheWordActivityId },
 										{ name: '', template: '', activityId: explainTheWordActivityId }];
 
