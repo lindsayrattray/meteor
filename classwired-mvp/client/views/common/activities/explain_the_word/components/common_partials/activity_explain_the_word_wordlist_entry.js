@@ -20,7 +20,3 @@ Template.activityExplainTheWord_Wordlist_Entry.events({
 		event.preventDefault();
 	}
 });
-
-Template.activityExplainTheWord_Wordlist_Entry.helpers({
-
-});
