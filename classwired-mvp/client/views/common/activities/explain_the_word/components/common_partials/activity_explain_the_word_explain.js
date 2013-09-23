@@ -12,6 +12,17 @@ Template.activityExplainTheWord_Explain.rendered = function() {
 	}
 }
 
+Template.activityExplainTheWord_Explain.events({
+	'click #explain-answer-tick': function() {
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
+		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: 'yes' } });
+	},
+	'click #explain-answer-cross': function() {
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
+		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: 'no' } });
+	}
+});
+
 Template.activityExplainTheWord_Explain.helpers({
 	currentItem: function() {
 		var currentItem = ExplainTheWord_ExplainItems.find({ current: true }).fetch()[0];
