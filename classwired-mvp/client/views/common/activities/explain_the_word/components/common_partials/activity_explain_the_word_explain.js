@@ -24,15 +24,18 @@ Template.activityExplainTheWord_Explain.events({
 		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: 'no', answered_timestamp: timestamp } });
 	},
 	'click #explain-answer-new': function() {
-		var group = Groups.findOne({ members: Meteor.userId() });
-		Meteor.call('assignNewItem', group._id);
+		if(Meteor.user() && Meteor.user().permissions.indexOf('teacher') === -1)
+		{
+			var group = Groups.findOne({ members: Meteor.userId() });
+			Meteor.call('assignNewItem', group._id);
+		}
 	}
 });
 
 Template.activityExplainTheWord_Explain.helpers({
 	currentItem: function() {
 		var currentItem = ExplainTheWord_ExplainItems.find({ current: true }).fetch()[0];
-		if(currentItem)
+		if(Meteor.user() && Meteor.user().permissions.indexOf('teacher') === -1 && currentItem)
 		{
 			return currentItem.item;
 		}

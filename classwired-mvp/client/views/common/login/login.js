@@ -27,7 +27,7 @@ Template.login.events({
 			if(!password)
 			{
 				$('#login-email-container').addClass('hidden');
-				$('#login-password-container').removeClass('hidden').focus();
+				$('#login-password-container').removeClass('hidden');
 				$('#password-field').focus();
 			}
 			else
@@ -40,13 +40,13 @@ Template.login.events({
 			if(!name && !password)
 			{
 				$('#login-email-container').addClass('hidden');
-				$('#login-name-container').removeClass('hidden').focus();
+				$('#login-name-container').removeClass('hidden');
 				$('#name-field').focus();
 			}
 			else if(name && !password)
 			{
 				$('#login-name-container').addClass('hidden');
-				$('#login-password-container').removeClass('hidden').focus();
+				$('#login-password-container').removeClass('hidden');
 				$('#password-field').focus();
 			}
 			else
