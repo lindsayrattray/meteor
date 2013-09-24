@@ -1,7 +1,7 @@
 Template.activityExplainTheWord_Explain.rendered = function() {
 	if(Meteor.user() && Meteor.user().permissions.indexOf('teacher') === -1)
 	{
-		var group = Groups.findOne({ members: Meteor.user()._id });
+		var group = Groups.findOne({ members: Meteor.userId() });
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
 
 		if(!currentItem)
@@ -20,6 +20,10 @@ Template.activityExplainTheWord_Explain.events({
 	'click #explain-answer-cross': function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
 		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: 'no' } });
+	},
+	'click #explain-answer-new': function() {
+		var group = Groups.findOne({ members: Meteor.userId() });
+		Meteor.call('assignNewItem', group._id);
 	}
 });
 
