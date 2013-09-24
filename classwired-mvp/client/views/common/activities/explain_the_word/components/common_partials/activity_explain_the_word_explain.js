@@ -15,11 +15,13 @@ Template.activityExplainTheWord_Explain.rendered = function() {
 Template.activityExplainTheWord_Explain.events({
 	'click #explain-answer-tick': function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
-		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: 'yes' } });
+		var timestamp = new Date();
+		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: 'yes', answered_timestamp: timestamp } });
 	},
 	'click #explain-answer-cross': function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
-		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: 'no' } });
+		var timestamp = new Date();
+		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: 'no', answered_timestamp: timestamp } });
 	},
 	'click #explain-answer-new': function() {
 		var group = Groups.findOne({ members: Meteor.userId() });
