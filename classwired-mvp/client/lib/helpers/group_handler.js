@@ -6,3 +6,8 @@ Handlebars.registerHelper('userGroupHasMoreThanOneMember', function(userId) {
 	}
 	return false;
 });
+
+Handlebars.registerHelper('groupMembers', function(groupId) {
+	var group = Groups.findOne(groupId);
+	return GroupHandler.membersToString(group.members);
+});

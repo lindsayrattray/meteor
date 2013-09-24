@@ -22,7 +22,6 @@ Template.activityExplainTheWord_Main.helpers({
 		{
 			return 'no component found matching ' + this.classroom.currentActivityComponent;
 		}
-		console.log(component);
 		return Template[component.template]({ activity: this.activity, classroom: this.classroom });
 	}	
 });
