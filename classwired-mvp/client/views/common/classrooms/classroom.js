@@ -12,7 +12,7 @@ Template.classroom.rendered = function() {
 	Session.set('currentClassroom', this.data._id);
 	
 	var currentGroup = Groups.findOne({members: Meteor.user()._id});
-	if(!currentGroup)
+	if(!currentGroup && Meteor.user().permissions.indexOf('teacher') === -1)
 	{
 		Meteor.call('createGroup', this.data._id, Meteor.user()._id);
 	}
