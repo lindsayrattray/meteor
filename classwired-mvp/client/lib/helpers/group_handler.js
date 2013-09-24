@@ -9,5 +9,8 @@ Handlebars.registerHelper('userGroupHasMoreThanOneMember', function(userId) {
 
 Handlebars.registerHelper('groupMembers', function(groupId) {
 	var group = Groups.findOne(groupId);
-	return GroupHandler.membersToString(group.members);
+	if(group)
+	{
+		return GroupHandler.membersToString(group.members);
+	}
 });

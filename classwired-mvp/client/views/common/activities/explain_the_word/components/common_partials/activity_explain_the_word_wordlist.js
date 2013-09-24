@@ -27,6 +27,9 @@ Template.activityExplainTheWord_Wordlist_Wordlist.helpers({
 	},
 	groupMembers: function(groupId) {
 		var group = Groups.findOne(groupId);
-		return GroupHandler.membersToString(group.members);
+		if(group)
+		{	
+			return GroupHandler.membersToString(group.members);
+		}
 	}
 });
