@@ -47,7 +47,6 @@ Meteor.methods({
 			if(oldItem)
 			{
 				timestamp = oldItem.assigned_timestamp ? oldItem.assigned_timestamp : timestamp;
-				console.log(timestamp);
 				ExplainTheWord_ExplainItems.update(oldItem._id, { $set: { current: true, assigned_timestamp: timestamp } });
 			}
 			else
