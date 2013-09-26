@@ -9,21 +9,22 @@ Deps.autorun(function() {
 		var fastestTime = ((Date.parse(fastestItem.answered_timestamp) - Date.parse(fastestItem.assigned_timestamp)) / 1000).toFixed(2);
 		var timeAcc = 0;
 
+		console.log(explainedItems);
+		console.log(fastestTime);
+
 		if(explainedItems.length > 0)
 		{
 			for(explainedItemIndex in explainedItems)
 			{
 				if(explainedItems[explainedItemIndex].answered_timestamp)
 				{
+					console.log(timeAcc);
 					timeAcc += (Date.parse(explainedItems[explainedItemIndex].answered_timestamp) - Date.parse(explainedItems[explainedItemIndex].assigned_timestamp));
 				}
 			}
 		}
 
 		var avg = (timeAcc / (explainedItems.length * 1000)).toFixed(2);
-		
-		avg = isNaN(avg) ? 0 : avg;
-		fastestTime = isNaN(avg) ? 0 : avg;
 
 		var matchItem = ExplainTheWord_ExplainItemTimes.findOne({ item: items[itemIndex] }, { reactive: false });
 		if(matchItem)

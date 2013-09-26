@@ -46,7 +46,9 @@ Meteor.methods({
 			var oldItem = ExplainTheWord_ExplainItems.findOne({ item: newItem.item, classroomId: newItem.classroomId, userId: userId, answered: false });
 			if(oldItem)
 			{
-				ExplainTheWord_ExplainItems.update(oldItem._id, { $set: { current: true } });
+				timestamp = oldItem.assigned_timestamp ? oldItem.assigned_timestamp : timestamp;
+				console.log(timestamp);
+				ExplainTheWord_ExplainItems.update(oldItem._id, { $set: { current: true, assigned_timestamp: timestamp } });
 			}
 			else
 			{
