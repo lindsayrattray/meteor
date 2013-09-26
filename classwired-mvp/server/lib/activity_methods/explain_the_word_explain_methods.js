@@ -61,7 +61,7 @@ Meteor.methods({
 			var members = groups[groupIndex].members;
 			for(memberIndex in members)
 			{
-				Meteor.call('assignNewItem', members[memberIndex]);
+				Meteor.call('assignNewItem', members[memberIndex], classroomId);
 			}
 		}
 	}

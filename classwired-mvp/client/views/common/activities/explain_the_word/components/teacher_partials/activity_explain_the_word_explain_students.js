@@ -3,7 +3,7 @@ Template.activityExplainTheWord_Explain_Students.events({
 		Meteor.call('assignNewItemToAllUsers', template.data.classroom._id);
 	},
 	'click .assign-one-new-item': function(event, template) {
-		Meteor.call('assignNewItem', this);
+		Meteor.call('assignNewItem', this.toString(), template.data.classroom._id);
 	}
 });
 
