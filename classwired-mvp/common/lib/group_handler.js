@@ -21,5 +21,8 @@ GroupHandler = {
 			result = result + ' and ' + lastElement;
 			return result;
 		}
+	},
+	getGroupByMember: function(userId, classroomId) {
+		return Groups.findOne({ classroomId: classroomId, members: userId });
 	}
 }

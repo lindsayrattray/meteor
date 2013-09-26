@@ -7,14 +7,14 @@ Template.classroom.rendered = function() {
 		{
 			Meteor.call('setUserCurrentRoom', Meteor.user()._id, this.data._id);
 		}
-	}
 
-	Session.set('currentClassroom', this.data._id);
-	
-	var currentGroup = Groups.findOne({members: Meteor.user()._id});
-	if(!currentGroup && Meteor.user().permissions.indexOf('teacher') === -1)
-	{
-		Meteor.call('createGroup', this.data._id, Meteor.user()._id);
+		Session.set('currentClassroom', this.data._id);
+		
+		var currentGroup = Groups.findOne({members: Meteor.user()._id});
+		if(!currentGroup && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
+		{
+			Meteor.call('createGroup', this.data._id, Meteor.user()._id);
+		}
 	}
 }
 
@@ -58,8 +58,11 @@ Template.classroom.helpers({
 		{
 			activity = Activities.findOne({name: 'idle'});
 		}
-
-		return Template[activity.template]({ activity: activity, classroom: this });
+		
+		if(activity)
+		{
+			return Template[activity.template]({ activity: activity, classroom: this });
+		}
 	},
 	components: function() {
 		return Components.find();

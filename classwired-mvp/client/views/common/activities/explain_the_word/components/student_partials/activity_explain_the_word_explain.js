@@ -1,12 +1,18 @@
 Template.activityExplainTheWord_Explain.rendered = function() {
 	if(Meteor.user() && Meteor.user().permissions.indexOf('teacher') === -1)
 	{
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
-
-		if(!currentItem)
+		if(Session.get('newItemAssigned'))
 		{
-			Meteor.call('assignNewItem', Meteor.userId());
-			currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
+			Session.set('newItemAssigned', false);
+		}
+		else
+		{
+			var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
+
+			if(!currentItem)
+			{
+				Meteor.call('assignNewItem', Meteor.userId());
+			}
 		}
 	}
 }
@@ -26,6 +32,7 @@ Template.activityExplainTheWord_Explain.events({
 		if(Meteor.user() && Meteor.user().permissions.indexOf('teacher') === -1)
 		{
 			Meteor.call('assignNewItem', Meteor.userId());
+			Session.set('newItemAssigned', true);
 		}
 	}
 });

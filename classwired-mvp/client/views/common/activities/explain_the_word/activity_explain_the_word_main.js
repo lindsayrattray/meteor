@@ -1,23 +1,10 @@
 Deps.autorun(function() {
 	var user = Meteor.userId()
-	var group = Groups.findOne({ members: user });
 	var classroomId = Session.get('currentClassroom');
+	var group = Groups.findOne({ members: user });
+	var groupMembers = group ? group.members : null;
 
-	if(user)
-	{
-		var wordlistItems = ExplainTheWord_WordlistItems.find({ userId: user, classroomId: classroomId }, { reactive: false }).fetch();
-		var explainItems = ExplainTheWord_ExplainItems.find({ userId: user, classroomId: classroomId }, { reactive: false }).fetch();
-
-		for(itemIndex in wordlistItems)
-		{
-			ExplainTheWord_WordlistItems.update(wordlistItems[itemIndex]._id, { $set: { groupId: group._id } });
-		}
-
-		for(itemIndex in explainItems)
-		{
-			ExplainTheWord_ExplainItems.update(explainItems[itemIndex]._id, { $set: { groupId: group._id } });
-		}
-	}
+	Meteor.call('reassignGroupWords', classroomId, function(error, result) { return });
 });
 
 Deps.autorun(function() {
