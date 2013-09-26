@@ -1,8 +1,9 @@
 Template.activityExplainTheWord_Explain.rendered = function() {
 	if(Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
 	{
-		var explainItems = ExplainTheWord_ExplainItems.find({ userId: Meteor.userId().toString(), classroomId: this.data.classroom._id });
-		if(explainItems.count() === 0)
+		var explainItem = ExplainTheWord_ExplainItems.findOne({ userId: Meteor.userId().toString(), classroomId: this.data.classroom._id });
+		console.log(explainItem);
+		if(!explainItem)
 		{
 			Meteor.call('populateItems', Meteor.userId().toString(), this.data.classroom._id);
 		}
