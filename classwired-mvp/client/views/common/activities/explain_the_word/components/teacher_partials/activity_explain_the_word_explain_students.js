@@ -36,7 +36,7 @@ Template.activityExplainTheWord_Explain_Students.helpers({
 		if(thisItem)
 		{
 			var time = ((Date.parse(thisItem.answered_timestamp) - Date.parse(thisItem.assigned_timestamp)) / 1000).toFixed(2);
-			return time;
+			return isNaN(time) ? 0 : time;
 		}
 	}
 });

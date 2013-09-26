@@ -21,6 +21,10 @@ Deps.autorun(function() {
 		}
 
 		var avg = (timeAcc / (explainedItems.length * 1000)).toFixed(2);
+		
+		avg = isNaN(avg) ? 0 : avg;
+		fastestTime = isNaN(avg) ? 0 : avg;
+
 		var matchItem = ExplainTheWord_ExplainItemTimes.findOne({ item: items[itemIndex] }, { reactive: false });
 		if(matchItem)
 		{

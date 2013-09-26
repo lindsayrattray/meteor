@@ -22,8 +22,6 @@ Meteor.methods({
 		var explainItems = _.pluck(ExplainTheWord_ExplainItems.find({ classroomId: classroomId, userId: userId }).fetch(), 'item');
 		var wordlistItems = _.chain(ExplainTheWord_WordlistItems.find({ classroomId: classroomId }).fetch()).pluck('item').uniq().difference(explainItems).value();
 
-		//
-
 		if(wordlistItems.length > 0)
 		{
 			for(itemIndex in wordlistItems)
@@ -38,13 +36,9 @@ Meteor.methods({
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ userId: userId.toString(), current: true, classroomId: classroomId });
 		var newItem = ensureUniqueItem(wordlistItems, explainItems, currentItem);
 		var timestamp = new Date();
-		
-		console.log(currentItem);
 
 		if(currentItem)
 		{
-			console.log('switching current');
-			console.log(currentItem);
 			ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { current: false } });
 		}
 		if(newItem)
@@ -52,7 +46,6 @@ Meteor.methods({
 			var oldItem = ExplainTheWord_ExplainItems.findOne({ item: newItem.item, classroomId: newItem.classroomId, userId: userId, answered: false });
 			if(oldItem)
 			{
-				console.log('update');
 				ExplainTheWord_ExplainItems.update(oldItem._id, { $set: { current: true } });
 			}
 			else
