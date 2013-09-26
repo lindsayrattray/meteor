@@ -13,7 +13,10 @@ Deps.autorun(function() {
 		{
 			for(explainedItemIndex in explainedItems)
 			{
-				timeAcc += (Date.parse(explainedItems[explainedItemIndex].answered_timestamp) - Date.parse(explainedItems[explainedItemIndex].assigned_timestamp));
+				if(explainedItems[explainedItemIndex].answered_timestamp)
+				{
+					timeAcc += (Date.parse(explainedItems[explainedItemIndex].answered_timestamp) - Date.parse(explainedItems[explainedItemIndex].assigned_timestamp));
+				}
 			}
 		}
 

@@ -1,18 +1,10 @@
 Template.activityExplainTheWord_Explain.rendered = function() {
-	if(Meteor.user() && Meteor.user().permissions.indexOf('teacher') === -1)
+	if(Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
 	{
-		if(Session.get('newItemAssigned'))
+		var explainItems = ExplainTheWord_ExplainItems.find({ userId: Meteor.userId().toString(), classroomId: this.data.classroom._id });
+		if(explainItems.count() === 0)
 		{
-			Session.set('newItemAssigned', false);
-		}
-		else
-		{
-			var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
-
-			if(!currentItem)
-			{
-				Meteor.call('assignNewItem', Meteor.userId());
-			}
+			Meteor.call('populateItems', Meteor.userId().toString(), this.data.classroom._id);
 		}
 	}
 }
@@ -28,10 +20,10 @@ Template.activityExplainTheWord_Explain.events({
 		var timestamp = new Date();
 		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: false, answered_timestamp: timestamp } });
 	},
-	'click #explain-answer-new': function() {
+	'click #explain-answer-new': function(event, template) {
 		if(Meteor.user() && Meteor.user().permissions.indexOf('teacher') === -1)
 		{
-			Meteor.call('assignNewItem', Meteor.userId());
+			Meteor.call('assignNewItem', Meteor.userId(), template.data.classroom._id);
 			Session.set('newItemAssigned', true);
 		}
 	}
@@ -40,7 +32,7 @@ Template.activityExplainTheWord_Explain.events({
 Template.activityExplainTheWord_Explain.helpers({
 	currentItem: function() {
 		var currentItem = ExplainTheWord_ExplainItems.find({ current: true }).fetch()[0];
-		if(Meteor.user() && Meteor.user().permissions.indexOf('teacher') === -1 && currentItem)
+		if(Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1 && currentItem)
 		{
 			return currentItem.item;
 		}

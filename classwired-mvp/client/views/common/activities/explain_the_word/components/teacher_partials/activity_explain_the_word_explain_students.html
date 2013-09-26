@@ -1,3 +1,9 @@
 <template name="activityExplainTheWord_Explain_Students">
-
+	<button id="assign-all-new-items">Reshuffle words</button>
+	{{#each students}}
+		{{profileName this}} <button class="assign-one-new-item">New word</button>
+		{{#each studentAllItems}}
+			<div>{{#if isCurrentItem ../this}} current {{/if}} {{this.item}} {{itemAnswerTime ../this}}</div>
+		{{/each}}
+	{{/each}}
 </template>
