@@ -1,0 +1,12 @@
+<template name="activityExplainTheWord_Wordlist_Wordlist">
+	<div id="wordlist-container" style="overflow:auto; max-height:120px;">
+		{{#each wordlistItems}}
+			<div><input class="txt-wordlist-item-input" type="text" value="{{this.item}}" {{#if thisUserHasRole 'student'}}{{#unless isCurrentUser this.userId}} disabled="true" {{/unless}}{{/if}} />
+			 | {{profileName this.userId}}
+			 {{#if thisUserHasRole 'teacher'}}
+				 | {{groupMembers this.groupId}}
+			 {{/if}}
+			</div>
+		{{/each}}
+	</div>
+</template>

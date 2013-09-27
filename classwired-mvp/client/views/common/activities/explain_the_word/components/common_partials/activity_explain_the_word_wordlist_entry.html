@@ -1,0 +1,8 @@
+<template name="activityExplainTheWord_Wordlist_Entry">
+	{{> activityExplainTheWord_Wordlist_Wordlist}}
+	{{#unless thisUserHasRole 'teacher'}}
+		<form id="add-wordlist-item" name="add-wordlist-item">
+			<input id="txt-add-wordlist-item" type="text" /><button class="submit">Submit</button>
+		</form>
+	{{/unless}}
+</template>

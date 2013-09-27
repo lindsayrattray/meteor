@@ -1,17 +1,21 @@
-<template name="activityExplainTheWordMain">
+<template name="activityExplainTheWord_Main">
 	<button class="activity-selector" name="btn-leave-activity">Back to classroom</button>
 	<section id="activity-container">
 		{{#if thisUserHasRole 'teacher'}}
 			<div class="teacher-viewport">
-				teacher
+				
 			</div>
 		{{/if}}
 		
 		{{#if thisUserHasRole 'student'}}
 			<div class="student-viewport">		
-				student
+				
 			</div>		
 		{{/if}}
 		{{{component}}}
+
+		{{> activityExplainTheWord_Wordlist_Groups}}
+		{{> activityExplainTheWord_Explain_Stats}}
+		{{> activityExplainTheWord_Explain_Students}}
 	</section>
 </template>

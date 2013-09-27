@@ -1,0 +1,5 @@
+<template name="activityExplainTheWord_Explain_Stats">
+	{{#each explainItems}}
+		<div>{{this.item}} : {{this.avgTime}} | {{this.fastestTime}} : {{profileName this.fastestUser}} {{groupMembers this.fastestGroup}}</div>
+	{{/each}}
+</template>

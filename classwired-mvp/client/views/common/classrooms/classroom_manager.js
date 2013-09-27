@@ -21,20 +21,23 @@ Template.classroomManager.helpers({
 Template.classroomManager.events({
 	'click #btn-add-classroom': function(event, template) {
 		var $addClassroomContainer = $('#add-classroom-container');
+		var nameInput = template.find('#add-classroom-name')
 		if($addClassroomContainer.hasClass('hidden'))
 		{
 			$addClassroomContainer.removeClass('hidden');
+			nameInput.focus();
 		}
 		else
 		{
-			template.find('#add-classroom-name').value = '';
+			nameInput.value = '';
 			$addClassroomContainer.addClass('hidden');
 		}
 	},
 	'submit #add-classroom': function(event, template) {
-		var name = template.find('#add-classroom-name').value;
-		Meteor.call('createClassroom', name, Meteor.user()._id);
-		template.find('#add-classroom-name').value = '';
+		var nameInput = template.find('#add-classroom-name')
+		Meteor.call('createClassroom', nameInput.value, Meteor.user()._id);
+		nameInput.value = '';
+
 		event.preventDefault();
 	},
 	'click .classroom-link': function(event, template) {

@@ -1,12 +1,28 @@
 <template name="main">
 	<div class="container">
-		<section id="main" class="row-fluid">
+		<section class="main">
 			{{#if currentUser}}
-			{{yield "login"}}
+			<nav class="top-bar">
+				<ul class="title-area">
+					<li class="name">
+						<h1><a href="">ClassWired</a></h1>
+					</li>
+					<li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
+				</ul>
+				<section class="top-bar-section">
+					<ul class="right">
+						<li class="divider hide-for-small"></li>
+						<li>{{yield "login"}}</li>
+					</ul>
+			</nav>
 			{{yield "messages"}}
 			{{yield}}
 			{{else}}
-			{{yield "login"}}
+			<div class="row">
+				<div class="small-10 small-centered columns">
+					{{yield "login"}}
+				</div>
+			</div>
 			{{/if}}
 		</section>
 	</div>

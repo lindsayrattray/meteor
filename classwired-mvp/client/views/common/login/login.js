@@ -6,7 +6,7 @@ function debugLogin(error)
 	}
 	else
 	{
-		console.log("event success")
+		
 	}
 }
 
@@ -26,8 +26,13 @@ Template.login.events({
 		{
 			if(!password)
 			{
-				$('#login-email-container').addClass('hidden');
-				$('#login-password-container').removeClass('hidden').focus();
+				$('#login-email-container').animate({
+					opacity: 'toggle',
+					height: 'toggle'
+				}, 1000);
+				$('#login-password-container').animate({
+					opacity:'toggle'
+				}, 1000);
 				$('#password-field').focus();
 			}
 			else
@@ -39,23 +44,35 @@ Template.login.events({
 		{
 			if(!name && !password)
 			{
-				$('#login-email-container').addClass('hidden');
-				$('#login-name-container').removeClass('hidden').focus();
+				$('#login-email-container').animate({
+					opacity: 'toggle',
+					height: 'toggle'
+				}, 1000);
+				$('#login-name-container').animate({
+					opacity: 'toggle'
+				}, 1000);
 				$('#name-field').focus();
 			}
 			else if(name && !password)
 			{
-				$('#login-name-container').addClass('hidden');
-				$('#login-password-container').removeClass('hidden').focus();
+				$('#login-name-container').animate({
+					opacity: 'toggle',
+					height: 'toggle'
+				}, 1000);
+				$('#login-password-container').animate({
+					opacity: 'toggle'
+				}, 1000);
 				$('#password-field').focus();
 			}
 			else
 			{
-				Accounts.createUser({ email: emailAddress, password: password, profile: { name: name }, permissions: ['student'] }, function()  { 
-																																					var userId = Meteor.users.findOne({ "emails.address": emailAddress });
-																																					console.log(Meteor.users.findOne({ "emails.address": emailAddress }));
-																																					Meteor.call('addUserToRole', userId, 'student'); 
-																																				});
+				Accounts.createUser({ email: emailAddress,
+									  password: password,
+									  profile: { name: name } },
+									  function()  { 
+														var userId = Meteor.users.findOne({ "emails.address": emailAddress });
+														Meteor.call('addUserToRole', userId, 'student'); 
+												  });
 			}
 		}
 
