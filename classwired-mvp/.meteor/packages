@@ -5,12 +5,11 @@
 
 insecure
 preserve-inputs
-bootstrap
 standard-app-packages
-bootstrap-3
 page-js-ie-support
 accounts-base
 accounts-password
 iron-router
 random
 underscore
+foundation

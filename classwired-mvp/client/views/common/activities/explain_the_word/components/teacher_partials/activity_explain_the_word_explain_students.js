@@ -35,8 +35,8 @@ Template.activityExplainTheWord_Explain_Students.helpers({
 		var thisItem = ExplainTheWord_ExplainItems.findOne({ userId: userId, classroomId: Session.get('currentClassroom'), item: this.item });
 		if(thisItem)
 		{
-			var time = ((Date.parse(thisItem.answered_timestamp) - Date.parse(thisItem.assigned_timestamp)) / 1000).toFixed(2);
-			return isNaN(time) ? '0.00' : time;
+			var time = ((Date.parse(thisItem.answered_timestamp) - Date.parse(thisItem.assigned_timestamp)) / 1000);
+			return isNaN(time) ? 'not attempted' : time;
 		}
 	}
 });

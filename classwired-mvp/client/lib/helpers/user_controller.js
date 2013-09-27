@@ -4,6 +4,10 @@ Handlebars.registerHelper('isAdmin', function() {
 	return UserController.isAdmin();
 });
 
+Handlebars.registerHelper('currentUserId', function() {
+	return Meteor.userId().toString();
+});
+
 Handlebars.registerHelper('isCurrentUser', function(userId) {
 	var currentUser = Meteor.user();
 	if(currentUser)
@@ -24,7 +28,7 @@ Handlebars.registerHelper('isCurrentUserOrRole', function(userId, rolename) {
 	var currentUser = Meteor.user();
 	if(currentUser)
 	{
-		return currentUser._id !== userId || currentUser.permissions.indexOf(rolename) !== -1;
+		return currentUser._id === userId || currentUser.permissions.indexOf(rolename) !== -1;
 	}
 });
 

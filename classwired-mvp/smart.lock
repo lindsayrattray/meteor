@@ -3,18 +3,24 @@
   "dependencies": {
     "basePackages": {
       "router": {},
-      "iron-router": {}
+      "iron-router": {},
+      "foundation": {}
     },
     "packages": {
       "router": {
         "git": "https://github.com/tmeasday/meteor-router.git",
-        "tag": "v0.5.4",
-        "commit": "e40ee450a756b54a32ed67be4595772403256fb5"
+        "tag": "v0.5.4.1",
+        "commit": "d00e380dda2184b70e909fc4a0fb5358d602c586"
       },
       "iron-router": {
-        "git": "https://github.com/EventedMind/meteor-iron-router.git",
-        "tag": "v0.5.3",
-        "commit": "f737b04106a226c0f8772b9112673a9be49406d7"
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.5.4",
+        "commit": "3e0e22ff85630b7503d0daa1538c6d90abb84020"
+      },
+      "foundation": {
+        "git": "https://github.com/ewall/meteor-foundation.git",
+        "tag": "v4.3.2",
+        "commit": "4cd0dc6ac5c69bf7477917a836d9078262d273a0"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

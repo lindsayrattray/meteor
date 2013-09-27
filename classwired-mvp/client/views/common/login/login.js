@@ -26,8 +26,13 @@ Template.login.events({
 		{
 			if(!password)
 			{
-				$('#login-email-container').addClass('hidden');
-				$('#login-password-container').removeClass('hidden');
+				$('#login-email-container').animate({
+					opacity: 'toggle',
+					height: 'toggle'
+				}, 1000);
+				$('#login-password-container').animate({
+					opacity:'toggle'
+				}, 1000);
 				$('#password-field').focus();
 			}
 			else
@@ -39,14 +44,24 @@ Template.login.events({
 		{
 			if(!name && !password)
 			{
-				$('#login-email-container').addClass('hidden');
-				$('#login-name-container').removeClass('hidden');
+				$('#login-email-container').animate({
+					opacity: 'toggle',
+					height: 'toggle'
+				}, 1000);
+				$('#login-name-container').animate({
+					opacity: 'toggle'
+				}, 1000);
 				$('#name-field').focus();
 			}
 			else if(name && !password)
 			{
-				$('#login-name-container').addClass('hidden');
-				$('#login-password-container').removeClass('hidden');
+				$('#login-name-container').animate({
+					opacity: 'toggle',
+					height: 'toggle'
+				}, 1000);
+				$('#login-password-container').animate({
+					opacity: 'toggle'
+				}, 1000);
 				$('#password-field').focus();
 			}
 			else
