@@ -21,12 +21,17 @@ Meteor.methods({
 	populateItems: function(userId, classroomId) {
 		var explainItems = _.pluck(ExplainTheWord_ExplainItems.find({ classroomId: classroomId, userId: userId }).fetch(), 'item');
 		var wordlistItems = _.chain(ExplainTheWord_WordlistItems.find({ classroomId: classroomId }).fetch()).pluck('item').uniq().difference(explainItems).value();
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ userId: userId.toString(), current: true, classroomId: classroomId });
 
 		if(wordlistItems.length > 0)
 		{
 			for(itemIndex in wordlistItems)
 			{
 				ExplainTheWord_ExplainItems.insert({ item: wordlistItems[itemIndex], classroomId: classroomId, userId: userId, current: false, assigned_timestamp: null, answered: false, answer: null});
+			}
+			if(!currentItem)
+			{
+				Meteor.call('assignNewItem', userId, classroomId);
 			}
 		}
 	},
