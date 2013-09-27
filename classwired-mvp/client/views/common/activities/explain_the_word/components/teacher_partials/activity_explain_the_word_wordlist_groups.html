@@ -1,0 +1,18 @@
+<template name="activityExplainTheWord_Wordlist_Groups">
+	<table border="1">
+		<tbody>
+			<tr>
+				<th>Words</th>
+				<th>Group</th>
+			</tr>
+			{{#each groups}}
+				<tr>
+					<td>{{groupWordCount this._id}}</td>
+					<td>
+						{{groupMembers this._id}}
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</template>

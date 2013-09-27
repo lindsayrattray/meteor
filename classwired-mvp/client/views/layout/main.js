@@ -3,13 +3,13 @@ Deps.autorun(function() {
 
 	if(user)
 	{
-		var classroom = Session.get('currentClassroom');
-		Meteor.subscribe('groups', user._id, classroom);
+		var classroomId = Session.get('currentClassroom');
+		var classroom = Classrooms.findOne(classroomId);
+		Meteor.subscribe('groups', user._id, classroomId);
 		if(classroom)
 		{
-			var currentClassroom = Classrooms.findOne(classroom);
-			var currentActivity = Activities.findOne({ name: currentClassroom.currentActivity });
-			Meteor.subscribe('classroomGroups', classroom);
+			var currentActivity = Activities.findOne({ name: classroom.currentActivity });
+			Meteor.subscribe('classroomGroups', classroomId);
 			
 			if(currentActivity)
 			{
