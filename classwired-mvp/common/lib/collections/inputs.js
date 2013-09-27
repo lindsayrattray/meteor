@@ -1,1 +1,0 @@
-Inputs = new Meteor.Collection('inputs');

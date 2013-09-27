@@ -17,7 +17,7 @@ Meteor.methods({
 		Groups.update(groupId, { $pull: { members: userId } });
 		Groups.insert({ classroomId: classroom, members: [userId] });
 	},
-	mergeGroups: function(fromGroupId, toGroupId) {
+	mergeGroups: function(fromGroupId, toGroupId, callbackfn) {
 		var fromMembers = Groups.findOne(fromGroupId).members;
 		var toMembers = Groups.findOne(toGroupId).members;
 

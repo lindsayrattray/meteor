@@ -1,13 +1,43 @@
 <template name="login">
-	<form id="login-form">
-		{{#if currentUser}}
-			<div><input id="logout-btn" type="button" name="logout-btn" value="Logout" /></div>
-		{{else}}
-		<div id="login-email-container"><input id="email-field" type="text" name="email-field" placeholder="Your email@domain.com" /><button class="submit" name="submit">Submit</button></div>
+	{{#if currentUser}}
+		<div><input id="logout-btn" type="button" name="logout-btn" value="Logout" /></div>
+	{{else}}
+		<div id="login-container">
+			<form id="login-form">
+				<div id="login-email-container" class="large-12 columns absolute">
+					<div class="row collapse">
+						<div class="small-10 columns">
+							<input id="email-field" type="text" name="email-field" placeholder="Your email@domain.com" />
+						</div>
+						<div class="small-2 columns">
+							<button class="submit button prefix success" name="submit">Submit</button>
+						</div>
+					</div>
+				</div>
 
-		<div id="login-name-container" class="hidden"><input id="name-field" type="text" name="name-field" placeholder="Enter your name" /><button class="submit" name="submit">Submit</button></div>
+				<div id="login-name-container" class="large-12 columns hide absolute">
+					<div class="row collapse">
+						<div class="small-10 columns">
+							<input id="name-field" type="text" name="name-field" placeholder="Enter your name" />
+						</div>
+						<div class="small-2 columns">
+							<button class="submit button prefix success" name="submit">Submit</button>
+						</div>
+					</div>
+				</div>
 
-		<div id="login-password-container" class="hidden"><input id="password-field" type="password" name="password-field" placeholder="Password" /><button class="submit" name="submit">Submit</button></div>
-		{{/if}}
-	</form>
+				<div id="login-password-container" class="large-12 columns hide absolute">
+					<div class="row collapse">
+						<div class="small-10 columns">
+							<input id="password-field" type="password" name="password-field" placeholder="Password" />
+						</div>
+						<div class="small-2 columns">
+							<button class="submit button prefix success" name="submit">Submit</button>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	{{/if}}
 </template>
