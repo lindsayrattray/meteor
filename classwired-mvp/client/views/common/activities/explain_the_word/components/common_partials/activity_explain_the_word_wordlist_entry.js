@@ -16,11 +16,8 @@ Template.activityExplainTheWord_Wordlist_Entry.events({
 				ExplainTheWord_WordlistItems.insert(wordlistItem);
 			}
 		}
+		template.find('#txt-add-wordlist-item').value = '';
 
 		event.preventDefault();
 	}
-});
-
-Template.activityExplainTheWord_Wordlist_Entry.helpers({
-
 });

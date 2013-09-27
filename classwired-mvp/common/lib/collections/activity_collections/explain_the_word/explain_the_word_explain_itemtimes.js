@@ -1,0 +1,1 @@
+ExplainTheWord_ExplainItemTimes = new Meteor.Collection('explainTheWord_ExplainItemTimes')

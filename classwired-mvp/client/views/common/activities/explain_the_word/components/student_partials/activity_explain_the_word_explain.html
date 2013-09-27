@@ -1,0 +1,10 @@
+<template name="activityExplainTheWord_Explain">
+	{{#unless thisUserHasRole 'teacher'}}
+		{{currentItem}}
+		{{#if currentItem}}
+			<button id="explain-answer-tick">&#x2713;</button>
+			<button id="explain-answer-cross">&#x2717;</button>
+		{{/if}}
+		<button id="explain-answer-new">Next</button>
+	{{/unless}}
+</template>
