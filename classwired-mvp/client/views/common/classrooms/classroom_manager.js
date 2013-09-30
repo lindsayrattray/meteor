@@ -6,6 +6,11 @@ Template.classroomManager.rendered = function() {
 		{
 			Router.go('classroom', userCurrentClassroom)
 		}
+
+		$('#add-classroom-container').css('height', $('#add-classroom-container').height());
+		$('#add-classroom div').each(function() {
+			$(this).css('height', $(this).height());
+		});
 	}
 }
 
@@ -21,16 +26,17 @@ Template.classroomManager.helpers({
 Template.classroomManager.events({
 	'click #btn-add-classroom': function(event, template) {
 		var $addClassroomContainer = $('#add-classroom-container');
-		var nameInput = template.find('#add-classroom-name')
-		if($addClassroomContainer.hasClass('hidden'))
+		var nameInput = template.find('#add-classroom-name');
+
+		if($addClassroomContainer.hasClass('slide-down-invisible'))
 		{
-			$addClassroomContainer.removeClass('hidden');
+			$addClassroomContainer.removeClass('slide-down-invisible').addClass('slide-down-visible');
 			nameInput.focus();
 		}
-		else
+		else if($addClassroomContainer.hasClass('slide-down-visible'))
 		{
+			$addClassroomContainer.removeClass('slide-down-visible').addClass('slide-down-invisible');
 			nameInput.value = '';
-			$addClassroomContainer.addClass('hidden');
 		}
 	},
 	'submit #add-classroom': function(event, template) {

@@ -5,7 +5,7 @@
 			<nav class="top-bar">
 				<ul class="title-area">
 					<li class="name">
-						<h1><a>Top Bar Title</a></h1>
+						<h1><a>ClassWired</a></h1>
 					</li>
 					<li class="toggle-topbar menu-icon"><a><span>Menu</span></a></li>
 				</ul>
@@ -16,11 +16,10 @@
 
 					<ul class="right">
 						<li class="divider"></li>
-						<li><a>Nav item</a></li>
+						<li class="has-form">{{yield "login"}}</li>
 					</ul>
 				</section>
 			</nav>
-				{{yield "login"}}
 			
 			{{yield "messages"}}
 
@@ -35,7 +34,4 @@
 			{{/if}}
 		</section>
 	</div>
-	<script type="text/javascript">
-		$(document).foundation();
-	</script>
 </template>
