@@ -44,3 +44,37 @@
 {
 	background-color: #f9f9f9;
 }
+
+.component-selector-nav
+{
+	text-align: center;
+}
+
+.component-selector-nav ul
+{
+	display: inline-block;
+	float: none !important;
+}
+
+#wordlist-container
+{
+	height: 16em;
+	overflow: auto;
+	clear: both;
+}
+
+.wordlist
+{
+	margin-bottom: 0px;
+	table-layout: fixed;
+}
+
+.component-tab-inactive
+{
+
+}
+
+.component-tab-active
+{
+
+}

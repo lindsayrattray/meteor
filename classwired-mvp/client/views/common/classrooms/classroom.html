@@ -1,11 +1,30 @@
 <template name="classroom">
-	<button id="btn-remove-user-from-room" name="btn-remove-user-from-room">Leave classroom</button>
+	<div class="row">
+		<div class="large-10 small-10 large-centered small-centered columns">
+			<button id="btn-remove-user-from-room" class="button expand" name="btn-remove-user-from-room">Leave classroom</button>
+
+			<div class="component-selector-nav button-bar">
+				<ul class="button-group radius">
+					{{#each components}}
+						<li><a class="component-selector button secondary">{{this.title}}</a></li>
+					{{/each}}
+				</ul>
+			</div>
+
+			
+			
+			<div class="activity-viewport">
+				{{{activity}}}
+			</div>
+		</div>
+	</div>
+	
 	{{#each groups}}
 		<div>
 			{{#each this.members}}
 				<div>
 					{{profileName this}} 
-					
+				
 					{{#if isCurrentUserOrRole this 'teacher'}}
 						{{#if groupHasMoreThanOneMember ../../this._id}}
 							<button data-member="{{this}}" class="btn-remove-user-from-group">-</button>
@@ -13,15 +32,9 @@
 					{{/if}}
 				</div>
 			{{/each}}
+					
 			{{#unless thisUserHasRole 'teacher'}}{{#unless userIsGroupMember this._id currentUserId}}<button class="btn-join-group">Join</button>{{/unless}}{{/unless}}
 		</div>
 	{{/each}}
-	<div class="component-selector-nav">
-		{{#each components}}
-			<a class="component-selector" data-component="{{this._id}}">{{this.title}}</a>
-		{{/each}}
-	</div>
-	<div class="activity-viewport">
-		{{{activity}}}
-	</div>
+
 </template>
