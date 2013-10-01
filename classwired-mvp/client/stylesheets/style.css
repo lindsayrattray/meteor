@@ -53,12 +53,25 @@
 
 #wordlist-container
 {
+	/*height: 16em;
+	overflow-y: scroll;
+	clear: both;*/
+}
+
+.scrolltable-container
+{
 	height: 16em;
-	overflow: auto;
+	overflow-y: scroll;
 	clear: both;
 }
 
-.wordlist
+.txt-wordlist-item-input
+{
+	margin: 0.5em 0 0.5em 0 !important;
+	font-size: 1.5em !important;
+}
+
+.scrolltable
 {
 	margin-bottom: 0px;
 	table-layout: fixed;

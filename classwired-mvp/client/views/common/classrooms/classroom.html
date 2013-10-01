@@ -1,7 +1,10 @@
 <template name="classroom">
 	<div class="row">
 		<div class="large-10 small-10 large-centered small-centered columns">
-			<button id="btn-remove-user-from-room" class="button expand" name="btn-remove-user-from-room">Leave classroom</button>
+			<button id="btn-remove-user-from-room" class="alert button expand" name="btn-remove-user-from-room">Leave classroom</button>
+
+			#if thisUserHasRole 'teacher'}}
+			<button class="alert activity-leave button expand" name="btn-leave-activity">Exit Activity</button>
 
 			<div class="component-selector-nav text-center button-bar">
 				<ul class="button-group radius">
@@ -10,9 +13,8 @@
 					{{/each}}
 				</ul>
 			</div>
+			/if}}
 
-			<button class="activity-leave button expand" name="btn-leave-activity">Exit Activity</button>
-			
 			<div class="activity-viewport">
 				{{{activity}}}
 			</div>
