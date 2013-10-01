@@ -45,11 +45,6 @@
 	background-color: #f9f9f9;
 }
 
-.component-selector-nav
-{
-	text-align: center;
-}
-
 .component-selector-nav ul
 {
 	display: inline-block;
@@ -67,6 +62,27 @@
 {
 	margin-bottom: 0px;
 	table-layout: fixed;
+}
+
+.no-horz-padding
+{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+.clear
+{
+	clear:both;
+}
+
+.background-red
+{
+	background-color: #dba9aa;
+}
+
+.background-green
+{
+	background-color: #B4CCA1;
 }
 
 .component-tab-inactive

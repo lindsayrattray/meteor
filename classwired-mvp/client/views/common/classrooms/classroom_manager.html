@@ -1,34 +1,39 @@
 <template name="classroomManager">
-	<div class="large-10 small-10 small-centered large-centered columns classroom-manager-container">
-		
-		<div class="small-6 large-6 columns"><h4>Classroom</h4></div>
-		<div class="small-6 large-6 columns"><h4>Teacher</h4></div>
-		<hr />
-		
-		<ul class="no-bullet classroom-list">
-			{{#each classrooms}}
-				<li>
-					<div class="row">
-						<div class="small-6 large-6 columns"><a class="classroom-link">{{name}}</a></div>
-						<div class="small-6 large-6 columns"><a class="classroom-link">{{ownerName this}}</a></div>
-					</div>
-				</li>
-			{{/each}}
-		</ul>
-	</div>
-	{{#if currentUser}}
-		<div class="row">
-			<button id="btn-add-classroom" class="button expand" name="btn-add-classroom">New Classroom</button>
-			<div id="add-classroom-container" class="slide-visibility-transition slide-down-invisible">
-				<form id="add-classroom" name="add-classroom">
-					<div class="small-10 columns">
-						<input id="add-classroom-name" name="add-classroom-name" class="large-12 small-12 large-centered small-centered columns" type="text" placeholder="classroom name" />
-					</div>
-					<div class="small-2 columns">
-						<a class="submit button prefix success" name="submit">Submit</a>
+	<div class="large-10 small-10 small-centered large-centered columns">
+		<div class="classroom-manager-container large-12 small-12 columns">
+			
+			<div class="small-6 large-6 columns"><h4>Classroom</h4></div>
+			<div class="small-6 large-6 columns"><h4>Teacher</h4></div>
+			<hr />
+			
+			<ul class="no-bullet classroom-list">
+				{{#each classrooms}}
+					<li>
+						<div class="row">
+							<div class="small-6 large-6 columns"><a class="classroom-link">{{name}}</a></div>
+							<div class="small-6 large-6 columns"><a class="classroom-link">{{ownerName this}}</a></div>
+						</div>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+		{{#if currentUser}}
+			<div class="row">
+				<button id="btn-add-classroom" class="button expand" name="btn-add-classroom">New Classroom</button>
+				
+				<form id="add-classroom" name="add-classroom" class="slide-visibility-transition slide-down-invisible">
+					<div class="large-12 columns no-horz-padding">
+						<div class="row collapse">
+							<div class="small-10 columns">
+								<input id="add-classroom-name" name="add-classroom-name" type="text" placeholder="classroom name" />
+							</div>
+							<div class="small-2 columns">
+								<a class="submit button prefix success" name="submit">Submit</a>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>
-		</div>
-	{{/if}}
+		{{/if}}
+	</div>
 </template>
