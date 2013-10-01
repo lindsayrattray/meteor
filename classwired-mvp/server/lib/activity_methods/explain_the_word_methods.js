@@ -30,9 +30,20 @@ Meteor.methods({
 		for(itemIndex in items)
 		{
 			var explainedItems = _.filter(ExplainTheWord_ExplainItems.find({ item: items[itemIndex], classroomId: classroomId }).fetch(), function(item) { return item.answered_timestamp });
-			var fastestItem = _.chain(ExplainTheWord_ExplainItems.find({ item: items[itemIndex], classroomId: classroomId }).fetch()).min(function(item) { return (Date.parse(item.answered_timestamp) - Date.parse(item.assigned_timestamp)) }).value();
-			var fastestTime = (Date.parse(fastestItem.answered_timestamp) - Date.parse(fastestItem.assigned_timestamp)) / 1000;
-			var fastestGroup = GroupHandler.getGroupByMember(fastestItem.userId, fastestItem.classroomId)
+			var fastestItem = _.chain(ExplainTheWord_ExplainItems.find({ item: items[itemIndex], classroomId: classroomId }).fetch()).min(function(item) {
+				var result = Date.parse(item.answered_timestamp) - Date.parse(item.assigned_timestamp);
+				result = _.isNaN(result) ? Infinity : result;
+				return result;
+			}).value();
+
+			var fastestTime, fastestGroup;
+
+			if(fastestItem && fastestItem !== Infinity)
+			{
+				fastestTime = (Date.parse(fastestItem.answered_timestamp) - Date.parse(fastestItem.assigned_timestamp)) / 1000;
+				fastestGroup = GroupHandler.getGroupByMember(fastestItem.userId, fastestItem.classroomId)
+			}
+			
 			var timeAcc = 0;
 
 			if(explainedItems.length > 0)
@@ -52,13 +63,25 @@ Meteor.methods({
 			fastestTime = (isNaN(fastestTime) ? 0 : fastestTime);
 
 			var matchItem = ExplainTheWord_ExplainItemTimes.findOne({ item: items[itemIndex], classroomId: classroomId }, { reactive: false });
+			var item = { avgTime: avg };
+
+			if(fastestGroup)
+			{
+				item.fastestTime = fastestTime;
+				item.fastestUser = fastestItem.userId;
+				item.fastestGroup = fastestGroup._id;
+			}
+
 			if(matchItem)
 			{
-				ExplainTheWord_ExplainItemTimes.update(matchItem._id, { $set: { avgTime: avg, fastestTime: fastestTime, fastestUser: fastestItem.userId, fastestGroup: fastestGroup._id } });
+				ExplainTheWord_ExplainItemTimes.update(matchItem._id, { $set: item });
 			}
 			else
 			{
-				ExplainTheWord_ExplainItemTimes.insert({ item: items[itemIndex], avgTime: avg, fastestTime: fastestTime, fastestUser: fastestItem.userId, fastestGroup: fastestGroup._id, classroomId: classroomId });
+				item.item = items[itemIndex];
+				item.classroomId = classroomId;
+
+				ExplainTheWord_ExplainItemTimes.insert(item);				
 			}
 		}
 	}

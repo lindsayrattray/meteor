@@ -35,7 +35,7 @@ Template.activityExplainTheWord_Explain.helpers({
 	},
 	ticked: function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true })
-		if(currentItem.answered && currentItem.answer)
+		if(currentItem && currentItem.answered && currentItem.answer)
 		{
 			return true;
 		}
@@ -43,7 +43,7 @@ Template.activityExplainTheWord_Explain.helpers({
 	},
 	crossed: function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true })
-		if(currentItem.answered && !currentItem.answer)
+		if(currentItem && currentItem.answered && !currentItem.answer)
 		{
 			return true;
 		}
