@@ -1,6 +1,6 @@
 Deps.autorun(function() {
 	Meteor.subscribe('explainTheWord_ExplainItemTimes', Session.get('currentClassroom'))
-	var items = _.chain(ExplainTheWord_ExplainItems.find({}, { sort: { item: -1 } }).fetch()).pluck('item').uniq(true).value();
+	var items = _.chain(ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom' )}, { sort: { item: -1 } }).fetch()).pluck('item').uniq(true).value();
 
 	Meteor.call('calculateTimes', items, Session.get('currentClassroom'));
 });
