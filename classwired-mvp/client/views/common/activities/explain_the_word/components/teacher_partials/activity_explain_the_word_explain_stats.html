@@ -1,5 +1,28 @@
 <template name="activityExplainTheWord_Explain_Stats">
-	{{#each explainItems}}
-		<div>{{this.classroomId}} | {{this.item}} : {{this.avgTime}} | {{this.fastestTime}} : {{profileName this.fastestUser}} {{groupMembers this.fastestGroup}}</div>
-	{{/each}}
+	<table class="scrolltable large-12 small-12 columns">
+		<thead>
+			<tr>
+				<th>Word</th>
+				<th>Average Time (sec)</th>
+				<th>Fastest Time (sec)</th>
+				<th>Fastest Student</th>
+				<th>Fastest Group</th>
+			</tr>
+		</thead>
+	</table>
+	<div class="scrolltable-container">
+		<table class="scrolltable large-12 small-12 columns">
+			<tbody>
+				{{#each explainItems}}
+					<tr>
+						<td>{{this.item}}</td>
+						<td>{{this.avgTime}}</td>
+						<td>{{this.fastestTime}}</td>
+						<td>{{profileName this.fastestUser}}</td>
+						<td>{{groupMembers this.fastestGroup}}</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
 </template>
