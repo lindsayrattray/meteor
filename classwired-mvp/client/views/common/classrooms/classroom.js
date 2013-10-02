@@ -47,7 +47,6 @@ Template.classroom.events({
 	'click .component-selector': function(event, template) {
 		var classroom = template.data._id;
 		var component = this.name;
-		console.log($(event.srcElement));
 		Meteor.call('setCurrentComponent', classroom, component);
 	},
 	'click .activity-leave': function(event, template) {

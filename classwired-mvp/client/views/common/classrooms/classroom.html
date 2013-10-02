@@ -1,10 +1,10 @@
 <template name="classroom">
 	<div class="row">
 		<div class="large-10 small-10 large-centered small-centered columns">
-			<button id="btn-remove-user-from-room" class="alert button expand" name="btn-remove-user-from-room">Leave classroom</button>
+			<a id="btn-remove-user-from-room" class="alert button expand" name="btn-remove-user-from-room">Leave classroom</a>
 
 			#if thisUserHasRole 'teacher'}}
-			<button class="alert activity-leave button expand" name="btn-leave-activity">Exit Activity</button>
+			<a class="alert activity-leave button expand" name="btn-leave-activity">Exit Activity</a>
 
 			<div class="component-selector-nav text-center button-bar">
 				<ul class="button-group radius">
@@ -15,28 +15,39 @@
 			</div>
 			/if}}
 
-			<div class="activity-viewport">
-				{{{activity}}}
-			</div>
+			
 		</div>
 	</div>
+
+	<div class="activity-viewport">
+		{{{activity}}}
+	</div>
 	
-	{{#each groups}}
-		<div>
-			{{#each this.members}}
-				<div>
-					{{profileName this}} 
-				
-					{{#if isCurrentUserOrRole this 'teacher'}}
-						{{#if groupHasMoreThanOneMember ../../this._id}}
-							<button data-member="{{this}}" class="btn-remove-user-from-group">-</button>
-						{{/if}}
-					{{/if}}
+	<ul class="small-block-grid-2 large-block-grid-4">
+		{{#each groups}}
+			<li>
+				<div class="small-10 small-centered columns group background-yellow">
+					<p class="no-vert-margin">Group</p>
+					<hr class="no-vert-margin">
+					<div class="group-scrollable">
+						<ul class="no-bullet">
+							{{#each this.members}}
+								<li>
+									{{profileName this}} 
+								
+									{{#if isCurrentUserOrRole this 'teacher'}}
+										{{#if groupHasMoreThanOneMember ../../this._id}}
+											<a data-member="{{this}}" class="btn-remove-user-from-group button small right">Leave</a>
+										{{/if}}
+									{{/if}}
+								</li>
+							{{/each}}
+						</ul>
+					</div>
+					{{#unless thisUserHasRole 'teacher'}}{{#unless userIsGroupMember this._id currentUserId}}<a class="btn-join-group button small expand">Join</a>{{/unless}}{{/unless}}
 				</div>
-			{{/each}}
-					
-			{{#unless thisUserHasRole 'teacher'}}{{#unless userIsGroupMember this._id currentUserId}}<button class="btn-join-group">Join</button>{{/unless}}{{/unless}}
-		</div>
-	{{/each}}
+			</li>
+		{{/each}}
+	</ul>
 
 </template>

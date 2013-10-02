@@ -11,6 +11,11 @@
 	box-shadow: 0 0 4px 1px #ccc inset;
 }
 
+.group
+{
+	height: 9em;
+}
+
 .slide-visibility-transition
 {
 	-webkit-transition: -webkit-transform 600ms ease, opacity 600ms ease;
@@ -51,17 +56,10 @@
 	float: none !important;
 }
 
-#wordlist-container
-{
-	/*height: 16em;
-	overflow-y: scroll;
-	clear: both;*/
-}
-
 .scrolltable-container
 {
 	height: 16em;
-	overflow-y: scroll;
+	overflow-y: auto;
 	clear: both;
 }
 
@@ -77,10 +75,22 @@
 	table-layout: fixed;
 }
 
+.group-scrollable
+{
+	height:5em;
+	overflow-y: auto;
+}
+
 .no-horz-padding
 {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
+}
+
+.no-vert-margin
+{
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
 }
 
 .clear
@@ -95,7 +105,22 @@
 
 .background-green
 {
-	background-color: #B4CCA1;
+	background-color: #b4cca1;
+}
+
+.background-yellow
+{
+	background-color: #ebf097;
+}
+
+.red-text
+{
+	color: #c60f13;
+}
+
+.green-text
+{
+	color: #5da423;
 }
 
 .component-tab-inactive

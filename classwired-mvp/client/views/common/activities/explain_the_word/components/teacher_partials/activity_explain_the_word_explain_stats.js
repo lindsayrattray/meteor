@@ -7,9 +7,7 @@ Deps.autorun(function() {
 
 Template.activityExplainTheWord_Explain_Stats.helpers({
 	explainItems: function() {
-		console.log(this)
 		var explainItems = ExplainTheWord_ExplainItemTimes.find({ classroomId: this.classroom._id }).fetch().sort(function(a, b) { return b.avgTime - a.avgTime });
-		console.log(explainItems);
 		return explainItems;
 	}
 });
