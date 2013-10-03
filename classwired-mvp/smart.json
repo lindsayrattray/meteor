@@ -2,6 +2,7 @@
   "packages": {
     "router": {},
     "iron-router": {},
-    "foundation": {}
+    "foundation": {},
+    "zurb-foundation": {}
   }
 }

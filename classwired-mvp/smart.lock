@@ -4,7 +4,8 @@
     "basePackages": {
       "router": {},
       "iron-router": {},
-      "foundation": {}
+      "foundation": {},
+      "zurb-foundation": {}
     },
     "packages": {
       "router": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/ewall/meteor-foundation.git",
         "tag": "v4.3.2",
         "commit": "4cd0dc6ac5c69bf7477917a836d9078262d273a0"
+      },
+      "zurb-foundation": {
+        "git": "https://github.com/MixinLabs/meteor-foundation.git",
+        "tag": "v0.1.8",
+        "commit": "1df073584c45582ce9d6fe6a42aa46e5de39eb9c"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

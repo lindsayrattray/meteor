@@ -27,10 +27,26 @@ Template.activityExplainTheWord_Explain.events({
 
 Template.activityExplainTheWord_Explain.helpers({
 	currentItem: function() {
-		var currentItem = ExplainTheWord_ExplainItems.find({ current: true }).fetch()[0];
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
 		if(Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1 && currentItem)
 		{
 			return currentItem.item;
 		}
+	},
+	ticked: function() {
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true })
+		if(currentItem && currentItem.answered && currentItem.answer)
+		{
+			return true;
+		}
+		return false;
+	},
+	crossed: function() {
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true })
+		if(currentItem && currentItem.answered && !currentItem.answer)
+		{
+			return true;
+		}
+		return false;
 	}
 })

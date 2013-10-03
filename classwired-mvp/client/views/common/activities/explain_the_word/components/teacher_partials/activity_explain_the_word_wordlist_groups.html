@@ -1,18 +1,24 @@
 <template name="activityExplainTheWord_Wordlist_Groups">
-	<table border="1">
-		<tbody>
+	<table class="scrolltable large-12 small-12 columns">
+		<thead>
 			<tr>
 				<th>Words</th>
 				<th>Group</th>
 			</tr>
-			{{#each groups}}
-				<tr>
-					<td>{{groupWordCount this._id}}</td>
-					<td>
-						{{groupMembers this._id}}
-					</td>
-				</tr>
-			{{/each}}
-		</tbody>
+		</thead>
 	</table>
+	<div class="scrolltable-container">
+		<table class="scrolltable large-12 small-12 columns">
+			<tbody>
+				{{#each groups}}
+					<tr>
+						<td>{{groupWordCount this._id}}</td>
+						<td>
+							{{groupMembers this._id}}
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
 </template>

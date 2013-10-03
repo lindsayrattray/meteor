@@ -1,3 +1,7 @@
+Template.main.rendered = function() {
+	$(document).foundation();
+}
+
 Deps.autorun(function() {
 	var user = Meteor.user();
 
