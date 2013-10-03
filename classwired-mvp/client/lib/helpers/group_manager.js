@@ -11,7 +11,7 @@ Handlebars.registerHelper('groupMembers', function(groupId) {
 	var group = Groups.findOne(groupId);
 	if(group)
 	{
-		return GroupHandler.membersToString(group.members);
+		return GroupManager.membersToString(group.members);
 	}
 });
 

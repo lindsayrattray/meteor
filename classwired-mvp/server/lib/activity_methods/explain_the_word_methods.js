@@ -7,7 +7,7 @@ Meteor.methods({
 		for(itemIndex in wordlistItems)
 		{
 			user = wordlistItems[itemIndex].userId;
-			group = GroupHandler.getGroupByMember(user, classroomId);
+			group = GroupManager.getGroupByMember(user, classroomId);
 
 			if(group)
 			{
@@ -18,7 +18,7 @@ Meteor.methods({
 		for(itemIndex in explainItems)
 		{
 			user = explainItems[itemIndex].userId;
-			group = GroupHandler.getGroupByMember(user, classroomId);
+			group = GroupManager.getGroupByMember(user, classroomId);
 
 			if(group)
 			{
@@ -41,7 +41,7 @@ Meteor.methods({
 			if(fastestItem && fastestItem !== Infinity)
 			{
 				fastestTime = (Date.parse(fastestItem.answered_timestamp) - Date.parse(fastestItem.assigned_timestamp)) / 1000;
-				fastestGroup = GroupHandler.getGroupByMember(fastestItem.userId, fastestItem.classroomId)
+				fastestGroup = GroupManager.getGroupByMember(fastestItem.userId, fastestItem.classroomId)
 			}
 			
 			var timeAcc = 0;
