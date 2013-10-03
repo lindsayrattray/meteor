@@ -1,6 +1,6 @@
 <template name="activityExplainTheWord_Explain_Students">
 	<a id="assign-all-new-items" class="button expand">Reshuffle words</a>
-	<div class="section-container tabs" data-section="tabs">
+	<div class="section-container vertical-tabs" data-section="vertical-tabs">
 		{{#each students}}
 			<section>
 				<p class="title" data-section-title><a>{{profileName this}}</a></p>
@@ -28,6 +28,7 @@
 								{{/each}}
 							</tbody>
 						</table>
+					</div>
 				</div>
 			</section>
 		{{/each}}

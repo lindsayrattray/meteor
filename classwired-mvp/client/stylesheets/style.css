@@ -11,9 +11,19 @@
 	box-shadow: 0 0 4px 1px #ccc inset;
 }
 
+.activity-viewport
+{
+	width:200%;
+}
+
+.hide-overflow
+{
+	overflow: auto;
+}
+
 .group
 {
-	height: 9em;
+	min-height: 9em;
 }
 
 .slide-visibility-transition
@@ -73,12 +83,6 @@
 {
 	margin-bottom: 0px;
 	table-layout: fixed;
-}
-
-.group-scrollable
-{
-	height:5em;
-	overflow-y: auto;
 }
 
 .no-horz-padding
