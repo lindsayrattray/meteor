@@ -1,8 +1,6 @@
 Deps.autorun(function() {
-	var user = Meteor.userId()
 	var classroomId = Session.get('currentClassroom');
-	var group = Groups.findOne({ members: user });
-	var groupMembers = group ? group.members : null;
+	var group = Groups.findOne({ members: Meteor.userId() });
 
 	Meteor.call('reassignGroupWords', classroomId, function(error, result) { return });
 });
