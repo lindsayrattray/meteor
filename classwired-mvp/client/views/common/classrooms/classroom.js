@@ -25,7 +25,7 @@ Template.classroom.events({
 		Meteor.call('setUserCurrentRoom', Meteor.user()._id, null);
 		Router.go('/');
 	},
-	'click .btn-join-group': function(event, template) {
+	/*'click .btn-join-group': function(event, template) {
 		var user = Meteor.user();
 		var classroom = template.data._id;
 		var targetId = this._id;
@@ -43,7 +43,7 @@ Template.classroom.events({
 		var classroom = template.data._id;
 		var group = Groups.findOne({ classroomId: classroom, members: user._id });
 		Meteor.call('removeUserFromGroup', group._id, user._id);
-	},
+	},*/
 	'click .component-selector': function(event, template) {
 		var classroom = template.data._id;
 		var component = this.name;
@@ -70,7 +70,7 @@ Template.classroom.helpers({
 	components: function() {
 		return Components.find();
 	},
-	groups: function() {
+	/*groups: function() {
 		return Groups.find();	
-	}
+	}*/
 });

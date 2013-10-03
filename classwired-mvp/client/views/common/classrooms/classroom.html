@@ -26,34 +26,33 @@
 				</div>
 
 				<div class="small-6 columns">
-					<ul class="small-block-grid-2">
-						{{#isolate}}
-							{{#each groups}}
-								<li>
-									<div class="small-10 small-centered columns group background-yellow">
-										<p class="no-vert-margin">Group</p>
-										<hr class="no-vert-margin">
-										<div class="group-scrollable">
-											<ul class="no-bullet">
-												{{#each this.members}}
-													<li>
-														{{profileName this}} 
-													
-														{{#if isCurrentUserOrRole this 'teacher'}}
-															{{#if groupHasMoreThanOneMember ../../this._id}}
-																<a data-member="{{this}}" class="btn-remove-user-from-group button small right">Leave</a>
-															{{/if}}
+					{{> groupManager}}
+					<!--<ul class="small-block-grid-2">
+						{{#each groups}}
+							<li>
+								<div class="small-10 small-centered columns group background-yellow">
+									<p class="no-vert-margin">Group</p>
+									<hr class="no-vert-margin">
+									<div class="group-scrollable">
+										<ul class="no-bullet">
+											{{#each this.members}}
+												<li>
+													{{profileName this}} 
+												
+													{{#if isCurrentUserOrRole this 'teacher'}}
+														{{#if groupHasMoreThanOneMember ../../this._id}}
+															<a data-member="{{this}}" class="btn-remove-user-from-group button small right">Leave</a>
 														{{/if}}
-													</li>
-												{{/each}}
-											</ul>
-										</div>
-										{{#unless thisUserHasRole 'teacher'}}{{#unless userIsGroupMember this._id currentUserId}}<a class="btn-join-group button small expand">Join</a>{{/unless}}{{/unless}}
+													{{/if}}
+												</li>
+											{{/each}}
+										</ul>
 									</div>
-								</li>
-							{{/each}}
-						{{/isolate}}
-					</ul>
+									{{#unless thisUserHasRole 'teacher'}}{{#unless userIsGroupMember this._id currentUserId}}<a class="btn-join-group button small expand">Join</a>{{/unless}}{{/unless}}
+								</div>
+							</li>
+						{{/each}}
+					</ul>-->
 				</div>
 			</div>
 		</div>
