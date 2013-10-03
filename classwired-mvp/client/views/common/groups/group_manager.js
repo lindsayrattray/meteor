@@ -7,16 +7,14 @@ Template.groupManager.events({
 
 		if(targetId !== currentGroup._id)
 		{
-			Meteor.call('mergeGroups', currentGroup._id, targetId);
+			GroupManager.moveUserToGroup(currentGroup._id, targetId, user._id);
 		}
-
-		currentGroup = Groups.findOne({ classroomId: classroom, members: user._id });
 	},
 	'click .btn-remove-user-from-group': function(event, template) {
 		var user = Meteor.users.findOne(event.srcElement.dataset.member);
 		var classroom = template.data._id;
 		var group = Groups.findOne({ classroomId: classroom, members: user._id });
-		Meteor.call('removeUserFromGroup', group._id, user._id);
+		GroupManager.removeUserFromGroup(group._id, user._id);
 	}
 });
 
