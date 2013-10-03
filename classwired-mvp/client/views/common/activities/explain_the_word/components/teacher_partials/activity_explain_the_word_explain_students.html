@@ -1,9 +1,30 @@
 <template name="activityExplainTheWord_Explain_Students">
 	<a id="assign-all-new-items" class="button expand">Reshuffle words</a>
-	<div class="section-container vertical-tabs" data-section="vertical-tabs">
-		{{#each students}}
+
+	<div class="small-12 columns">
+		<ul class="no-bullet">
+			{{#each students}}
+				<li class="student-stat">
+					<a><span>{{profileName this}}</span></a>
+					<div class="{{#unless showStatDetails this}}hide{{/unless}}">
+						<ul class="no-bullet">
+							{{#if showStatDetails this}}
+								{{#each studentAllItems}}
+									<li>{{this.item}}</li>
+								{{/each}}
+							{{/if}}
+						</ul>
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+		
+	</div>
+
+	<!--<div class="section-container vertical-tabs" data-section="vertical-tabs">
+		#each students}}
 			<section>
-				<p class="title" data-section-title><a>{{profileName this}}</a></p>
+				<p class="title" data-section-title><a>profileName this}}</a></p>
 				<div class="content" data-section-content>
 					<a class="assign-one-new-item button expand">New word</a>
 					
@@ -19,18 +40,18 @@
 					<div class="scrolltable-container">
 						<table class="scrolltable" style="width:100%;">
 							<tbody>
-								{{#each studentAllItems}}
+								#each studentAllItems}}
 									<tr>
-										<td>{{this.item}}</td>
-										<td>{{itemAnswerTime ../this}}</td>
-										<td class="{{itemAnswerColor}}">{{itemAnswer}}</td>
+										<td>this.item}}</td>
+										<td>itemAnswerTime ../this}}</td>
+										<td class="itemAnswerColor}}">itemAnswer}}</td>
 									</tr>
-								{{/each}}
+								/each}}
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</section>
-		{{/each}}
-	</div>
+		/each}}
+	</div>-->
 </template>

@@ -4,6 +4,16 @@ Template.activityExplainTheWord_Explain_Students.events({
 	},
 	'click .assign-one-new-item': function(event, template) {
 		Meteor.call('assignNewItem', this.toString(), template.data.classroom._id);
+	},
+	'click .student-stat a': function(event, template) {
+		if(Session.get('explainStudentStat') === this.toString())
+		{
+			Session.set('explainStudentStat', null);
+		}
+		else
+		{
+			Session.set('explainStudentStat', this.toString());
+		}
 	}
 });
 
@@ -20,7 +30,7 @@ Template.activityExplainTheWord_Explain_Students.helpers({
 		return _.flatten(students);
 	},
 	isCurrentItem: function(userId) {
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ userId: userId, classroomId: Session.get('currentClassroom'), current: true });
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ userId: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom'), current: true });
 		if(currentItem && this.item === currentItem.item)
 		{
 			return true;
@@ -28,11 +38,10 @@ Template.activityExplainTheWord_Explain_Students.helpers({
 		return false;
 	},
 	studentAllItems: function() {
-		var explainItems = ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), userId: this.toString() }, { sort: { item: 1 } }).fetch();
-		return ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), userId: this.toString() }, { sort: { current: -1, item: 1 } });
+		return ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), userId: Session.get('explainStudentStat') }, { sort: { current: -1, item: 1 } });
 	},
-	itemAnswerTime: function(userId) {
-		var thisItem = ExplainTheWord_ExplainItems.findOne({ userId: userId, classroomId: Session.get('currentClassroom'), item: this.item });
+	itemAnswerTime: function() {
+		var thisItem = ExplainTheWord_ExplainItems.findOne({ userId: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom'), item: this.item });
 		if(thisItem)
 		{
 			var time = ((Date.parse(thisItem.answered_timestamp) - Date.parse(thisItem.assigned_timestamp)) / 1000);
@@ -40,18 +49,23 @@ Template.activityExplainTheWord_Explain_Students.helpers({
 			return isNaN(time) ? isAttempting : time;
 		}
 	},
-	itemAnswer: function()
-	{
+	itemAnswer: function() {
 		if(this.answered)
 		{
 			return this.answer ? "✓" : "✗";
 		}
 	},
-	itemAnswerColor: function()
-	{
+	itemAnswerColor: function() {
 		if(this.answered)
 		{
 			return this.answer ? 'green-text' : 'red-text';
 		}
+	},
+	showStatDetails: function(userId) {
+		if(userId.toString() === Session.get('explainStudentStat'))
+		{
+			return true;
+		}
+		return false;
 	}
 });

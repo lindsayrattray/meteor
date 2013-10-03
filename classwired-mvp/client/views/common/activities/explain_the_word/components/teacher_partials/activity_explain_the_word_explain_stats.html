@@ -1,24 +1,26 @@
 <template name="activityExplainTheWord_Explain_Stats">
-	<div class="thead small-12 columns">
-		<span class="small-6 columns">Word</span>
-		<span class="small-6 columns">Average Time (sec)</span>
+	<div class="small-12 columns no-horz-padding">
+		<span class="small-4 columns no-horz-padding">Word</span>
+		<span class="small-3 columns no-horz-padding">Average (sec)</span>
+		<span class="small-5 columns no-horz-padding">Fastest Group</span>
 	</div>
 	<hr />
-	<div class="small-12 columns">
-		{{#each explainItems}}
-			<ul class="no-bullet">
-				<li class="explain-item-stat">
+	<div class="small-12 columns no-horz-padding">
+		<ul class="no-bullet">
+			{{#each explainItems}}
+				<li class="no-horz-padding explain-item-stat small-12 columns">
 					<a>
-						<span class="small-6 columns">{{this.item}}</span>
-						<span class="small-6 columns">{{this.avgTime}}</span>
+						<span class="small-4 columns no-horz-padding">{{this.item}}</span>
+						<span class="small-3 columns no-horz-padding">{{this.avgTime}}</span>
+						<span class="small-5 columns no-horz-padding">{{groupMembers this.fastestGroup}}</span>
 					</a>
-					<div class="details {{#unless showStatDetails this._id}}hide{{/unless}}">
+					<div class="{{#unless showStatDetails this._id}}hide{{/unless}}">
 						<p>Fastest Time (sec): {{this.fastestTime}}</p>
 						<p>Fastest Student: {{profileName this.fastestUser}}</p>
 						<p>Fastest Group: {{groupMembers this.fastestGroup}}
 					</div>
 				</li>
-			</ul>
-		{{/each}}
+			{{/each}}
+		</ul>
 	</div>
 </template>
