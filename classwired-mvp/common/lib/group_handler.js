@@ -1,4 +1,4 @@
-GroupHandler = {
+GroupManager = {
 	membersToString: function(members) {
 		if(members)
 		{
