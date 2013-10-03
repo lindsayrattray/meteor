@@ -18,12 +18,6 @@ Deps.autorun(function() {
 	}
 });
 
-Template.activityExplainTheWord_Main.events({
-	'click .activity-selector': function(event, template) {
-		Meteor.call('setCurrentActivity', template.data.classroom._id, 'idle');
-	}
-});
-
 Template.activityExplainTheWord_Main.helpers({
 	component: function() {
 		var component = Components.findOne({name: this.classroom.currentActivityComponent});

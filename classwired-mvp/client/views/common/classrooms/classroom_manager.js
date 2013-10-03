@@ -20,17 +20,18 @@ Template.classroomManager.helpers({
 
 Template.classroomManager.events({
 	'click #btn-add-classroom': function(event, template) {
-		var $addClassroomContainer = $('#add-classroom-container');
-		var nameInput = template.find('#add-classroom-name')
-		if($addClassroomContainer.hasClass('hidden'))
+		var $addClassroom = $('#add-classroom');
+		var nameInput = template.find('#add-classroom-name');
+
+		if($addClassroom.hasClass('slide-down-invisible'))
 		{
-			$addClassroomContainer.removeClass('hidden');
+			$addClassroom.removeClass('slide-down-invisible').addClass('slide-down-visible');
 			nameInput.focus();
 		}
-		else
+		else if($addClassroom.hasClass('slide-down-visible'))
 		{
+			$addClassroom.removeClass('slide-down-visible').addClass('slide-down-invisible');
 			nameInput.value = '';
-			$addClassroomContainer.addClass('hidden');
 		}
 	},
 	'submit #add-classroom': function(event, template) {

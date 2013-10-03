@@ -1,10 +1,10 @@
 <template name="login">
 	{{#if currentUser}}
-		<div><input id="logout-btn" type="button" name="logout-btn" value="Logout" /></div>
+		<a id="logout-btn" class="button alert">Logout</a>
 	{{else}}
 		<div id="login-container">
 			<form id="login-form">
-				<div id="login-email-container" class="large-12 columns absolute">
+				<div id="login-email-container" class="large-12 columns">
 					<div class="row collapse">
 						<div class="small-10 columns">
 							<input id="email-field" type="text" name="email-field" placeholder="Your email@domain.com" />
@@ -15,7 +15,7 @@
 					</div>
 				</div>
 
-				<div id="login-name-container" class="large-12 columns hide absolute">
+				<div id="login-name-container" class="large-12 columns hide">
 					<div class="row collapse">
 						<div class="small-10 columns">
 							<input id="name-field" type="text" name="name-field" placeholder="Enter your name" />
@@ -26,7 +26,7 @@
 					</div>
 				</div>
 
-				<div id="login-password-container" class="large-12 columns hide absolute">
+				<div id="login-password-container" class="large-12 columns hide">
 					<div class="row collapse">
 						<div class="small-10 columns">
 							<input id="password-field" type="password" name="password-field" placeholder="Password" />

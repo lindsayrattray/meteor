@@ -1,3 +1,7 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
 <template name="main">
 	<div class="container">
 		<section class="main">
@@ -5,18 +9,26 @@
 			<nav class="top-bar">
 				<ul class="title-area">
 					<li class="name">
-						<h1><a href="">ClassWired</a></h1>
+						<h1><a>ClassWired</a></h1>
 					</li>
-					<li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
+					<li class="toggle-topbar menu-icon"><a><span>Menu</span></a></li>
 				</ul>
+
 				<section class="top-bar-section">
-					<ul class="right">
-						<li class="divider hide-for-small"></li>
-						<li>{{yield "login"}}</li>
+					<ul class="left">
 					</ul>
+
+					<ul class="right">
+						<li class="divider"></li>
+						<li class="has-form">{{yield "login"}}</li>
+					</ul>
+				</section>
 			</nav>
+			
 			{{yield "messages"}}
+
 			{{yield}}
+
 			{{else}}
 			<div class="row">
 				<div class="small-10 small-centered columns">

@@ -29,14 +29,29 @@ Template.activityExplainTheWord_Explain_Students.helpers({
 	},
 	studentAllItems: function() {
 		var explainItems = ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), userId: this.toString() }, { sort: { item: 1 } }).fetch();
-		return ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), userId: this.toString() }, { sort: { item: 1 } });
+		return ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), userId: this.toString() }, { sort: { current: -1, item: 1 } });
 	},
 	itemAnswerTime: function(userId) {
 		var thisItem = ExplainTheWord_ExplainItems.findOne({ userId: userId, classroomId: Session.get('currentClassroom'), item: this.item });
 		if(thisItem)
 		{
 			var time = ((Date.parse(thisItem.answered_timestamp) - Date.parse(thisItem.assigned_timestamp)) / 1000);
-			return isNaN(time) ? 'not attempted' : time;
+			var isAttempting = thisItem.current ? 'currently attempting' : 'not attempted';
+			return isNaN(time) ? isAttempting : time;
+		}
+	},
+	itemAnswer: function()
+	{
+		if(this.answered)
+		{
+			return this.answer ? "✓" : "✗";
+		}
+	},
+	itemAnswerColor: function()
+	{
+		if(this.answered)
+		{
+			return this.answer ? 'green-text' : 'red-text';
 		}
 	}
 });

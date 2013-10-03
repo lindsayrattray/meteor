@@ -29,10 +29,10 @@ Template.login.events({
 				$('#login-email-container').animate({
 					opacity: 'toggle',
 					height: 'toggle'
-				}, 1000);
+				}, 600);
 				$('#login-password-container').animate({
 					opacity:'toggle'
-				}, 1000);
+				}, 600);
 				$('#password-field').focus();
 			}
 			else
@@ -47,10 +47,10 @@ Template.login.events({
 				$('#login-email-container').animate({
 					opacity: 'toggle',
 					height: 'toggle'
-				}, 1000);
+				}, 600);
 				$('#login-name-container').animate({
 					opacity: 'toggle'
-				}, 1000);
+				}, 600);
 				$('#name-field').focus();
 			}
 			else if(name && !password)
@@ -58,10 +58,10 @@ Template.login.events({
 				$('#login-name-container').animate({
 					opacity: 'toggle',
 					height: 'toggle'
-				}, 1000);
+				}, 600);
 				$('#login-password-container').animate({
 					opacity: 'toggle'
-				}, 1000);
+				}, 600);
 				$('#password-field').focus();
 			}
 			else

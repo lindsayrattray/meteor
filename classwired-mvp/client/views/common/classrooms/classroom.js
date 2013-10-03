@@ -48,6 +48,9 @@ Template.classroom.events({
 		var classroom = template.data._id;
 		var component = this.name;
 		Meteor.call('setCurrentComponent', classroom, component);
+	},
+	'click .activity-leave': function(event, template) {
+		Meteor.call('setCurrentActivity', template.data._id, 'idle');
 	}
 });
 
