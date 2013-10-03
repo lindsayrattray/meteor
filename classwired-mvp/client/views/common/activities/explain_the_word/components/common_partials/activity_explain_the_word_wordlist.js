@@ -24,12 +24,5 @@ Template.activityExplainTheWord_Wordlist_Wordlist.events({
 Template.activityExplainTheWord_Wordlist_Wordlist.helpers({
 	wordlistItems: function() {
 		return ExplainTheWord_WordlistItems.find({}, { sort: { created_timestamp: 1 } });
-	},
-	groupMembers: function(groupId) {
-		var group = Groups.findOne(groupId);
-		if(group)
-		{	
-			return GroupHandler.membersToString(group.members);
-		}
 	}
 });
