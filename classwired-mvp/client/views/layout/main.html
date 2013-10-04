@@ -3,36 +3,23 @@
 </head>
 
 <template name="main">
-	<div class="container">
-		<section class="main">
-			
-
-			{{#if currentUser}}
-			<nav class="top-menu">
-				<div>
-					<a class="menu-icon">&#x2699;</a>
-					<a class="activity-name">Activity</a>
-				</div>
-				<ul class="menu {{#unless sessionGet 'main_MenuVisible'}}hide{{/unless}}">
-					<li><a>Option1</a></li>
-					<li><a>Option2</a></li>
-					<li><a>Option3</a></li>
-				</ul>
-			</nav>
-			
-			{{yield "messages"}}
-
-			{{yield}}
-
-			
-
-			{{else}}
-			<div class="row">
-				<div class="small-10 small-centered columns">
-					{{yield "login"}}
-				</div>
+{{#if currentUser}}
+	<section class="header">
+		<nav class="top-menu">
+			<div>
+				<a class="menu-icon {{#if sessionGet 'main_MenuVisible'}}active{{/if}}">&#x2699;</a>
+				<a class="menu-context">Context</a>
 			</div>
-			{{/if}}
-		</section>
-	</div>
+			<ul class="dropdown {{#unless sessionGet 'main_MenuVisible'}}hide{{/unless}}">
+				<li><a>Option1</a></li>
+				<li><a>Option2</a></li>
+				<li>{{> logout}}</li>
+			</ul>
+		</nav>
+	</section>
+	<section class="main">
+	</section>
+	<section>
+	</section class="footer">
+{{/if}}
 </template>
