@@ -77,19 +77,33 @@ html, body
   overflow: hidden;
 }
 
-.header
+header
 {
-
+  position: absolute;
+  height: 3em;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: visible;
 }
 
 .main
 {
-  
+  position: absolute;
+  top: 3em;
+  bottom: 3em;
+  left: 0;
+  right: 0;
 }
 
-.footer
+footer
 {
-  
+  position: absolute;
+  height: 3em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: visible;
 }
 
 .top-menu
@@ -157,6 +171,27 @@ html, body
           @include dropdown-exit-button;
         }
       }
+    }
+  }
+}
+
+.bottom-options
+{
+  button
+  {
+    position: absolute;
+    bottom: 0;
+    width:50%;
+    height:3em;
+    margin:0;
+    
+    &:first-child
+    {
+      left: 0;
+    }
+    &:last-child
+    {
+      right: 0;
     }
   }
 }

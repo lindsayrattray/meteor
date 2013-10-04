@@ -1,10 +1,10 @@
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 </head>
 
 <template name="main">
 {{#if currentUser}}
-	<section class="header">
+	<header>
 		<nav class="top-menu">
 			<div>
 				<a class="menu-icon {{#if sessionGet 'main_MenuVisible'}}active{{/if}}">&#x2699;</a>
@@ -16,10 +16,23 @@
 				<li>{{> logout}}</li>
 			</ul>
 		</nav>
-	</section>
+	</header>
 	<section class="main">
+		{{yield "messages"}}
+
+		{{yield}}
 	</section>
-	<section>
-	</section class="footer">
+	<footer>
+		<nav class="bottom-options">
+			<button class="left">Option 1</button>
+			<button class="right">Option 2</button>
+		</nav>
+	</footer>
+{{else}}
+	<div class="row">
+		<div class="small-10 small-centered columns">
+			{{yield "login"}}
+		</div>
+	</div>
 {{/if}}
 </template>
