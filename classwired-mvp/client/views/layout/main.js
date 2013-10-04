@@ -22,3 +22,10 @@ Deps.autorun(function() {
 		}
 	}
 });
+
+Template.main.events({
+	'click .menu-icon': function() {
+		var main_MenuVisible = Session.get('main_MenuVisible') ? false : true;
+		Session.set('main_MenuVisible', main_MenuVisible);
+	}
+});

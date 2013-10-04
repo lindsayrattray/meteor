@@ -5,29 +5,26 @@
 <template name="main">
 	<div class="container">
 		<section class="main">
+			
+
 			{{#if currentUser}}
-			<nav class="top-bar">
-				<ul class="title-area">
-					<li class="name">
-						<h1><a>ClassWired</a></h1>
-					</li>
-					<li class="toggle-topbar menu-icon"><a><span>Menu</span></a></li>
+			<nav class="top-menu">
+				<div>
+					<a class="menu-icon">&#x2699;</a>
+					<a class="activity-name">Activity</a>
+				</div>
+				<ul class="menu {{#unless sessionGet 'main_MenuVisible'}}hide{{/unless}}">
+					<li><a>Option1</a></li>
+					<li><a>Option2</a></li>
+					<li><a>Option3</a></li>
 				</ul>
-
-				<section class="top-bar-section">
-					<ul class="left">
-					</ul>
-
-					<ul class="right">
-						<li class="divider"></li>
-						<li class="has-form">{{yield "login"}}</li>
-					</ul>
-				</section>
 			</nav>
 			
 			{{yield "messages"}}
 
 			{{yield}}
+
+			
 
 			{{else}}
 			<div class="row">

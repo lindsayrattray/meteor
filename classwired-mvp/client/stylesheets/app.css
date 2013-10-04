@@ -1,144 +1,3 @@
-/* line 1328, sass/_settings.scss */
-.container {
-  height: 100%;
-  width: 100%;
-}
-
-/* line 1334, sass/_settings.scss */
-.classroom-link {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* line 1341, sass/_settings.scss */
-.classroom-manager-container {
-  height: 16em;
-  box-shadow: 0 0 4px 1px #ccc inset;
-}
-
-/* line 1347, sass/_settings.scss */
-.stats-container {
-  height: 16em;
-  border: 1px solid #ccc;
-}
-
-/* line 1353, sass/_settings.scss */
-.activity-viewport {
-  width: 200%;
-}
-
-/* line 1358, sass/_settings.scss */
-.hide-overflow {
-  overflow: auto;
-}
-
-/* line 1363, sass/_settings.scss */
-.group {
-  min-height: 9em;
-}
-
-/* line 1368, sass/_settings.scss */
-.slide-visibility-transition {
-  -webkit-transition: -webkit-transform 600ms ease, opacity 600ms ease;
-  -moz-transition: -moz-transform 600ms ease, opacity 600ms ease;
-  -ms-transition: -ms-transform 600ms ease, opacity 600ms ease;
-  -o-transition: -o-transform 600ms ease, opacity 600ms ease;
-  transition: transform 600ms ease, opacity 600ms ease;
-}
-
-/* line 1377, sass/_settings.scss */
-.slide-down-visible {
-  opacity: 1.0;
-  -webkit-transform: scale(1, 1);
-  -moz-transform: scale(1, 1);
-  -ms-transform: scale(1, 1);
-  -o-transform: scale(1, 1);
-  transform: scale(1, 1);
-}
-
-/* line 1387, sass/_settings.scss */
-.slide-down-invisible {
-  opacity: 0.0;
-  -webkit-transform: scale(1, 0);
-  -moz-transform: scale(1, 0);
-  -ms-transform: scale(1, 0);
-  -o-transform: scale(1, 0);
-  transform: scale(1, 0);
-}
-
-/* line 1397, sass/_settings.scss */
-.list li:nth-child(odd) {
-  background-color: #f9f9f9;
-}
-
-/* line 1402, sass/_settings.scss */
-.component-selector-nav ul {
-  display: inline-block;
-  float: none !important;
-}
-
-/* line 1408, sass/_settings.scss */
-.scrolltable-container {
-  height: 16em;
-  overflow-y: auto;
-  clear: both;
-}
-
-/* line 1415, sass/_settings.scss */
-.txt-wordlist-item-input {
-  margin: 0.5em 0 0.5em 0 !important;
-  font-size: 1.5em !important;
-}
-
-/* line 1421, sass/_settings.scss */
-.scrolltable {
-  margin-bottom: 0px;
-  table-layout: fixed;
-}
-
-/* line 1427, sass/_settings.scss */
-.no-horz-padding {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* line 1433, sass/_settings.scss */
-.no-vert-margin {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-/* line 1439, sass/_settings.scss */
-.clear {
-  clear: both;
-}
-
-/* line 1444, sass/_settings.scss */
-.background-red {
-  background-color: #dba9aa;
-}
-
-/* line 1449, sass/_settings.scss */
-.background-green {
-  background-color: #b4cca1;
-}
-
-/* line 1454, sass/_settings.scss */
-.background-yellow {
-  background-color: #ebf097;
-}
-
-/* line 1459, sass/_settings.scss */
-.red-text {
-  color: #c60f13;
-}
-
-/* line 1464, sass/_settings.scss */
-.green-text {
-  color: #5da423;
-}
-
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -7442,4 +7301,176 @@ a.th {
 /* line 148, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown.scss */
 .f-dropdown.large {
   max-width: 800px;
+}
+
+/* line 65, sass/app.scss */
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 71, sass/app.scss */
+.top-menu {
+  display: block;
+  width: 100%;
+}
+/* line 76, sass/app.scss */
+.top-menu div {
+  text-align: center;
+  height: 3em;
+  background-color: #000;
+}
+/* line 83, sass/app.scss */
+.top-menu div a {
+  color: white;
+  font-size: 2.5em;
+  padding-right: 0.25em;
+  padding-left: 0.25em;
+}
+/* line 91, sass/app.scss */
+.top-menu div a:active {
+  color: #b3b3b3;
+}
+/* line 95, sass/app.scss */
+.top-menu div a:hover {
+  color: #b3b3b3;
+}
+/* line 102, sass/app.scss */
+.top-menu .menu {
+  position: absolute;
+}
+
+/* line 108, sass/app.scss */
+.classroom-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 115, sass/app.scss */
+.classroom-manager-container {
+  height: 16em;
+  box-shadow: 0 0 4px 1px #ccc inset;
+}
+
+/* line 121, sass/app.scss */
+.stats-container {
+  height: 16em;
+  border: 1px solid #ccc;
+}
+
+/* line 127, sass/app.scss */
+.activity-viewport {
+  width: 200%;
+}
+
+/* line 132, sass/app.scss */
+.hide-overflow {
+  overflow: auto;
+}
+
+/* line 137, sass/app.scss */
+.group {
+  min-height: 9em;
+}
+
+/* line 142, sass/app.scss */
+.slide-visibility-transition {
+  -webkit-transition: -webkit-transform 600ms ease, opacity 600ms ease;
+  -moz-transition: -moz-transform 600ms ease, opacity 600ms ease;
+  -ms-transition: -ms-transform 600ms ease, opacity 600ms ease;
+  -o-transition: -o-transform 600ms ease, opacity 600ms ease;
+  transition: transform 600ms ease, opacity 600ms ease;
+}
+
+/* line 151, sass/app.scss */
+.slide-down-visible {
+  opacity: 1.0;
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+/* line 161, sass/app.scss */
+.slide-down-invisible {
+  opacity: 0.0;
+  -webkit-transform: scale(1, 0);
+  -moz-transform: scale(1, 0);
+  -ms-transform: scale(1, 0);
+  -o-transform: scale(1, 0);
+  transform: scale(1, 0);
+}
+
+/* line 171, sass/app.scss */
+.list li:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+/* line 176, sass/app.scss */
+.component-selector-nav ul {
+  display: inline-block;
+  float: none !important;
+}
+
+/* line 182, sass/app.scss */
+.scrolltable-container {
+  height: 16em;
+  overflow-y: auto;
+  clear: both;
+}
+
+/* line 189, sass/app.scss */
+.txt-wordlist-item-input {
+  margin: 0.5em 0 0.5em 0 !important;
+  font-size: 1.5em !important;
+}
+
+/* line 195, sass/app.scss */
+.scrolltable {
+  margin-bottom: 0px;
+  table-layout: fixed;
+}
+
+/* line 201, sass/app.scss */
+.no-horz-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* line 207, sass/app.scss */
+.no-vert-margin {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* line 213, sass/app.scss */
+.clear {
+  clear: both;
+}
+
+/* line 218, sass/app.scss */
+.background-red {
+  background-color: #dba9aa;
+}
+
+/* line 223, sass/app.scss */
+.background-green {
+  background-color: #b4cca1;
+}
+
+/* line 228, sass/app.scss */
+.background-yellow {
+  background-color: #ebf097;
+}
+
+/* line 233, sass/app.scss */
+.red-text {
+  color: #c60f13;
+}
+
+/* line 238, sass/app.scss */
+.green-text {
+  color: #5da423;
 }
