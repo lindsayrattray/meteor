@@ -1,16 +1,23 @@
 <template name="activityExplainTheWord_Explain_Students">
 	<a id="assign-all-new-items" class="button expand">Reshuffle words</a>
 
-	<div class="small-12 columns">
-		<ul class="no-bullet">
+	<div class="small-12 columns no-horz-padding">
+		<ul class="no-bullet list">
 			{{#each students}}
-				<li class="student-stat">
-					<a><span>{{profileName this}}</span></a>
+				<li class="small-12 columns student-stat no-horz-padding">
+					<a>
+						<span class="small-6 columns no-horz-padding">{{profileName this}}</span>
+						<span class="small-6 columns no-horz-padding">{{currentItem this}}</span>
+					</a>
 					<div class="{{#unless showStatDetails this}}hide{{/unless}}">
 						<ul class="no-bullet">
 							{{#if showStatDetails this}}
 								{{#each studentAllItems}}
-									<li>{{this.item}}</li>
+									<li class="no-horz-padding">
+										<span class="no-horz-padding small-6 columns">{{this.item}}</span>
+										<span class="no-horz-padding small-4 columns">{{itemAnswerTime}}</span>
+										<span class="no-horz-padding small-2 columns {{itemAnswerColor}}">{{itemAnswer}}</span>
+									</li>
 								{{/each}}
 							{{/if}}
 						</ul>

@@ -55,7 +55,7 @@
 	transform: scale(1, 0.0);
 }
 
-.classroom-list li:nth-child(odd)
+.list li:nth-child(odd)
 {
 	background-color: #f9f9f9;
 }

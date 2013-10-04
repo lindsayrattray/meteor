@@ -29,7 +29,14 @@ Template.activityExplainTheWord_Explain_Students.helpers({
 
 		return _.flatten(students);
 	},
-	isCurrentItem: function(userId) {
+	currentItem: function(userId) {
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ userId: userId, classroomId: Session.get('currentClassroom'), current: true });
+		if(currentItem)
+		{
+			return currentItem.item;
+		}
+	},
+	isCurrentItem: function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ userId: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom'), current: true });
 		if(currentItem && this.item === currentItem.item)
 		{
