@@ -11,6 +11,12 @@
 	box-shadow: 0 0 4px 1px #ccc inset;
 }
 
+.stats-container
+{
+	height: 16em;
+	border: 1px solid #ccc;
+}
+
 .activity-viewport
 {
 	width:200%;

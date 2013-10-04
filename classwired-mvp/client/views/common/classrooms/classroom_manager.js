@@ -1,14 +1,3 @@
-Template.classroomManager.rendered = function() {
-	if(Meteor.user() && Meteor.user().currentRoom && !Session.get('leavingCurrentRoom'))
-	{
-		var userCurrentClassroom = Classrooms.findOne(Meteor.user().currentRoom);
-		if(userCurrentClassroom.open)
-		{
-			Router.go('classroom', userCurrentClassroom)
-		}
-	}
-}
-
 Template.classroomManager.helpers({
 	classrooms: function() {
 		return Classrooms.find({}, { sort: { date_created: -1 } });
