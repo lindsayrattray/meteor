@@ -1,5 +1,5 @@
 Template.activityExplainTheWord_Wordlist_Groups.rendered = function() {
-	//console.log(this)
+	
 };
 
 Template.activityExplainTheWord_Wordlist_Groups.helpers({

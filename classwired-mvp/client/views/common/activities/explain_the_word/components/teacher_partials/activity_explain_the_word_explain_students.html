@@ -1,36 +1,35 @@
 <template name="activityExplainTheWord_Explain_Students">
 	<a id="assign-all-new-items" class="button expand">Reshuffle words</a>
-	<div class="section-container vertical-tabs" data-section="vertical-tabs">
-		{{#each students}}
-			<section>
-				<p class="title" data-section-title><a>{{profileName this}}</a></p>
-				<div class="content" data-section-content>
-					<a class="assign-one-new-item button expand">New word</a>
-					
-					<table class="scrolltable large-12 small-12 columns">
-						<thead>
-							<tr>
-								<th>Word</th>
-								<th>Time Taken (sec)</th>
-								<th>Answer</th>
-							</tr>
-						</thead>
-					</table>
-					<div class="scrolltable-container">
-						<table class="scrolltable large-12 small-12 columns">
-							<tbody>
-								{{#each studentAllItems}}
-									<tr>
-										<td>{{this.item}}</td>
-										<td>{{itemAnswerTime ../this}}</td>
-										<td class="{{itemAnswerColor}}">{{itemAnswer}}</td>
-									</tr>
-								{{/each}}
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</section>
-		{{/each}}
+	<div class="small-12 columns stats-container no-horz-padding">
+		<div class="small-12 columns no-horz-padding">
+			<span class="small-6 columns no-horz-padding">Student</span>
+			<span class="small-6 columns no-horz-padding">Current Word</span>
+		</div>
+		<hr />
+		<div class="small-12 columns no-horz-padding">
+			<ul class="no-bullet list">
+				{{#each students}}
+					<li class="small-12 columns student-stat no-horz-padding">
+						<a>
+							<span class="small-6 columns no-horz-padding">{{profileName this}}</span>
+							<span class="small-6 columns no-horz-padding">{{currentItem this}}</span>
+						</a>
+						<div class="{{#unless showStatDetails this}}hide{{/unless}}">
+							<ul class="no-bullet">
+								{{#if showStatDetails this}}
+									{{#each studentAllItems}}
+										<li class="no-horz-padding">
+											<span class="no-horz-padding small-6 columns">{{this.item}}</span>
+											<span class="no-horz-padding small-4 columns">{{itemAnswerTime}}</span>
+											<span class="no-horz-padding small-2 columns {{itemAnswerColor}}">{{itemAnswer}}</span>
+										</li>
+									{{/each}}
+								{{/if}}
+							</ul>
+						</div>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
 	</div>
 </template>

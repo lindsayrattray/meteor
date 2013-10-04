@@ -1,28 +1,28 @@
 <template name="activityExplainTheWord_Explain_Stats">
-	<table class="scrolltable large-12 small-12 columns">
-		<thead>
-			<tr>
-				<th>Word</th>
-				<th>Average Time (sec)</th>
-				<th>Fastest Time (sec)</th>
-				<th>Fastest Student</th>
-				<th>Fastest Group</th>
-			</tr>
-		</thead>
-	</table>
-	<div class="scrolltable-container">
-		<table class="scrolltable large-12 small-12 columns">
-			<tbody>
+	<div class="small-12 columns stats-container no-horz-padding">
+		<div class="small-12 columns no-horz-padding">
+			<span class="small-4 columns no-horz-padding">Word</span>
+			<span class="small-3 columns no-horz-padding">Average (sec)</span>
+			<span class="small-5 columns no-horz-padding">Fastest Group</span>
+		</div>
+		<hr />
+		<div class="small-12 columns no-horz-padding">
+			<ul class="no-bullet lists">
 				{{#each explainItems}}
-					<tr>
-						<td>{{this.item}}</td>
-						<td>{{this.avgTime}}</td>
-						<td>{{this.fastestTime}}</td>
-						<td>{{profileName this.fastestUser}}</td>
-						<td>{{groupMembers this.fastestGroup}}</td>
-					</tr>
+					<li class="no-horz-padding explain-item-stat small-12 columns">
+						<a>
+							<span class="small-4 columns no-horz-padding">{{this.item}}</span>
+							<span class="small-3 columns no-horz-padding">{{this.avgTime}}</span>
+							<span class="small-5 columns no-horz-padding">{{groupMembers this.fastestGroup}}</span>
+						</a>
+						<div class="{{#unless showStatDetails this._id}}hide{{/unless}}">
+							<p>Fastest Time (sec): {{this.fastestTime}}</p>
+							<p>Fastest Student: {{profileName this.fastestUser}}</p>
+							<p>Fastest Group: {{groupMembers this.fastestGroup}}
+						</div>
+					</li>
 				{{/each}}
-			</tbody>
-		</table>
+			</ul>
+		</div>
 	</div>
 </template>

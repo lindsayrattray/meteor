@@ -36,7 +36,8 @@ Meteor.methods({
 				return result;
 			}).value();
 
-			var fastestTime, fastestGroup;
+			var fastestTime = null;
+			var fastestGroup = null;
 
 			if(fastestItem && fastestItem !== Infinity)
 			{
@@ -62,6 +63,8 @@ Meteor.methods({
 			avg = (isNaN(avg) ? 0 : avg).toFixed(2);
 			fastestTime = (isNaN(fastestTime) ? 0 : fastestTime);
 
+			console.log(items[itemIndex]);
+			console.log(fastestGroup);
 			var matchItem = ExplainTheWord_ExplainItemTimes.findOne({ item: items[itemIndex], classroomId: classroomId }, { reactive: false });
 			var item = { avgTime: avg };
 
@@ -75,6 +78,7 @@ Meteor.methods({
 			if(matchItem)
 			{
 				ExplainTheWord_ExplainItemTimes.update(matchItem._id, { $set: item });
+				console.log(matchItem);
 			}
 			else
 			{

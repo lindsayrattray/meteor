@@ -11,6 +11,12 @@
 	box-shadow: 0 0 4px 1px #ccc inset;
 }
 
+.stats-container
+{
+	height: 16em;
+	border: 1px solid #ccc;
+}
+
 .activity-viewport
 {
 	width:200%;
@@ -55,7 +61,7 @@
 	transform: scale(1, 0.0);
 }
 
-.classroom-list li:nth-child(odd)
+.list li:nth-child(odd)
 {
 	background-color: #f9f9f9;
 }
