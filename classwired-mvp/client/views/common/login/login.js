@@ -65,9 +65,10 @@ Template.login.events({
 				Accounts.createUser({ email: emailAddress,
 									  password: password,
 									  profile: { name: name } },
-									  function()  { 
+									  function(error)  { 
 														var userId = Meteor.users.findOne({ "emails.address": emailAddress });
-														Meteor.call('addUserToRole', userId, 'student'); 
+														Meteor.call('addUserToRole', userId, 'student');
+														debugLogin(error);
 												  });
 			}
 		}

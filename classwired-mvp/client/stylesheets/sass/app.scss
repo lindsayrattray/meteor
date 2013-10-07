@@ -54,9 +54,9 @@
 // @import "foundation/components/tooltips";
 // @import "foundation/components/dropdown";
 
-//
-// Begin author styles
-//
+// ==============================================
+// Variables and mixins
+// ==============================================
 
 $top-menu-link-color: #fff;
 $top-menu-active-link-color: darken($top-menu-link-color, 30%);
@@ -70,6 +70,10 @@ $top-menu-dropdown-background-color: #222;
   margin: 0.625em;
   display: block;
 }
+
+// ==============================================
+// Global styles
+// ==============================================
 
 html, body
 {
@@ -105,6 +109,10 @@ footer
   right: 0;
   overflow: visible;
 }
+
+// ==============================================
+// Menu styles
+// ==============================================
 
 .top-menu
 {
@@ -192,6 +200,88 @@ footer
     &:last-child
     {
       right: 0;
+    }
+  }
+}
+
+// ==============================================
+// Classroom styles
+// ==============================================
+.classroom-manager
+{
+  @include grid-row();
+  
+  height: 100%;
+  
+  .container
+  {
+    @include grid-row($behavior: nest-collapse);
+    
+    height: 80%;
+    border: 1px solid #ddd;
+
+    .header
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      border-bottom: 1px solid #ddd;
+      background: #f5f5f5;
+
+      span
+      {
+        @include grid-column(6);
+        
+        line-height: 2em;
+        font-weight: 600;
+      }
+    }
+
+    .classroom-list
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      list-style: none;
+
+      li
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        &:nth-child(even)
+        {
+          background: #f9f9f9;
+        }
+
+        a
+        {
+          line-height: 2em;
+
+          span
+          {
+            @include grid-column(6);
+          }
+        }
+      }
+    }
+  }
+}
+
+.classroom
+{
+  @include grid-row();
+  
+  height: 100%;
+  overflow-x: scroll;
+
+  .container
+  {
+    width: 300%;
+    height: 100%;
+
+    >div
+    {
+      @include grid-column(4);
+      
+      height: 100%;
     }
   }
 }

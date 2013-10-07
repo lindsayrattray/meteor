@@ -7303,13 +7303,13 @@ a.th {
   max-width: 800px;
 }
 
-/* line 75, sass/app.scss */
+/* line 79, sass/app.scss */
 html, body {
   height: 100%;
   overflow: hidden;
 }
 
-/* line 81, sass/app.scss */
+/* line 85, sass/app.scss */
 header {
   position: absolute;
   height: 3em;
@@ -7319,7 +7319,7 @@ header {
   overflow: visible;
 }
 
-/* line 91, sass/app.scss */
+/* line 95, sass/app.scss */
 .main {
   position: absolute;
   top: 3em;
@@ -7328,7 +7328,7 @@ header {
   right: 0;
 }
 
-/* line 100, sass/app.scss */
+/* line 104, sass/app.scss */
 footer {
   position: absolute;
   height: 3em;
@@ -7338,39 +7338,39 @@ footer {
   overflow: visible;
 }
 
-/* line 110, sass/app.scss */
+/* line 118, sass/app.scss */
 .top-menu {
   display: block;
   width: 100%;
 }
-/* line 115, sass/app.scss */
+/* line 123, sass/app.scss */
 .top-menu div {
   text-align: center;
   height: 3em;
   background-color: #111111;
 }
-/* line 122, sass/app.scss */
+/* line 130, sass/app.scss */
 .top-menu div a {
   color: white;
   font-size: 2.5em;
   padding-right: 0.25em;
   padding-left: 0.25em;
 }
-/* line 130, sass/app.scss */
+/* line 138, sass/app.scss */
 .top-menu div a.active {
   color: #b3b3b3;
 }
-/* line 134, sass/app.scss */
+/* line 142, sass/app.scss */
 .top-menu div a:hover {
   color: #b3b3b3;
 }
-/* line 141, sass/app.scss */
+/* line 149, sass/app.scss */
 .top-menu .dropdown {
   position: absolute;
   width: 100%;
   z-index: 999;
 }
-/* line 148, sass/app.scss */
+/* line 156, sass/app.scss */
 .top-menu .dropdown li {
   display: block;
   width: 100%;
@@ -7378,18 +7378,18 @@ footer {
   border-top: 1px solid #3c3c3c;
   border-bottom: 1px solid #090909;
 }
-/* line 157, sass/app.scss */
+/* line 165, sass/app.scss */
 .top-menu .dropdown li:hover {
   background-color: #090909;
 }
-/* line 162, sass/app.scss */
+/* line 170, sass/app.scss */
 .top-menu .dropdown li a {
   line-height: 3em;
   color: white;
   font-size: 1em;
   padding-left: 0.5em;
 }
-/* line 170, sass/app.scss */
+/* line 178, sass/app.scss */
 .top-menu .dropdown li a.logout {
   border-style: solid;
   border-width: 1px;
@@ -7422,7 +7422,7 @@ footer {
   color: white;
 }
 
-/* line 181, sass/app.scss */
+/* line 189, sass/app.scss */
 .bottom-options button {
   position: absolute;
   bottom: 0;
@@ -7430,50 +7430,202 @@ footer {
   height: 3em;
   margin: 0;
 }
-/* line 189, sass/app.scss */
+/* line 197, sass/app.scss */
 .bottom-options button:first-child {
   left: 0;
 }
-/* line 193, sass/app.scss */
+/* line 201, sass/app.scss */
 .bottom-options button:last-child {
   right: 0;
 }
 
-/* line 200, sass/app.scss */
+/* line 211, sass/app.scss */
+.classroom-manager {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 62.5em;
+  *zoom: 1;
+  height: 100%;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom-manager:before, .classroom-manager:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom-manager:after {
+  clear: both;
+}
+/* line 217, sass/app.scss */
+.classroom-manager .container {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  height: 80%;
+  border: 1px solid #ddd;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom-manager .container:before, .classroom-manager .container:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom-manager .container:after {
+  clear: both;
+}
+/* line 224, sass/app.scss */
+.classroom-manager .container .header {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  border-bottom: 1px solid #ddd;
+  background: #f5f5f5;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom-manager .container .header:before, .classroom-manager .container .header:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom-manager .container .header:after {
+  clear: both;
+}
+/* line 231, sass/app.scss */
+.classroom-manager .container .header span {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 50%;
+  float: left;
+  line-height: 2em;
+  font-weight: 600;
+}
+/* line 240, sass/app.scss */
+.classroom-manager .container .classroom-list {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  list-style: none;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom-manager .container .classroom-list:before, .classroom-manager .container .classroom-list:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom-manager .container .classroom-list:after {
+  clear: both;
+}
+/* line 246, sass/app.scss */
+.classroom-manager .container .classroom-list li {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom-manager .container .classroom-list li:before, .classroom-manager .container .classroom-list li:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom-manager .container .classroom-list li:after {
+  clear: both;
+}
+/* line 250, sass/app.scss */
+.classroom-manager .container .classroom-list li:nth-child(even) {
+  background: #f9f9f9;
+}
+/* line 255, sass/app.scss */
+.classroom-manager .container .classroom-list li a {
+  line-height: 2em;
+}
+/* line 259, sass/app.scss */
+.classroom-manager .container .classroom-list li a span {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 50%;
+  float: left;
+}
+
+/* line 269, sass/app.scss */
+.classroom {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 62.5em;
+  *zoom: 1;
+  height: 100%;
+  overflow-x: scroll;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom:before, .classroom:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.classroom:after {
+  clear: both;
+}
+/* line 276, sass/app.scss */
+.classroom .container {
+  width: 300%;
+  height: 100%;
+}
+/* line 281, sass/app.scss */
+.classroom .container > div {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 33.33333%;
+  float: left;
+  height: 100%;
+}
+
+/* line 290, sass/app.scss */
 .classroom-link {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-/* line 207, sass/app.scss */
+/* line 297, sass/app.scss */
 .classroom-manager-container {
   height: 16em;
   box-shadow: 0 0 4px 1px #ccc inset;
 }
 
-/* line 213, sass/app.scss */
+/* line 303, sass/app.scss */
 .stats-container {
   height: 16em;
   border: 1px solid #ccc;
 }
 
-/* line 219, sass/app.scss */
+/* line 309, sass/app.scss */
 .activity-viewport {
   width: 200%;
 }
 
-/* line 224, sass/app.scss */
+/* line 314, sass/app.scss */
 .hide-overflow {
   overflow: auto;
 }
 
-/* line 229, sass/app.scss */
+/* line 319, sass/app.scss */
 .group {
   min-height: 9em;
 }
 
-/* line 234, sass/app.scss */
+/* line 324, sass/app.scss */
 .slide-visibility-transition {
   -webkit-transition: -webkit-transform 600ms ease, opacity 600ms ease;
   -moz-transition: -moz-transform 600ms ease, opacity 600ms ease;
@@ -7482,7 +7634,7 @@ footer {
   transition: transform 600ms ease, opacity 600ms ease;
 }
 
-/* line 243, sass/app.scss */
+/* line 333, sass/app.scss */
 .slide-down-visible {
   opacity: 1.0;
   -webkit-transform: scale(1, 1);
@@ -7492,7 +7644,7 @@ footer {
   transform: scale(1, 1);
 }
 
-/* line 253, sass/app.scss */
+/* line 343, sass/app.scss */
 .slide-down-invisible {
   opacity: 0.0;
   -webkit-transform: scale(1, 0);
@@ -7502,74 +7654,74 @@ footer {
   transform: scale(1, 0);
 }
 
-/* line 263, sass/app.scss */
+/* line 353, sass/app.scss */
 .list li:nth-child(odd) {
   background-color: #f9f9f9;
 }
 
-/* line 268, sass/app.scss */
+/* line 358, sass/app.scss */
 .component-selector-nav ul {
   display: inline-block;
   float: none !important;
 }
 
-/* line 274, sass/app.scss */
+/* line 364, sass/app.scss */
 .scrolltable-container {
   height: 16em;
   overflow-y: auto;
   clear: both;
 }
 
-/* line 281, sass/app.scss */
+/* line 371, sass/app.scss */
 .txt-wordlist-item-input {
   margin: 0.5em 0 0.5em 0 !important;
   font-size: 1.5em !important;
 }
 
-/* line 287, sass/app.scss */
+/* line 377, sass/app.scss */
 .scrolltable {
   margin-bottom: 0px;
   table-layout: fixed;
 }
 
-/* line 293, sass/app.scss */
+/* line 383, sass/app.scss */
 .no-horz-padding {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* line 299, sass/app.scss */
+/* line 389, sass/app.scss */
 .no-vert-margin {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
 
-/* line 305, sass/app.scss */
+/* line 395, sass/app.scss */
 .clear {
   clear: both;
 }
 
-/* line 310, sass/app.scss */
+/* line 400, sass/app.scss */
 .background-red {
   background-color: #dba9aa;
 }
 
-/* line 315, sass/app.scss */
+/* line 405, sass/app.scss */
 .background-green {
   background-color: #b4cca1;
 }
 
-/* line 320, sass/app.scss */
+/* line 410, sass/app.scss */
 .background-yellow {
   background-color: #ebf097;
 }
 
-/* line 325, sass/app.scss */
+/* line 415, sass/app.scss */
 .red-text {
   color: #c60f13;
 }
 
-/* line 330, sass/app.scss */
+/* line 420, sass/app.scss */
 .green-text {
   color: #5da423;
 }

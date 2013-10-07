@@ -30,7 +30,7 @@ Template.classroomManager.events({
 
 		event.preventDefault();
 	},
-	'click .classroom-link': function(event, template) {
+	'click .classroom-list li a': function(event, template) {
 		var destination = Classrooms.findOne(this._id);
 		Session.set('leavingCurrentRoom', false);
 		Meteor.call('setUserCurrentRoom', Meteor.user()._id, this._id);
