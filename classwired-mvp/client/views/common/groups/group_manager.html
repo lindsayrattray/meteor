@@ -1,6 +1,22 @@
 <template name="groupManager">
 	<div class="group-manager">
-		
+		<div class="container">
+			{{#each groups}}
+				<div class="group">
+					<div>
+						<a></a>
+						<ul>
+							{{#each this.members}}
+								<li>
+									{{profileName this}}
+								</li>
+							{{/each}}
+						</ul>
+						<p>Click to join</p>
+					</div>
+				</div>
+			{{/each}}
+		</div>
 	</div>
 	<ul class="small-block-grid-2">
 		{{#each groups}}

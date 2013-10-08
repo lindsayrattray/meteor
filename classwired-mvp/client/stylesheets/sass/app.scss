@@ -119,7 +119,7 @@ footer
   display: block;
   width: 100%;
 
-  div
+  >div
   {
     text-align: center;
     
@@ -213,7 +213,7 @@ footer
   
   height: 100%;
   
-  .container
+  >.container
   {
     @include grid-row($behavior: nest-collapse);
     
@@ -272,7 +272,7 @@ footer
   height: 100%;
   overflow-x: scroll;
 
-  .container
+  >.container
   {
     width: 300%;
     height: 100%;
@@ -286,6 +286,65 @@ footer
   }
 }
 
+// ==============================================
+// Group Manager
+// ==============================================
+
+.group-manager
+{
+  @include grid-row();
+  
+  height: 100%;
+
+  >.container
+  {
+    @include grid-row($behavior: nest-collapse);
+    
+    height: 100%;
+    overflow-y: auto;
+
+    .group
+    {
+      @include grid-column(6);
+
+      padding: 1em;
+
+      >div
+      {
+        height: 100%;
+        width: 100%;
+        background-color: yellow;
+
+        padding-top: 1em;
+        padding-left: 2em;
+        padding-right: 2em;
+
+        ul
+        {
+          @include grid-row($behavior: nest-collapse);
+
+          list-style: none;
+
+          li
+          {
+            @include grid-column(6);
+          }
+        }
+
+        p
+        {
+          text-align: center;
+          font-size: 80%;
+          font-style: italic;
+          color: #ccc;
+
+          margin-bottom: 0;
+
+        }
+      }
+    }
+  }
+}
 .classroom-link
 { 
   display: block;
@@ -313,11 +372,6 @@ footer
 .hide-overflow
 {
   overflow: auto;
-}
-
-.group
-{
-  min-height: 9em;
 }
 
 .slide-visibility-transition
