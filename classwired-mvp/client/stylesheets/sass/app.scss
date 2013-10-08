@@ -318,9 +318,12 @@ footer
         width: 100%;
         background-color: yellow;
 
-        padding-top: 1em;
-        padding-left: 2em;
-        padding-right: 2em;
+        padding:
+        {
+          top: 1em;
+          left: 2em;
+          right: 2em;
+        }
 
         ul
         {
@@ -337,8 +340,11 @@ footer
         p
         {
           text-align: center;
-          font-size: 80%;
-          font-style: italic;
+          font:
+          {
+            size: 80%;
+            style: italic;
+          }
           color: #ccc;
 
           margin-bottom: 0;
@@ -355,7 +361,7 @@ footer
 // to keep the dependencies at a minimum
 // ==============================================
 
-.explain-the-word // this is the namespace for the activity
+.explain-the-word
 {
   &.activity-main
   {
@@ -363,6 +369,95 @@ footer
 
     height: 100%;
     overflow: hidden;
+  }
+
+  .wordlist
+  {
+    @include grid-row();
+
+    height: 100%;
+
+    >.header
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      border: 1px solid #ddd;
+      background-color: #f5f5f5;
+
+      line-height: 2em;
+
+      span
+      {
+        @include grid-column(6);
+
+        font-weight: 600;
+      }
+    }
+
+    >.container
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      height: 80%;
+      overflow-y: auto;
+
+      border:
+      {
+        left: 1px solid #ddd;
+        right: 1px solid #ddd;
+        bottom: 1px solid #ddd;
+      }
+
+      >div
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        line-height: 2em;
+
+        &:nth-child(even)
+        {
+          background-color: #f9f9f9;
+        }
+
+        >span
+        {
+          @include grid-column(6);
+
+          margin:
+          {
+            top: 0.5em;
+            bottom: 0.5em;
+          }
+
+          input
+          {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    form
+    {
+      height: 20%;
+
+      input
+      {
+        @include grid-column(10);
+
+        height: 2.25em;
+      }
+
+      button
+      {
+        @include grid-column(2);
+
+        height: 2em;
+        padding: 0;
+
+        line-height: 2em;
+      }
+    }
   }
 }
 

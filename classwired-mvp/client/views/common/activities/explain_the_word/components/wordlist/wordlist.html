@@ -1,4 +1,39 @@
-<template name="activityExplainTheWord_Wordlist_Wordlist">
+<template name="activityExplainTheWord_Wordlist">
+	<div class="wordlist">
+		<div class="header">
+			<span>Word</span>
+			{{#unless thisUserHasRole 'teacher'}}
+				<span>Student</span>
+			{{else}}
+				<span>Group</span>
+			{{/unless}}
+		</div>
+		<div class="container">
+			{{#each wordlistItems}}
+				<div>
+					<span>
+						<input type="text" value="{{this.item}}"
+							{{#unless isCurrentUserOrRole this.userId 'teacher'}}
+								disabled="true"
+							{{/unless}} />
+					</span>
+					<span>
+						{{#if thisUserHasRole 'teacher'}}
+							{{groupMembers this.groupId}}
+						{{else}}
+							{{profileName this.userId}}
+						{{/if}}
+					</span>
+				</div>
+			{{/each}}
+		</div>
+		{{#unless thisUserHasRole 'teacher'}}
+			<form>
+				<input type="text" placeholder="Enter a Word"/>
+				<button class="submit">Submit</button>
+			</form>
+		{{/unless}}
+	</div>
 	<table class="scrolltable large-12 small-12 columns">
 		<thead>
 			<tr>

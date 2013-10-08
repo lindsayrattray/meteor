@@ -7647,7 +7647,7 @@ footer {
   padding-left: 2em;
   padding-right: 2em;
 }
-/* line 326, sass/app.scss */
+/* line 329, sass/app.scss */
 .group-manager > .container .group > div ul {
   width: auto;
   margin: 0;
@@ -7664,7 +7664,7 @@ footer {
 .group-manager > .container .group > div ul:after {
   clear: both;
 }
-/* line 332, sass/app.scss */
+/* line 335, sass/app.scss */
 .group-manager > .container .group > div ul li {
   position: relative;
   padding-left: 0.9375em;
@@ -7672,7 +7672,7 @@ footer {
   width: 50%;
   float: left;
 }
-/* line 338, sass/app.scss */
+/* line 341, sass/app.scss */
 .group-manager > .container .group > div p {
   text-align: center;
   font-size: 80%;
@@ -7681,7 +7681,7 @@ footer {
   margin-bottom: 0;
 }
 
-/* line 361, sass/app.scss */
+/* line 367, sass/app.scss */
 .explain-the-word.activity-main {
   width: 100%;
   margin-left: auto;
@@ -7702,37 +7702,165 @@ footer {
 .explain-the-word.activity-main:after {
   clear: both;
 }
+/* line 375, sass/app.scss */
+.explain-the-word .wordlist {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 62.5em;
+  *zoom: 1;
+  height: 100%;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .wordlist:before, .explain-the-word .wordlist:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .wordlist:after {
+  clear: both;
+}
+/* line 381, sass/app.scss */
+.explain-the-word .wordlist > .header {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  line-height: 2em;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .wordlist > .header:before, .explain-the-word .wordlist > .header:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .wordlist > .header:after {
+  clear: both;
+}
+/* line 390, sass/app.scss */
+.explain-the-word .wordlist > .header span {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 50%;
+  float: left;
+  font-weight: 600;
+}
+/* line 398, sass/app.scss */
+.explain-the-word .wordlist > .container {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  height: 80%;
+  overflow-y: auto;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .wordlist > .container:before, .explain-the-word .wordlist > .container:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .wordlist > .container:after {
+  clear: both;
+}
+/* line 412, sass/app.scss */
+.explain-the-word .wordlist > .container > div {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  line-height: 2em;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .wordlist > .container > div:before, .explain-the-word .wordlist > .container > div:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .wordlist > .container > div:after {
+  clear: both;
+}
+/* line 418, sass/app.scss */
+.explain-the-word .wordlist > .container > div:nth-child(even) {
+  background-color: #f9f9f9;
+}
+/* line 423, sass/app.scss */
+.explain-the-word .wordlist > .container > div > span {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 50%;
+  float: left;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 433, sass/app.scss */
+.explain-the-word .wordlist > .container > div > span input {
+  margin: 0;
+}
+/* line 441, sass/app.scss */
+.explain-the-word .wordlist form {
+  height: 20%;
+}
+/* line 445, sass/app.scss */
+.explain-the-word .wordlist form input {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 83.33333%;
+  float: left;
+  height: 2.25em;
+}
+/* line 452, sass/app.scss */
+.explain-the-word .wordlist form button {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 16.66667%;
+  float: left;
+  height: 2em;
+  padding: 0;
+  line-height: 2em;
+}
 
-/* line 373, sass/app.scss */
+/* line 468, sass/app.scss */
 .classroom-link {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-/* line 380, sass/app.scss */
+/* line 475, sass/app.scss */
 .classroom-manager-container {
   height: 16em;
   box-shadow: 0 0 4px 1px #ccc inset;
 }
 
-/* line 386, sass/app.scss */
+/* line 481, sass/app.scss */
 .stats-container {
   height: 16em;
   border: 1px solid #ccc;
 }
 
-/* line 392, sass/app.scss */
+/* line 487, sass/app.scss */
 .activity-viewport {
   width: 200%;
 }
 
-/* line 397, sass/app.scss */
+/* line 492, sass/app.scss */
 .hide-overflow {
   overflow: auto;
 }
 
-/* line 402, sass/app.scss */
+/* line 497, sass/app.scss */
 .slide-visibility-transition {
   -webkit-transition: -webkit-transform 600ms ease, opacity 600ms ease;
   -moz-transition: -moz-transform 600ms ease, opacity 600ms ease;
@@ -7741,7 +7869,7 @@ footer {
   transition: transform 600ms ease, opacity 600ms ease;
 }
 
-/* line 411, sass/app.scss */
+/* line 506, sass/app.scss */
 .slide-down-visible {
   opacity: 1.0;
   -webkit-transform: scale(1, 1);
@@ -7751,7 +7879,7 @@ footer {
   transform: scale(1, 1);
 }
 
-/* line 421, sass/app.scss */
+/* line 516, sass/app.scss */
 .slide-down-invisible {
   opacity: 0.0;
   -webkit-transform: scale(1, 0);
@@ -7761,74 +7889,74 @@ footer {
   transform: scale(1, 0);
 }
 
-/* line 431, sass/app.scss */
+/* line 526, sass/app.scss */
 .list li:nth-child(odd) {
   background-color: #f9f9f9;
 }
 
-/* line 436, sass/app.scss */
+/* line 531, sass/app.scss */
 .component-selector-nav ul {
   display: inline-block;
   float: none !important;
 }
 
-/* line 442, sass/app.scss */
+/* line 537, sass/app.scss */
 .scrolltable-container {
   height: 16em;
   overflow-y: auto;
   clear: both;
 }
 
-/* line 449, sass/app.scss */
+/* line 544, sass/app.scss */
 .txt-wordlist-item-input {
   margin: 0.5em 0 0.5em 0 !important;
   font-size: 1.5em !important;
 }
 
-/* line 455, sass/app.scss */
+/* line 550, sass/app.scss */
 .scrolltable {
   margin-bottom: 0px;
   table-layout: fixed;
 }
 
-/* line 461, sass/app.scss */
+/* line 556, sass/app.scss */
 .no-horz-padding {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* line 467, sass/app.scss */
+/* line 562, sass/app.scss */
 .no-vert-margin {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
 
-/* line 473, sass/app.scss */
+/* line 568, sass/app.scss */
 .clear {
   clear: both;
 }
 
-/* line 478, sass/app.scss */
+/* line 573, sass/app.scss */
 .background-red {
   background-color: #dba9aa;
 }
 
-/* line 483, sass/app.scss */
+/* line 578, sass/app.scss */
 .background-green {
   background-color: #b4cca1;
 }
 
-/* line 488, sass/app.scss */
+/* line 583, sass/app.scss */
 .background-yellow {
   background-color: #ebf097;
 }
 
-/* line 493, sass/app.scss */
+/* line 588, sass/app.scss */
 .red-text {
   color: #c60f13;
 }
 
-/* line 498, sass/app.scss */
+/* line 593, sass/app.scss */
 .green-text {
   color: #5da423;
 }
