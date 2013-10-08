@@ -7578,7 +7578,7 @@ footer {
 }
 /* line 276, sass/app.scss */
 .classroom > .container {
-  width: 300%;
+  width: 200%;
   height: 100%;
 }
 /* line 281, sass/app.scss */
@@ -7586,7 +7586,7 @@ footer {
   position: relative;
   padding-left: 0.9375em;
   padding-right: 0.9375em;
-  width: 33.33333%;
+  width: 50%;
   float: left;
   height: 100%;
 }
