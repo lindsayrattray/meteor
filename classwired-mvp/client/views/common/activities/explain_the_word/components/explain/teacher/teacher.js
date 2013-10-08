@@ -1,4 +1,4 @@
-Template.activityExplainTheWord_Explain_Students.events({
+Template.activityExplainTheWord_Explain_Teacher.events({
 	'click #assign-all-new-items': function(event, template) {
 		Meteor.call('assignNewItemToAllUsers', template.data.classroom._id);
 	},
@@ -17,7 +17,7 @@ Template.activityExplainTheWord_Explain_Students.events({
 	}
 });
 
-Template.activityExplainTheWord_Explain_Students.helpers({
+Template.activityExplainTheWord_Explain_Teacher.helpers({
 	students: function() {
 		var groups = Groups.find({ classroomId: this.classroom._id }).fetch();
 		var students = [];

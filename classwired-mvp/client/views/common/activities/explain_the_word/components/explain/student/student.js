@@ -1,11 +1,11 @@
-Template.activityExplainTheWord_Explain.rendered = function() {
+Template.activityExplainTheWord_Explain_Student.rendered = function() {
 	if(Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
 	{
 		Meteor.call('populateItems', Meteor.userId().toString(), this.data.classroom._id);
 	}
 }
 
-Template.activityExplainTheWord_Explain.events({
+Template.activityExplainTheWord_Explain_Student.events({
 	'click #explain-answer-tick': function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
 		var timestamp = new Date();
@@ -25,7 +25,7 @@ Template.activityExplainTheWord_Explain.events({
 	}
 });
 
-Template.activityExplainTheWord_Explain.helpers({
+Template.activityExplainTheWord_Explain_Student.helpers({
 	currentItem: function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
 		if(Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1 && currentItem)

@@ -55,7 +55,10 @@
 // @import "foundation/components/dropdown";
 
 // ==============================================
-// Variables and mixins
+// Variables and mixins - These should be moved 
+// into their own scss file along with the above
+// dependencies to make it easier to modularise
+// the activity scss
 // ==============================================
 
 $top-menu-link-color: #fff;
@@ -345,6 +348,27 @@ footer
     }
   }
 }
+
+// ==============================================
+// Activities - NB: these will need to be moved
+// into a package and seperate scss file so try
+// to keep the dependencies at a minimum
+// ==============================================
+
+.explain-the-word // this is the namespace for the activity
+{
+  &.activity-main
+  {
+    @include grid-row();
+
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+// ==============================================
+// Old Styles - These are gradually being deleted
+// ==============================================
 .classroom-link
 { 
   display: block;
