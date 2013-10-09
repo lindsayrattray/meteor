@@ -1,35 +1,12 @@
 <template name="classroom">
-	<div class="row">
-		<div class="small-10 small-centered columns">
-			<a id="btn-remove-user-from-room" class="alert button expand" name="btn-remove-user-from-room">Leave classroom</a>
-
-			#if thisUserHasRole 'teacher'}}
-			<a class="alert activity-leave button expand" name="btn-leave-activity">Exit Activity</a>
-
-			<div class="component-selector-nav text-center button-bar">
-				<ul class="button-group radius">
-					{{#each components}}
-						<li><a class="component-selector button secondary">{{this.title}}</a></li>
-					{{/each}}
-				</ul>
+	<div class="classroom">
+		<div class="container">
+			<div>
+				{{> groupManager}}
 			</div>
-			/if}}
-
-			
-		</div>
-	</div>
-	<div class="row">
-		<div class="small-10 small-centered columns hide-overflow no-horz-padding">
-			<div class="activity-viewport">
-				<div class="small-6 columns">
-					{{{activity}}}
-				</div>
-
-				<div class="small-6 columns">
-					{{> groupManager}}
-				</div>
+			<div>
+				{{{activity}}}
 			</div>
 		</div>
 	</div>
-
 </template>

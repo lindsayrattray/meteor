@@ -1,22 +1,22 @@
-Template.activityExplainTheWord_Explain.rendered = function() {
+Template.activityExplainTheWord_Explain_Student.rendered = function() {
 	if(Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
 	{
 		Meteor.call('populateItems', Meteor.userId().toString(), this.data.classroom._id);
 	}
 }
 
-Template.activityExplainTheWord_Explain.events({
-	'click #explain-answer-tick': function() {
+Template.activityExplainTheWord_Explain_Student.events({
+	'click .answer.tick': function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
 		var timestamp = new Date();
 		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: true, answered_timestamp: timestamp } });
 	},
-	'click #explain-answer-cross': function() {
+	'click .answer.cross': function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
 		var timestamp = new Date();
 		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: false, answered_timestamp: timestamp } });
 	},
-	'click #explain-answer-new': function(event, template) {
+	'click .explain.student .container .new': function(event, template) {
 		if(Meteor.user() && Meteor.user().permissions.indexOf('teacher') === -1)
 		{
 			Meteor.call('assignNewItem', Meteor.userId(), template.data.classroom._id);
@@ -25,7 +25,7 @@ Template.activityExplainTheWord_Explain.events({
 	}
 });
 
-Template.activityExplainTheWord_Explain.helpers({
+Template.activityExplainTheWord_Explain_Student.helpers({
 	currentItem: function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
 		if(Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1 && currentItem)
@@ -48,5 +48,12 @@ Template.activityExplainTheWord_Explain.helpers({
 			return true;
 		}
 		return false;
+	},
+	backgroundColor: function() {
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ current: true });
+		if(currentItem && currentItem.answered)
+		{
+			return currentItem.answer ? 'answered tick' : 'answered cross';
+		}
 	}
 })

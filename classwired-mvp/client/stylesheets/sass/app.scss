@@ -1,0 +1,772 @@
+// Global Foundation Settings
+@import "settings";
+
+// Comment out this import if you don't want to use normalize
+@import "normalize";
+
+// Comment out this import if you are customizing you imports below
+@import "foundation";
+
+// Import specific parts of Foundation by commenting the import "foundation"
+// and uncommenting what you want below. You must uncomment the following if customizing
+
+// @import "foundation/components/global"; // *always required
+// @import "foundation/components/grid";
+
+//
+// Use this grid if you want to start using the new Foundation 5 grid early.
+// It will change breakpoints to min-width: 640px and 1024px.
+//
+// @import "foundation/components/grid-5";
+//
+
+// @import "foundation/components/visibility";
+// @import "foundation/components/block-grid";
+// @import "foundation/components/type";
+// @import "foundation/components/buttons";
+// @import "foundation/components/forms"; // *requires components/buttons
+// @import "foundation/components/custom-forms"; // *requires components/buttons, components/forms
+// @import "foundation/components/button-groups"; // *requires components/buttons
+// @import "foundation/components/dropdown-buttons"; // *requires components/buttons
+// @import "foundation/components/split-buttons"; // *requires components/buttons
+// @import "foundation/components/flex-video";
+// @import "foundation/components/section";
+// @import "foundation/components/top-bar";  // *requires components/grid
+// @import "foundation/components/orbit";
+// @import "foundation/components/reveal";
+// @import "foundation/components/joyride";
+// @import "foundation/components/clearing";
+// @import "foundation/components/alert-boxes";
+// @import "foundation/components/breadcrumbs";
+// @import "foundation/components/keystrokes";
+// @import "foundation/components/labels";
+// @import "foundation/components/inline-lists";
+// @import "foundation/components/pagination";
+// @import "foundation/components/panels";
+// @import "foundation/components/pricing-tables";
+// @import "foundation/components/progress-bars";
+// @import "foundation/components/side-nav";
+// @import "foundation/components/sub-nav";
+// @import "foundation/components/switch";
+// @import "foundation/components/magellan";
+// @import "foundation/components/tables";
+// @import "foundation/components/thumbs";
+// @import "foundation/components/tooltips";
+// @import "foundation/components/dropdown";
+
+// ==============================================
+// Variables and mixins - These should be moved 
+// into their own scss file along with the above
+// dependencies to make it easier to modularise
+// the activity scss
+// ==============================================
+
+$top-menu-link-color: #fff;
+$top-menu-active-link-color: darken($top-menu-link-color, 30%);
+
+$top-menu-dropdown-background-color: #222;
+
+@mixin dropdown-exit-button
+{
+  @include button($button-sml, $alert-color, false, false, false, false);
+  
+  margin: 0.625em;
+  display: block;
+}
+
+// ==============================================
+// Global styles
+// ==============================================
+
+html, body
+{
+  height: 100%;
+  overflow: hidden;
+}
+
+header
+{
+  position: absolute;
+  height: 3em;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: visible;
+}
+
+.main
+{
+  position: absolute;
+  top: 3em;
+  bottom: 3em;
+  left: 0;
+  right: 0;
+}
+
+footer
+{
+  position: absolute;
+  height: 3em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: visible;
+}
+
+// ==============================================
+// Menu styles
+// ==============================================
+
+.top-menu
+{
+  display: block;
+  width: 100%;
+
+  >div
+  {
+    text-align: center;
+    
+    height: 3em;
+    background-color: $topbar-bg;
+
+    a
+    {
+      color: $topbar-link-color;
+      font-size: 2.5em;
+
+      padding-right: 0.25em;
+      padding-left: 0.25em;
+
+      &.active
+      {
+        color: $top-menu-active-link-color;
+      }
+      &:hover
+      {
+        color: $top-menu-active-link-color;
+      }
+    }
+  }
+
+  .dropdown
+  {
+    position: absolute;
+    width: 100%;
+
+    z-index: 999;
+
+    li
+    {
+      display: block;
+      width: 100%;
+      background-color: $top-menu-dropdown-background-color;
+
+      border-top: 1px solid lighten($top-menu-dropdown-background-color, 10%);
+      border-bottom: 1px solid darken($top-menu-dropdown-background-color, 10%);
+
+      &:hover
+      {
+        background-color: darken($top-menu-dropdown-background-color, 10%);
+      }
+
+      a
+      {
+        line-height: 3em;
+        color: $top-menu-link-color;
+        font-size: 1em;
+
+        padding-left: 0.5em;
+
+        &.logout
+        {
+          @include dropdown-exit-button;
+        }
+      }
+    }
+  }
+}
+
+.bottom-options
+{
+  button
+  {
+    position: absolute;
+    bottom: 0;
+    width:50%;
+    height:3em;
+    margin:0;
+    
+    &:first-child
+    {
+      left: 0;
+    }
+    &:last-child
+    {
+      right: 0;
+    }
+  }
+}
+
+// ==============================================
+// Classroom styles
+// ==============================================
+.classroom-manager
+{
+  @include grid-row();
+  
+  height: 100%;
+  
+  >.container
+  {
+    @include grid-row($behavior: nest-collapse);
+    
+    height: 70%;
+    border: 1px solid #ddd;
+
+    .header
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      border-bottom: 1px solid #ddd;
+      background: #f5f5f5;
+
+      span
+      {
+        @include grid-column(6);
+        
+        line-height: 2em;
+        font-weight: 600;
+      }
+    }
+
+    .classroom-list
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      list-style: none;
+
+      li
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        &:nth-child(even)
+        {
+          background: #f9f9f9;
+        }
+
+        a
+        {
+          line-height: 2em;
+
+          span
+          {
+            @include grid-column(6);
+          }
+        }
+      }
+    }
+  }
+}
+
+.classroom
+{
+  @include grid-row();
+  
+  height: 100%;
+  overflow-x: scroll;
+
+  >.container
+  {
+    width: 200%;
+    height: 100%;
+
+    >div
+    {
+      @include grid-column(6);
+      
+      height: 100%;
+    }
+  }
+}
+
+// ==============================================
+// Group Manager
+// ==============================================
+
+.group-manager
+{
+  @include grid-row();
+  
+  height: 100%;
+
+  >.container
+  {
+    @include grid-row($behavior: nest-collapse);
+    
+    height: 100%;
+    overflow-y: auto;
+
+    .group
+    {
+      @include grid-column(6);
+
+      padding: 1em;
+
+      >div
+      {
+        height: 100%;
+        width: 100%;
+        background-color: yellow;
+
+        padding:
+        {
+          top: 1em;
+          left: 2em;
+          right: 2em;
+        }
+
+        ul
+        {
+          @include grid-row($behavior: nest-collapse);
+
+          list-style: none;
+
+          li
+          {
+            @include grid-column(6);
+          }
+        }
+
+        p
+        {
+          text-align: center;
+          font:
+          {
+            size: 80%;
+            style: italic;
+          }
+          color: #ccc;
+
+          margin-bottom: 0;
+
+        }
+      }
+    }
+  }
+}
+
+// ==============================================
+// Activities - NB: these will need to be moved
+// into a package and seperate scss file so try
+// to keep the dependencies at a minimum
+// ==============================================
+
+.explain-the-word
+{
+  &.activity-main
+  {
+    @include grid-row();
+
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .wordlist
+  {
+    @include grid-row();
+
+    height: 100%;
+
+    >.header
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      border: 1px solid #ddd;
+      background-color: #f5f5f5;
+
+      line-height: 2em;
+
+      span
+      {
+        @include grid-column(6);
+
+        font-weight: 600;
+      }
+    }
+
+    >ul
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      height: 70%;
+      overflow-y: auto;
+
+      list-style: none;
+
+      border:
+      {
+        left: 1px solid #ddd;
+        right: 1px solid #ddd;
+        bottom: 1px solid #ddd;
+      }
+
+      >li
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        line-height: 2em;
+
+        &:nth-child(even)
+        {
+          background-color: #f9f9f9;
+        }
+
+        >span
+        {
+          @include grid-column(6);
+
+          margin:
+          {
+            top: 0.5em;
+            bottom: 0.5em;
+          }
+
+          input
+          {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    form
+    {
+      height: 20%;
+
+      input
+      {
+        @include grid-column(10);
+
+        height: 2.25em;
+      }
+
+      button
+      {
+        @include grid-column(2);
+
+        height: 2em;
+        padding: 0;
+
+        line-height: 2em;
+      }
+    }
+  }
+
+  .explain
+  {
+    @include grid-row();
+    height: 100%;
+
+    &.student
+    {
+      .container
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        height: 100%;
+
+        &.answered.tick
+        {
+          background-color: lighten($success-color, 30%);
+        }
+
+        &.answered.cross
+        {
+          background-color: lighten($alert-color, 40%);
+        }
+
+        .word
+        {
+          @include grid-row($behavior: nest-collapse);
+
+          text-align: center;
+
+          height: 35%;
+        }
+
+        >div
+        {
+          @include grid-row($behavior: nest-collapse);
+
+          .answer
+          {
+            &.tick
+            {
+              @include button($button-lrg, $success-color);
+              @include single-transition;
+              @include inset-shadow(true);
+
+              float: left;
+            }
+
+            &.cross
+            {
+              @include button($button-lrg, $alert-color);
+              @include single-transition;
+              @include inset-shadow(true);
+
+              float: right;
+            }
+          }
+        }
+
+        .new
+        {
+          @include button($button-med, $primary-color, false, true);
+          @include single-transition;
+          @include inset-shadow(true);
+        }
+      }
+    }
+
+    &.teacher
+    {
+      @include grid-row();
+
+      height: 100%;
+
+      button
+      {
+        @include button($button-med, $primary-color, false, true);
+        @include single-transition;
+        @include inset-shadow(true);
+
+        margin-bottom: 0;
+      }
+
+      .header
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        border: 1px solid #ddd;
+        background-color: #f5f5f5;
+
+        line-height: 2em;
+
+        span
+        {
+          @include grid-column(6);
+
+          font-weight: 600;
+        }
+      }
+
+      > ul
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        list-style: none;
+        
+        height: 60%;
+        overflow-y: auto;
+
+        border:
+        {
+          left: 1px solid #ddd;
+          right: 1px solid #ddd;
+          bottom: 1px solid #ddd;
+        }
+
+        li
+        {
+          @include grid-row($behavior: nest-collapse);
+
+          &:nth-child(even)
+          {
+            background-color: #f9f9f9;
+          }
+
+          a
+          {
+            span
+            {
+              @include grid-column(6);
+            }
+          }
+
+          div
+          {
+            @include grid-row($behavior: nest-collapse);
+
+            ul
+            {
+              @include grid-row($behavior: nest-collapse);
+
+              li
+              {
+                @include grid-row($behavior: nest-collapse);
+
+                span
+                {
+
+                  &:nth-child()
+                  {
+
+                  }
+
+                  &:nth-child()
+                  {
+                    
+                  }
+                }
+              }
+            }
+          }
+        }
+      }      
+    }
+  }
+}
+
+// ==============================================
+// Old Styles - These are gradually being deleted
+// ==============================================
+.classroom-link
+{ 
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.classroom-manager-container
+{
+  height: 16em;
+  box-shadow: 0 0 4px 1px #ccc inset;
+}
+
+.stats-container
+{
+  height: 16em;
+  border: 1px solid #ccc;
+}
+
+.activity-viewport
+{
+  width:200%;
+}
+
+.hide-overflow
+{
+  overflow: auto;
+}
+
+.slide-visibility-transition
+{
+  -webkit-transition: -webkit-transform 600ms ease, opacity 600ms ease;
+  -moz-transition: -moz-transform 600ms ease, opacity 600ms ease;
+  -ms-transition: -ms-transform 600ms ease, opacity 600ms ease;
+  -o-transition: -o-transform 600ms ease, opacity 600ms ease;
+  transition: transform 600ms ease, opacity 600ms ease;
+}
+
+.slide-down-visible
+{
+  opacity: 1.0;
+  -webkit-transform: scale(1, 1.0);
+  -moz-transform: scale(1, 1.0);
+  -ms-transform: scale(1, 1.0);
+  -o-transform: scale(1, 1.0);
+  transform: scale(1, 1.0);
+}
+
+.slide-down-invisible
+{
+  opacity: 0.0;
+  -webkit-transform: scale(1, 0.0);
+  -moz-transform: scale(1, 0.0);
+  -ms-transform: scale(1, 0.0);
+  -o-transform: scale(1, 0.0);
+  transform: scale(1, 0.0);
+}
+
+.list li:nth-child(odd)
+{
+  background-color: #f9f9f9;
+}
+
+.component-selector-nav ul
+{
+  display: inline-block;
+  float: none !important;
+}
+
+.scrolltable-container
+{
+  height: 16em;
+  overflow-y: auto;
+  clear: both;
+}
+
+.txt-wordlist-item-input
+{
+  margin: 0.5em 0 0.5em 0 !important;
+  font-size: 1.5em !important;
+}
+
+.scrolltable
+{
+  margin-bottom: 0px;
+  table-layout: fixed;
+}
+
+.no-horz-padding
+{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.no-vert-margin
+{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.clear
+{
+  clear:both;
+}
+
+.background-red
+{
+  background-color: #dba9aa;
+}
+
+.background-green
+{
+  background-color: #b4cca1;
+}
+
+.background-yellow
+{
+  background-color: #ebf097;
+}
+
+.red-text
+{
+  color: #c60f13;
+}
+
+.green-text
+{
+  color: #5da423;
+}
+
+.component-tab-inactive
+{
+
+}
+
+.component-tab-active
+{
+
+}

@@ -1,7 +1,5 @@
 <template name="login">
-	{{#if currentUser}}
-		<a id="logout-btn" class="button alert">Logout</a>
-	{{else}}
+	{{#unless currentUser}}
 		<div id="login-container">
 			<form id="login-form">
 				<div id="login-email-container" class="large-12 columns">
@@ -38,6 +36,9 @@
 				</div>
 
 			</form>
+			{{#isolate}}
+				{{loginErrors}}
+			{{/isolate}}
 		</div>
-	{{/if}}
+	{{/unless}}
 </template>

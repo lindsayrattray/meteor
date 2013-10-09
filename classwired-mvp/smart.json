@@ -3,6 +3,7 @@
     "router": {},
     "iron-router": {},
     "foundation": {},
-    "zurb-foundation": {}
+    "zurb-foundation": {},
+    "scss": {}
   }
 }

@@ -1,8 +1,8 @@
-Template.activityExplainTheWord_Wordlist_Groups.rendered = function() {
+Template.activityExplainTheWord_Wordlist_Stats.rendered = function() {
 	
 };
 
-Template.activityExplainTheWord_Wordlist_Groups.helpers({
+Template.activityExplainTheWord_Wordlist_Stats.helpers({
 	groups: function() {
 		return Groups.find();
 	},
