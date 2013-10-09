@@ -42,7 +42,7 @@ Template.activityExplainTheWord_Explain_Teacher.helpers({
 		return false;
 	},
 	studentAllItems: function() {
-		return ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), userId: Session.get('explainStudentStat') }, { sort: { current: -1, item: 1 } });
+		return ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), userId: Session.get('explainStudentStat') }, { sort: { current: -1, answered: -1, item: 1 } });
 	},
 	itemAnswerTime: function() {
 		var thisItem = ExplainTheWord_ExplainItems.findOne({ userId: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom'), item: this.item });
@@ -62,7 +62,7 @@ Template.activityExplainTheWord_Explain_Teacher.helpers({
 	itemAnswerColor: function() {
 		if(this.answered)
 		{
-			return this.answer ? 'green-text' : 'red-text';
+			return this.answer ? 'tick' : 'cross';
 		}
 	},
 	showStatDetails: function(userId) {

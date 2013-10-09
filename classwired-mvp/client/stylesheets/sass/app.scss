@@ -544,7 +544,7 @@ footer
         margin-bottom: 0;
       }
 
-      .header
+      > .header
       {
         @include grid-row($behavior: nest-collapse);
 
@@ -577,7 +577,7 @@ footer
           bottom: 1px solid #ddd;
         }
 
-        li
+        > li
         {
           @include grid-row($behavior: nest-collapse);
 
@@ -598,25 +598,84 @@ footer
           {
             @include grid-row($behavior: nest-collapse);
 
+            > .header
+            {
+              @include grid-row($behavior: nest-collapse);
+
+              border-top: 1px solid #ddd;
+
+              > span
+              {
+                font-weight: 600;
+
+                &:nth-child(1)
+                {
+                  @include grid-column(6);
+                }
+
+                &:nth-child(2)
+                {
+                  @include grid-column(4);
+                }
+
+                &:nth-child(3)
+                {
+                  @include grid-column(2);
+
+                  .tick
+                  {
+                    color: $success-color;
+                  }
+
+                  .cross
+                  {
+                    color: $alert-color;
+                  }
+                }
+              }
+            }
+
             ul
             {
               @include grid-row($behavior: nest-collapse);
+
+              border:
+              {
+                top: 1px solid #ddd;
+                bottom: 1px solid #ddd;
+              }
 
               li
               {
                 @include grid-row($behavior: nest-collapse);
 
+                display: block;
+
                 span
                 {
-
-                  &:nth-child()
+                  &:nth-child(1)
                   {
-
+                    @include grid-column(6);
                   }
 
-                  &:nth-child()
+                  &:nth-child(2)
                   {
-                    
+                    @include grid-column(4);
+                  }
+
+                  &:nth-child(3)
+                  {
+                    @include grid-column(2);
+
+                    &.tick
+                    {
+                      color: $success-color;
+                    }
+
+                    &.cross
+                    {
+                      color: $alert-color;
+                    }
                   }
                 }
               }

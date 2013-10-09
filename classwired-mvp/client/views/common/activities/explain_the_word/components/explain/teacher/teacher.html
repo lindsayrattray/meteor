@@ -21,18 +21,19 @@
 					</a>
 					<div class="dropdown {{#unless showStatDetails this}}hide{{/unless}}">
 						{{#if showStatDetails this}}
+							<div class="header">
+								<span>Word</span>
+								<span>Time (sec)</span>
+								<span>
+									<span class="tick">&#x2713;</span>/<span class="cross">&#x2717;</span>
+								</span>
+							</div>
 							<ul>
 								{{#each studentAllItems}}
 									<li>
-										<span>
-											{{this.item}}
-										</span>
-										<span>
-											{{itemAnswerTime}}
-										</span>
-										<span>
-											{{itemAnswer}}
-										</span>
+										<span>{{this.item}}</span>
+										<span>{{itemAnswerTime}}</span>
+										<span class="{{itemAnswerColor}}">{{itemAnswer}}</span>
 									</li>
 								{{/each}}
 							</ul>
