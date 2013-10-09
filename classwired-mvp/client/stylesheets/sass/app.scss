@@ -581,6 +581,8 @@ footer
         {
           @include grid-row($behavior: nest-collapse);
 
+          line-height: 2em;
+
           &:nth-child(even)
           {
             background-color: #f9f9f9;
