@@ -394,12 +394,14 @@ footer
       }
     }
 
-    >.container
+    >ul
     {
       @include grid-row($behavior: nest-collapse);
 
       height: 70%;
       overflow-y: auto;
+
+      list-style: none;
 
       border:
       {
@@ -408,7 +410,7 @@ footer
         bottom: 1px solid #ddd;
       }
 
-      >div
+      >li
       {
         @include grid-row($behavior: nest-collapse);
 
@@ -457,6 +459,171 @@ footer
 
         line-height: 2em;
       }
+    }
+  }
+
+  .explain
+  {
+    @include grid-row();
+    height: 100%;
+
+    &.student
+    {
+      .container
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        height: 100%;
+
+        &.answered.tick
+        {
+          background-color: lighten($success-color, 30%);
+        }
+
+        &.answered.cross
+        {
+          background-color: lighten($alert-color, 40%);
+        }
+
+        .word
+        {
+          @include grid-row($behavior: nest-collapse);
+
+          text-align: center;
+
+          height: 35%;
+        }
+
+        >div
+        {
+          @include grid-row($behavior: nest-collapse);
+
+          .answer
+          {
+            &.tick
+            {
+              @include button($button-lrg, $success-color);
+              @include single-transition;
+              @include inset-shadow(true);
+
+              float: left;
+            }
+
+            &.cross
+            {
+              @include button($button-lrg, $alert-color);
+              @include single-transition;
+              @include inset-shadow(true);
+
+              float: right;
+            }
+          }
+        }
+
+        .new
+        {
+          @include button($button-med, $primary-color, false, true);
+          @include single-transition;
+          @include inset-shadow(true);
+        }
+      }
+    }
+
+    &.teacher
+    {
+      @include grid-row();
+
+      height: 100%;
+
+      button
+      {
+        @include button($button-med, $primary-color, false, true);
+        @include single-transition;
+        @include inset-shadow(true);
+
+        margin-bottom: 0;
+      }
+
+      .header
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        border: 1px solid #ddd;
+        background-color: #f5f5f5;
+
+        line-height: 2em;
+
+        span
+        {
+          @include grid-column(6);
+
+          font-weight: 600;
+        }
+      }
+
+      > ul
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        list-style: none;
+        
+        height: 60%;
+        overflow-y: auto;
+
+        border:
+        {
+          left: 1px solid #ddd;
+          right: 1px solid #ddd;
+          bottom: 1px solid #ddd;
+        }
+
+        li
+        {
+          @include grid-row($behavior: nest-collapse);
+
+          &:nth-child(even)
+          {
+            background-color: #f9f9f9;
+          }
+
+          a
+          {
+            span
+            {
+              @include grid-column(6);
+            }
+          }
+
+          div
+          {
+            @include grid-row($behavior: nest-collapse);
+
+            ul
+            {
+              @include grid-row($behavior: nest-collapse);
+
+              li
+              {
+                @include grid-row($behavior: nest-collapse);
+
+                span
+                {
+
+                  &:nth-child()
+                  {
+
+                  }
+
+                  &:nth-child()
+                  {
+                    
+                  }
+                }
+              }
+            }
+          }
+        }
+      }      
     }
   }
 }

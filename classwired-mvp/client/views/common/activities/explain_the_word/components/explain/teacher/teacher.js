@@ -1,11 +1,8 @@
 Template.activityExplainTheWord_Explain_Teacher.events({
-	'click #assign-all-new-items': function(event, template) {
+	'click .explain.teacher button': function(event, template) {
 		Meteor.call('assignNewItemToAllUsers', template.data.classroom._id);
 	},
-	'click .assign-one-new-item': function(event, template) {
-		Meteor.call('assignNewItem', this.toString(), template.data.classroom._id);
-	},
-	'click .student-stat a': function(event, template) {
+	'click .explain.teacher > ul li a': function(event, template) {
 		if(Session.get('explainStudentStat') === this.toString())
 		{
 			Session.set('explainStudentStat', null);

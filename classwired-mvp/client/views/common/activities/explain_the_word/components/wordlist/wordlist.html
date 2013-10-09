@@ -8,9 +8,9 @@
 				<span>Group</span>
 			{{/unless}}
 		</div>
-		<div class="container">
+		<ul>
 			{{#each wordlistItems}}
-				<div>
+				<li>
 					<span>
 						<input type="text" value="{{this.item}}"
 							{{#unless isCurrentUserOrRole this.userId 'teacher'}}
@@ -24,9 +24,9 @@
 							{{profileName this.userId}}
 						{{/if}}
 					</span>
-				</div>
+				</li>
 			{{/each}}
-		</div>
+		</ul>
 		{{#unless thisUserHasRole 'teacher'}}
 			<form>
 				<input type="text" placeholder="Enter a Word"/>
