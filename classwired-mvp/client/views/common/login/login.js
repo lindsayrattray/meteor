@@ -11,10 +11,6 @@ function debugLogin(error)
 }
 
 Template.login.events({
-	'click #logout-btn': function()
-	{
-		Meteor.logout(function(error) { debugLogin(error); });
-	},
 	'submit': function(event, template)
 	{
 		var emailAddress = template.find('#email-field').value;
@@ -69,9 +65,10 @@ Template.login.events({
 				Accounts.createUser({ email: emailAddress,
 									  password: password,
 									  profile: { name: name } },
-									  function()  { 
+									  function(error)  { 
 														var userId = Meteor.users.findOne({ "emails.address": emailAddress });
-														Meteor.call('addUserToRole', userId, 'student'); 
+														Meteor.call('addUserToRole', userId, 'student');
+														debugLogin(error);
 												  });
 			}
 		}

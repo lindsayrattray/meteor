@@ -1,41 +1,38 @@
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 </head>
 
 <template name="main">
-	<div class="container">
-		<section class="main">
-			{{#if currentUser}}
-			<nav class="top-bar">
-				<ul class="title-area">
-					<li class="name">
-						<h1><a>ClassWired</a></h1>
-					</li>
-					<li class="toggle-topbar menu-icon"><a><span>Menu</span></a></li>
-				</ul>
-
-				<section class="top-bar-section">
-					<ul class="left">
-					</ul>
-
-					<ul class="right">
-						<li class="divider"></li>
-						<li class="has-form">{{yield "login"}}</li>
-					</ul>
-				</section>
-			</nav>
-			
-			{{yield "messages"}}
-
-			{{yield}}
-
-			{{else}}
-			<div class="row">
-				<div class="small-10 small-centered columns">
-					{{yield "login"}}
-				</div>
+{{#if currentUser}}
+	<header>
+		<nav class="top-menu">
+			<div>
+				<a class="menu-icon {{#if sessionGet 'main_MenuVisible'}}active{{/if}}">&#x2699;</a>
+				<a class="menu-context">Context</a>
 			</div>
-			{{/if}}
-		</section>
+			<ul class="dropdown {{#unless sessionGet 'main_MenuVisible'}}hide{{/unless}}">
+				<li><a>Option1</a></li>
+				<li><a>Option2</a></li>
+				<li>{{> logout}}</li>
+			</ul>
+		</nav>
+	</header>
+	<div class="main">
+		{{yield "messages"}}
+
+		{{yield}}
 	</div>
+	<footer>
+		<nav class="bottom-options">
+			<button class="left">Option 1</button>
+			<button class="right">Option 2</button>
+		</nav>
+	</footer>
+{{else}}
+	<div class="row">
+		<div class="small-10 small-centered columns">
+			{{yield "login"}}
+		</div>
+	</div>
+{{/if}}
 </template>
