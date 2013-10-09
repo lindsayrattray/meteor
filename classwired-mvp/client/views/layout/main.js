@@ -29,7 +29,7 @@ Template.main.events({
 		Session.set('main_MenuVisible', main_MenuVisible);
 	},
 	'click': function(event, template) {
-		if(!$(event.srcElement).parents().filter('.top-menu')[0])
+		if(!$(event.srcElement).parents().filter('.top-menu .dropdown')[0] && !$(event.srcElement).hasClass('menu-icon'))
 		{
 			Session.set('main_MenuVisible', false);
 		}

@@ -6,10 +6,9 @@
 {{#if currentUser}}
 	<header>
 		<nav class="top-menu">
-			<div>
-				<a class="menu-icon {{#if sessionGet 'main_MenuVisible'}}active{{/if}}">&#x2699;</a>
-				<a class="menu-context">Context</a>
-			</div>
+			<a class="icon {{#if sessionGet 'main_MenuVisible'}}active{{/if}}">&#x2699;</a>
+			<a class="context">Context</a>
+			<a class="forward">&raquo;</a>
 			<ul class="dropdown {{#unless sessionGet 'main_MenuVisible'}}hide{{/unless}}">
 				<li><a>Option1</a></li>
 				<li><a>Option2</a></li>

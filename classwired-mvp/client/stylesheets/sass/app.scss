@@ -121,30 +121,40 @@ footer
 {
   display: block;
   width: 100%;
+  height: 3em;
 
-  >div
+  background-color: $topbar-bg;
+
+  a
   {
-    text-align: center;
-    
-    height: 3em;
-    background-color: $topbar-bg;
+    color: $topbar-link-color;
+    font-size: 2.5em;
 
-    a
+    &.icon
     {
-      color: $topbar-link-color;
-      font-size: 2.5em;
+      display: block;
+      float: left;
+    }
 
-      padding-right: 0.25em;
-      padding-left: 0.25em;
+    &.context
+    {
+      display: block;
+      margin: 0 auto;
+    }
 
-      &.active
-      {
-        color: $top-menu-active-link-color;
-      }
-      &:hover
-      {
-        color: $top-menu-active-link-color;
-      }
+    &.forward
+    {
+      display: block;
+      float: right;
+    }
+
+    &.active
+    {
+      color: $top-menu-active-link-color;
+    }
+    &:hover
+    {
+      color: $top-menu-active-link-color;
     }
   }
 
