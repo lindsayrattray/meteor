@@ -27,5 +27,11 @@ Template.main.events({
 	'click .menu-icon': function() {
 		var main_MenuVisible = Session.get('main_MenuVisible') ? false : true;
 		Session.set('main_MenuVisible', main_MenuVisible);
+	},
+	'click': function(event, template) {
+		if(!$(event.srcElement).parents().filter('.top-menu')[0])
+		{
+			Session.set('main_MenuVisible', false);
+		}
 	}
 });
