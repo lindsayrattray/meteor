@@ -125,36 +125,53 @@ footer
 
   background-color: $topbar-bg;
 
-  a
+  >div
   {
-    color: $topbar-link-color;
-    font-size: 2.5em;
+    @include grid-row($behavior: nest-collapse);
+    font-size: 200%;
+    line-height: 1.5;
+    text-align: center;
 
-    &.icon
+    a
     {
-      display: block;
+      color: $topbar-link-color;
+      
       float: left;
-    }
 
-    &.context
-    {
-      display: block;
-      margin: 0 auto;
-    }
+      &.icon
+      {
+        display: block;
+        width: 15%;
 
-    &.forward
-    {
-      display: block;
-      float: right;
-    }
+        border-right: 1px solid darken($topbar-bg, 10%);
+      }
 
-    &.active
-    {
-      color: $top-menu-active-link-color;
-    }
-    &:hover
-    {
-      color: $top-menu-active-link-color;
+      &.context
+      {
+        display: block;
+        width: 70%;
+
+        border-left: 1px solid lighten($topbar-bg, 10%);
+        border-right: 1px solid darken($topbar-bg, 10%);
+      }
+
+      &.forward
+      {
+        display: block;
+        width: 15%;
+
+        border-left: 1px solid lighten($topbar-bg, 10%);
+      }
+
+      &.active
+      {
+        color: $top-menu-active-link-color;
+      }
+      &:hover
+      {
+        color: $top-menu-active-link-color;
+        background-color: darken($topbar-bg, 10%);
+      }
     }
   }
 

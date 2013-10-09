@@ -24,12 +24,12 @@ Deps.autorun(function() {
 });
 
 Template.main.events({
-	'click .menu-icon': function() {
+	'click .top-menu .icon': function() {
 		var main_MenuVisible = Session.get('main_MenuVisible') ? false : true;
 		Session.set('main_MenuVisible', main_MenuVisible);
 	},
 	'click': function(event, template) {
-		if(!$(event.srcElement).parents().filter('.top-menu .dropdown')[0] && !$(event.srcElement).hasClass('menu-icon'))
+		if(!$(event.srcElement).parents().filter('.top-menu .dropdown')[0] && !$(event.srcElement).hasClass('icon'))
 		{
 			Session.set('main_MenuVisible', false);
 		}
