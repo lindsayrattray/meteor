@@ -73,9 +73,6 @@ Template.classroom.helpers({
 		var activity = Activities.findOne({name: this.currentActivity});
 		return activity;
 	},
-	view: function() {
-		//return Session.get('groupsVisible') ? 'groups' : 'activity';
-	},
 	components: function() {
 		return Components.find();
 	}
