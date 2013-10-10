@@ -1,5 +1,26 @@
 Meteor.subscribe('activities');
 
+Deps.autorun(function() {
+	var $container = $('.classroom .container');
+
+	if(Session.get('groupsVisible'))
+	{
+		if($container.hasClass('activity'))
+		{
+			$container.removeClass('activity');
+		}
+		$container.addClass('groups');
+	}
+	else
+	{
+		if($container.hasClass('groups'))
+		{
+			$container.removeClass('groups');
+		}
+		$container.addClass('activity');
+	}
+});
+
 Template.classroom.rendered = function() {
 	if(Meteor.user())
 	{
@@ -47,6 +68,13 @@ Template.classroom.helpers({
 		{
 			return Template[activity.template]({ activity: activity, classroom: this });
 		}
+	},
+	currentActivity: function() {
+		var activity = Activities.findOne({name: this.currentActivity});
+		return activity;
+	},
+	view: function() {
+		//return Session.get('groupsVisible') ? 'groups' : 'activity';
 	},
 	components: function() {
 		return Components.find();

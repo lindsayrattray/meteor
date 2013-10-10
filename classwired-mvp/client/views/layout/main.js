@@ -35,3 +35,14 @@ Template.main.events({
 		}
 	}
 });
+
+Template.main.helpers({
+	leftButton: function() {
+		var activityButton = Session.get('activity_leftButton');
+		var buttonTemplate = activityButton ? activityButton : 'leftButton';
+
+		console.log(buttonTemplate);
+
+		return Template[buttonTemplate]();
+	}
+});

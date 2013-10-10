@@ -300,12 +300,40 @@ footer
   @include grid-row();
   
   height: 100%;
-  overflow-x: scroll;
+  overflow-x: hidden;
 
   >.container
   {
+    position: relative;
+    display: block;
+
     width: 200%;
     height: 100%;
+
+    // Not sure why the transitions don't work
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+
+    &.groups
+    {
+      -webkit-transform: translate(0%, 0);
+      -moz-transform: translate(0%, 0);
+      -ms-transform: translate(0%, 0);
+      -o-transform: translate(0%, 0);
+      transform: translate(0%, 0);
+    }
+
+    &.activity
+    {
+      -webkit-transform: translate(-50%, 0);
+      -moz-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+      -o-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+    }
 
     >div
     {
