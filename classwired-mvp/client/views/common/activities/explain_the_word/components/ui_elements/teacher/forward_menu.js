@@ -4,7 +4,8 @@ Template.activityExplainTheWord_UI_ForwardMenu.rendered = function() {
 
 Template.activityExplainTheWord_UI_ForwardMenu.events({
 	'click .component a': function() {
-		console.log('foo')
+		Meteor.call('setCurrentComponent', Session.get('currentClassroom'), this.name);
+		Session.set('forward_MenuVisible', false);
 	}
 });
 
