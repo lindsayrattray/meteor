@@ -33,12 +33,12 @@ Template.main.events({
 		Session.set('forward_MenuVisible', forward_MenuVisible);
 	},
 	'click': function(event, template) {
-		if(!$(event.srcElement).parents().filter('.top-menu .dropdown')[0] && !$(event.srcElement).hasClass('icon'))
+		if(!$(event.srcElement).parents().filter('.dropdown')[0] && !$(event.srcElement).hasClass('icon'))
 		{
 			Session.set('main_MenuVisible', false);
 		}
 
-		if(!$(event.srcElement).parents().filter('.top-menu .drodown')[0] && !$(event.srcElement).hasClass('forward'))
+		if(!$(event.srcElement).parents().filter('.dropdown')[0] && !$(event.srcElement).hasClass('forward'))
 		{
 			Session.set('forward_MenuVisible', false);
 		}
