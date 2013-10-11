@@ -7401,9 +7401,11 @@ footer {
 .top-menu .dropdown {
   position: absolute;
   width: 100%;
+  height: 100%;
+  overflow-y: auto;
   z-index: 999;
 }
-/* line 186, sass/app.scss */
+/* line 188, sass/app.scss */
 .top-menu .dropdown li {
   display: block;
   width: 100%;
@@ -7411,18 +7413,18 @@ footer {
   border-top: 1px solid #3c3c3c;
   border-bottom: 1px solid #090909;
 }
-/* line 195, sass/app.scss */
+/* line 197, sass/app.scss */
 .top-menu .dropdown li:hover {
   background-color: #090909;
 }
-/* line 200, sass/app.scss */
+/* line 202, sass/app.scss */
 .top-menu .dropdown li a {
   line-height: 3em;
   color: white;
   font-size: 1em;
   padding-left: 0.5em;
 }
-/* line 208, sass/app.scss */
+/* line 210, sass/app.scss */
 .top-menu .dropdown li a.logout {
   border-style: solid;
   border-width: 1px;
@@ -7456,6 +7458,66 @@ footer {
 }
 
 /* line 219, sass/app.scss */
+.dropdown {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 999;
+}
+/* line 228, sass/app.scss */
+.dropdown li {
+  display: block;
+  width: 100%;
+  background-color: #222222;
+  border-top: 1px solid #3c3c3c;
+  border-bottom: 1px solid #090909;
+}
+/* line 237, sass/app.scss */
+.dropdown li:hover {
+  background-color: #090909;
+}
+/* line 242, sass/app.scss */
+.dropdown li a {
+  line-height: 3em;
+  color: white;
+  font-size: 1em;
+  padding-left: 0.5em;
+}
+/* line 250, sass/app.scss */
+.dropdown li a.logout {
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: normal;
+  margin: 0 0 1.25em;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  padding-top: 0.5625em;
+  padding-right: 1.125em;
+  padding-bottom: 0.625em;
+  padding-left: 1.125em;
+  font-size: 0.8125em;
+  background-color: #c60f13;
+  border-color: #970b0e;
+  color: white;
+  margin: 0.625em;
+  display: block;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
+.dropdown li a.logout:hover, .dropdown li a.logout:focus {
+  background-color: #970b0e;
+}
+/* line 133, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
+.dropdown li a.logout:hover, .dropdown li a.logout:focus {
+  color: white;
+}
+
+/* line 260, sass/app.scss */
 .bottom-options button {
   position: absolute;
   bottom: 0;
@@ -7463,16 +7525,16 @@ footer {
   height: 3em;
   margin: 0;
 }
-/* line 227, sass/app.scss */
+/* line 268, sass/app.scss */
 .bottom-options button:first-child {
   left: 0;
 }
-/* line 231, sass/app.scss */
+/* line 272, sass/app.scss */
 .bottom-options button:last-child {
   right: 0;
 }
 
-/* line 241, sass/app.scss */
+/* line 282, sass/app.scss */
 .classroom-manager {
   width: 100%;
   margin-left: auto;
@@ -7492,7 +7554,7 @@ footer {
 .classroom-manager:after {
   clear: both;
 }
-/* line 247, sass/app.scss */
+/* line 288, sass/app.scss */
 .classroom-manager > .container {
   width: auto;
   margin: 0;
@@ -7510,7 +7572,7 @@ footer {
 .classroom-manager > .container:after {
   clear: both;
 }
-/* line 254, sass/app.scss */
+/* line 295, sass/app.scss */
 .classroom-manager > .container .header {
   width: auto;
   margin: 0;
@@ -7528,7 +7590,7 @@ footer {
 .classroom-manager > .container .header:after {
   clear: both;
 }
-/* line 261, sass/app.scss */
+/* line 302, sass/app.scss */
 .classroom-manager > .container .header span {
   position: relative;
   padding-left: 0.9375em;
@@ -7538,7 +7600,7 @@ footer {
   line-height: 2em;
   font-weight: 600;
 }
-/* line 270, sass/app.scss */
+/* line 311, sass/app.scss */
 .classroom-manager > .container .classroom-list {
   width: auto;
   margin: 0;
@@ -7555,7 +7617,7 @@ footer {
 .classroom-manager > .container .classroom-list:after {
   clear: both;
 }
-/* line 276, sass/app.scss */
+/* line 317, sass/app.scss */
 .classroom-manager > .container .classroom-list li {
   width: auto;
   margin: 0;
@@ -7571,15 +7633,15 @@ footer {
 .classroom-manager > .container .classroom-list li:after {
   clear: both;
 }
-/* line 280, sass/app.scss */
+/* line 321, sass/app.scss */
 .classroom-manager > .container .classroom-list li:nth-child(even) {
   background: #f9f9f9;
 }
-/* line 285, sass/app.scss */
+/* line 326, sass/app.scss */
 .classroom-manager > .container .classroom-list li a {
   line-height: 2em;
 }
-/* line 289, sass/app.scss */
+/* line 330, sass/app.scss */
 .classroom-manager > .container .classroom-list li a span {
   position: relative;
   padding-left: 0.9375em;
@@ -7588,7 +7650,7 @@ footer {
   float: left;
 }
 
-/* line 299, sass/app.scss */
+/* line 340, sass/app.scss */
 .classroom {
   width: 100%;
   margin-left: auto;
@@ -7609,7 +7671,7 @@ footer {
 .classroom:after {
   clear: both;
 }
-/* line 306, sass/app.scss */
+/* line 347, sass/app.scss */
 .classroom > .container {
   position: relative;
   display: block;
@@ -7621,7 +7683,7 @@ footer {
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-/* line 321, sass/app.scss */
+/* line 362, sass/app.scss */
 .classroom > .container.groups {
   -webkit-transform: translate(0%, 0);
   -moz-transform: translate(0%, 0);
@@ -7629,7 +7691,7 @@ footer {
   -o-transform: translate(0%, 0);
   transform: translate(0%, 0);
 }
-/* line 330, sass/app.scss */
+/* line 371, sass/app.scss */
 .classroom > .container.activity {
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
@@ -7637,7 +7699,7 @@ footer {
   -o-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
 }
-/* line 339, sass/app.scss */
+/* line 380, sass/app.scss */
 .classroom > .container > div {
   position: relative;
   padding-left: 0.9375em;
@@ -7647,7 +7709,7 @@ footer {
   height: 100%;
 }
 
-/* line 352, sass/app.scss */
+/* line 393, sass/app.scss */
 .group-manager {
   width: 100%;
   margin-left: auto;
@@ -7667,7 +7729,7 @@ footer {
 .group-manager:after {
   clear: both;
 }
-/* line 358, sass/app.scss */
+/* line 399, sass/app.scss */
 .group-manager > .container {
   width: auto;
   margin: 0;
@@ -7685,7 +7747,7 @@ footer {
 .group-manager > .container:after {
   clear: both;
 }
-/* line 365, sass/app.scss */
+/* line 406, sass/app.scss */
 .group-manager > .container .group {
   position: relative;
   padding-left: 0.9375em;
@@ -7694,7 +7756,7 @@ footer {
   float: left;
   padding: 1em;
 }
-/* line 371, sass/app.scss */
+/* line 412, sass/app.scss */
 .group-manager > .container .group > div {
   height: 100%;
   width: 100%;
@@ -7703,7 +7765,7 @@ footer {
   padding-left: 2em;
   padding-right: 2em;
 }
-/* line 384, sass/app.scss */
+/* line 425, sass/app.scss */
 .group-manager > .container .group > div ul {
   width: auto;
   margin: 0;
@@ -7720,7 +7782,7 @@ footer {
 .group-manager > .container .group > div ul:after {
   clear: both;
 }
-/* line 390, sass/app.scss */
+/* line 431, sass/app.scss */
 .group-manager > .container .group > div ul li {
   position: relative;
   padding-left: 0.9375em;
@@ -7728,7 +7790,7 @@ footer {
   width: 50%;
   float: left;
 }
-/* line 396, sass/app.scss */
+/* line 437, sass/app.scss */
 .group-manager > .container .group > div p {
   text-align: center;
   font-size: 80%;
@@ -7737,7 +7799,7 @@ footer {
   margin-bottom: 0;
 }
 
-/* line 422, sass/app.scss */
+/* line 463, sass/app.scss */
 .explain-the-word.activity-main {
   width: 100%;
   margin-left: auto;
@@ -7758,7 +7820,7 @@ footer {
 .explain-the-word.activity-main:after {
   clear: both;
 }
-/* line 430, sass/app.scss */
+/* line 471, sass/app.scss */
 .explain-the-word .wordlist {
   width: 100%;
   margin-left: auto;
@@ -7778,7 +7840,7 @@ footer {
 .explain-the-word .wordlist:after {
   clear: both;
 }
-/* line 436, sass/app.scss */
+/* line 477, sass/app.scss */
 .explain-the-word .wordlist > .header {
   width: auto;
   margin: 0;
@@ -7797,7 +7859,7 @@ footer {
 .explain-the-word .wordlist > .header:after {
   clear: both;
 }
-/* line 445, sass/app.scss */
+/* line 486, sass/app.scss */
 .explain-the-word .wordlist > .header span {
   position: relative;
   padding-left: 0.9375em;
@@ -7806,7 +7868,7 @@ footer {
   float: left;
   font-weight: 600;
 }
-/* line 453, sass/app.scss */
+/* line 494, sass/app.scss */
 .explain-the-word .wordlist > ul {
   width: auto;
   margin: 0;
@@ -7828,7 +7890,7 @@ footer {
 .explain-the-word .wordlist > ul:after {
   clear: both;
 }
-/* line 469, sass/app.scss */
+/* line 510, sass/app.scss */
 .explain-the-word .wordlist > ul > li {
   width: auto;
   margin: 0;
@@ -7845,11 +7907,11 @@ footer {
 .explain-the-word .wordlist > ul > li:after {
   clear: both;
 }
-/* line 475, sass/app.scss */
+/* line 516, sass/app.scss */
 .explain-the-word .wordlist > ul > li:nth-child(even) {
   background-color: #f9f9f9;
 }
-/* line 480, sass/app.scss */
+/* line 521, sass/app.scss */
 .explain-the-word .wordlist > ul > li > span {
   position: relative;
   padding-left: 0.9375em;
@@ -7859,15 +7921,15 @@ footer {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-/* line 490, sass/app.scss */
+/* line 531, sass/app.scss */
 .explain-the-word .wordlist > ul > li > span input {
   margin: 0;
 }
-/* line 498, sass/app.scss */
+/* line 539, sass/app.scss */
 .explain-the-word .wordlist form {
   height: 20%;
 }
-/* line 502, sass/app.scss */
+/* line 543, sass/app.scss */
 .explain-the-word .wordlist form input {
   position: relative;
   padding-left: 0.9375em;
@@ -7876,7 +7938,7 @@ footer {
   float: left;
   height: 2.25em;
 }
-/* line 509, sass/app.scss */
+/* line 550, sass/app.scss */
 .explain-the-word .wordlist form button {
   position: relative;
   padding-left: 0.9375em;
@@ -7887,7 +7949,7 @@ footer {
   padding: 0;
   line-height: 2em;
 }
-/* line 521, sass/app.scss */
+/* line 562, sass/app.scss */
 .explain-the-word .explain {
   width: 100%;
   margin-left: auto;
@@ -7907,7 +7969,7 @@ footer {
 .explain-the-word .explain:after {
   clear: both;
 }
-/* line 528, sass/app.scss */
+/* line 569, sass/app.scss */
 .explain-the-word .explain.student .container {
   width: auto;
   margin: 0;
@@ -7924,15 +7986,15 @@ footer {
 .explain-the-word .explain.student .container:after {
   clear: both;
 }
-/* line 534, sass/app.scss */
+/* line 575, sass/app.scss */
 .explain-the-word .explain.student .container.answered.tick {
   background-color: #abe37d;
 }
-/* line 539, sass/app.scss */
+/* line 580, sass/app.scss */
 .explain-the-word .explain.student .container.answered.cross {
   background-color: #f8a9aa;
 }
-/* line 544, sass/app.scss */
+/* line 585, sass/app.scss */
 .explain-the-word .explain.student .container .word {
   width: auto;
   margin: 0;
@@ -7950,7 +8012,7 @@ footer {
 .explain-the-word .explain.student .container .word:after {
   clear: both;
 }
-/* line 553, sass/app.scss */
+/* line 594, sass/app.scss */
 .explain-the-word .explain.student .container > div {
   width: auto;
   margin: 0;
@@ -7966,7 +8028,7 @@ footer {
 .explain-the-word .explain.student .container > div:after {
   clear: both;
 }
-/* line 559, sass/app.scss */
+/* line 600, sass/app.scss */
 .explain-the-word .explain.student .container > div .answer.tick {
   border-style: solid;
   border-width: 1px;
@@ -8007,7 +8069,7 @@ footer {
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
 }
-/* line 568, sass/app.scss */
+/* line 609, sass/app.scss */
 .explain-the-word .explain.student .container > div .answer.cross {
   border-style: solid;
   border-width: 1px;
@@ -8048,7 +8110,7 @@ footer {
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
 }
-/* line 579, sass/app.scss */
+/* line 620, sass/app.scss */
 .explain-the-word .explain.student .container .new {
   border-style: solid;
   border-width: 1px;
@@ -8093,7 +8155,7 @@ footer {
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
 }
-/* line 588, sass/app.scss */
+/* line 629, sass/app.scss */
 .explain-the-word .explain.teacher {
   width: 100%;
   margin-left: auto;
@@ -8113,7 +8175,7 @@ footer {
 .explain-the-word .explain.teacher:after {
   clear: both;
 }
-/* line 594, sass/app.scss */
+/* line 635, sass/app.scss */
 .explain-the-word .explain.teacher button {
   border-style: solid;
   border-width: 1px;
@@ -8159,7 +8221,7 @@ footer {
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
 }
-/* line 603, sass/app.scss */
+/* line 644, sass/app.scss */
 .explain-the-word .explain.teacher > .header {
   width: auto;
   margin: 0;
@@ -8178,7 +8240,7 @@ footer {
 .explain-the-word .explain.teacher > .header:after {
   clear: both;
 }
-/* line 612, sass/app.scss */
+/* line 653, sass/app.scss */
 .explain-the-word .explain.teacher > .header span {
   position: relative;
   padding-left: 0.9375em;
@@ -8187,7 +8249,7 @@ footer {
   float: left;
   font-weight: 600;
 }
-/* line 620, sass/app.scss */
+/* line 661, sass/app.scss */
 .explain-the-word .explain.teacher > ul {
   width: auto;
   margin: 0;
@@ -8209,7 +8271,7 @@ footer {
 .explain-the-word .explain.teacher > ul:after {
   clear: both;
 }
-/* line 636, sass/app.scss */
+/* line 677, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li {
   width: auto;
   margin: 0;
@@ -8226,11 +8288,11 @@ footer {
 .explain-the-word .explain.teacher > ul > li:after {
   clear: both;
 }
-/* line 642, sass/app.scss */
+/* line 683, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li:nth-child(even) {
   background-color: #f9f9f9;
 }
-/* line 649, sass/app.scss */
+/* line 690, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li a span {
   position: relative;
   padding-left: 0.9375em;
@@ -8238,7 +8300,7 @@ footer {
   width: 50%;
   float: left;
 }
-/* line 655, sass/app.scss */
+/* line 696, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div {
   width: auto;
   margin: 0;
@@ -8254,7 +8316,7 @@ footer {
 .explain-the-word .explain.teacher > ul > li div:after {
   clear: both;
 }
-/* line 659, sass/app.scss */
+/* line 700, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div > .header {
   width: auto;
   margin: 0;
@@ -8271,11 +8333,11 @@ footer {
 .explain-the-word .explain.teacher > ul > li div > .header:after {
   clear: both;
 }
-/* line 665, sass/app.scss */
+/* line 706, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div > .header > span {
   font-weight: 600;
 }
-/* line 669, sass/app.scss */
+/* line 710, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div > .header > span:nth-child(1) {
   position: relative;
   padding-left: 0.9375em;
@@ -8283,7 +8345,7 @@ footer {
   width: 50%;
   float: left;
 }
-/* line 674, sass/app.scss */
+/* line 715, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div > .header > span:nth-child(2) {
   position: relative;
   padding-left: 0.9375em;
@@ -8291,7 +8353,7 @@ footer {
   width: 33.33333%;
   float: left;
 }
-/* line 679, sass/app.scss */
+/* line 720, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div > .header > span:nth-child(3) {
   position: relative;
   padding-left: 0.9375em;
@@ -8299,15 +8361,15 @@ footer {
   width: 16.66667%;
   float: left;
 }
-/* line 683, sass/app.scss */
+/* line 724, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div > .header > span:nth-child(3) .tick {
   color: #5da423;
 }
-/* line 688, sass/app.scss */
+/* line 729, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div > .header > span:nth-child(3) .cross {
   color: #c60f13;
 }
-/* line 696, sass/app.scss */
+/* line 737, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div ul {
   width: auto;
   margin: 0;
@@ -8325,7 +8387,7 @@ footer {
 .explain-the-word .explain.teacher > ul > li div ul:after {
   clear: both;
 }
-/* line 706, sass/app.scss */
+/* line 747, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div ul li {
   width: auto;
   margin: 0;
@@ -8342,7 +8404,7 @@ footer {
 .explain-the-word .explain.teacher > ul > li div ul li:after {
   clear: both;
 }
-/* line 714, sass/app.scss */
+/* line 755, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div ul li span:nth-child(1) {
   position: relative;
   padding-left: 0.9375em;
@@ -8350,7 +8412,7 @@ footer {
   width: 50%;
   float: left;
 }
-/* line 719, sass/app.scss */
+/* line 760, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div ul li span:nth-child(2) {
   position: relative;
   padding-left: 0.9375em;
@@ -8358,7 +8420,7 @@ footer {
   width: 33.33333%;
   float: left;
 }
-/* line 724, sass/app.scss */
+/* line 765, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div ul li span:nth-child(3) {
   position: relative;
   padding-left: 0.9375em;
@@ -8366,45 +8428,45 @@ footer {
   width: 16.66667%;
   float: left;
 }
-/* line 728, sass/app.scss */
+/* line 769, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div ul li span:nth-child(3).tick {
   color: #5da423;
 }
-/* line 733, sass/app.scss */
+/* line 774, sass/app.scss */
 .explain-the-word .explain.teacher > ul > li div ul li span:nth-child(3).cross {
   color: #c60f13;
 }
 
-/* line 751, sass/app.scss */
+/* line 792, sass/app.scss */
 .classroom-link {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-/* line 758, sass/app.scss */
+/* line 799, sass/app.scss */
 .classroom-manager-container {
   height: 16em;
   box-shadow: 0 0 4px 1px #ccc inset;
 }
 
-/* line 764, sass/app.scss */
+/* line 805, sass/app.scss */
 .stats-container {
   height: 16em;
   border: 1px solid #ccc;
 }
 
-/* line 770, sass/app.scss */
+/* line 811, sass/app.scss */
 .activity-viewport {
   width: 200%;
 }
 
-/* line 775, sass/app.scss */
+/* line 816, sass/app.scss */
 .hide-overflow {
   overflow: auto;
 }
 
-/* line 780, sass/app.scss */
+/* line 821, sass/app.scss */
 .slide-visibility-transition {
   -webkit-transition: -webkit-transform 600ms ease, opacity 600ms ease;
   -moz-transition: -moz-transform 600ms ease, opacity 600ms ease;
@@ -8413,7 +8475,7 @@ footer {
   transition: transform 600ms ease, opacity 600ms ease;
 }
 
-/* line 789, sass/app.scss */
+/* line 830, sass/app.scss */
 .slide-down-visible {
   opacity: 1.0;
   -webkit-transform: scale(1, 1);
@@ -8423,7 +8485,7 @@ footer {
   transform: scale(1, 1);
 }
 
-/* line 799, sass/app.scss */
+/* line 840, sass/app.scss */
 .slide-down-invisible {
   opacity: 0.0;
   -webkit-transform: scale(1, 0);
@@ -8433,74 +8495,74 @@ footer {
   transform: scale(1, 0);
 }
 
-/* line 809, sass/app.scss */
+/* line 850, sass/app.scss */
 .list li:nth-child(odd) {
   background-color: #f9f9f9;
 }
 
-/* line 814, sass/app.scss */
+/* line 855, sass/app.scss */
 .component-selector-nav ul {
   display: inline-block;
   float: none !important;
 }
 
-/* line 820, sass/app.scss */
+/* line 861, sass/app.scss */
 .scrolltable-container {
   height: 16em;
   overflow-y: auto;
   clear: both;
 }
 
-/* line 827, sass/app.scss */
+/* line 868, sass/app.scss */
 .txt-wordlist-item-input {
   margin: 0.5em 0 0.5em 0 !important;
   font-size: 1.5em !important;
 }
 
-/* line 833, sass/app.scss */
+/* line 874, sass/app.scss */
 .scrolltable {
   margin-bottom: 0px;
   table-layout: fixed;
 }
 
-/* line 839, sass/app.scss */
+/* line 880, sass/app.scss */
 .no-horz-padding {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* line 845, sass/app.scss */
+/* line 886, sass/app.scss */
 .no-vert-margin {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
 
-/* line 851, sass/app.scss */
+/* line 892, sass/app.scss */
 .clear {
   clear: both;
 }
 
-/* line 856, sass/app.scss */
+/* line 897, sass/app.scss */
 .background-red {
   background-color: #dba9aa;
 }
 
-/* line 861, sass/app.scss */
+/* line 902, sass/app.scss */
 .background-green {
   background-color: #b4cca1;
 }
 
-/* line 866, sass/app.scss */
+/* line 907, sass/app.scss */
 .background-yellow {
   background-color: #ebf097;
 }
 
-/* line 871, sass/app.scss */
+/* line 912, sass/app.scss */
 .red-text {
   color: #c60f13;
 }
 
-/* line 876, sass/app.scss */
+/* line 917, sass/app.scss */
 .green-text {
   color: #5da423;
 }

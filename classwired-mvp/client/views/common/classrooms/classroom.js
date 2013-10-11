@@ -34,16 +34,17 @@ Template.classroom.rendered = function() {
 		var rightButtonTemplate = Session.get('rightButton');
 		var forwardButtonTemplate = Session.get('forwardButton');
 
-		console.log(rightButtonTemplate);
-
-		if(!leftButtonTemplate || leftButtonTemplate === 'leftButton')
+		if(Meteor.user().permissions.indexOf('teacher') === -1)
 		{
-			Session.set('leftButton', 'classroom_leftButton');
-		}
-
-		if(!rightButtonTemplate || rightButtonTemplate === 'rightButton')
-		{
-			Session.set('rightButton', 'classroom_rightButton');
+			if(!leftButtonTemplate || leftButtonTemplate === 'leftButton')
+			{
+				Session.set('leftButton', 'classroom_leftButton');
+			}
+	
+			if(!rightButtonTemplate || rightButtonTemplate === 'rightButton')
+			{
+				Session.set('rightButton', 'classroom_rightButton');
+			}
 		}
 	}
 }
