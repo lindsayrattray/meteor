@@ -22,21 +22,7 @@
 			<li>{{> logout}}</li>
 		</ul>
 		<ul class="dropdown {{#unless sessionGet 'forward_MenuVisible'}}hide{{/unless}}">
-			<li><a>Option1</a></li>
-			<li><a>Option2</a></li>
-			<li><a>Option3</a></li>
-			<li><a>Option1</a></li>
-			<li><a>Option2</a></li>
-			<li><a>Option3</a></li>
-			<li><a>Option1</a></li>
-			<li><a>Option2</a></li>
-			<li><a>Option3</a></li>
-			<li><a>Option1</a></li>
-			<li><a>Option2</a></li>
-			<li><a>Option3</a></li>
-			<li><a>Option1</a></li>
-			<li><a>Option2</a></li>
-			<li><a>Option3</a></li>
+			{{{forwardMenu}}}
 		</ul>
 
 		{{> messages}}

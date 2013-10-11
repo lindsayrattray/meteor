@@ -25,10 +25,15 @@ Template.classroom.rendered = function() {
 	if(Meteor.user())
 	{	
 		var currentGroup = Groups.findOne({members: Meteor.user()._id});
+
+		Session.set('currentClassroom', this.data._id)
+		
 		if(!currentGroup && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
 		{
 			Meteor.call('createGroup', this.data._id, Meteor.user()._id);
 		}
+
+		
 
 		var leftButtonTemplate = Session.get('leftButton');
 		var rightButtonTemplate = Session.get('rightButton');
@@ -50,12 +55,6 @@ Template.classroom.rendered = function() {
 }
 
 Template.classroom.events({
-	'click #btn-remove-user-from-room': function() {
-		Session.set('leavingCurrentRoom', true);
-		Session.set('currentRoom', null);
-		Meteor.call('setUserCurrentRoom', Meteor.user()._id, null);
-		Router.go('/');
-	},
 	'click .component-selector': function(event, template) {
 		var classroom = template.data._id;
 		var component = this.name;

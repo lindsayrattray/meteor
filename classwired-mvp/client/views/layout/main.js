@@ -55,5 +55,13 @@ Template.main.helpers({
 		var rightButtonTemplate = Session.get('rightButton') || 'rightButton';
 
 		return Template[rightButtonTemplate]();
+	},
+	forwardMenu: function() {
+		var forwardMenuTemplate = Session.get('forwardMenu');
+
+		if(forwardMenuTemplate)
+		{
+			return Template[forwardMenuTemplate]();
+		}
 	}
 });
