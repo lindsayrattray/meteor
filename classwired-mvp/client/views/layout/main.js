@@ -38,11 +38,10 @@ Template.main.events({
 
 Template.main.helpers({
 	leftButton: function() {
-		var activityButton = Session.get('activity_leftButton');
-		var buttonTemplate = activityButton ? activityButton : 'leftButton';
+		var leftButtonTemplate = Session.get('leftButton') || 'leftButton';
 
-		console.log(buttonTemplate);
+		console.log(leftButtonTemplate);
 
-		return Template[buttonTemplate]();
+		return Template[leftButtonTemplate]();
 	}
 });

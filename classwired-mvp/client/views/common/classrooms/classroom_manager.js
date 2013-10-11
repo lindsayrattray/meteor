@@ -1,5 +1,5 @@
 Template.classroomManager.rendered = function() {
-
+	Session.set('leftButton', 'leftButton');
 };
 
 Template.classroomManager.helpers({
