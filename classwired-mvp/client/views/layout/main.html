@@ -39,7 +39,7 @@
 			<li><a>Option3</a></li>
 		</ul>
 
-		{{yield "messages"}}
+		{{> messages}}
 
 		{{yield}}
 	</div>
@@ -52,7 +52,7 @@
 {{else}}
 	<div class="row">
 		<div class="small-10 small-centered columns">
-			{{yield "login"}}
+			{{> login}}
 		</div>
 	</div>
 {{/if}}
