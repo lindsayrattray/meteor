@@ -23,14 +23,7 @@ Deps.autorun(function() {
 
 Template.classroom.rendered = function() {
 	if(Meteor.user())
-	{
-		if(!Session.get('leavingCurrentRoom'))
-		{
-			Meteor.call('setUserCurrentRoom', Meteor.user()._id, this.data._id);
-		}
-
-		Session.set('currentClassroom', this.data._id);
-		
+	{	
 		var currentGroup = Groups.findOne({members: Meteor.user()._id});
 		if(!currentGroup && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
 		{
