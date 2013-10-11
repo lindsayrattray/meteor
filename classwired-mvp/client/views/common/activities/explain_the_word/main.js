@@ -22,6 +22,9 @@ Template.activityExplainTheWord_Main.rendered = function() {
 		if(Meteor.user().permissions.indexOf('teacher') !== -1)
 		{
 			Session.set('forwardButton', true);
+			Session.set('forwardMenu', 'activityExplainTheWord_UI_Teacher_ForwardMenu');
+			Session.set('leftButton', 'activityExplainTheWord_UI_Teacher_LeftButton');
+			Session.set('rightButton', 'activityExplainTheWord_UI_Teacher_RightButton')
 		}
 		else
 		{

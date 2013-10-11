@@ -1,11 +1,11 @@
-Template.activityExplainTheWord_UI_ForwardMenu.events({
+Template.activityExplainTheWord_UI_Teacher_ForwardMenu.events({
 	'click .component a': function() {
 		Meteor.call('setCurrentComponent', Session.get('currentClassroom'), this.name);
 		Session.set('forward_MenuVisible', false);
 	}
 });
 
-Template.activityExplainTheWord_UI_ForwardMenu.helpers({
+Template.activityExplainTheWord_UI_Teacher_ForwardMenu.helpers({
 	components: function() {
 		var classroomId = Session.get('currentClassroom');
 		var classroom = Classrooms.findOne(classroomId);
