@@ -29,6 +29,22 @@ Template.classroom.rendered = function() {
 		{
 			Meteor.call('createGroup', this.data._id, Meteor.user()._id);
 		}
+
+		var leftButtonTemplate = Session.get('leftButton');
+		var rightButtonTemplate = Session.get('rightButton');
+		var forwardButtonTemplate = Session.get('forwardButton');
+
+		console.log(rightButtonTemplate);
+
+		if(!leftButtonTemplate || leftButtonTemplate === 'leftButton')
+		{
+			Session.set('leftButton', 'classroom_leftButton');
+		}
+
+		if(!rightButtonTemplate || rightButtonTemplate === 'rightButton')
+		{
+			Session.set('rightButton', 'classroom_rightButton');
+		}
 	}
 }
 

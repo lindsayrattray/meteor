@@ -40,8 +40,11 @@ Template.main.helpers({
 	leftButton: function() {
 		var leftButtonTemplate = Session.get('leftButton') || 'leftButton';
 
-		console.log(leftButtonTemplate);
-
 		return Template[leftButtonTemplate]();
+	},
+	rightButton: function() {
+		var rightButtonTemplate = Session.get('rightButton') || 'rightButton';
+
+		return Template[rightButtonTemplate]();
 	}
 });
