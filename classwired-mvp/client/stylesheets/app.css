@@ -7458,7 +7458,7 @@ footer {
 }
 
 /* line 219, sass/app.scss */
-.dropdown {
+.main > .dropdown {
   position: absolute;
   width: 100%;
   max-height: 100%;
@@ -7466,7 +7466,7 @@ footer {
   z-index: 999;
 }
 /* line 228, sass/app.scss */
-.dropdown li {
+.main > .dropdown li {
   display: block;
   width: 100%;
   background-color: #222222;
@@ -7474,11 +7474,11 @@ footer {
   border-bottom: 1px solid #090909;
 }
 /* line 237, sass/app.scss */
-.dropdown li:hover {
+.main > .dropdown li:hover {
   background-color: #090909;
 }
 /* line 242, sass/app.scss */
-.dropdown li a {
+.main > .dropdown li a {
   line-height: 3em;
   color: white;
   font-size: 1em;
@@ -7488,7 +7488,7 @@ footer {
   padding-left: 0.5em;
 }
 /* line 254, sass/app.scss */
-.dropdown li a.logout {
+.main > .dropdown li a.logout {
   border-style: solid;
   border-width: 1px;
   cursor: pointer;
@@ -7512,11 +7512,11 @@ footer {
   display: block;
 }
 /* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-.dropdown li a.logout:hover, .dropdown li a.logout:focus {
+.main > .dropdown li a.logout:hover, .main > .dropdown li a.logout:focus {
   background-color: #970b0e;
 }
 /* line 133, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-.dropdown li a.logout:hover, .dropdown li a.logout:focus {
+.main > .dropdown li a.logout:hover, .main > .dropdown li a.logout:focus {
   color: white;
 }
 

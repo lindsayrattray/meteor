@@ -5,11 +5,11 @@ Deps.autorun(function() {
 	Meteor.call('calculateTimes', items, Session.get('currentClassroom'));
 });
 
-Template.activityExplainTheWord_Explain_Stats.rendered = function() {
+Template.activityExplainTheWord_Explain_Stats_Class.rendered = function() {
 	
 };
 
-Template.activityExplainTheWord_Explain_Stats.events({
+Template.activityExplainTheWord_Explain_Stats_Class.events({
 	'click .explain-item-stat a': function(event, template) {
 		if(Session.get('explainItemStatVisible') === this._id)
 		{
@@ -22,7 +22,7 @@ Template.activityExplainTheWord_Explain_Stats.events({
 	}
 });
 
-Template.activityExplainTheWord_Explain_Stats.helpers({
+Template.activityExplainTheWord_Explain_Stats_Class.helpers({
 	explainItems: function() {
 		var explainItems = ExplainTheWord_ExplainItemTimes.find({ classroomId: this.classroom._id }).fetch().sort(function(a, b) { return b.avgTime - a.avgTime });
 		return explainItems;
