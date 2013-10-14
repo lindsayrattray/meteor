@@ -469,6 +469,56 @@ footer
 
   .wordlist
   {
+    &.student
+    {
+
+    }
+
+    &.teacher
+    {
+      @include grid-row();
+
+      height: 100%;
+
+      > .container
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        height: 200%;
+
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        -ms-transition: all 500ms ease;
+        -o-transition: all 500ms ease;
+        transition: all 500ms ease;
+
+        &.activity
+        {
+          -webkit-transform: translate(0, 0%);
+          -moz-transform: translate(0, 0%);
+          -ms-transform: translate(0, 0%);
+          -o-transform: translate(0, 0%);
+          transform: translate(0, 0%);
+        }
+
+        &.class
+        {
+          -webkit-transform: translate(0, -50%);
+          -moz-transform: translate(0, -50%);
+          -ms-transform: translate(0, -50%);
+          -o-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+        }
+
+        > div
+        {
+          @include grid-row($behavior: nest-collapse);
+
+          height: 50%;
+        }
+      }
+    }/*
+
     @include grid-row();
 
     height: 100%;
@@ -555,7 +605,7 @@ footer
 
         line-height: 2em;
       }
-    }
+    }*/
   }
 
   .explain
