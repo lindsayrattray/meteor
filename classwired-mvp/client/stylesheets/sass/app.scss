@@ -546,8 +546,6 @@ footer
         input
         {
           @include grid-column(10);
-
-
         }
 
         button
@@ -1071,35 +1069,6 @@ footer
 .hide-overflow
 {
   overflow: auto;
-}
-
-.slide-visibility-transition
-{
-  -webkit-transition: -webkit-transform 600ms ease, opacity 600ms ease;
-  -moz-transition: -moz-transform 600ms ease, opacity 600ms ease;
-  -ms-transition: -ms-transform 600ms ease, opacity 600ms ease;
-  -o-transition: -o-transform 600ms ease, opacity 600ms ease;
-  transition: transform 600ms ease, opacity 600ms ease;
-}
-
-.slide-down-visible
-{
-  opacity: 1.0;
-  -webkit-transform: scale(1, 1.0);
-  -moz-transform: scale(1, 1.0);
-  -ms-transform: scale(1, 1.0);
-  -o-transform: scale(1, 1.0);
-  transform: scale(1, 1.0);
-}
-
-.slide-down-invisible
-{
-  opacity: 0.0;
-  -webkit-transform: scale(1, 0.0);
-  -moz-transform: scale(1, 0.0);
-  -ms-transform: scale(1, 0.0);
-  -o-transform: scale(1, 0.0);
-  transform: scale(1, 0.0);
 }
 
 .list li:nth-child(odd)
