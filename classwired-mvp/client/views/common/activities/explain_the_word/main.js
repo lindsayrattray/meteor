@@ -16,6 +16,23 @@ Deps.autorun(function() {
 	}
 });
 
+Template.activityExplainTheWord_Main.rendered = function() {
+	if(Meteor.user())
+	{
+		if(Meteor.user().permissions.indexOf('teacher') !== -1)
+		{
+			Session.set('forwardButton', true);
+			Session.set('forwardMenu', 'activityExplainTheWord_UI_Teacher_ForwardMenu');
+			Session.set('leftButton', 'activityExplainTheWord_UI_Teacher_LeftButton');
+			Session.set('rightButton', 'activityExplainTheWord_UI_Teacher_RightButton')
+		}
+		else
+		{
+
+		}
+	}
+};
+
 Template.activityExplainTheWord_Main.helpers({
 	component: function() {
 		var component = Components.findOne({name: this.classroom.currentActivityComponent});
