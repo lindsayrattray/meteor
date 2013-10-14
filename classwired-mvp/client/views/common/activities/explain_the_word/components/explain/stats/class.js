@@ -5,12 +5,8 @@ Deps.autorun(function() {
 	Meteor.call('calculateTimes', items, Session.get('currentClassroom'));
 });
 
-Template.activityExplainTheWord_Explain_Stats_Class.rendered = function() {
-	
-};
-
 Template.activityExplainTheWord_Explain_Stats_Class.events({
-	'click .explain-item-stat a': function(event, template) {
+	'click .stats.class ul li a': function(event, template) {
 		if(Session.get('explainItemStatVisible') === this._id)
 		{
 			Session.set('explainItemStatVisible', null);

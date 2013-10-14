@@ -3,7 +3,7 @@ Template.activityExplainTheWord_Explain_Stats_Activity.rendered = function() {
 }
 
 Template.activityExplainTheWord_Explain_Stats_Activity.events({
-	'click .explain.teacher > ul li a': function(event, template) {
+	'click .stats.activity > ul li a': function(event, template) {
 		if(Session.get('explainStudentStat') === this.toString())
 		{
 			Session.set('explainStudentStat', null);

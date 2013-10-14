@@ -662,151 +662,265 @@ footer
           @include grid-row($behavior: nest-collapse);
 
           height: 50%;
-        }
-      }
-      /*
-      button
-      {
-        @include button($button-med, $primary-color, false, true);
-        @include single-transition;
-        @include inset-shadow(true);
 
-        margin-bottom: 0;
-      }
-
-      > .header
-      {
-        @include grid-row($behavior: nest-collapse);
-
-        border: 1px solid #ddd;
-        background-color: #f5f5f5;
-
-        line-height: 2em;
-
-        span
-        {
-          @include grid-column(6);
-
-          font-weight: 600;
-        }
-      }
-
-      > ul
-      {
-        @include grid-row($behavior: nest-collapse);
-
-        list-style: none;
-        
-        height: 60%;
-        overflow-y: auto;
-
-        border:
-        {
-          left: 1px solid #ddd;
-          right: 1px solid #ddd;
-          bottom: 1px solid #ddd;
-        }
-
-        > li
-        {
-          @include grid-row($behavior: nest-collapse);
-
-          line-height: 2em;
-
-          &:nth-child(even)
+          .stats
           {
-            background-color: #f9f9f9;
-          }
-
-          a
-          {
-            span
+            &.activity
             {
-              @include grid-column(6);
-            }
-          }
+              @include grid-row();
 
-          div
-          {
-            @include grid-row($behavior: nest-collapse);
+              height: 100%;
 
-            > .header
-            {
-              @include grid-row($behavior: nest-collapse);
-
-              border-top: 1px solid #ddd;
-
-              > span
+              button
               {
-                font-weight: 600;
+                @include button($button-med, $primary-color, false, true);
+                @include single-transition;
+                @include inset-shadow(true);
 
-                &:nth-child(1)
-                {
-                  @include grid-column(6);
-                }
-
-                &:nth-child(2)
-                {
-                  @include grid-column(4);
-                }
-
-                &:nth-child(3)
-                {
-                  @include grid-column(2);
-
-                  .tick
-                  {
-                    color: $success-color;
-                  }
-
-                  .cross
-                  {
-                    color: $alert-color;
-                  }
-                }
-              }
-            }
-
-            ul
-            {
-              @include grid-row($behavior: nest-collapse);
-
-              border:
-              {
-                top: 1px solid #ddd;
-                bottom: 1px solid #ddd;
+                margin-bottom: 0;
               }
 
-              li
+              > .header
               {
                 @include grid-row($behavior: nest-collapse);
 
-                display: block;
+                border: 1px solid #ddd;
+                background-color: #f5f5f5;
+
+                line-height: 2em;
 
                 span
                 {
-                  &:nth-child(1)
+                  @include grid-column(6);
+
+                  font-weight: 600;
+                }
+              }
+
+              > ul
+              {
+                @include grid-row($behavior: nest-collapse);
+
+                list-style: none;
+                
+                height: 70%;
+                overflow-y: auto;
+
+                border:
+                {
+                  left: 1px solid #ddd;
+                  right: 1px solid #ddd;
+                  bottom: 1px solid #ddd;
+                }
+
+                > li
+                {
+                  @include grid-row($behavior: nest-collapse);
+
+                  line-height: 2em;
+
+                  &:nth-child(even)
                   {
-                    @include grid-column(6);
+                    background-color: #f9f9f9;
                   }
 
-                  &:nth-child(2)
+                  a
+                  {
+                    @include grid-row($behavior: nest-collapse);
+
+                    span
+                    {
+                      @include grid-column(6);
+                    }
+                  }
+
+                  div
+                  {
+                    @include grid-row($behavior: nest-collapse);
+
+                    > .header
+                    {
+                      @include grid-row($behavior: nest-collapse);
+
+                      border-top: 1px solid #ddd;
+
+                      > span
+                      {
+                        font-weight: 600;
+
+                        &:nth-child(1)
+                        {
+                          @include grid-column(6);
+                        }
+
+                        &:nth-child(2)
+                        {
+                          @include grid-column(4);
+                        }
+
+                        &:nth-child(3)
+                        {
+                          @include grid-column(2);
+
+                          .tick
+                          {
+                            color: $success-color;
+                          }
+
+                          .cross
+                          {
+                            color: $alert-color;
+                          }
+                        }
+                      }
+                    }
+
+                    ul
+                    {
+                      @include grid-row($behavior: nest-collapse);
+
+                      border:
+                      {
+                        top: 1px solid #ddd;
+                        bottom: 1px solid #ddd;
+                      }
+
+                      li
+                      {
+                        @include grid-row($behavior: nest-collapse);
+
+                        display: block;
+
+                        span
+                        {
+                          &:nth-child(1)
+                          {
+                            @include grid-column(6);
+                          }
+
+                          &:nth-child(2)
+                          {
+                            @include grid-column(4);
+                          }
+
+                          &:nth-child(3)
+                          {
+                            @include grid-column(2);
+
+                            &.tick
+                            {
+                              color: $success-color;
+                            }
+
+                            &.cross
+                            {
+                              color: $alert-color;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            &.class
+            {
+              @include grid-row();
+
+              height: 100%;
+
+              > .header
+              {
+                @include grid-row($behavior: nest-collapse);
+
+                border: 1px solid #ddd;
+                background-color: #f5f5f5;
+
+                line-height: 2em;
+
+                span
+                {
+                  font-weight: 600;
+
+                  &:nth-child(1)
                   {
                     @include grid-column(4);
                   }
 
+                  &:nth-child(2)
+                  {
+                    @include grid-column(3);
+                  }
+
                   &:nth-child(3)
                   {
-                    @include grid-column(2);
+                    @include grid-column(5);
+                  }
+                }
+              }
 
-                    &.tick
+              ul
+              {
+                @include grid-row($behavior: nest-collapse);
+
+                list-style: none;
+
+                display: block;
+                height: 70%;
+                overflow-y: auto;
+
+                border:
+                {
+                  left: 1px solid #ddd;
+                  right: 1px solid #ddd;
+                  bottom: 1px solid #ddd;
+                }
+
+                li
+                {
+                  line-height: 2em;
+
+                  &:nth-child(even)
+                  {
+                    background-color: #f9f9f9;
+                  }
+
+                  a
+                  {
+                    @include grid-row($behavior: nest-collapse);
+
+                    span
                     {
-                      color: $success-color;
+                      &:nth-child(1)
+                      {
+                        @include grid-column(4);
+                      }
+
+                      &:nth-child(2)
+                      {
+                        @include grid-column(3);
+                      }
+
+                      &:nth-child(3)
+                      {
+                        @include grid-column(5);
+                      }
                     }
+                  }
+                  > div
+                  {
+                    @include grid-row($behavior: nest-collapse);
 
-                    &.cross
+                    border:
                     {
-                      color: $alert-color;
+                      top: 1px solid #ddd;
+                      bottom: 1px solid #ddd;
+                    }
+                    > div
+                    {
+                      @include grid-column(12);
                     }
                   }
                 }
@@ -814,7 +928,7 @@ footer
             }
           }
         }
-      }*/      
+      }
     }
   }
 }

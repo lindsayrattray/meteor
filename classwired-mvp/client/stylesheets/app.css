@@ -8156,160 +8156,6 @@ footer {
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
 }
-/* line 629, sass/app.scss */
-.explain-the-word .explain.teacher {
-      /*
-      button
-      {
-        @include button($button-med, $primary-color, false, true);
-        @include single-transition;
-        @include inset-shadow(true);
-
-        margin-bottom: 0;
-      }
-
-      > .header
-      {
-        @include grid-row($behavior: nest-collapse);
-
-        border: 1px solid #ddd;
-        background-color: #f5f5f5;
-
-        line-height: 2em;
-
-        span
-        {
-          @include grid-column(6);
-
-          font-weight: 600;
-        }
-      }
-
-      > ul
-      {
-        @include grid-row($behavior: nest-collapse);
-
-        list-style: none;
-        
-        height: 60%;
-        overflow-y: auto;
-
-        border:
-        {
-          left: 1px solid #ddd;
-          right: 1px solid #ddd;
-          bottom: 1px solid #ddd;
-        }
-
-        > li
-        {
-          @include grid-row($behavior: nest-collapse);
-
-          line-height: 2em;
-
-          &:nth-child(even)
-          {
-            background-color: #f9f9f9;
-          }
-
-          a
-          {
-            span
-            {
-              @include grid-column(6);
-            }
-          }
-
-          div
-          {
-            @include grid-row($behavior: nest-collapse);
-
-            > .header
-            {
-              @include grid-row($behavior: nest-collapse);
-
-              border-top: 1px solid #ddd;
-
-              > span
-              {
-                font-weight: 600;
-
-                &:nth-child(1)
-                {
-                  @include grid-column(6);
-                }
-
-                &:nth-child(2)
-                {
-                  @include grid-column(4);
-                }
-
-                &:nth-child(3)
-                {
-                  @include grid-column(2);
-
-                  .tick
-                  {
-                    color: $success-color;
-                  }
-
-                  .cross
-                  {
-                    color: $alert-color;
-                  }
-                }
-              }
-            }
-
-            ul
-            {
-              @include grid-row($behavior: nest-collapse);
-
-              border:
-              {
-                top: 1px solid #ddd;
-                bottom: 1px solid #ddd;
-              }
-
-              li
-              {
-                @include grid-row($behavior: nest-collapse);
-
-                display: block;
-
-                span
-                {
-                  &:nth-child(1)
-                  {
-                    @include grid-column(6);
-                  }
-
-                  &:nth-child(2)
-                  {
-                    @include grid-column(4);
-                  }
-
-                  &:nth-child(3)
-                  {
-                    @include grid-column(2);
-
-                    &.tick
-                    {
-                      color: $success-color;
-                    }
-
-                    &.cross
-                    {
-                      color: $alert-color;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }*/
-}
 /* line 631, sass/app.scss */
 .explain-the-word .explain.teacher > .container {
   width: auto;
@@ -8365,37 +8211,498 @@ footer {
 .explain-the-word .explain.teacher > .container > div:after {
   clear: both;
 }
+/* line 669, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 62.5em;
+  *zoom: 1;
+  height: 100%;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity:before, .explain-the-word .explain.teacher > .container > div .stats.activity:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity:after {
+  clear: both;
+}
+/* line 675, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity button {
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: normal;
+  margin: 0 0 1.25em;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  padding-top: 0.75em;
+  padding-right: 1.5em;
+  padding-bottom: 0.8125em;
+  padding-left: 1.5em;
+  font-size: 1em;
+  padding-top: 0.75em;
+  padding-bottom: 0.8125em;
+  padding-right: 0;
+  padding-left: 0;
+  width: 100%;
+  background-color: #2ba6cb;
+  border-color: #2284a1;
+  color: white;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  margin-bottom: 0;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity button:hover, .explain-the-word .explain.teacher > .container > div .stats.activity button:focus {
+  background-color: #2284a1;
+}
+/* line 133, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity button:hover, .explain-the-word .explain.teacher > .container > div .stats.activity button:focus {
+  color: white;
+}
+/* line 68, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity button:active {
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
+}
+/* line 684, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > .header {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  line-height: 2em;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > .header:before, .explain-the-word .explain.teacher > .container > div .stats.activity > .header:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > .header:after {
+  clear: both;
+}
+/* line 693, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > .header span {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 50%;
+  float: left;
+  font-weight: 600;
+}
+/* line 701, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  list-style: none;
+  height: 70%;
+  overflow-y: auto;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul:before, .explain-the-word .explain.teacher > .container > div .stats.activity > ul:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul:after {
+  clear: both;
+}
+/* line 717, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  line-height: 2em;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li:before, .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li:after {
+  clear: both;
+}
+/* line 723, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li:nth-child(even) {
+  background-color: #f9f9f9;
+}
+/* line 728, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li a {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li a:before, .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li a:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li a:after {
+  clear: both;
+}
+/* line 732, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li a span {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 50%;
+  float: left;
+}
+/* line 738, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div:before, .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div:after {
+  clear: both;
+}
+/* line 742, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  border-top: 1px solid #ddd;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header:before, .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header:after {
+  clear: both;
+}
+/* line 748, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span {
+  font-weight: 600;
+}
+/* line 752, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span:nth-child(1) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 50%;
+  float: left;
+}
+/* line 757, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span:nth-child(2) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 33.33333%;
+  float: left;
+}
+/* line 762, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span:nth-child(3) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 16.66667%;
+  float: left;
+}
+/* line 766, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span:nth-child(3) .tick {
+  color: #5da423;
+}
+/* line 771, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span:nth-child(3) .cross {
+  color: #c60f13;
+}
+/* line 779, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul:before, .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul:after {
+  clear: both;
+}
+/* line 789, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  display: block;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li:before, .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li:after {
+  clear: both;
+}
+/* line 797, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li span:nth-child(1) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 50%;
+  float: left;
+}
+/* line 802, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li span:nth-child(2) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 33.33333%;
+  float: left;
+}
+/* line 807, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li span:nth-child(3) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 16.66667%;
+  float: left;
+}
+/* line 811, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li span:nth-child(3).tick {
+  color: #5da423;
+}
+/* line 816, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li span:nth-child(3).cross {
+  color: #c60f13;
+}
+/* line 829, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 62.5em;
+  *zoom: 1;
+  height: 100%;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class:before, .explain-the-word .explain.teacher > .container > div .stats.class:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class:after {
+  clear: both;
+}
+/* line 835, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class > .header {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  line-height: 2em;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class > .header:before, .explain-the-word .explain.teacher > .container > div .stats.class > .header:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class > .header:after {
+  clear: both;
+}
+/* line 844, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class > .header span {
+  font-weight: 600;
+}
+/* line 848, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class > .header span:nth-child(1) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 33.33333%;
+  float: left;
+}
+/* line 853, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class > .header span:nth-child(2) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 25%;
+  float: left;
+}
+/* line 858, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class > .header span:nth-child(3) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 41.66667%;
+  float: left;
+}
+/* line 865, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  list-style: none;
+  display: block;
+  height: 70%;
+  overflow-y: auto;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul:before, .explain-the-word .explain.teacher > .container > div .stats.class ul:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul:after {
+  clear: both;
+}
+/* line 882, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li {
+  line-height: 2em;
+}
+/* line 886, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li:nth-child(even) {
+  background-color: #f9f9f9;
+}
+/* line 891, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li a {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li a:before, .explain-the-word .explain.teacher > .container > div .stats.class ul li a:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li a:after {
+  clear: both;
+}
+/* line 897, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li a span:nth-child(1) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 33.33333%;
+  float: left;
+}
+/* line 902, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li a span:nth-child(2) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 25%;
+  float: left;
+}
+/* line 907, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li a span:nth-child(3) {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 41.66667%;
+  float: left;
+}
+/* line 913, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li > div {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li > div:before, .explain-the-word .explain.teacher > .container > div .stats.class ul li > div:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li > div:after {
+  clear: both;
+}
+/* line 922, sass/app.scss */
+.explain-the-word .explain.teacher > .container > div .stats.class ul li > div > div {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 100%;
+  float: left;
+}
 
-/* line 826, sass/app.scss */
+/* line 940, sass/app.scss */
 .classroom-link {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-/* line 833, sass/app.scss */
+/* line 947, sass/app.scss */
 .classroom-manager-container {
   height: 16em;
   box-shadow: 0 0 4px 1px #ccc inset;
 }
 
-/* line 839, sass/app.scss */
+/* line 953, sass/app.scss */
 .stats-container {
   height: 16em;
   border: 1px solid #ccc;
 }
 
-/* line 845, sass/app.scss */
+/* line 959, sass/app.scss */
 .activity-viewport {
   width: 200%;
 }
 
-/* line 850, sass/app.scss */
+/* line 964, sass/app.scss */
 .hide-overflow {
   overflow: auto;
 }
 
-/* line 855, sass/app.scss */
+/* line 969, sass/app.scss */
 .slide-visibility-transition {
   -webkit-transition: -webkit-transform 600ms ease, opacity 600ms ease;
   -moz-transition: -moz-transform 600ms ease, opacity 600ms ease;
@@ -8404,7 +8711,7 @@ footer {
   transition: transform 600ms ease, opacity 600ms ease;
 }
 
-/* line 864, sass/app.scss */
+/* line 978, sass/app.scss */
 .slide-down-visible {
   opacity: 1.0;
   -webkit-transform: scale(1, 1);
@@ -8414,7 +8721,7 @@ footer {
   transform: scale(1, 1);
 }
 
-/* line 874, sass/app.scss */
+/* line 988, sass/app.scss */
 .slide-down-invisible {
   opacity: 0.0;
   -webkit-transform: scale(1, 0);
@@ -8424,74 +8731,74 @@ footer {
   transform: scale(1, 0);
 }
 
-/* line 884, sass/app.scss */
+/* line 998, sass/app.scss */
 .list li:nth-child(odd) {
   background-color: #f9f9f9;
 }
 
-/* line 889, sass/app.scss */
+/* line 1003, sass/app.scss */
 .component-selector-nav ul {
   display: inline-block;
   float: none !important;
 }
 
-/* line 895, sass/app.scss */
+/* line 1009, sass/app.scss */
 .scrolltable-container {
   height: 16em;
   overflow-y: auto;
   clear: both;
 }
 
-/* line 902, sass/app.scss */
+/* line 1016, sass/app.scss */
 .txt-wordlist-item-input {
   margin: 0.5em 0 0.5em 0 !important;
   font-size: 1.5em !important;
 }
 
-/* line 908, sass/app.scss */
+/* line 1022, sass/app.scss */
 .scrolltable {
   margin-bottom: 0px;
   table-layout: fixed;
 }
 
-/* line 914, sass/app.scss */
+/* line 1028, sass/app.scss */
 .no-horz-padding {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* line 920, sass/app.scss */
+/* line 1034, sass/app.scss */
 .no-vert-margin {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
 
-/* line 926, sass/app.scss */
+/* line 1040, sass/app.scss */
 .clear {
   clear: both;
 }
 
-/* line 931, sass/app.scss */
+/* line 1045, sass/app.scss */
 .background-red {
   background-color: #dba9aa;
 }
 
-/* line 936, sass/app.scss */
+/* line 1050, sass/app.scss */
 .background-green {
   background-color: #b4cca1;
 }
 
-/* line 941, sass/app.scss */
+/* line 1055, sass/app.scss */
 .background-yellow {
   background-color: #ebf097;
 }
 
-/* line 946, sass/app.scss */
+/* line 1060, sass/app.scss */
 .red-text {
   color: #c60f13;
 }
 
-/* line 951, sass/app.scss */
+/* line 1065, sass/app.scss */
 .green-text {
   color: #5da423;
 }
