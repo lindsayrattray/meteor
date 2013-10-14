@@ -1,79 +1,12 @@
 <template name="activityExplainTheWord_Explain_Teacher">
 	<div class="explain teacher">
-		<button>Reshuffle words</button>
-		<div class="header">
-			<span>Student</span>
-			<span>Current Word</span>
-		</div>
-		<ul>
-			{{#each students}}
-				<li>
-					<a>
-						<span>
-							{{#if showStatDetails this}}
-								 &#x25b4;
-							{{else}}
-								 &#x25be;
-							{{/if}}
-							{{profileName this}}
-						</span>
-						<span>{{currentItem this}}</span>
-					</a>
-					<div class="dropdown {{#unless showStatDetails this}}hide{{/unless}}">
-						{{#if showStatDetails this}}
-							<ul>
-								{{#each studentAllItems}}
-									<li>
-										<span>
-											{{this.item}}
-										</span>
-										<span>
-											{{itemAnswerTime}}
-										</span>
-										<span>
-											{{itemAnswer}}
-										</span>
-									</li>
-								{{/each}}
-							</ul>
-						{{/if}}
-					</div>
-				</li>
-			{{/each}}
-		</ul>
-	</div>
-
-	<a id="assign-all-new-items" class="button expand">Reshuffle words</a>
-	<div class="small-12 columns stats-container no-horz-padding">
-		<div class="small-12 columns no-horz-padding">
-			<span class="small-6 columns no-horz-padding">Student</span>
-			<span class="small-6 columns no-horz-padding">Current Word</span>
-		</div>
-		<hr />
-		<div class="small-12 columns no-horz-padding">
-			<ul class="no-bullet list">
-				{{#each students}}
-					<li class="small-12 columns student-stat no-horz-padding">
-						<a>
-							<span class="small-6 columns no-horz-padding">{{profileName this}}</span>
-							<span class="small-6 columns no-horz-padding">{{currentItem this}}</span>
-						</a>
-						<div class="{{#unless showStatDetails this}}hide{{/unless}}">
-							<ul class="no-bullet">
-								{{#if showStatDetails this}}
-									{{#each studentAllItems}}
-										<li class="no-horz-padding">
-											<span class="no-horz-padding small-6 columns">{{this.item}}</span>
-											<span class="no-horz-padding small-4 columns">{{itemAnswerTime}}</span>
-											<span class="no-horz-padding small-2 columns {{itemAnswerColor}}">{{itemAnswer}}</span>
-										</li>
-									{{/each}}
-								{{/if}}
-							</ul>
-						</div>
-					</li>
-				{{/each}}
-			</ul>
+		<div class="container activity">
+			<div>
+				{{> activityExplainTheWord_Explain_Stats_Activity}}
+			</div>
+			<div>
+				{{> activityExplainTheWord_Explain_Stats_Class}}		
+			</div>
 		</div>
 	</div>
 </template>

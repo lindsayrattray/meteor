@@ -7,31 +7,38 @@
 	<header>
 		<nav class="top-menu">
 			<div>
-				<a class="menu-icon {{#if sessionGet 'main_MenuVisible'}}active{{/if}}">&#x2699;</a>
-				<a class="menu-context">Context</a>
+				<a class="icon {{#if sessionGet 'main_MenuVisible'}}active{{/if}}">&#x2699;</a>
+				<a class="context">Context</a>
+				{{#if sessionGet 'forwardButton'}}
+					<a class="forward">&raquo;</a>
+				{{/if}}
 			</div>
-			<ul class="dropdown {{#unless sessionGet 'main_MenuVisible'}}hide{{/unless}}">
-				<li><a>Option1</a></li>
-				<li><a>Option2</a></li>
-				<li>{{> logout}}</li>
-			</ul>
 		</nav>
 	</header>
 	<div class="main">
-		{{yield "messages"}}
+		<ul class="dropdown {{#unless sessionGet 'main_MenuVisible'}}hide{{/unless}}">
+			<li><a>Option1</a></li>
+			<li><a>Option2</a></li>
+			<li>{{> logout}}</li>
+		</ul>
+		<ul class="dropdown {{#unless sessionGet 'forward_MenuVisible'}}hide{{/unless}}">
+			{{{forwardMenu}}}
+		</ul>
+
+		{{> messages}}
 
 		{{yield}}
 	</div>
 	<footer>
 		<nav class="bottom-options">
-			<button class="left">Option 1</button>
-			<button class="right">Option 2</button>
+			{{{leftButton}}}
+			{{{rightButton}}}
 		</nav>
 	</footer>
 {{else}}
 	<div class="row">
 		<div class="small-10 small-centered columns">
-			{{yield "login"}}
+			{{> login}}
 		</div>
 	</div>
 {{/if}}

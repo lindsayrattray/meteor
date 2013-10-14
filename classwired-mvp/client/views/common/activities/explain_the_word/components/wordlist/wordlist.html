@@ -1,37 +1,7 @@
 <template name="activityExplainTheWord_Wordlist">
-	<div class="wordlist">
-		<div class="header">
-			<span>Word</span>
-			{{#unless thisUserHasRole 'teacher'}}
-				<span>Student</span>
-			{{else}}
-				<span>Group</span>
-			{{/unless}}
-		</div>
-		<ul>
-			{{#each wordlistItems}}
-				<li>
-					<span>
-						<input type="text" value="{{this.item}}"
-							{{#unless isCurrentUserOrRole this.userId 'teacher'}}
-								disabled="true"
-							{{/unless}} />
-					</span>
-					<span>
-						{{#if thisUserHasRole 'teacher'}}
-							{{groupMembers this.groupId}}
-						{{else}}
-							{{profileName this.userId}}
-						{{/if}}
-					</span>
-				</li>
-			{{/each}}
-		</ul>
-		{{#unless thisUserHasRole 'teacher'}}
-			<form>
-				<input type="text" placeholder="Enter a Word"/>
-				<button class="submit">Submit</button>
-			</form>
-		{{/unless}}
-	</div>
+	{{#if thisUserHasRole 'teacher'}}
+		{{> activityExplainTheWord_Wordlist_Teacher}}
+	{{else}}
+		{{> activityExplainTheWord_Wordlist_Student}}
+	{{/if}}
 </template>

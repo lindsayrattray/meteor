@@ -1,5 +1,5 @@
 Deps.autorun(function() {
-	var $container = $('.explain.teacher .container');
+	var $container = $('.wordlist.teacher .container');
 
 	if(Session.get('statsMode') === 'class')
 	{
