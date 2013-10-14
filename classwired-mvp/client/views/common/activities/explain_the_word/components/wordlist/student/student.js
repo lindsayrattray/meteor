@@ -7,28 +7,28 @@ Template.activityExplainTheWord_Wordlist_Student.rendered = function() {
 	var isEditing = Session.get('editingItem')
 	if(!isEditing)
 	{
-		var $wordlistContainer = $('.wordlist .container');
+		var $wordlistContainer = $('.wordlist.student ul');
 		$wordlistContainer.stop().animate({ scrollTop: $wordlistContainer.prop("scrollHeight") }, 1000);
 	}
 };
 
 Template.activityExplainTheWord_Wordlist_Student.events({
-	'input .wordlist .container div span input': function(event, template) {
+	'input .wordlist.student ul li span input': function(event, template) {
 		updateWordlist(this, event.srcElement.value);
 	},
-	'focus .wordlist .container div span input': function() {
+	'focus .wordlist.student ul li span input': function() {
 		Session.set('editingItem', true);
 	},
-	'blur .wordlist .container div span input': function() {
+	'blur .wordlist.student ul li span input': function() {
 		Session.set('editingItem', false);
 	},
-	'submit .wordlist form': function(event, template) {
+	'submit .wordlist.student form': function(event, template) {
 		var user = Meteor.user();
 		if(user)
 		{
 			var group = Groups.findOne({ members: user._id, classroomId: template.data.classroom._id });
 			var wordlistItem =  {
-									item: template.find('.wordlist form input').value,
+									item: template.find('.wordlist.student form input').value,
 									userId: user._id,
 									groupId: group._id,
 									classroomId: template.data.classroom._id
@@ -39,7 +39,7 @@ Template.activityExplainTheWord_Wordlist_Student.events({
 				ExplainTheWord_WordlistItems.insert(wordlistItem);
 			}
 		}
-		template.find('.wordlist form input').value = '';
+		template.find('.wordlist.student form input').value = '';
 
 		event.preventDefault();
 	}
