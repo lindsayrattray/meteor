@@ -16,7 +16,9 @@
 					</li>
 				{{/each}}
 			</ul>
-			<button>New Classroom</button>
+			{{#if thisUserHasRole 'teacher'}}
+				<button>New Classroom</button>
+			{{/if}}
 		</div>
 		<div class="modal hide">
 			<div>
