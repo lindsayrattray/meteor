@@ -14,7 +14,7 @@ Template.activityExplainTheWord_Wordlist_Student.rendered = function() {
 
 Template.activityExplainTheWord_Wordlist_Student.events({
 	'input .wordlist.student ul li span input': function(event, template) {
-		updateWordlist(this, event.srcElement.value);
+		updateWordlist(this, event.target.value);
 	},
 	'focus .wordlist.student ul li span input': function() {
 		Session.set('editingItem', true);
@@ -36,6 +36,7 @@ Template.activityExplainTheWord_Wordlist_Student.events({
 			if(!ExplainTheWord_WordlistItems.findOne(wordlistItem))
 			{
 				wordlistItem.created_timestamp = Date.parse(new Date());
+				console.log('foo');
 				ExplainTheWord_WordlistItems.insert(wordlistItem);
 			}
 		}
