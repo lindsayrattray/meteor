@@ -3,7 +3,6 @@ Template.activityExplainTheWord_Explain_Student.rendered = function() {
 	{
 		Meteor.call('populateItems', Meteor.userId().toString(), this.data.classroom._id);
 	}
-	console.log('foo');
 }
 
 Template.activityExplainTheWord_Explain_Student.events({
