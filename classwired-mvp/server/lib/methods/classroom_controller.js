@@ -2,7 +2,7 @@ Meteor.methods({
 	createClassroom: function(name, userId) {
 		if(!Classrooms.findOne({ name: name }))
 		{
-			Classrooms.insert({ name: name, owner: userId, currentActivity: 'idle', currentActivityComponent: '', open: true, date_created: Date.parse(new Date) });
+			Classrooms.insert({ name: name, owner: userId, currentActivity: null, currentActivityComponent: '', open: true, date_created: Date.parse(new Date) });
 		}
 	},
 	setCurrentActivity: function(classroomId, activityName) {

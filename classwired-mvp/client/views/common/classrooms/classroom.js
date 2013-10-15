@@ -70,7 +70,8 @@ Template.classroom.helpers({
 		var activity = Activities.findOne({name: this.currentActivity});
 		if(!activity)
 		{
-			activity = Activities.findOne({name: 'idle'});
+			console.log(Template['activityManager']());
+			return Template['activityManager']();
 		}
 		
 		if(activity)
