@@ -1,14 +1,5 @@
 //TODO add handles for publications
 
-Meteor.publish('inputs', function(username) {
-	if (!username) {
-		return Inputs.find();	
-	}
-	else {
-		return Inputs.find({author: username});
-	}
-});
-
 Meteor.publish('groups', function(userId, classroomId) {
 	var query = {}
 	if(classroomId)
@@ -34,10 +25,6 @@ Meteor.publish('classroomGroups', function(classroomId) {
 
 Meteor.publish('classrooms', function() {
 	return Classrooms.find();
-});
-
-Meteor.publish('inputItems', function() {
-	return InputItems.find();
 });
 
 Meteor.publish('systemUsers', function() {
