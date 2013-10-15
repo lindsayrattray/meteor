@@ -40,8 +40,15 @@ Template.activityExplainTheWord_Main.helpers({
 		var component = Components.findOne(this.classroom.currentActivityComponent);
 		if(!component)
 		{
-			return 'no component found matching ' + this.classroom.currentActivityComponent;
+			component = Components.find({ name: 'wordlist' }).fetch()[0];
+			if(component)
+			{
+				Meteor.call('setCurrentComponent', this.classroom._id, component._id);
+			}
 		}
-		return Template[component.template]({ activity: this.activity, classroom: this.classroom });
+		else
+		{
+			return Template[component.template]({ activity: this.activity, classroom: this.classroom });
+		}
 	}	
 });
