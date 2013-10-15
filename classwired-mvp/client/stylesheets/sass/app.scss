@@ -355,6 +355,70 @@ footer
       @include inset-shadow(true);
     }
   }
+
+  .modal
+  {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: rgba(0, 0, 0, 0.6);
+
+    > div
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      margin-top: 10%;
+
+      height: 50%;
+
+      form
+      {
+        @include grid-column(8, false, true);
+
+        border: 1px solid #ddd;
+        border-radius: 1em;
+
+        background-color: #fff;
+
+        text-align: center;
+
+        padding-top: 1em;
+
+        input
+        {
+          @include grid-row($behavior: nest-collapse);
+
+          width: 100%;
+          
+          margin:
+          {
+            bottom: 1em;
+            top: 1em;
+          }
+        }
+
+        button
+        {
+          @include grid-column(4);
+          
+          float: none;
+
+          &.submit
+          {
+
+          }
+
+          &.cancel
+          {
+
+          }
+        }
+      }
+    }
+  }
 }
 
 .classroom
@@ -563,13 +627,15 @@ footer
         input
         {
           @include grid-column(10);
+
+          line-height: 2em;
+          height: 2.4em;
         }
 
         button
         {
           @include grid-column(2);
 
-          height: 2em;
           line-height: 2em;
 
           padding: 0;
