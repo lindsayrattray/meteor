@@ -1,3 +1,16 @@
+Deps.autorun(function() {
+	var showModal = Session.get('classroomManager_ModalVisible')
+	var $modal = $('.classroom-manager').find('.modal')
+	if(showModal)
+	{
+		$modal.removeClass('hide');
+	}
+	else
+	{
+		$modal.addClass('hide');
+	}
+});
+
 Template.classroomManager.rendered = function() {
 	Session.set('leftButton', 'leftButton');
 	Session.set('rightButton', 'rightButton');
@@ -15,29 +28,35 @@ Template.classroomManager.helpers({
 });
 
 Template.classroomManager.events({
-	'click #btn-add-classroom': function(event, template) {
-		var $addClassroom = $('#add-classroom');
-		var nameInput = template.find('#add-classroom-name');
-
-		if($addClassroom.hasClass('slide-down-invisible'))
-		{
-			$addClassroom.removeClass('slide-down-invisible').addClass('slide-down-visible');
-			nameInput.focus();
-		}
-		else if($addClassroom.hasClass('slide-down-visible'))
-		{
-			$addClassroom.removeClass('slide-down-visible').addClass('slide-down-invisible');
-			nameInput.value = '';
-		}
+	'click .classroom-manager .container button': function(event, template) {
+		var nameInput = template.find('.modal div form input');
+		Session.set('classroomManager_ModalVisible', true);
+		nameInput.focus();
 	},
-	'submit #add-classroom': function(event, template) {
-		var nameInput = template.find('#add-classroom-name')
-		Meteor.call('createClassroom', nameInput.value, Meteor.user()._id);
+	'submit .modal div form': function(event, template) {
+		var nameInput = template.find('.modal div form input');
+
+		if(Classrooms.findOne({ name: nameInput.value }))
+		{
+			alert('Classroom with name: \"' + nameInput.value + '\" already exists!');
+		}
+		else
+		{
+			Meteor.call('createClassroom', nameInput.value, Meteor.user()._id);
+			nameInput.value = '';
+			Session.set('classroomManager_ModalVisible', false);
+		}
+		
+		event.preventDefault();
+	},
+	'reset .modal div form': function(event, template) {
+		var nameInput = template.find('.modal div form input');
 		nameInput.value = '';
+		Session.set('classroomManager_ModalVisible', false);
 
 		event.preventDefault();
 	},
-	'click .classroom-list li a': function(event, template) {
+	'click .classroom-manager .container ul li a': function(event, template) {
 		var destination = Classrooms.findOne(this._id);
 		Session.set('leavingCurrentRoom', false);
 		Meteor.call('setUserCurrentRoom', Meteor.user()._id, this._id);

@@ -6,7 +6,7 @@
 				<span>Teacher</span>
 			</div>
 			
-			<ul class="classroom-list">
+			<ul>
 				{{#each classrooms}}
 					<li>
 						<a>
@@ -16,22 +16,19 @@
 					</li>
 				{{/each}}
 			</ul>
+			{{#if thisUserHasRole 'teacher'}}
+				<button>New Classroom</button>
+			{{/if}}
 		</div>
-		<div class="row">
-			<a id="btn-add-classroom" class="button expand" name="btn-add-classroom">New Classroom</a>
-			
-			<form id="add-classroom" name="add-classroom" class="slide-visibility-transition slide-down-invisible">
-				<div class="large-12 columns no-horz-padding">
-					<div class="row collapse">
-						<div class="small-10 columns">
-							<input id="add-classroom-name" name="add-classroom-name" type="text" placeholder="classroom name" />
-						</div>
-						<div class="small-2 columns">
-							<a class="submit button prefix success" name="submit">Submit</a>
-						</div>
-					</div>
-				</div>
-			</form>
+		<div class="modal hide">
+			<div>
+				<form>
+					<span>Enter a new classroom name</span>
+					<input type="text" placeholder="Classroom name" />
+					<button type="submit" class="submit">Submit</button>
+					<button type="reset" class="cancel">Cancel</button>
+				</form>
+			</div>
 		</div>
 	</div>
 </template>
