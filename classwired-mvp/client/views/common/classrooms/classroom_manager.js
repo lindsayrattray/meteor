@@ -24,13 +24,21 @@ Template.classroomManager.events({
 	'submit .modal div form': function(event, template) {
 		var nameInput = template.find('.modal div form input');
 		var $modal = $(template.find('.modal'));
-		Meteor.call('createClassroom', nameInput.value, Meteor.user()._id);
-		nameInput.value = '';
-		$modal.addClass('hide');
 
+		if(Classrooms.findOne({ name: nameInput.value }))
+		{
+			alert('Classroom with name: \"' + nameInput.value + '\" already exists!');
+		}
+		else
+		{
+			Meteor.call('createClassroom', nameInput.value, Meteor.user()._id);
+			nameInput.value = '';
+			$modal.addClass('hide');
+		}
+		
 		event.preventDefault();
 	},
-	'cancel .modal div form': function(event, template) {
+	'reset .modal div form': function(event, template) {
 		var nameInput = template.find('.modal div form input');
 		var $modal = $(template.find('.modal'));
 		nameInput.value = '';
