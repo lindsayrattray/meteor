@@ -9,9 +9,8 @@ Template.activityExplainTheWord_UI_Teacher_ForwardMenu.helpers({
 	components: function() {
 		var classroomId = Session.get('currentClassroom');
 		var classroom = Classrooms.findOne(classroomId);
-		var activityName = classroom ? classroom.currentActivity : null;
-		var activity = activityName ? Activities.findOne({ name: activityName }, { reactive: false }) : null;
-		var components = activity ? Components.find({ activityId: activity._id }, { reactive: false }) : null;
+		var activityId = classroom ? classroom.currentActivity : null;
+		var components = activityId ? Components.find({ activityId: activityId }, { reactive: false }) : null;
 
 		return components;
 	}

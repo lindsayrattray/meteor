@@ -19,6 +19,8 @@ Deps.autorun(function() {
 Template.activityExplainTheWord_Main.rendered = function() {
 	if(Meteor.user())
 	{
+		Meteor.subscribe('components', this.data.activity._id);
+
 		if(Meteor.user().permissions.indexOf('teacher') !== -1)
 		{
 			Session.set('forwardButton', true);
