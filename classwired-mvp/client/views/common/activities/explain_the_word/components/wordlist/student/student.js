@@ -36,7 +36,6 @@ Template.activityExplainTheWord_Wordlist_Student.events({
 			if(!ExplainTheWord_WordlistItems.findOne(wordlistItem))
 			{
 				wordlistItem.created_timestamp = Date.parse(new Date());
-				console.log('foo');
 				ExplainTheWord_WordlistItems.insert(wordlistItem);
 			}
 		}
