@@ -70,8 +70,5 @@ Template.classroom.helpers({
 	currentActivity: function() {
 		var activity = Activities.findOne(this.currentActivity);
 		return activity;
-	},
-	components: function() {
-		return Components.find();
 	}
 });
