@@ -114,6 +114,64 @@ footer
 }
 
 // ==============================================
+// Login styles
+// ==============================================
+
+.login
+{
+  @include grid-row();
+
+  form
+  {
+    @include grid-column(10, false, true);
+
+    padding-top: 5%;
+
+    div
+    {
+      text-align: center;
+
+      &.name
+      {
+        overflow: hidden;
+
+        -webkit-transition: height 600ms ease;
+
+        &.visible
+        {
+
+        }
+
+        &.invisible
+        {
+          input
+          {
+            display: none;
+          }
+        }
+      }
+
+      button
+      {
+        @include grid-column(4);
+        
+        float: none;
+
+        &.visible
+        {
+
+        }
+
+        &.invisible
+        {
+          display:none;
+        }
+      }
+    }
+  }
+}
+
+// ==============================================
 // Menu styles
 // ==============================================
 

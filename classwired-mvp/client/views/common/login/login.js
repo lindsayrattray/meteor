@@ -14,16 +14,19 @@ Deps.autorun(function() {
 	var loginState = Session.get('loginState');
 	var $nameField = $('.login').find('.name');
 	var $cancelButton = $('.login').find('.cancel');
+	var $signupButton = $('.login').find('.signup');
 
 	if(loginState === 'signup')
 	{
 		$nameField.removeClass('invisible').addClass('visible');
 		$cancelButton.removeClass('invisible').addClass('visible');
+		$signupButton.removeClass('visible').addClass('invisible');
 	}
 	else
 	{
 		$nameField.removeClass('visible').addClass('invisible');
 		$cancelButton.removeClass('visible').addClass('invisible');
+		$signupButton.removeClass('invisible').addClass('visible');
 	}
 });
 
