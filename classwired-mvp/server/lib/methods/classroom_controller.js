@@ -7,16 +7,16 @@ Meteor.methods({
 	},
 	setCurrentActivity: function(classroomId, activityId) {
 		var classroom = Classrooms.findOne(classroomId);
-		if(classroom && classroom.currentActivity !== activityId && Activities.findOne({ _id: activityId }))
+		if(classroom && classroom.currentActivity !== activityId && Activities.findOne(activityId))
 		{
 			Classrooms.update(classroomId, { $set: { currentActivity: activityId } });
 		}
 	},
-	setCurrentComponent: function(classroomId, componentName) {
+	setCurrentComponent: function(classroomId, componentId) {
 		var classroom = Classrooms.findOne(classroomId);
-		if(classroom && classroom.currentActivityComponent !== componentName && Components.findOne({ name: componentName }))
+		if(classroom && classroom.currentActivityComponent !== componentId && Components.findOne(componentId))
 		{
-			Classrooms.update(classroomId, { $set: { currentActivityComponent: componentName } });
+			Classrooms.update(classroomId, { $set: { currentActivityComponent: componentId } });
 		}
 	}
 });

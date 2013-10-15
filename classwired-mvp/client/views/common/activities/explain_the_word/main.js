@@ -35,7 +35,7 @@ Template.activityExplainTheWord_Main.rendered = function() {
 
 Template.activityExplainTheWord_Main.helpers({
 	component: function() {
-		var component = Components.findOne({name: this.classroom.currentActivityComponent});
+		var component = Components.findOne(this.classroom.currentActivityComponent);
 		if(!component)
 		{
 			return 'no component found matching ' + this.classroom.currentActivityComponent;
