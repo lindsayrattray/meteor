@@ -2,20 +2,19 @@
 	{{#unless currentUser}}
 		<div class="login">
 			<form>
+				<div class="name invisible">
+					<input type="text" placeholder="Your name" />
+				</div>
 				<div class="email">
 					<input type="email" placeholder="Your email@address.com" />
-					<button type="submit" class="submit">Submit</button>
-					<button type="reset" class="cancel">Cancel</button>
-				</div>
-				<div class="name">
-					<input type="text" placeholder="Your name" />
-					<button type="submit" class="submit">Submit</button>
-					<button type="reset" class="cancel">Cancel</button>
 				</div>
 				<div class="password">
 					<input type="password" placeholder="Password" />
+				</div>
+				<div>
 					<button type="submit" class="submit">Submit</button>
-					<button type="cancel" class="cancel">Cancel</button>
+					<button type="button" class="signup">Sign Up!</button>
+					<button type="reset" class="cancel invisible">Cancel</button>
 				</div>
 			</form>
 		</div>
