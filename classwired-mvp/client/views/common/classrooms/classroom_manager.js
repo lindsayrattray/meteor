@@ -15,29 +15,30 @@ Template.classroomManager.helpers({
 });
 
 Template.classroomManager.events({
-	'click #btn-add-classroom': function(event, template) {
-		var $addClassroom = $('#add-classroom');
-		var nameInput = template.find('#add-classroom-name');
-
-		if($addClassroom.hasClass('slide-down-invisible'))
-		{
-			$addClassroom.removeClass('slide-down-invisible').addClass('slide-down-visible');
-			nameInput.focus();
-		}
-		else if($addClassroom.hasClass('slide-down-visible'))
-		{
-			$addClassroom.removeClass('slide-down-visible').addClass('slide-down-invisible');
-			nameInput.value = '';
-		}
+	'click .classroom-manager .container button': function(event, template) {
+		var $modal = $(template.find('.modal'));
+		var nameInput = template.find('.modal div form input');
+		$modal.removeClass('hide');
+		nameInput.focus();
 	},
-	'submit #add-classroom': function(event, template) {
-		var nameInput = template.find('#add-classroom-name')
+	'submit .modal div form': function(event, template) {
+		var nameInput = template.find('.modal div form input');
+		var $modal = $(template.find('.modal'));
 		Meteor.call('createClassroom', nameInput.value, Meteor.user()._id);
 		nameInput.value = '';
+		$modal.addClass('hide');
 
 		event.preventDefault();
 	},
-	'click .classroom-list li a': function(event, template) {
+	'cancel .modal div form': function(event, template) {
+		var nameInput = template.find('.modal div form input');
+		var $modal = $(template.find('.modal'));
+		nameInput.value = '';
+		$modal.addClass('hide');
+
+		event.preventDefault();
+	},
+	'click .classroom-manager .container ul li a': function(event, template) {
 		var destination = Classrooms.findOne(this._id);
 		Session.set('leavingCurrentRoom', false);
 		Meteor.call('setUserCurrentRoom', Meteor.user()._id, this._id);
