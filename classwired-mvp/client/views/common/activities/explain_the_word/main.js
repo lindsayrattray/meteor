@@ -19,6 +19,8 @@ Deps.autorun(function() {
 Template.activityExplainTheWord_Main.rendered = function() {
 	if(Meteor.user())
 	{
+		Meteor.subscribe('components', this.data.activity._id);
+
 		if(Meteor.user().permissions.indexOf('teacher') !== -1)
 		{
 			Session.set('forwardButton', true);
@@ -35,11 +37,18 @@ Template.activityExplainTheWord_Main.rendered = function() {
 
 Template.activityExplainTheWord_Main.helpers({
 	component: function() {
-		var component = Components.findOne({name: this.classroom.currentActivityComponent});
+		var component = Components.findOne(this.classroom.currentActivityComponent);
 		if(!component)
 		{
-			return 'no component found matching ' + this.classroom.currentActivityComponent;
+			component = Components.find({ name: 'wordlist' }).fetch()[0];
+			if(component)
+			{
+				Meteor.call('setCurrentComponent', this.classroom._id, component._id);
+			}
 		}
-		return Template[component.template]({ activity: this.activity, classroom: this.classroom });
+		else
+		{
+			return Template[component.template]({ activity: this.activity, classroom: this.classroom });
+		}
 	}	
 });

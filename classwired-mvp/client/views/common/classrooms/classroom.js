@@ -54,23 +54,12 @@ Template.classroom.rendered = function() {
 	}
 }
 
-Template.classroom.events({
-	'click .component-selector': function(event, template) {
-		var classroom = template.data._id;
-		var component = this.name;
-		Meteor.call('setCurrentComponent', classroom, component);
-	},
-	'click .activity-leave': function(event, template) {
-		Meteor.call('setCurrentActivity', template.data._id, 'idle');
-	}
-});
-
 Template.classroom.helpers({
 	activity: function() {
-		var activity = Activities.findOne({name: this.currentActivity});
+		var activity = Activities.findOne(this.currentActivity);
 		if(!activity)
 		{
-			activity = Activities.findOne({name: 'idle'});
+			return Template['activityManager']({ classroom: this });
 		}
 		
 		if(activity)
@@ -79,10 +68,7 @@ Template.classroom.helpers({
 		}
 	},
 	currentActivity: function() {
-		var activity = Activities.findOne({name: this.currentActivity});
+		var activity = Activities.findOne(this.currentActivity);
 		return activity;
-	},
-	components: function() {
-		return Components.find();
 	}
 });

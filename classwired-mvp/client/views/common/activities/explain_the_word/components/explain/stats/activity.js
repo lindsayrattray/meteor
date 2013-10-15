@@ -1,7 +1,3 @@
-Template.activityExplainTheWord_Explain_Stats_Activity.rendered = function() {
-	console.log('foo')
-}
-
 Template.activityExplainTheWord_Explain_Stats_Activity.events({
 	'click .stats.activity > ul li a': function(event, template) {
 		if(Session.get('explainStudentStat') === this.toString())
