@@ -392,7 +392,7 @@ footer
           @include grid-row($behavior: nest-collapse);
 
           width: 100%;
-          
+
           margin:
           {
             bottom: 1em;
@@ -405,16 +405,6 @@ footer
           @include grid-column(4);
           
           float: none;
-
-          &.submit
-          {
-
-          }
-
-          &.cancel
-          {
-
-          }
         }
       }
     }
