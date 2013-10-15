@@ -17,8 +17,6 @@
 	</header>
 	<div class="main">
 		<ul class="dropdown {{#unless sessionGet 'main_MenuVisible'}}hide{{/unless}}">
-			<li><a>Option1</a></li>
-			<li><a>Option2</a></li>
 			<li>{{> logout}}</li>
 		</ul>
 		<ul class="dropdown {{#unless sessionGet 'forward_MenuVisible'}}hide{{/unless}}">
@@ -36,10 +34,6 @@
 		</nav>
 	</footer>
 {{else}}
-	<div class="row">
-		<div class="small-10 small-centered columns">
-			{{> login}}
-		</div>
-	</div>
+	{{> login}}
 {{/if}}
 </template>

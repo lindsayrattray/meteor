@@ -78,7 +78,6 @@ Meteor.methods({
 			if(matchItem)
 			{
 				ExplainTheWord_ExplainItemTimes.update(matchItem._id, { $set: item });
-				console.log(matchItem);
 			}
 			else
 			{

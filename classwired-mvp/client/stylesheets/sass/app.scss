@@ -114,6 +114,64 @@ footer
 }
 
 // ==============================================
+// Login styles
+// ==============================================
+
+.login
+{
+  @include grid-row();
+
+  form
+  {
+    @include grid-column(10, false, true);
+
+    padding-top: 5%;
+
+    div
+    {
+      text-align: center;
+
+      &.name
+      {
+        overflow: hidden;
+
+        -webkit-transition: height 600ms ease;
+
+        &.visible
+        {
+
+        }
+
+        &.invisible
+        {
+          input
+          {
+            display: none;
+          }
+        }
+      }
+
+      button
+      {
+        @include grid-column(4);
+        
+        float: none;
+
+        &.visible
+        {
+
+        }
+
+        &.invisible
+        {
+          display:none;
+        }
+      }
+    }
+  }
+}
+
+// ==============================================
 // Menu styles
 // ==============================================
 
@@ -517,6 +575,67 @@ footer
           margin-bottom: 0;
 
         }
+      }
+    }
+  }
+}
+
+// ==============================================
+// Activity Manager
+// ==============================================
+
+.activity-manager
+{
+  @include grid-row();
+
+  height: 100%;
+
+  .header
+  {
+    @include grid-row($behavior: nest-collapse);
+
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+
+    line-height: 2em;
+
+    span
+    {
+      @include grid-column(12);
+
+      font-weight: 600;
+    }
+  }
+  > ul
+  {
+    @include grid-row($behavior: nest-collapse);
+
+    height: 70%;
+    overflow-y: auto;
+
+    list-style: none;
+
+    border:
+    {
+      left: 1px solid #ddd;
+      right: 1px solid #ddd;
+      bottom: 1px solid #ddd;
+    }
+
+    li
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      line-height: 2em;
+
+      &:nth-child(even)
+      {
+        background-color: #f9f9f9;
+      }
+
+      a
+      {
+        @include grid-column(12);
       }
     }
   }
@@ -1110,118 +1229,4 @@ footer
       }
     }
   }
-}
-
-// ==============================================
-// Old Styles - These are gradually being deleted
-// ==============================================
-.classroom-link
-{ 
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.classroom-manager-container
-{
-  height: 16em;
-  box-shadow: 0 0 4px 1px #ccc inset;
-}
-
-.stats-container
-{
-  height: 16em;
-  border: 1px solid #ccc;
-}
-
-.activity-viewport
-{
-  width:200%;
-}
-
-.hide-overflow
-{
-  overflow: auto;
-}
-
-.list li:nth-child(odd)
-{
-  background-color: #f9f9f9;
-}
-
-.component-selector-nav ul
-{
-  display: inline-block;
-  float: none !important;
-}
-
-.scrolltable-container
-{
-  height: 16em;
-  overflow-y: auto;
-  clear: both;
-}
-
-.txt-wordlist-item-input
-{
-  margin: 0.5em 0 0.5em 0 !important;
-  font-size: 1.5em !important;
-}
-
-.scrolltable
-{
-  margin-bottom: 0px;
-  table-layout: fixed;
-}
-
-.no-horz-padding
-{
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-.no-vert-margin
-{
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-.clear
-{
-  clear:both;
-}
-
-.background-red
-{
-  background-color: #dba9aa;
-}
-
-.background-green
-{
-  background-color: #b4cca1;
-}
-
-.background-yellow
-{
-  background-color: #ebf097;
-}
-
-.red-text
-{
-  color: #c60f13;
-}
-
-.green-text
-{
-  color: #5da423;
-}
-
-.component-tab-inactive
-{
-
-}
-
-.component-tab-active
-{
-
 }

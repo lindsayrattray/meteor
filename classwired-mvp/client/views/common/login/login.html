@@ -1,44 +1,20 @@
 <template name="login">
-	{{#unless currentUser}}
-		<div id="login-container">
-			<form id="login-form">
-				<div id="login-email-container" class="large-12 columns">
-					<div class="row collapse">
-						<div class="small-10 columns">
-							<input id="email-field" type="text" name="email-field" placeholder="Your email@domain.com" />
-						</div>
-						<div class="small-2 columns">
-							<button class="submit button prefix success" name="submit">Submit</button>
-						</div>
-					</div>
-				</div>
-
-				<div id="login-name-container" class="large-12 columns hide">
-					<div class="row collapse">
-						<div class="small-10 columns">
-							<input id="name-field" type="text" name="name-field" placeholder="Enter your name" />
-						</div>
-						<div class="small-2 columns">
-							<button class="submit button prefix success" name="submit">Submit</button>
-						</div>
-					</div>
-				</div>
-
-				<div id="login-password-container" class="large-12 columns hide">
-					<div class="row collapse">
-						<div class="small-10 columns">
-							<input id="password-field" type="password" name="password-field" placeholder="Password" />
-						</div>
-						<div class="small-2 columns">
-							<button class="submit button prefix success" name="submit">Submit</button>
-						</div>
-					</div>
-				</div>
-
-			</form>
-			{{#isolate}}
-				{{loginErrors}}
-			{{/isolate}}
-		</div>
-	{{/unless}}
+	<div class="login">
+		<form>
+			<div class="name invisible">
+				<input type="text" placeholder="Your name" />
+			</div>
+			<div class="email">
+				<input type="email" placeholder="Your email@address.com" />
+			</div>
+			<div class="password">
+				<input type="password" placeholder="Password" />
+			</div>
+			<div>
+				<button type="submit" class="submit">Submit</button>
+				<button type="button" class="signup visible">Sign Up!</button>
+				<button type="reset" class="cancel invisible">Cancel</button>
+			</div>
+		</form>
+	</div>
 </template>
