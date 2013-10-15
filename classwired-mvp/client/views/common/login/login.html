@@ -1,5 +1,25 @@
 <template name="login">
 	{{#unless currentUser}}
+		<div class="login">
+			<form>
+				<div class="email">
+					<input type="email" placeholder="Your email@address.com" />
+					<button type="submit" class="submit">Submit</button>
+					<button type="reset" class="cancel">Cancel</button>
+				</div>
+				<div class="name">
+					<input type="text" placeholder="Your name" />
+					<button type="submit" class="submit">Submit</button>
+					<button type="reset" class="cancel">Cancel</button>
+				</div>
+				<div class="password">
+					<input type="password" placeholder="Password" />
+					<button type="submit" class="submit">Submit</button>
+					<button type="cancel" class="cancel">Cancel</button>
+				</div>
+			</form>
+		</div>
+
 		<div id="login-container">
 			<form id="login-form">
 				<div id="login-email-container" class="large-12 columns">
@@ -34,11 +54,7 @@
 						</div>
 					</div>
 				</div>
-
 			</form>
-			{{#isolate}}
-				{{loginErrors}}
-			{{/isolate}}
 		</div>
 	{{/unless}}
 </template>
