@@ -8,7 +8,7 @@ Template.activityIdle.helpers({
 });
 
 Template.activityIdle.events({
-	'click .activity-selector': function(event, template) {
-		Meteor.call('setCurrentActivity', template.data.classroom._id, this.name);
+	'click .activity-manager ul li a': function(event, template) {
+		Meteor.call('setCurrentActivity', template.data.classroom._id, this._id);
 	}
 })

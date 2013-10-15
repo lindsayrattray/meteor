@@ -1,12 +1,12 @@
 <template name="activityManager">
 	<div class="activity-manager">
 		<div class="header">
-			<span></span>
+			<span>Available Activities</span>
 		</div>
 		<ul>
 			{{#each activities}}
 				<li>
-					<a></a>
+					<a>{{this.title}}</a>
 				</li>
 			{{/each}}
 		</ul>
