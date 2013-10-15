@@ -1,3 +1,16 @@
+Deps.autorun(function() {
+	var showModal = Session.get('classroomManager_ModalVisible')
+	var $modal = $('.classroom-manager').find('.modal')
+	if(showModal)
+	{
+		$modal.removeClass('hide');
+	}
+	else
+	{
+		$modal.addClass('hide');
+	}
+});
+
 Template.classroomManager.rendered = function() {
 	Session.set('leftButton', 'leftButton');
 	Session.set('rightButton', 'rightButton');
@@ -16,14 +29,12 @@ Template.classroomManager.helpers({
 
 Template.classroomManager.events({
 	'click .classroom-manager .container button': function(event, template) {
-		var $modal = $(template.find('.modal'));
 		var nameInput = template.find('.modal div form input');
-		$modal.removeClass('hide');
+		Session.set('classroomManager_ModalVisible', true);
 		nameInput.focus();
 	},
 	'submit .modal div form': function(event, template) {
 		var nameInput = template.find('.modal div form input');
-		var $modal = $(template.find('.modal'));
 
 		if(Classrooms.findOne({ name: nameInput.value }))
 		{
@@ -33,16 +44,15 @@ Template.classroomManager.events({
 		{
 			Meteor.call('createClassroom', nameInput.value, Meteor.user()._id);
 			nameInput.value = '';
-			$modal.addClass('hide');
+			Session.set('classroomManager_ModalVisible', false);
 		}
 		
 		event.preventDefault();
 	},
 	'reset .modal div form': function(event, template) {
 		var nameInput = template.find('.modal div form input');
-		var $modal = $(template.find('.modal'));
 		nameInput.value = '';
-		$modal.addClass('hide');
+		Session.set('classroomManager_ModalVisible', false);
 
 		event.preventDefault();
 	},
