@@ -36,7 +36,8 @@ Template.groupManager.helpers({
 	},
 	buttonVisible: function() {
 		var userId = Meteor.userId();
-		if(this.members.indexOf(userId !== -1) && this.members.length <= 1)
+
+		if(this.members.indexOf(userId) !== -1 && this.members.length <= 1)
 		{
 			return 'hide';
 		}
