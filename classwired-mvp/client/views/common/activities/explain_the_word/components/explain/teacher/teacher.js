@@ -24,3 +24,9 @@ Deps.autorun(function() {
 
 	setView(statsMode);
 });
+
+Template.activityExplainTheWord_Explain_Teacher.rendered = function() {
+	var statsMode = Session.get('statsMode');
+
+	setView(statsMode);
+}

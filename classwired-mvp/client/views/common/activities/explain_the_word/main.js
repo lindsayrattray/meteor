@@ -21,22 +21,26 @@ Template.activityExplainTheWord_Main.rendered = function() {
 	{
 		Meteor.subscribe('components', this.data.activity._id);
 
-		if(Meteor.user().permissions.indexOf('teacher') !== -1)
+		if(Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') !== -1)
 		{
 			Session.set('forwardButton', true);
 			Session.set('forwardMenu', 'activityExplainTheWord_UI_Teacher_ForwardMenu');
 			Session.set('leftButton', 'activityExplainTheWord_UI_Teacher_LeftButton');
 			Session.set('rightButton', 'activityExplainTheWord_UI_Teacher_RightButton')
 		}
-		else
-		{
-
-		}
 	}
 };
 
 Template.activityExplainTheWord_Main.helpers({
 	component: function() {
+		if(Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
+		{
+			if(this.classroom.state === 'stopped')
+			{
+				return Template['activityExplainTheWord_Stopped']({activity: this.activity, classroom: this.classroom});
+			}
+		}
+
 		var component = Components.findOne(this.classroom.currentActivityComponent);
 		if(!component)
 		{
@@ -50,5 +54,13 @@ Template.activityExplainTheWord_Main.helpers({
 		{
 			return Template[component.template]({ activity: this.activity, classroom: this.classroom });
 		}
-	}	
+	},
+	toggleModal: function() {
+		if(this.classroom.state === 'paused')
+		{
+			return;
+		}
+		return 'hide';
+	}
+
 });
