@@ -274,6 +274,36 @@ footer
         @include dropdown-exit-button;
       }
     }
+
+    &.controls
+    {
+      text-align: center;
+
+      padding: 
+      {
+        top: 0.5em;
+        bottom: 0.5em;
+      }
+
+      button
+      {
+        margin-bottom: 0 !important;
+
+        &.play-pause
+        {
+          @include button($button-med, $primary-color);
+
+          margin-right: 1em;
+        }
+
+        &.stop
+        {
+          @include button($button-med, $alert-color);
+
+          margin-left: 1em;
+        }
+      }
+    }
   }
 }
 
