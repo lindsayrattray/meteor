@@ -63,8 +63,6 @@ Meteor.methods({
 			avg = (isNaN(avg) ? 0 : avg).toFixed(2);
 			fastestTime = (isNaN(fastestTime) ? 0 : fastestTime);
 
-			console.log(items[itemIndex]);
-			console.log(fastestGroup);
 			var matchItem = ExplainTheWord_ExplainItemTimes.findOne({ item: items[itemIndex], classroomId: classroomId }, { reactive: false });
 			var item = { avgTime: avg };
 

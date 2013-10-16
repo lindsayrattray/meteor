@@ -1,7 +1,7 @@
-Deps.autorun(function() {
+var setView = function(statsMode) {
 	var $container = $('.wordlist.teacher .container');
 
-	if(Session.get('statsMode') === 'class')
+	if(statsMode === 'class')
 	{
 		if($container.hasClass('activity'))
 		{
@@ -17,4 +17,16 @@ Deps.autorun(function() {
 		}
 		$container.addClass('activity');
 	}
+}
+
+Deps.autorun(function() {
+	var statsMode = Session.get('statsMode');
+
+	setView(statsMode);
 });
+
+Template.activityExplainTheWord_Wordlist_Teacher.rendered = function() {
+	var statsMode = Session.get('statsMode');
+
+	setView(statsMode);
+};

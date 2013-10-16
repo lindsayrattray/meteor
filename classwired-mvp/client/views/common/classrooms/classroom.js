@@ -1,9 +1,9 @@
 Meteor.subscribe('activities');
 
-Deps.autorun(function() {
+var setView = function(showGroupManager) {
 	var $container = $('.classroom .container');
 
-	if(Session.get('groupsVisible'))
+	if(showGroupManager)
 	{
 		if($container.hasClass('activity'))
 		{
@@ -19,12 +19,21 @@ Deps.autorun(function() {
 		}
 		$container.addClass('activity');
 	}
+};
+
+Deps.autorun(function() {
+	var showGroupManager = Session.get('groupsVisible');
+
+	setView(showGroupManager);
 });
 
 Template.classroom.rendered = function() {
 	if(Meteor.user())
 	{	
+		var showGroupManager = Session.get('groupsVisible');
 		var currentGroup = Groups.findOne({members: Meteor.user()._id});
+
+		setView(showGroupManager);
 
 		Session.set('currentClassroom', this.data._id)
 		
