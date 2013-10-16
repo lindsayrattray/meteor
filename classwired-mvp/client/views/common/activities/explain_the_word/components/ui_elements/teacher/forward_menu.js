@@ -7,13 +7,22 @@ Template.activityExplainTheWord_UI_Teacher_ForwardMenu.events({
 		var classroomId = Session.get('currentClassroomId');
 		var classroom = Classrooms.findOne(classroomId);
 
-		if(classroom.state === 'paused' || classroom.state === stopped)
+		if(classroom.state === 'paused' || classroom.state === 'stopped')
 		{
 			Classrooms.update(classroomId, { $set: { state: 'running' } });
 		}
 		else
 		{
 			Classrooms.update(classroomId, { $set: { state: 'paused' } });
+		}
+	},
+	'click .stop': function() {
+		var classroomId = Session.get('currentClassroomId');
+		var classroom = Classrooms.findOne(classroomId);
+
+		if(classroom.state !== 'stopped')
+		{
+			Classrooms.update(classroomId, { $set: { state: 'stopped' } });
 		}
 	}
 });
