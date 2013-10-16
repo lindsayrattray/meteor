@@ -526,22 +526,25 @@ footer
 
     .group
     {
-      @include grid-column(6);
+      @include grid-column(10, false, true);
 
       padding: 1em;
 
       >div
       {
+        @include grid-row($behavior: nest-collapse);
+
         height: 100%;
-        width: 100%;
         background-color: yellow;
 
         padding:
         {
           top: 1em;
-          left: 2em;
-          right: 2em;
+          left: 1em;
+          right: 1em;
         }
+
+        box-shadow: 0.5em 0.5em 1em 0 #ddd;
 
         ul
         {
@@ -551,22 +554,13 @@ footer
 
           li
           {
-            @include grid-column(6);
+            @include grid-row($behavior: nest-collapse);
           }
         }
 
-        p
+        button
         {
-          text-align: center;
-          font:
-          {
-            size: 80%;
-            style: italic;
-          }
-          color: #ccc;
-
-          margin-bottom: 0;
-
+          @include button($button-med, $primary-color, false, true);
         }
       }
     }
