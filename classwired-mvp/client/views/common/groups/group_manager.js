@@ -17,7 +17,7 @@ Template.groupManager.events({
 		}
 	},
 	'click .group div ul li a': function(event, template) {
-		var user = Meteor.users.findOne(event.srcElement.dataset.member);
+		var user = Meteor.users.findOne(event.target.dataset.member);
 		var classroom = template.data._id;
 		var group = Groups.findOne({ classroomId: classroom, members: user._id });
 		GroupManager.removeUserFromGroup(group._id, user._id);

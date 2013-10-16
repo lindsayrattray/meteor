@@ -1,6 +1,6 @@
-Deps.autorun(function() {
-	var showModal = Session.get('classroomManager_ModalVisible')
-	var $modal = $('.classroom-manager').find('.modal')
+var toggleModal = function(showModal) {
+	var $modal = $('.modal');
+
 	if(showModal)
 	{
 		$modal.removeClass('hide');
@@ -9,6 +9,12 @@ Deps.autorun(function() {
 	{
 		$modal.addClass('hide');
 	}
+}
+
+Deps.autorun(function() {
+	var showModal = Session.get('classroomManager_ModalVisible');
+	
+	toggleModal(showModal);
 });
 
 Template.classroomManager.rendered = function() {
@@ -16,6 +22,10 @@ Template.classroomManager.rendered = function() {
 	Session.set('rightButton', 'rightButton');
 	Session.set('forwardButton', false);
 	Session.set('forwardMenu', null);
+
+	var showModal = Session.get('classroomManager_ModalVisible');
+	
+	toggleModal(showModal);
 };
 
 Template.classroomManager.helpers({
