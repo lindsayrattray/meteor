@@ -2,6 +2,28 @@ Template.activityExplainTheWord_UI_Teacher_ForwardMenu.events({
 	'click .component a': function() {
 		Meteor.call('setCurrentComponent', Session.get('currentClassroom'), this._id);
 		Session.set('forward_MenuVisible', false);
+	},
+	'click .play-pause': function(event, template) {
+		var classroomId = Session.get('currentClassroom');
+		var classroom = Classrooms.findOne(classroomId);
+
+		if(classroom.state === 'paused' || classroom.state === 'stopped')
+		{
+			Classrooms.update(classroomId, { $set: { state: 'running' } });
+		}
+		else
+		{
+			Classrooms.update(classroomId, { $set: { state: 'paused' } });
+		}
+	},
+	'click .stop': function() {
+		var classroomId = Session.get('currentClassroom');
+		var classroom = Classrooms.findOne(classroomId);
+
+		if(classroom.state !== 'stopped')
+		{
+			Classrooms.update(classroomId, { $set: { state: 'stopped' } });
+		}
 	}
 });
 

@@ -53,7 +53,7 @@ Template.activityExplainTheWord_Explain_Stats_Activity.helpers({
 	itemAnswer: function() {
 		if(this.answered)
 		{
-			return this.answer ? "✓" : "✗";
+			return this.answer ? "v" : "x";
 		}
 	},
 	itemAnswerColor: function() {
