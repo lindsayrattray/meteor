@@ -1,5 +1,5 @@
 Template.groupManager.events({
-	'click .group > div': function(event, template) {
+	'click .group > div button': function(event, template) {
 		var user = Meteor.user();
 		var classroom = template.data._id;
 		var targetId = this._id;
@@ -7,8 +7,6 @@ Template.groupManager.events({
 
 		if(targetId !== currentGroup._id)
 		{
-			console.log(targetId);
-			console.log(currentGroup._id);
 			GroupManager.moveUserToGroup(currentGroup._id, targetId, user._id);
 		}
 		else if(currentGroup.members.length > 1)
@@ -27,5 +25,22 @@ Template.groupManager.events({
 Template.groupManager.helpers({
 	groups: function() {
 		return Groups.find();	
+	},
+	joinButton: function() {
+		var userId = Meteor.userId();
+		if(this.members.indexOf(userId) !== -1)
+		{
+			return 'Leave Group';
+		}
+		return 'Join Group';
+	},
+	buttonVisible: function() {
+		var userId = Meteor.userId();
+
+		if(this.members.indexOf(userId) !== -1 && this.members.length <= 1)
+		{
+			return 'hide';
+		}
+		return;
 	}
 });
