@@ -67,7 +67,6 @@ Template.activityExplainTheWord_Explain_Stats_Activity.helpers({
 		{
 			return true;
 		}
-		console.log(Session.get('explainStudentState'));
 		return false;
 	}
 });
