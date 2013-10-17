@@ -676,6 +676,16 @@ footer
         }
       }
     }
+
+    > .stopped
+    {
+      > span
+      {
+        @include grid-column(10, false, true);
+        
+        text-align: center;
+      }
+    }
   }
 
   .wordlist
