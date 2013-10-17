@@ -676,6 +676,16 @@ footer
         }
       }
     }
+
+    > .stopped
+    {
+      > span
+      {
+        @include grid-column(10, false, true);
+        
+        text-align: center;
+      }
+    }
   }
 
   .wordlist
@@ -940,6 +950,13 @@ footer
           @include button($button-med, $primary-color, false, true);
           @include single-transition;
           @include inset-shadow(true);
+        }
+
+        > span
+        {
+          @include grid-column(10, false, true);
+
+          text-align: center;
         }
       }
     }

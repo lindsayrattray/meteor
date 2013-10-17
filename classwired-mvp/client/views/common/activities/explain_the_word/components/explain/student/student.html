@@ -1,16 +1,25 @@
 <template name="activityExplainTheWord_Explain_Student">
 	<div class="explain student">
+		{{#if currentItem}}
 		<div class="container {{backgroundColor}}">
 			<div class="word">
 				<h1>{{currentItem}}</h1>
 			</div>
-			{{#if currentItem}}
+			
 			<div>
 				<button class="answer tick">v</button>
 				<button class="answer cross">x</button>
 			</div>
-			{{/if}}
 			<button class="new">Next</button>
+			
 		</div>
+		{{else}}
+		<div class="container">
+			<span>
+				<h3>There are no words left!</h3>
+				<hr />
+			</span>
+		</div>
+		{{/if}}
 	</div>
 </template>
