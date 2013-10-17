@@ -941,6 +941,13 @@ footer
           @include single-transition;
           @include inset-shadow(true);
         }
+
+        > span
+        {
+          @include grid-column(10, false, true);
+
+          text-align: center;
+        }
       }
     }
 
