@@ -202,6 +202,12 @@ footer
         width: 15%;
 
         border-right: 1px solid darken($topbar-bg, 10%);
+
+        img
+        {
+          height: 1em;
+          width: 1em;
+        }
       }
 
       &.context
