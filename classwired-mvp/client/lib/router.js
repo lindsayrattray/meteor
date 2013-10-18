@@ -19,6 +19,7 @@ Router.map(function()
 	{
 		path: '/:name',
 		data: function() { return Classrooms.findOne({name: this.params.name}); },
-		template: 'classroom'
+		template: 'classroom',
+		notFoundTemplate: 'notFound'
 	});
 });

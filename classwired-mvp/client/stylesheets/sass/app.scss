@@ -307,6 +307,13 @@ footer
   }
 }
 
+.main > .not-found
+{
+  @include grid-column(10, false, true);
+
+  text-align: center;
+}
+
 .bottom-options
 {
   button
