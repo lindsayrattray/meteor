@@ -57,5 +57,8 @@ Template.main.helpers({
 		{
 			return Template[forwardMenuTemplate]();
 		}
+	},
+	loggingIn: function() {
+		return Meteor.loggingIn();
 	}
 });
