@@ -225,6 +225,12 @@ footer
         width: 15%;
 
         border-left: 1px solid lighten($topbar-bg, 10%);
+
+        img
+        {
+          height: 1em;
+          width: 1em;
+        }
       }
 
       &.active
@@ -300,6 +306,12 @@ footer
           @include button($button-med, $primary-color);
 
           margin-right: 1em;
+
+          img
+          {
+            height: 1em;
+            width: 1em;
+          }
         }
 
         &.stop
@@ -307,6 +319,12 @@ footer
           @include button($button-med, $alert-color);
 
           margin-left: 1em;
+
+          img
+          {
+            hieght: 1em;
+            width: 1em;
+          }
         }
       }
     }
