@@ -10,9 +10,9 @@
 					<a>
 						<span>
 							{{#if showStatDetails this}}
-								 ^
+								 -
 							{{else}}
-								 v
+								 +
 							{{/if}}
 							{{profileName this}}
 						</span>
@@ -24,7 +24,7 @@
 								<span>Word</span>
 								<span>Time (sec)</span>
 								<span>
-									<span class="tick">v</span>/<span class="cross">x</span>
+									<span class="tick"><img src="/images/tick_green.png" alt="tick" /></span>/<span class="cross"><img src="/images/cross_red.png" alt="cross" /></span>
 								</span>
 							</div>
 							<ul>
@@ -32,7 +32,12 @@
 									<li>
 										<span>{{this.item}}</span>
 										<span>{{itemAnswerTime}}</span>
-										<span class="{{itemAnswerColor}}">{{itemAnswer}}</span>
+										{{#if answeredTick}}
+											<span class="tick"><img src="/images/tick_green.png" alt="Answer" /></span>
+										{{/if}}
+										{{#if answeredCross}}
+											<span class="cross"><img src="/images/cross_red.png" alt="Answer" /></span>
+										{{/if}}
 									</li>
 								{{/each}}
 							</ul>

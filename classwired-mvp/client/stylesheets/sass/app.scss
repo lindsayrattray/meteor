@@ -322,7 +322,7 @@ footer
 
           img
           {
-            hieght: 1em;
+            height: 1em;
             width: 1em;
           }
         }
@@ -963,6 +963,12 @@ footer
               @include inset-shadow(true);
 
               float: left;
+
+              img
+              {
+                width: 1.5em;
+                height: 1.5em;
+              }
             }
 
             &.cross
@@ -972,6 +978,12 @@ footer
               @include inset-shadow(true);
 
               float: right;
+
+              img
+              {
+                width: 1.2em;
+                height: 1.2em;
+              }
             }
           }
         }
@@ -1131,12 +1143,20 @@ footer
 
                           .tick
                           {
-                            color: $success-color;
+                            img
+                            {
+                              height: 1em;
+                              width: 1em;
+                            }
                           }
 
                           .cross
                           {
-                            color: $alert-color;
+                            img
+                            {
+                              height: 0.8em;
+                              width: 0.8em;
+                            }
                           }
                         }
                       }
@@ -1176,12 +1196,20 @@ footer
 
                             &.tick
                             {
-                              color: $success-color;
+                              img
+                              {
+                                height: 1em;
+                                width: 1em;
+                              }
                             }
 
                             &.cross
                             {
-                              color: $alert-color;
+                              img
+                              {
+                                height: 0.8em;
+                                width: 0.8em;
+                              }
                             }
                           }
                         }
