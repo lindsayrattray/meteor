@@ -60,5 +60,10 @@ Template.main.helpers({
 	},
 	loggingIn: function() {
 		return Meteor.loggingIn();
+	},
+	context: function() {
+		var context = Session.get('currentContext') || 'context';
+
+		return Template[context]();
 	}
 });
