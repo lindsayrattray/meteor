@@ -237,11 +237,26 @@ footer
 
     .context
     {
-      display: block;
+      float: left;
+
+      color: $topbar-link-color;
+
       width: 70%;
 
       border-left: 1px solid lighten($topbar-bg, 10%);
       border-right: 1px solid darken($topbar-bg, 10%);
+
+      span
+      {
+        &.logotype:nth-child(1)
+        {
+          color: #63c9eb;
+        }
+        &.logotype:nth-child(2)
+        {
+          color: #f18609;
+        }
+      }
     }
   }
 }
