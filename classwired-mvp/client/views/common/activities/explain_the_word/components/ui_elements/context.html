@@ -1,0 +1,10 @@
+<template name="activityExplainTheWord_UI_Context">
+	<div class="context">
+		{{#if isStopped}}
+			<img src="/images/stop.png" alt="Stopped" />
+		{{else}}
+			{{#if isPaused}}
+				<img src="/images/pause.png" alt="Paused" />
+			{{/if}}
+		{{/if}}{{context}}</div>
+</template>

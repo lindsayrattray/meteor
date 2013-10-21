@@ -202,15 +202,12 @@ footer
         width: 15%;
 
         border-right: 1px solid darken($topbar-bg, 10%);
-      }
 
-      &.context
-      {
-        display: block;
-        width: 70%;
-
-        border-left: 1px solid lighten($topbar-bg, 10%);
-        border-right: 1px solid darken($topbar-bg, 10%);
+        img
+        {
+          height: 1em;
+          width: 1em;
+        }
       }
 
       &.forward
@@ -219,6 +216,12 @@ footer
         width: 15%;
 
         border-left: 1px solid lighten($topbar-bg, 10%);
+
+        img
+        {
+          height: 1em;
+          width: 1em;
+        }
       }
 
       &.active
@@ -229,6 +232,38 @@ footer
       {
         color: $top-menu-active-link-color;
         background-color: darken($topbar-bg, 10%);
+      }
+    }
+
+    .context
+    {
+      float: left;
+
+      color: $topbar-link-color;
+
+      width: 70%;
+
+      border-left: 1px solid lighten($topbar-bg, 10%);
+      border-right: 1px solid darken($topbar-bg, 10%);
+
+      span
+      {
+        &.logotype:nth-child(1)
+        {
+          color: #63c9eb;
+        }
+        &.logotype:nth-child(2)
+        {
+          color: #f18609;
+        }
+      }
+
+      img
+      {
+        height: 0.8em;
+        width: 0.8em;
+
+        margin-bottom: 5px;
       }
     }
   }
@@ -269,6 +304,11 @@ footer
 
       padding-left: 0.5em;
 
+      &.home
+      {
+        @include dropdown-exit-button;
+      }
+
       &.logout
       {
         @include dropdown-exit-button;
@@ -294,6 +334,12 @@ footer
           @include button($button-med, $primary-color);
 
           margin-right: 1em;
+
+          img
+          {
+            height: 1em;
+            width: 1em;
+          }
         }
 
         &.stop
@@ -301,10 +347,23 @@ footer
           @include button($button-med, $alert-color);
 
           margin-left: 1em;
+
+          img
+          {
+            height: 1em;
+            width: 1em;
+          }
         }
       }
     }
   }
+}
+
+.main > .not-found
+{
+  @include grid-column(10, false, true);
+
+  text-align: center;
 }
 
 .bottom-options
@@ -932,6 +991,12 @@ footer
               @include inset-shadow(true);
 
               float: left;
+
+              img
+              {
+                width: 1.5em;
+                height: 1.5em;
+              }
             }
 
             &.cross
@@ -941,6 +1006,12 @@ footer
               @include inset-shadow(true);
 
               float: right;
+
+              img
+              {
+                width: 1.2em;
+                height: 1.2em;
+              }
             }
           }
         }
@@ -1100,12 +1171,20 @@ footer
 
                           .tick
                           {
-                            color: $success-color;
+                            img
+                            {
+                              height: 1em;
+                              width: 1em;
+                            }
                           }
 
                           .cross
                           {
-                            color: $alert-color;
+                            img
+                            {
+                              height: 0.8em;
+                              width: 0.8em;
+                            }
                           }
                         }
                       }
@@ -1145,12 +1224,20 @@ footer
 
                             &.tick
                             {
-                              color: $success-color;
+                              img
+                              {
+                                height: 1em;
+                                width: 1em;
+                              }
                             }
 
                             &.cross
                             {
-                              color: $alert-color;
+                              img
+                              {
+                                height: 0.8em;
+                                width: 0.8em;
+                              }
                             }
                           }
                         }

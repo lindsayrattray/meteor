@@ -4,37 +4,44 @@
 </head>
 
 <template name="main">
-{{#if currentUser}}
-	<header>
-		<nav class="top-menu">
-			<div>
-				<a class="icon {{#if sessionGet 'main_MenuVisible'}}active{{/if}}">O</a>
-				<a class="context">Context</a>
-				{{#if sessionGet 'forwardButton'}}
-					<a class="forward">>></a>
+	{{#if currentUser}}
+		<header>
+			<nav class="top-menu">
+				<div>
+					<a class="icon {{#if sessionGet 'main_MenuVisible'}}active{{/if}}"><img src="/images/settings.png" alt="ClassWired"/></a>
+					{{{context}}}
+					{{#if sessionGet 'forwardButton'}}
+						<a class="forward"><img src="/images/forward.png" alt="Classroom Menu" /></a>
+					{{/if}}
+				</div>
+			</nav>
+		</header>
+		<div class="main">
+			<ul class="dropdown {{#unless sessionGet 'main_MenuVisible'}}hide{{/unless}}">
+				{{#if sessionGet 'currentClassroom'}}
+					<li><a class="home">Leave Classroom</a></li>
 				{{/if}}
-			</div>
-		</nav>
-	</header>
-	<div class="main">
-		<ul class="dropdown {{#unless sessionGet 'main_MenuVisible'}}hide{{/unless}}">
-			<li>{{> logout}}</li>
-		</ul>
-		<ul class="dropdown {{#unless sessionGet 'forward_MenuVisible'}}hide{{/unless}}">
-			{{{forwardMenu}}}
-		</ul>
+				<li>{{> logout}}</li>
+			</ul>
+			<ul class="dropdown {{#unless sessionGet 'forward_MenuVisible'}}hide{{/unless}}">
+				{{{forwardMenu}}}
+			</ul>
 
-		{{> messages}}
+			{{> messages}}
 
-		{{yield}}
-	</div>
-	<footer>
-		<nav class="bottom-options">
-			{{{leftButton}}}
-			{{{rightButton}}}
-		</nav>
-	</footer>
-{{else}}
-	{{> login}}
-{{/if}}
+			{{yield}}
+		</div>
+		<footer>
+			<nav class="bottom-options">
+				{{{leftButton}}}
+				{{{rightButton}}}
+			</nav>
+		</footer>
+	{{else}}
+		{{#unless loggingIn}}
+			{{> login}}
+		{{else}}
+			{{> spinner}}
+		{{/unless}}
+	{{/if}}
 </template>
