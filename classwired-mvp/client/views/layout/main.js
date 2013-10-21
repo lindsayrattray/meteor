@@ -26,6 +26,11 @@ Template.main.events({
 		var forward_MenuVisible = Session.get('forward_MenuVisible') ? false : true;
 		Session.set('forward_MenuVisible', forward_MenuVisible);
 	},
+	'click .main .dropdown li .home': function () {
+		var destination = Router.url('classroomManager');
+		window.location = destination; // Using iron router causes wierd behavior, so doing it natively
+		Session.set('main_MenuVisible', false);
+	},
 	'click': function(event, template) {
 		if(!$(event.srcElement).parents().filter('.dropdown')[0] && !$(event.srcElement).hasClass('icon'))
 		{

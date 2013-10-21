@@ -304,6 +304,11 @@ footer
 
       padding-left: 0.5em;
 
+      &.home
+      {
+        @include dropdown-exit-button;
+      }
+
       &.logout
       {
         @include dropdown-exit-button;
