@@ -18,7 +18,9 @@ var ensureUniqueItem = function(wordlistItems, explainItems, currentItem)
 }
 
 Meteor.methods({
-	populateItems: function(groupId, classroomId, userId) {
+	populateItems: function(userId, classroomId) {
+		var group = GroupManager.getGroupByMember(userId, classroomId);
+		var groupId = group ? group._id : null;
 		var explainItems = _.pluck(ExplainTheWord_ExplainItems.find({ classroomId: classroomId, groupId: groupId }).fetch(), 'item');
 		var wordlistItems = _.chain(ExplainTheWord_WordlistItems.find({ classroomId: classroomId }).fetch()).pluck('item').uniq().difference(explainItems).value();
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ assigned_to: userId.toString(), classroomId: classroomId });
