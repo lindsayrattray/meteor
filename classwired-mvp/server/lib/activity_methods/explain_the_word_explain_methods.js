@@ -18,16 +18,16 @@ var ensureUniqueItem = function(wordlistItems, explainItems, currentItem)
 }
 
 Meteor.methods({
-	populateItems: function(userId, classroomId) {
-		var explainItems = _.pluck(ExplainTheWord_ExplainItems.find({ classroomId: classroomId, userId: userId }).fetch(), 'item');
+	populateItems: function(groupId, classroomId, userId) {
+		var explainItems = _.pluck(ExplainTheWord_ExplainItems.find({ classroomId: classroomId, groupId: groupId }).fetch(), 'item');
 		var wordlistItems = _.chain(ExplainTheWord_WordlistItems.find({ classroomId: classroomId }).fetch()).pluck('item').uniq().difference(explainItems).value();
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ userId: userId.toString(), current: true, classroomId: classroomId });
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ assignedTo: userId.toString(), classroomId: classroomId });
 
 		if(wordlistItems.length > 0)
 		{
 			for(itemIndex in wordlistItems)
 			{
-				ExplainTheWord_ExplainItems.insert({ item: wordlistItems[itemIndex], classroomId: classroomId, userId: userId, current: false, assigned_timestamp: null, answered: false, answer: null});
+				ExplainTheWord_ExplainItems.insert({ item: wordlistItems[itemIndex], classroomId: classroomId, groupId: groupId, assignedTo: null, assigned_timestamp: null, answered: false, answer: null});
 			}
 			if(!currentItem)
 			{
@@ -38,7 +38,7 @@ Meteor.methods({
 	assignNewItem: function(userId, classroomId) {
 		var wordlistItems = ExplainTheWord_WordlistItems.find({ classroomId: classroomId }).fetch();
 		var explainItems = ExplainTheWord_ExplainItems.find({ userId: userId.toString(), answered: true, classroomId: classroomId }).fetch();
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ userId: userId.toString(), current: true, classroomId: classroomId });
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ assignedTo: userId.toString(), current: true, classroomId: classroomId });
 		var newItem = ensureUniqueItem(wordlistItems, explainItems, currentItem);
 		var timestamp = new Date();
 
