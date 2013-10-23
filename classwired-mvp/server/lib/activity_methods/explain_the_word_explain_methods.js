@@ -41,7 +41,7 @@ Meteor.methods({
 		var group = GroupManager.getGroupByMember(userId, classroomId);
 		var groupId = group ? group._id : null;
 		var wordlistItems = ExplainTheWord_WordlistItems.find({ classroomId: classroomId }).fetch();
-		var explainItems = ExplainTheWord_ExplainItems.find({ groupId: groupId, answered: true, classroomId: classroomId }).fetch();
+		var explainItems = _.reject(ExplainTheWord_ExplainItems.find({ groupId: groupId, answered: true, classroomId: classroomId }).fetch(), function(item) { return item.assigned_to });
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ groupId: groupId, assigned_to: userId.toString(), classroomId: classroomId });
 		var newItem = ensureUniqueItem(wordlistItems, explainItems, currentItem);
 		var timestamp = new Date();
@@ -62,6 +62,14 @@ Meteor.methods({
 			{
 				ExplainTheWord_ExplainItems.insert({ item: newItem.item, classroomId: newItem.classroomId, groupId: groupId, assigned_to: userId, assigned_timestamp: timestamp, answered: false, answer: null });
 			}
+		}
+	},
+	unassignItem: function(userId, classroomId) {
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ assigned_to: userId.toString(), classroomId: classroomId });
+
+		if(currentItem)
+		{
+			ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { assigned_to: userId } });
 		}
 	}
 });

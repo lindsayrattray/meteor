@@ -14,17 +14,6 @@ Meteor.methods({
 				ExplainTheWord_WordlistItems.update(wordlistItems[itemIndex]._id, { $set: { groupId: group._id } });
 			}
 		}
-
-		for(itemIndex in explainItems)
-		{
-			user = explainItems[itemIndex].userId;
-			group = GroupManager.getGroupByMember(user, classroomId);
-
-			if(group)
-			{
-				ExplainTheWord_ExplainItems.update(explainItems[itemIndex]._id, { $set: { groupId: group._id } });
-			}
-		}
 	},
 	calculateTimes: function(items, classroomId) {
 		for(itemIndex in items)

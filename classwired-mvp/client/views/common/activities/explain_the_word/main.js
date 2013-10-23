@@ -3,6 +3,7 @@ Deps.autorun(function() {
 	var group = Groups.findOne({ members: Meteor.userId() });
 
 	Meteor.call('reassignGroupWords', classroomId, function(error, result) { return });
+	Meteor.call('unassignItem', Meteor.user()._id, classroomId);
 });
 
 Deps.autorun(function() {
