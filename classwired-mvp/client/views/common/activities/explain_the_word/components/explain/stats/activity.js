@@ -39,14 +39,16 @@ Template.activityExplainTheWord_Explain_Stats_Activity.helpers({
 		return false;
 	},
 	studentAllItems: function() {
-		return ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), $or: [{ answered_by: Session.get('explainStudentStat') }, { assigned_to: Session.get('explainStudentStat') }] }, { sort: { assigned_to: -1, answered: -1, item: 1 } });
+		var group = GroupManager.getGroupByMember(Session.get('explainStudentStat'), Session.get('currentClassroom'));
+		var groupId = group ? group._id : null;
+		return ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), groupId: groupId, $or: [{ answered_by: Session.get('explainStudentStat') }, { assigned_to: Session.get('explainStudentStat') }] }, { sort: { assigned_to: -1, answered: -1, item: 1 } });
 	},
 	itemAnswerTime: function() {
 		var thisItem = ExplainTheWord_ExplainItems.findOne({ answered_by: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom'), item: this.item });
 		if(thisItem)
 		{
 			var time = ((Date.parse(thisItem.answered_timestamp) - Date.parse(thisItem.assigned_timestamp)) / 1000);
-			var isAttempting = thisItem.current ? 'currently attempting' : 'not attempted';
+			var isAttempting = thisItem.assigned_to ? 'currently attempting' : 'not attempted';
 			return isNaN(time) ? isAttempting : time;
 		}
 	},
