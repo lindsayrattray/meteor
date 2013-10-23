@@ -12,22 +12,24 @@ function debugLogin(error)
 
 function setLoginView(loginState)
 {
-	var $nameField = $('.login').find('.name');
-	var $cancelButton = $('.login').find('.cancel');
-	var $signupButton = $('.login').find('.signup');
+	var $loginModal = $('.modal.login');
+	var $signupModal = $('.modal.signup');
 
 	if(loginState === 'signup')
 	{
-		$nameField.removeClass('invisible').addClass('visible');
-		$cancelButton.removeClass('invisible').addClass('visible');
-		$signupButton.removeClass('visible').addClass('invisible');
+		$loginModal.addClass('hide');
+		$signupModal.removeClass('hide');
+	}
+	else if(loginState === 'login')
+	{
+		$loginModal.removeClass('hide');
+		$signupModal.addClass('hide');
 	}
 	else
 	{
-		$nameField.removeClass('visible').addClass('invisible');
-		$cancelButton.removeClass('visible').addClass('invisible');
-		$signupButton.removeClass('invisible').addClass('visible');
-	}	
+		$loginModal.addClass('hide');
+		$signupModal.addClass('hide');
+	}
 }
 
 Deps.autorun(function() {
@@ -43,17 +45,70 @@ Template.login.rendered = function() {
 };
 
 Template.login.events({
-	'click .login form div .signup': function(event, template)
+	'click button.signup': function(event, template)
 	{
 		Session.set('loginState', 'signup');
 	},
-	'reset .login form': function(event, template)
+	'click button.login': function(event, template)
 	{
 		Session.set('loginState', 'login');
+	},
+	'submit .modal.login form': function(event, template)
+	{
+		var $emailField = $('.modal.login input.email');
+		var $passwordField = $('.modal.login input.password');
+		event.preventDefault();
+
+		Meteor.loginWithPassword({ email: $emailField.val() }, $passwordField.val(), function(error) { debugLogin(error) });
+	},
+	'reset .modal.login form': function(event, template)
+	{
+		var $emailField = $('.modal.login input.email');
+		var $passwordField = $('.modal.login input.password');
+
+		$emailField.val('');
+		$passwordField.val('');
+
+		Session.set('loginState', null);
 
 		event.preventDefault();
 	},
-	'submit .login form': function(event, template)
+	'submit .modal.signup form': function(event, template)
+	{
+		var $nameField = $('.modal.signup input.name');
+		var $emailField = $('.modal.signup input.email');
+		var $passwordField = $('.modal.signup input.password');
+
+		Accounts.createUser({
+								email: $emailField.val(),
+								password: $passwordField.val(),
+								profile: { name: $nameField.val() } 
+							},
+							function(error) 
+							{
+								var user = Meteor.users.findOne({ "emails.address": $emailField.val() });
+								var userId = user ? user._id : null;
+								Meteor.call('addUserToRole', userId, 'student');
+								debugLogin(error);
+							});
+
+		event.preventDefault();
+	},
+	'reset .modal.signup form': function(event, template)
+	{
+		var $nameField = $('.modal.signup input.name');
+		var $emailField = $('.modal.signup input.email');
+		var $passwordField = $('.modal.signup input.password');
+
+		$nameField.val('');
+		$emailField.val('');
+		$passwordField.val('');
+
+		Session.set('loginState', null);
+
+		event.preventDefault();
+	}
+	/*'submit .login form': function(event, template)
 	{
 		var loginState = Session.get('loginState');
 		var nameField = template.find('.name input');
@@ -81,5 +136,5 @@ Template.login.events({
 		{
 			Meteor.loginWithPassword({ email: emailAddress }, password, function(error) { debugLogin(error) });
 		}
-	}
+	}*/
 });
