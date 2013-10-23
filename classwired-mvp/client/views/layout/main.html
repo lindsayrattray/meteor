@@ -38,13 +38,6 @@
 			</nav>
 		</footer>
 	{{else}}
-		<div class="splash">
-			<img class="logo" src="/images/logo.png" alt="Classwired logo" />
-			{{#unless loggingIn}}
-				{{> login}}
-			{{else}}
-				{{> spinner}}
-			{{/unless}}
-		</div>
+		{{> splash}}
 	{{/if}}
 </template>
