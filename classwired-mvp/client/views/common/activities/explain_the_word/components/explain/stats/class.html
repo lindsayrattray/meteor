@@ -15,8 +15,11 @@
 					</a>
 					<div class="{{#unless showStatDetails this._id}}hide{{/unless}}">
 						<div><strong>Fastest Time (sec):</strong> {{this.fastestTime}}</div>
-						<div><strong>Fastest Student:</strong> {{profileName this.fastestUser}}</div>
 						<div><strong>Fastest Group:</strong> {{groupMembers this.fastestGroup}}</div>
+						<div><strong>Fastest Student:</strong> {{profileName this.fastestUser}}</div>
+						<div><strong>Slowest Time (sec):</strong> {{this.slowestTime}}</div>
+						<div><strong>Slowest Group:</strong> {{groupMembers this.slowestGroup}}</div>
+						<div><strong>Slowest Student:</strong> {{profileName this.slowestUser}}</div>
 					</div>
 				</li>
 			{{/each}}
