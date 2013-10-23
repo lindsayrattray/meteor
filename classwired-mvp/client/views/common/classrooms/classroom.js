@@ -46,7 +46,7 @@ Template.classroom.rendered = function() {
 		var rightButtonTemplate = Session.get('rightButton');
 		var forwardButtonTemplate = Session.get('forwardButton');
 
-		if(Meteor.user().permissions.indexOf('teacher') === -1)
+		if(Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
 		{
 			if(!leftButtonTemplate || leftButtonTemplate === 'leftButton')
 			{

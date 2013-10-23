@@ -24,14 +24,14 @@ Template.activityExplainTheWord_Explain_Stats_Activity.helpers({
 		return _.flatten(students);
 	},
 	currentItem: function(userId) {
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ userId: userId, classroomId: Session.get('currentClassroom'), current: true });
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ classroomId: Session.get('currentClassroom'), assigned_to: userId });
 		if(currentItem)
 		{
 			return currentItem.item;
 		}
 	},
 	isCurrentItem: function() {
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ userId: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom'), current: true });
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ assigned_to: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom')});
 		if(currentItem && this.item === currentItem.item)
 		{
 			return true;
@@ -39,14 +39,16 @@ Template.activityExplainTheWord_Explain_Stats_Activity.helpers({
 		return false;
 	},
 	studentAllItems: function() {
-		return ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), userId: Session.get('explainStudentStat') }, { sort: { current: -1, answered: -1, item: 1 } });
+		var group = GroupManager.getGroupByMember(Session.get('explainStudentStat'), Session.get('currentClassroom'));
+		var groupId = group ? group._id : null;
+		return ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), groupId: groupId, $or: [{ answered_by: Session.get('explainStudentStat') }, { assigned_to: Session.get('explainStudentStat') }] }, { sort: { assigned_to: -1, answered: -1, item: 1 } });
 	},
 	itemAnswerTime: function() {
-		var thisItem = ExplainTheWord_ExplainItems.findOne({ userId: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom'), item: this.item });
+		var thisItem = ExplainTheWord_ExplainItems.findOne({ answered_by: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom'), item: this.item });
 		if(thisItem)
 		{
 			var time = ((Date.parse(thisItem.answered_timestamp) - Date.parse(thisItem.assigned_timestamp)) / 1000);
-			var isAttempting = thisItem.current ? 'currently attempting' : 'not attempted';
+			var isAttempting = thisItem.assigned_to ? 'currently attempting' : 'not attempted';
 			return isNaN(time) ? isAttempting : time;
 		}
 	},

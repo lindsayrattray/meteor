@@ -1,8 +1,12 @@
 Deps.autorun(function() {
-	var classroomId = Session.get('currentClassroom');
-	var group = Groups.findOne({ members: Meteor.userId() });
+	if(Meteor.user())
+	{
+		var classroomId = Session.get('currentClassroom');
+		var group = Groups.findOne({ members: Meteor.userId() });
 
-	Meteor.call('reassignGroupWords', classroomId, function(error, result) { return });
+		Meteor.call('reassignGroupWords', classroomId, function(error, result) { return });
+		Meteor.call('unassignItem', Meteor.user()._id, classroomId);
+	}
 });
 
 Deps.autorun(function() {
