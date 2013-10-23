@@ -365,13 +365,6 @@ footer
   }
 }
 
-.main > .not-found
-{
-  @include grid-column(10, false, true);
-
-  text-align: center;
-}
-
 .bottom-options
 {
   button
@@ -390,6 +383,31 @@ footer
     {
       right: 0;
     }
+  }
+}
+
+// ==============================================
+//
+// ==============================================
+
+.main > .not-found
+{
+  @include grid-column(10, false, true);
+
+  text-align: center;
+}
+
+.splash
+{
+  @include grid-row();
+
+  .logo
+  {
+    width: 90%;
+    max-width: 40em;
+
+    display: block;
+    margin: 0 auto;
   }
 }
 
