@@ -85,14 +85,18 @@ Template.login.events({
 		var $emailField = $('.modal.signup input.email');
 		var $passwordField = $('.modal.signup input.password');
 
+		var email = $emailField.val();
+		var name = $nameField.val();
+		var password = $passwordField.val();
+
 		Accounts.createUser({
-								email: $emailField.val(),
-								password: $passwordField.val(),
-								profile: { name: $nameField.val() } 
+								email: email,
+								password: password,
+								profile: { name: name } 
 							},
 							function(error) 
 							{
-								var user = Meteor.users.findOne({ "emails.address": $emailField.val() });
+								var user = Meteor.users.findOne({ "emails.address": email });
 								var userId = user ? user._id : null;
 								Meteor.call('addUserToRole', userId, 'student');
 								debugLogin(error);
