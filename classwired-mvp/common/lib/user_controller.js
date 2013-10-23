@@ -17,7 +17,7 @@ UserController = {
 	},
 
 	thisUserHasRole: function(rolename) {
-		return UserController.userHasRole(Meteor.user()._id, rolename);
+		return Meteor.user() ? UserController.userHasRole(Meteor.user()._id, rolename) : false;
 	},
 	idToName: function(userId) {
 		var user = Meteor.users.findOne(userId);
