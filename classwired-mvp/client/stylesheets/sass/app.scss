@@ -252,9 +252,15 @@ footer
         {
           color: #63c9eb;
         }
+        
         &.logotype:nth-child(2)
         {
           color: #f18609;
+        }
+
+        &.activity-title
+        {
+          font-size: 80%;
         }
       }
 
