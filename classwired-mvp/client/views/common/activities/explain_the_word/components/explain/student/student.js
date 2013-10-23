@@ -20,7 +20,6 @@ Template.activityExplainTheWord_Explain_Student.events({
 		if(Meteor.user() && Meteor.user().permissions.indexOf('teacher') === -1)
 		{
 			Meteor.call('assignNewItem', Meteor.userId(), template.data.classroom._id);
-			Session.set('newItemAssigned', true);
 		}
 	}
 });
