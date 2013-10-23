@@ -3,21 +3,23 @@
 		<button class="login">Log In</button>
 		<button class="signup">Sign Up</button>
 
-		<form class="hide">
-			<div class="name invisible">
-				<input type="text" placeholder="Your name" />
-			</div>
-			<div class="email">
-				<input type="email" placeholder="Your email@address.com" />
-			</div>
-			<div class="password">
-				<input type="password" placeholder="Password" />
-			</div>
+		<div class="modal login">
 			<div>
-				<button type="submit" class="submit">Submit</button>
-				<button type="button" class="signup visible">Sign Up!</button>
-				<button type="reset" class="cancel invisible">Cancel</button>
+				<form>
+					<input type="email" placeholder="Your email@address.com" />
+					<input type="password" placeholder="Password" />
+				</form>
 			</div>
-		</form>
+		</div>
+
+		<div class="modal signup">
+			<div>
+				<form>
+					<input type="text" placeholder="Your name" />
+					<input type="email" placeholder="Your email@address.com" />
+					<input type="password" placeholder="Password" />
+				</form>
+			</div>
+		</div>
 	</div>
 </template>
