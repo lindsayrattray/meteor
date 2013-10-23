@@ -26,8 +26,10 @@ Template.activityExplainTheWord_Main.rendered = function() {
 			Session.set('forwardButton', true);
 			Session.set('forwardMenu', 'activityExplainTheWord_UI_Teacher_ForwardMenu');
 			Session.set('leftButton', 'activityExplainTheWord_UI_Teacher_LeftButton');
-			Session.set('rightButton', 'activityExplainTheWord_UI_Teacher_RightButton')
+			Session.set('rightButton', 'activityExplainTheWord_UI_Teacher_RightButton');
 		}
+
+		Session.set('currentContext', 'activityExplainTheWord_UI_Context');
 	}
 };
 

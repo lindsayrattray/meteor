@@ -4,6 +4,7 @@
     "iron-router": {},
     "foundation": {},
     "zurb-foundation": {},
-    "scss": {}
+    "scss": {},
+    "spin": {}
   }
 }

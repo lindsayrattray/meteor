@@ -35,5 +35,15 @@ Template.activityExplainTheWord_UI_Teacher_ForwardMenu.helpers({
 		var components = activityId ? Components.find({ activityId: activityId }, { reactive: false }) : null;
 
 		return components;
+	},
+	classroomPaused: function() {
+		var classroomId = Session.get('currentClassroom');
+		var classroom = Classrooms.findOne(classroomId);
+
+		if(classroom.state === 'paused' || classroom.state === 'stopped')
+		{
+			return true;
+		}
+		return false;
 	}
 });

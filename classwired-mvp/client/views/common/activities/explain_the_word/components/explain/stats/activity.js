@@ -50,16 +50,16 @@ Template.activityExplainTheWord_Explain_Stats_Activity.helpers({
 			return isNaN(time) ? isAttempting : time;
 		}
 	},
-	itemAnswer: function() {
+	answeredTick: function() {
 		if(this.answered)
 		{
-			return this.answer ? "v" : "x";
+			return this.answer;
 		}
 	},
-	itemAnswerColor: function() {
+	answeredCross: function() {
 		if(this.answered)
 		{
-			return this.answer ? 'tick' : 'cross';
+			return !this.answer;
 		}
 	},
 	showStatDetails: function(userId) {

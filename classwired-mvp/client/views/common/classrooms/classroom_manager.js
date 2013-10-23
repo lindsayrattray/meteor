@@ -22,6 +22,7 @@ Template.classroomManager.rendered = function() {
 	Session.set('rightButton', 'rightButton');
 	Session.set('forwardButton', false);
 	Session.set('forwardMenu', null);
+	Session.set('currentClassroom', null);
 
 	var showModal = Session.get('classroomManager_ModalVisible');
 	

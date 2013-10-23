@@ -77,5 +77,8 @@ Template.classroom.helpers({
 	currentActivity: function() {
 		var activity = Activities.findOne(this.currentActivity);
 		return activity;
+	},
+	classroomIsValid: function() {
+		return !$.isEmptyObject(this);
 	}
 });

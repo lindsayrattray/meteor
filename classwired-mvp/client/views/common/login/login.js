@@ -10,8 +10,8 @@ function debugLogin(error)
 	}
 }
 
-Deps.autorun(function() {
-	var loginState = Session.get('loginState');
+function setLoginView(loginState)
+{
 	var $nameField = $('.login').find('.name');
 	var $cancelButton = $('.login').find('.cancel');
 	var $signupButton = $('.login').find('.signup');
@@ -27,8 +27,20 @@ Deps.autorun(function() {
 		$nameField.removeClass('visible').addClass('invisible');
 		$cancelButton.removeClass('visible').addClass('invisible');
 		$signupButton.removeClass('invisible').addClass('visible');
-	}
+	}	
+}
+
+Deps.autorun(function() {
+	var loginState = Session.get('loginState');
+	
+	setLoginView(loginState);
 });
+
+Template.login.rendered = function() {
+	var loginState = Session.get('loginState');
+	
+	setLoginView(loginState);
+};
 
 Template.login.events({
 	'click .login form div .signup': function(event, template)
