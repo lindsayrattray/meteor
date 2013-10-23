@@ -7817,7 +7817,7 @@ div.login .modal > div form button {
 }
 /* line 424, sass/app.scss */
 .splash .logo {
-  width: 90%;
+  width: 100%;
   max-width: 40em;
   display: block;
   margin: 0 auto;

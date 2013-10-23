@@ -57,9 +57,15 @@ Template.login.events({
 	{
 		var $emailField = $('.modal.login input.email');
 		var $passwordField = $('.modal.login input.password');
-		event.preventDefault();
 
 		Meteor.loginWithPassword({ email: $emailField.val() }, $passwordField.val(), function(error) { debugLogin(error) });
+
+		$emailField.val('');
+		$passwordField.val('');
+
+		Session.set('loginState', null);
+
+		event.preventDefault();
 	},
 	'reset .modal.login form': function(event, template)
 	{
@@ -91,6 +97,12 @@ Template.login.events({
 								Meteor.call('addUserToRole', userId, 'student');
 								debugLogin(error);
 							});
+
+		$nameField.val('');
+		$emailField.val('');
+		$passwordField.val('');
+
+		Session.set('loginState', null);
 
 		event.preventDefault();
 	},
