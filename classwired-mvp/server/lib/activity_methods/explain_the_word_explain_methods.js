@@ -29,7 +29,7 @@ Meteor.methods({
 		{
 			for(itemIndex in wordlistItems)
 			{
-				ExplainTheWord_ExplainItems.insert({ item: wordlistItems[itemIndex], classroomId: classroomId, groupId: groupId, assigned_to: null, assigned_timestamp: null, answered: false, answer: null});
+				ExplainTheWord_ExplainItems.insert({ item: wordlistItems[itemIndex], classroomId: classroomId, groupId: groupId, assigned_to: null, assigned_timestamp: null, answered: false, answer: null, answered_by: null });
 			}
 			if(!currentItem)
 			{
@@ -48,7 +48,7 @@ Meteor.methods({
 
 		if(currentItem)
 		{
-			ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { assigned_to: userId } });
+			ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { assigned_to: null } });
 		}
 		if(newItem)
 		{

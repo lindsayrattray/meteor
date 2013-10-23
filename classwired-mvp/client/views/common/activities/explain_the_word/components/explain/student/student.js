@@ -9,12 +9,12 @@ Template.activityExplainTheWord_Explain_Student.events({
 	'click .answer.tick': function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ assigned_to: Meteor.userId() });
 		var timestamp = new Date();
-		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: true, answered_timestamp: timestamp } });
+		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: true, answered_timestamp: timestamp, answered_by: Meteor.userId() } });
 	},
 	'click .answer.cross': function() {
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ assigned_to: Meteor.userId() });
 		var timestamp = new Date();
-		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: false, answered_timestamp: timestamp } });
+		ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answer: false, answered_timestamp: timestamp, answered_by: Meteor.userId() } });
 	},
 	'click .explain.student .container .new': function(event, template) {
 		if(Meteor.user() && Meteor.user().permissions.indexOf('teacher') === -1)
