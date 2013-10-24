@@ -26,8 +26,8 @@ Meteor.methods({
 		var group = GroupManager.getGroupByMember(userId, classroomId);
 		var groupId = group ? group._id : null;
 		var explainItems = ExplainTheWord_ExplainItems.find({ groupId: groupId, classroomId: classroomId }).fetch();
-		var availableItems = _.reject(explainItems, function(item) { return !(_.isNull(item.assigned_to) || item.answered) });
-		var currentItem = _.findWhere(explainItems, { assigned_to: userId };
+		var availableItems = _.reject(explainItems, function(item) { return (!_.isNull(item.assigned_to) || item.answered) });
+		var currentItem = _.findWhere(explainItems, { assigned_to: userId });
 		var timestamp = new Date();
 
 		if(currentItem)
