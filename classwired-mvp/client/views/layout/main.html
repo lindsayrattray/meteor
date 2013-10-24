@@ -38,10 +38,6 @@
 			</nav>
 		</footer>
 	{{else}}
-		{{#unless loggingIn}}
-			{{> login}}
-		{{else}}
-			{{> spinner}}
-		{{/unless}}
+		{{> splash}}
 	{{/if}}
 </template>

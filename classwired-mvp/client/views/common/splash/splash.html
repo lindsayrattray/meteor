@@ -1,0 +1,10 @@
+<template name="splash">
+	<div class="splash">
+		<img class="logo" src="/images/logo.png" alt="Classwired logo" />
+		{{#unless loggingIn}}
+			{{> login}}
+		{{else}}
+			{{> spinner}}
+		{{/unless}}
+	</div>
+</template>

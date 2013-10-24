@@ -1,3 +1,11 @@
+Deps.autorun(function () {
+	var group = Groups.findOne({ classroomId: Session.get('currentClassroom'), members: Meteor.userId() });
+	if(group && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
+	{
+		Meteor.call('populateItems', Meteor.userId().toString(), Session.get('currentClassroom'));
+	}
+});
+
 Template.activityExplainTheWord_Explain_Student.rendered = function() {
 	if(Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
 	{

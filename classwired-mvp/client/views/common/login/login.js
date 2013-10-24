@@ -12,22 +12,24 @@ function debugLogin(error)
 
 function setLoginView(loginState)
 {
-	var $nameField = $('.login').find('.name');
-	var $cancelButton = $('.login').find('.cancel');
-	var $signupButton = $('.login').find('.signup');
+	var $loginModal = $('.modal.login');
+	var $signupModal = $('.modal.signup');
 
 	if(loginState === 'signup')
 	{
-		$nameField.removeClass('invisible').addClass('visible');
-		$cancelButton.removeClass('invisible').addClass('visible');
-		$signupButton.removeClass('visible').addClass('invisible');
+		$loginModal.addClass('hide');
+		$signupModal.removeClass('hide');
+	}
+	else if(loginState === 'login')
+	{
+		$loginModal.removeClass('hide');
+		$signupModal.addClass('hide');
 	}
 	else
 	{
-		$nameField.removeClass('visible').addClass('invisible');
-		$cancelButton.removeClass('visible').addClass('invisible');
-		$signupButton.removeClass('invisible').addClass('visible');
-	}	
+		$loginModal.addClass('hide');
+		$signupModal.addClass('hide');
+	}
 }
 
 Deps.autorun(function() {
@@ -43,43 +45,83 @@ Template.login.rendered = function() {
 };
 
 Template.login.events({
-	'click .login form div .signup': function(event, template)
+	'click button.signup': function(event, template)
 	{
 		Session.set('loginState', 'signup');
 	},
-	'reset .login form': function(event, template)
+	'click button.login': function(event, template)
 	{
 		Session.set('loginState', 'login');
+	},
+	'submit .modal.login form': function(event, template)
+	{
+		var $emailField = $('.modal.login input.email');
+		var $passwordField = $('.modal.login input.password');
+
+		Meteor.loginWithPassword({ email: $emailField.val() }, $passwordField.val(), function(error) { debugLogin(error) });
+
+		$emailField.val('');
+		$passwordField.val('');
+
+		Session.set('loginState', null);
 
 		event.preventDefault();
 	},
-	'submit .login form': function(event, template)
+	'reset .modal.login form': function(event, template)
 	{
-		var loginState = Session.get('loginState');
-		var nameField = template.find('.name input');
-		var emailField = template.find('.email input');
-		var passwordField = template.find('.password input');
+		var $emailField = $('.modal.login input.email');
+		var $passwordField = $('.modal.login input.password');
 
-		var emailAddress = emailField.value;
-		var name = nameField.value;
-		var password = passwordField.value;
+		$emailField.val('');
+		$passwordField.val('');
+
+		Session.set('loginState', null);
 
 		event.preventDefault();
+	},
+	'submit .modal.signup form': function(event, template)
+	{
+		var $nameField = $('.modal.signup input.name');
+		var $emailField = $('.modal.signup input.email');
+		var $passwordField = $('.modal.signup input.password');
 
-		if(loginState === 'signup')
-		{
-			Accounts.createUser({   email: emailAddress,
-									password: password,
-									profile: { name: name } },
-									function(error) { 
-														var userId = Meteor.users.findOne({ "emails.address": emailAddress });
-														Meteor.call('addUserToRole', userId, 'student');
-														debugLogin(error);
-													});
-		}
-		else
-		{
-			Meteor.loginWithPassword({ email: emailAddress }, password, function(error) { debugLogin(error) });
-		}
+		var email = $emailField.val();
+		var name = $nameField.val();
+		var password = $passwordField.val();
+
+		Accounts.createUser({
+								email: email,
+								password: password,
+								profile: { name: name } 
+							},
+							function(error) 
+							{
+								var user = Meteor.users.findOne({ "emails.address": email });
+								var userId = user ? user._id : null;
+								Meteor.call('addUserToRole', userId, 'student');
+								debugLogin(error);
+							});
+
+		$nameField.val('');
+		$emailField.val('');
+		$passwordField.val('');
+
+		Session.set('loginState', null);
+
+		event.preventDefault();
+	},
+	'reset .modal.signup form': function(event, template)
+	{
+		var $nameField = $('.modal.signup input.name');
+		var $emailField = $('.modal.signup input.email');
+		var $passwordField = $('.modal.signup input.password');
+
+		$nameField.val('');
+		$emailField.val('');
+		$passwordField.val('');
+
+		Session.set('loginState', null);
+
+		event.preventDefault();
 	}
 });

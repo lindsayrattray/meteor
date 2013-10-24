@@ -21,16 +21,20 @@ Meteor.methods({
 	populateItems: function(userId, classroomId) {
 		var group = GroupManager.getGroupByMember(userId, classroomId);
 		var groupId = group ? group._id : null;
-		var explainItems = _.pluck(ExplainTheWord_ExplainItems.find({ classroomId: classroomId, groupId: groupId }).fetch(), 'item');
-		var wordlistItems = _.chain(ExplainTheWord_WordlistItems.find({ classroomId: classroomId }).fetch()).pluck('item').uniq().difference(explainItems).value();
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ assigned_to: userId.toString(), classroomId: classroomId });
-
-		if(wordlistItems.length > 0)
+		if(groupId)
 		{
-			for(itemIndex in wordlistItems)
+			var explainItems = _.pluck(ExplainTheWord_ExplainItems.find({ classroomId: classroomId, groupId: groupId }).fetch(), 'item');
+			var wordlistItems = _.chain(ExplainTheWord_WordlistItems.find({ classroomId: classroomId }).fetch()).pluck('item').uniq().difference(explainItems).value();
+			var currentItem = ExplainTheWord_ExplainItems.findOne({ assigned_to: userId.toString(), classroomId: classroomId });
+
+			if(wordlistItems.length > 0)
 			{
-				ExplainTheWord_ExplainItems.insert({ item: wordlistItems[itemIndex], classroomId: classroomId, groupId: groupId, assigned_to: null, assigned_timestamp: null, answered: false, answer: null, answered_by: null });
+				for(itemIndex in wordlistItems)
+				{
+					ExplainTheWord_ExplainItems.insert({ item: wordlistItems[itemIndex], classroomId: classroomId, groupId: groupId, assigned_to: null, assigned_timestamp: null, answered: false, answer: null, answered_by: null });
+				}
 			}
+
 			if(!currentItem)
 			{
 				Meteor.call('assignNewItem', userId, classroomId);
@@ -45,6 +49,8 @@ Meteor.methods({
 		var currentItem = ExplainTheWord_ExplainItems.findOne({ groupId: groupId, assigned_to: userId.toString(), classroomId: classroomId });
 		var newItem = ensureUniqueItem(wordlistItems, explainItems, currentItem);
 		var timestamp = new Date();
+
+		console.log(explainItems);
 
 		if(currentItem)
 		{

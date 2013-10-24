@@ -117,54 +117,73 @@ footer
 // Login styles
 // ==============================================
 
-.login
+div.login
 {
   @include grid-row();
+  max-width: 9999em;
 
-  form
+  > button
   {
-    @include grid-column(10, false, true);
-
-    padding-top: 5%;
-
-    div
+    &.login
     {
-      text-align: center;
+      @include button($button-med, $primary-color, false, true);
+    }
 
-      &.name
+    &.signup
+    {
+      @include button($button-med, $primary-color, false, true);
+    }
+  }
+
+  .modal
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.6);
+
+    > div
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      margin-top: 5%;
+
+      height: 50%;
+
+      form
       {
-        overflow: hidden;
+        @include grid-column(8, false, true);
 
-        -webkit-transition: height 600ms ease;
+        border: 1px solid #ddd;
+        border-radius: 1em;
 
-        &.visible
+        background-color: #fff;
+
+        text-align: center;
+
+        padding-top: 1em;
+
+        input
         {
+          @include grid-row($behavior: nest-collapse);
 
-        }
+          width: 100%;
 
-        &.invisible
-        {
-          input
+          margin:
           {
-            display: none;
+            top: 1em;
+            bottom: 1em;
           }
         }
-      }
 
-      button
-      {
-        @include grid-column(4);
-        
-        float: none;
-
-        &.visible
+        button
         {
+          @include grid-column(4);
 
-        }
-
-        &.invisible
-        {
-          display:none;
+          float: none;
         }
       }
     }
@@ -365,13 +384,6 @@ footer
   }
 }
 
-.main > .not-found
-{
-  @include grid-column(10, false, true);
-
-  text-align: center;
-}
-
 .bottom-options
 {
   button
@@ -390,6 +402,31 @@ footer
     {
       right: 0;
     }
+  }
+}
+
+// ==============================================
+//
+// ==============================================
+
+.main > .not-found
+{
+  @include grid-column(10, false, true);
+
+  text-align: center;
+}
+
+.splash
+{
+  @include grid-row();
+
+  .logo
+  {
+    width: 100%;
+    max-width: 40em;
+
+    display: block;
+    margin: 0 auto;
   }
 }
 

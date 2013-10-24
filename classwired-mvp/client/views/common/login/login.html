@@ -1,20 +1,29 @@
 <template name="login">
 	<div class="login">
-		<form>
-			<div class="name invisible">
-				<input type="text" placeholder="Your name" />
-			</div>
-			<div class="email">
-				<input type="email" placeholder="Your email@address.com" />
-			</div>
-			<div class="password">
-				<input type="password" placeholder="Password" />
-			</div>
+		<button class="login">Log In</button>
+		<button class="signup">Sign Up</button>
+
+		<div class="modal login hide">
 			<div>
-				<button type="submit" class="submit">Submit</button>
-				<button type="button" class="signup visible">Sign Up!</button>
-				<button type="reset" class="cancel invisible">Cancel</button>
+				<form>
+					<input class="email" type="email" placeholder="Your email@address.com" />
+					<input class="password" type="password" placeholder="Password" />
+					<button type="submit">Submit</button>
+					<button type="reset">Cancel</button>
+				</form>
 			</div>
-		</form>
+		</div>
+
+		<div class="modal signup hide">
+			<div>
+				<form>
+					<input class="name" type="text" placeholder="Your name" />
+					<input class="email" type="email" placeholder="Your email@address.com" />
+					<input class="password" type="password" placeholder="Password" />
+					<button type="submit">Submit</button>
+					<button type="reset">Cancel</button>
+				</form>
+			</div>
+		</div>
 	</div>
 </template>
