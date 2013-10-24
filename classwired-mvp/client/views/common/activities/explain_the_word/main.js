@@ -1,11 +1,14 @@
 Deps.autorun(function() {
-	if(Meteor.user())
+	
+	var userId = Meteor.userId();
+
+	if(userId)
 	{
 		var classroomId = Session.get('currentClassroom');
-		var group = Groups.findOne({ members: Meteor.userId() });
+		var group = Groups.findOne({ members: userId });
 
 		Meteor.call('reassignGroupWords', classroomId, function(error, result) { return });
-		Meteor.call('unassignItem', Meteor.user()._id, classroomId);
+		Meteor.call('unassignItem', userId, classroomId, function() { Meteor.call('populateItems', userId, classroomId); });
 	}
 });
 

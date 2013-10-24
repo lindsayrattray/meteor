@@ -1,22 +1,3 @@
-var ensureUniqueItem = function(wordlistItems, explainItems, currentItem)
-{
-	var explained = _.chain(explainItems).pluck('item').uniq().value();
-
-	if(wordlistItems.length <= explained.length)
-	{
-		return null;
-	}
-	else
-	{
-		var current = currentItem ? currentItem.item : '';
-		var possibleItems = _.chain(wordlistItems).pluck('item').uniq().difference(explained).without(current).value();
-		var resultItem = _.chain(possibleItems).shuffle().first().value();
-
-		var result = _.findWhere(wordlistItems, { item: resultItem });
-		return result;
-	}
-}
-
 Meteor.methods({
 	populateItems: function(userId, classroomId) {
 		var group = GroupManager.getGroupByMember(userId, classroomId);
@@ -44,30 +25,23 @@ Meteor.methods({
 	assignNewItem: function(userId, classroomId) {
 		var group = GroupManager.getGroupByMember(userId, classroomId);
 		var groupId = group ? group._id : null;
-		var wordlistItems = ExplainTheWord_WordlistItems.find({ classroomId: classroomId }).fetch();
-		var explainItems = _.reject(ExplainTheWord_ExplainItems.find({ groupId: groupId, answered: true, classroomId: classroomId }).fetch(), function(item) { return item.assigned_to });
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ groupId: groupId, assigned_to: userId.toString(), classroomId: classroomId });
-		var newItem = ensureUniqueItem(wordlistItems, explainItems, currentItem);
+		var explainItems = ExplainTheWord_ExplainItems.find({ groupId: groupId, classroomId: classroomId }).fetch();
+		var availableItems = _.reject(explainItems, function(item) { return !(_.isNull(item.assigned_to) || item.answered) });
+		var currentItem = _.findWhere(explainItems, { assigned_to: userId };
 		var timestamp = new Date();
-
-		console.log(explainItems);
 
 		if(currentItem)
 		{
 			ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { assigned_to: null } });
 		}
-		if(newItem)
+
+		if(availableItems.length > 0)
 		{
-			var oldItem = ExplainTheWord_ExplainItems.findOne({ item: newItem.item, classroomId: newItem.classroomId, groupId: groupId, answered: false });
-			if(oldItem)
-			{
-				timestamp = oldItem.assigned_timestamp ? oldItem.assigned_timestamp : timestamp;
-				ExplainTheWord_ExplainItems.update(oldItem._id, { $set: { assigned_to: userId, assigned_timestamp: timestamp } });
-			}
-			else
-			{
-				ExplainTheWord_ExplainItems.insert({ item: newItem.item, classroomId: newItem.classroomId, groupId: groupId, assigned_to: userId, assigned_timestamp: timestamp, answered: false, answer: null });
-			}
+			var newItem = _.sample(availableItems);
+			var existingItem = ExplainTheWord_ExplainItems.findOne(newItem);
+
+			timestamp = existingItem.assigned_timestamp ? existingItem.assigned_timestamp : timestamp;
+			ExplainTheWord_ExplainItems.update(newItem._id, { $set: { assigned_to: userId, assigned_timestamp: timestamp } });
 		}
 	},
 	unassignItem: function(userId, classroomId) {
@@ -75,7 +49,7 @@ Meteor.methods({
 
 		if(currentItem)
 		{
-			ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { assigned_to: userId } });
+			ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { assigned_to: null } });
 		}
 	}
 });

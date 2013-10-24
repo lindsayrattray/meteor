@@ -1,7 +1,6 @@
 Meteor.methods({
 	reassignGroupWords: function(classroomId) {
 		var wordlistItems = ExplainTheWord_WordlistItems.find({ classroomId: classroomId }).fetch();
-		var explainItems = ExplainTheWord_ExplainItems.find({ classroomId: classroomId }).fetch();
 		var user, group;
 
 		for(itemIndex in wordlistItems)
