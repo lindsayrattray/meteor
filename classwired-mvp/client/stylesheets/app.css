@@ -8000,167 +8000,77 @@ div.login .modal > div form button {
 
 /* line 545, sass/app.scss */
 .classroom-manager {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  max-width: 62.5em;
-  *zoom: 1;
+  /*@include grid-row();
+  
   height: 100%;
-}
-/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.classroom-manager:before, .classroom-manager:after {
-  content: " ";
-  display: table;
-}
-/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.classroom-manager:after {
-  clear: both;
-}
-/* line 551, sass/app.scss */
-.classroom-manager > .container {
-  width: auto;
-  margin: 0;
-  max-width: none;
-  *zoom: 1;
-  height: 100%;
-}
-/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.classroom-manager > .container:before, .classroom-manager > .container:after {
-  content: " ";
-  display: table;
-}
-/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.classroom-manager > .container:after {
-  clear: both;
-}
-/* line 557, sass/app.scss */
-.classroom-manager > .container .header {
-  width: auto;
-  margin: 0;
-  max-width: none;
-  *zoom: 1;
-  border: 1px solid #ddd;
-  background: #f5f5f5;
-  line-height: 2em;
-}
-/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.classroom-manager > .container .header:before, .classroom-manager > .container .header:after {
-  content: " ";
-  display: table;
-}
-/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.classroom-manager > .container .header:after {
-  clear: both;
-}
-/* line 566, sass/app.scss */
-.classroom-manager > .container .header span {
-  position: relative;
-  padding-left: 0.9375em;
-  padding-right: 0.9375em;
-  width: 50%;
-  float: left;
-  font-weight: 600;
-}
-/* line 574, sass/app.scss */
-.classroom-manager > .container ul {
-  width: auto;
-  margin: 0;
-  max-width: none;
-  *zoom: 1;
-  height: 60%;
-  overflow-y: auto;
-  list-style: none;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
-/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.classroom-manager > .container ul:before, .classroom-manager > .container ul:after {
-  content: " ";
-  display: table;
-}
-/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.classroom-manager > .container ul:after {
-  clear: both;
-}
-/* line 590, sass/app.scss */
-.classroom-manager > .container ul li {
-  width: auto;
-  margin: 0;
-  max-width: none;
-  *zoom: 1;
-}
-/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.classroom-manager > .container ul li:before, .classroom-manager > .container ul li:after {
-  content: " ";
-  display: table;
-}
-/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.classroom-manager > .container ul li:after {
-  clear: both;
-}
-/* line 594, sass/app.scss */
-.classroom-manager > .container ul li:nth-child(even) {
-  background: #f9f9f9;
-}
-/* line 599, sass/app.scss */
-.classroom-manager > .container ul li a {
-  line-height: 2em;
-}
-/* line 603, sass/app.scss */
-.classroom-manager > .container ul li a span {
-  position: relative;
-  padding-left: 0.9375em;
-  padding-right: 0.9375em;
-  width: 50%;
-  float: left;
-}
-/* line 611, sass/app.scss */
-.classroom-manager > .container > button {
-  border-style: solid;
-  border-width: 1px;
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: bold;
-  line-height: normal;
-  margin: 0 0 1.25em;
-  position: relative;
-  text-decoration: none;
-  text-align: center;
-  display: inline-block;
-  padding-top: 0.75em;
-  padding-right: 1.5em;
-  padding-bottom: 0.8125em;
-  padding-left: 1.5em;
-  font-size: 1em;
-  padding-top: 0.75em;
-  padding-bottom: 0.8125em;
-  padding-right: 0;
-  padding-left: 0;
-  width: 100%;
-  background-color: #2ba6cb;
-  border-color: #2284a1;
-  color: white;
-  -webkit-transition: all 300ms ease-out;
-  -moz-transition: all 300ms ease-out;
-  transition: all 300ms ease-out;
-  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-}
-/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-.classroom-manager > .container > button:hover, .classroom-manager > .container > button:focus {
-  background-color: #2284a1;
-}
-/* line 133, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-.classroom-manager > .container > button:hover, .classroom-manager > .container > button:focus {
-  color: white;
-}
-/* line 68, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.classroom-manager > .container > button:active {
-  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
+  
+  >.container
+  {
+    @include grid-row($behavior: nest-collapse);
+    
+    height: 100%;
+
+    .header
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      border: 1px solid #ddd;
+      background: #f5f5f5;
+
+      line-height: 2em;
+
+      span
+      {
+        @include grid-column(6);
+        
+        font-weight: 600;
+      }
+    }
+
+    ul
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      height: 60%;
+      overflow-y: auto;
+
+      list-style: none;
+
+      border:
+      {
+        left: 1px solid #ddd;
+        right: 1px solid #ddd;
+        bottom: 1px solid #ddd;
+      }
+
+      li
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        &:nth-child(even)
+        {
+          background: #f9f9f9;
+        }
+
+        a
+        {
+          line-height: 2em;
+
+          span
+          {
+            @include grid-column(6);
+          }
+        }
+      }
+    }
+
+    > button
+    {
+      @include button($button-med, $primary-color, false, true);
+      @include single-transition;
+      @include inset-shadow(true);
+    }
+  }*/
 }
 /* line 619, sass/app.scss */
 .classroom-manager .modal {

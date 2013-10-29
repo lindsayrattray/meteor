@@ -1,25 +1,24 @@
 <template name="classroomManager">
 	<div class="classroom-manager">
 		<div class="container">
-			<div class="header">
-				<span>Classroom</span>
-				<span>Teacher</span>
-			</div>
 			<ul>
 				{{#each classrooms}}
-					<li>
-						<a>
+					<li class="classroom">
+						<div>
 							<span>{{name}}</span>
 							<span>{{ownerName this}}</span>
-						</a>
+							<button class="join">Enter Classroom</button>
+						</div>
 					</li>
 				{{/each}}
 			</ul>
+		</div>
+		<div>
 			{{#if thisUserHasRole 'teacher'}}
-				<button>New Classroom</button>
+				<button class="new">New Classroom</button>
 			{{/if}}
 		</div>
-		<div class="modal invisible">
+		<div class="modal">
 			<div>
 				<form>
 					<span>Enter a new classroom name</span>

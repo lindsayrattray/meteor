@@ -543,7 +543,7 @@ div.login
 // ==============================================
 .classroom-manager
 {
-  @include grid-row();
+  /*@include grid-row();
   
   height: 100%;
   
@@ -613,7 +613,7 @@ div.login
       @include single-transition;
       @include inset-shadow(true);
     }
-  }
+  }*/
 
   .modal
   {

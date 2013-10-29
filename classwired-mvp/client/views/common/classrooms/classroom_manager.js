@@ -39,12 +39,12 @@ Template.classroomManager.helpers({
 });
 
 Template.classroomManager.events({
-	'click .classroom-manager .container button': function(event, template) {
+	'click button.new': function(event, template) {
 		var nameInput = template.find('.modal div form input');
 		Session.set('classroomManager_ModalVisible', true);
 		nameInput.focus();
 	},
-	'submit .modal div form': function(event, template) {
+	'submit .modal form': function(event, template) {
 		var nameInput = template.find('.modal div form input');
 
 		if(Classrooms.findOne({ name: nameInput.value }))
@@ -60,14 +60,14 @@ Template.classroomManager.events({
 		
 		event.preventDefault();
 	},
-	'reset .modal div form': function(event, template) {
+	'reset .modal form': function(event, template) {
 		var nameInput = template.find('.modal div form input');
 		nameInput.value = '';
 		Session.set('classroomManager_ModalVisible', false);
 
 		event.preventDefault();
 	},
-	'click .classroom-manager .container ul li a': function(event, template) {
+	'click .classroom-manager .classroom .join': function(event, template) {
 		var destination = Classrooms.findOne(this._id);
 		Session.set('leavingCurrentRoom', false);
 		Meteor.call('setUserCurrentRoom', Meteor.user()._id, this._id);
