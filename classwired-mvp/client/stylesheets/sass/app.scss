@@ -543,77 +543,49 @@ div.login
 // ==============================================
 .classroom-manager
 {
-  /*@include grid-row();
-  
+  @include grid-row();
+
   height: 100%;
-  
-  >.container
+
+  ul
   {
     @include grid-row($behavior: nest-collapse);
-    
-    height: 100%;
 
-    .header
+    height: 60%;
+    overflow-y: auto;
+
+    list-style: none;
+
+    li.classroom
     {
-      @include grid-row($behavior: nest-collapse);
+      @include grid-column(10, false, true);
 
-      border: 1px solid #ddd;
-      background: #f5f5f5;
+      padding: 1em;
 
-      line-height: 2em;
-
-      span
-      {
-        @include grid-column(6);
-        
-        font-weight: 600;
-      }
-    }
-
-    ul
-    {
-      @include grid-row($behavior: nest-collapse);
-
-      height: 60%;
-      overflow-y: auto;
-
-      list-style: none;
-
-      border:
-      {
-        left: 1px solid #ddd;
-        right: 1px solid #ddd;
-        bottom: 1px solid #ddd;
-      }
-
-      li
+      > div
       {
         @include grid-row($behavior: nest-collapse);
 
-        &:nth-child(even)
-        {
-          background: #f9f9f9;
-        }
+        height: 100%;
+        background-color: yellow;
 
-        a
-        {
-          line-height: 2em;
+        padding: 1em;
+        box-shadow: 0.5em 0.5em 1em 0 #ddd;
 
-          span
-          {
-            @include grid-column(6);
-          }
+        .join
+        {
+          @include button($button-med, $primary-color, false, true);
+
+          margin-bottom: 0;
         }
       }
     }
+  }
 
-    > button
-    {
-      @include button($button-med, $primary-color, false, true);
-      @include single-transition;
-      @include inset-shadow(true);
-    }
-  }*/
+  button.new
+  {
+    @include button($button-med, $primary-color, false, true);
+  }
 
   .modal
   {
@@ -670,7 +642,7 @@ div.login
   }
 }
 
-.classroom
+div.classroom
 {
   @include grid-row();
   
