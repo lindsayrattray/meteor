@@ -32,20 +32,18 @@ Template.classroomManager.rendered = function() {
 Template.classroomManager.helpers({
 	classrooms: function() {
 		return Classrooms.find({}, { sort: { date_created: -1 } });
-	},
-	ownerName: function(classroom) {
-		return Meteor.users.findOne(classroom.owner).profile.name;
 	}
 });
 
 Template.classroomManager.events({
-	'click .classroom-manager .container button': function(event, template) {
+	'click button.new': function(event, template) {
 		var nameInput = template.find('.modal div form input');
 		Session.set('classroomManager_ModalVisible', true);
 		nameInput.focus();
 	},
-	'submit .modal div form': function(event, template) {
-		var nameInput = template.find('.modal div form input');
+	'submit .modal form': function(event, template) {
+		var nameInput = template.find('.modal form .name');
+		var descriptionInput = template.find('.modal form .description')
 
 		if(Classrooms.findOne({ name: nameInput.value }))
 		{
@@ -53,21 +51,22 @@ Template.classroomManager.events({
 		}
 		else
 		{
-			Meteor.call('createClassroom', nameInput.value, Meteor.user()._id);
+			Meteor.call('createClassroom', nameInput.value, Meteor.user()._id, descriptionInput.value);
 			nameInput.value = '';
+			descriptionInput.value = '';
 			Session.set('classroomManager_ModalVisible', false);
 		}
 		
 		event.preventDefault();
 	},
-	'reset .modal div form': function(event, template) {
+	'reset .modal form': function(event, template) {
 		var nameInput = template.find('.modal div form input');
 		nameInput.value = '';
 		Session.set('classroomManager_ModalVisible', false);
 
 		event.preventDefault();
 	},
-	'click .classroom-manager .container ul li a': function(event, template) {
+	'click .classroom-manager .classroom .join': function(event, template) {
 		var destination = Classrooms.findOne(this._id);
 		Session.set('leavingCurrentRoom', false);
 		Meteor.call('setUserCurrentRoom', Meteor.user()._id, this._id);
