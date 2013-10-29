@@ -42,7 +42,8 @@ Template.classroomManager.events({
 		nameInput.focus();
 	},
 	'submit .modal form': function(event, template) {
-		var nameInput = template.find('.modal div form input');
+		var nameInput = template.find('.modal form .name');
+		var descriptionInput = template.find('.modal form .description')
 
 		if(Classrooms.findOne({ name: nameInput.value }))
 		{
@@ -52,6 +53,7 @@ Template.classroomManager.events({
 		{
 			Meteor.call('createClassroom', nameInput.value, Meteor.user()._id);
 			nameInput.value = '';
+			descriptionInput.value = '';
 			Session.set('classroomManager_ModalVisible', false);
 		}
 		
