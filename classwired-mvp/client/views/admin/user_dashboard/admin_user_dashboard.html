@@ -1,4 +1,24 @@
 <template name="adminUserDashboard">
+	<div class="admin users">
+		<div class="header">
+			<span>Users</span>
+		</div>
+		<div class="container">
+			{{#each users}}
+				<div class="user">{{emailAddress this}}</div>
+				<div class="details hide">
+					{{profileName this}}
+					<div class="roles">
+						{{#each roleNames}}
+							<span>{{this}}</span>
+						{{/each}}
+					</div>
+					<button class="delete">Delete</button>
+				</div>
+			{{/each}}
+		</div>
+	</div>
+
 	<table border="1">
 		<tbody>
 			<tr>
