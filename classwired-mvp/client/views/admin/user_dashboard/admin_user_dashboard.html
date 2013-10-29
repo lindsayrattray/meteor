@@ -3,19 +3,34 @@
 		<div class="header">
 			<span>Users</span>
 		</div>
-		<div class="container">
+		<ul>
 			{{#each users}}
-				<div class="user">{{emailAddress this}}</div>
-				<div class="details hide">
-					{{profileName this}}
-					<div class="roles">
-						{{#each roleNames}}
-							<span>{{this}}</span>
-							<input type="checkbox" />
-						{{/each}}
+				<li class="user">
+					<a>
+						{{#if true}}
+							<span> + </span>
+						{{else}}
+							<span> - </span>
+						{{/if}}
+						<span>{{emailAddress this}}</span>
+					</a>
+					<div class="details {{#unless showDetails this}}hide{{/unless}}">
+						<span>{{profileName this}}</span>
+						<div class="roles">
+							{{#each availablePermissions}}
+								<span>{{this}}</span>
+								<span>
+									{{#if userHasRole ../this this}}
+									<input class="role-checkbox" type="checkbox" checked />
+									{{else}}
+									<input class="role-checkbox" type="checkbox" />
+									{{/if}}
+								</span>
+							{{/each}}
+						</div>
+						<button class="delete">Delete</button>
 					</div>
-					<button class="delete">Delete</button>
-				</div>
+				</li>
 			{{/each}}
 		</div>
 	</div>

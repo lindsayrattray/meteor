@@ -21,5 +21,12 @@ Meteor.methods({
 		{
 			Meteor.users.update(userId, { $set: { currentRoom: classroomId } });
 		}
+	},
+	deleteUser: function(userId) {
+		var user = Meteor.users.findOne(userId);
+		if(user)
+		{
+			Meteor.users.remove(userId);
+		}
 	}
 });
