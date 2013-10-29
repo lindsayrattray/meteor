@@ -21,10 +21,10 @@ Template.adminUserDashboardItem.rendered = function() {
 
 Template.adminUserDashboardItem.events({
 	'click .chk-role': function(event, template) {
-		var permission = event.srcElement.id.substring(9);
+		var permission = event.target.id.substring(9);
 		var userId = template.find('.userId').innerHTML;
 		
-		if(event.srcElement.checked)
+		if(event.target.checked)
 		{
 			Meteor.call('addUserToRole', userId, permission);
 		}
