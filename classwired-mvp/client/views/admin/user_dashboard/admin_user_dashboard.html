@@ -34,21 +34,4 @@
 			{{/each}}
 		</div>
 	</div>
-
-	<table border="1">
-		<tbody>
-			<tr>
-				<th>ID</th>
-				<th>Email Address</th>
-				<th>Name</th>
-				<th>Roles</th>
-				{{#each availablePermissions}}
-					<th>{{this}}</th>
-				{{/each}}
-			</tr>
-			{{#each users}}
-				{{> adminUserDashboardItem this}}
-			{{/each}}
-		</tbody>
-	</table>
 </template>
