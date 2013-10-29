@@ -51,7 +51,7 @@ Template.classroomManager.events({
 		}
 		else
 		{
-			Meteor.call('createClassroom', nameInput.value, Meteor.user()._id);
+			Meteor.call('createClassroom', nameInput.value, Meteor.user()._id, descriptionInput.value);
 			nameInput.value = '';
 			descriptionInput.value = '';
 			Session.set('classroomManager_ModalVisible', false);

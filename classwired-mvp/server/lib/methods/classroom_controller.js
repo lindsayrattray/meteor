@@ -1,8 +1,8 @@
 Meteor.methods({
-	createClassroom: function(name, userId) {
+	createClassroom: function(name, userId, description) {
 		if(!Classrooms.findOne({ name: name }))
 		{
-			Classrooms.insert({ name: name, owner: userId, currentActivity: null, currentActivityComponent: '', open: true, date_created: Date.parse(new Date) });
+			Classrooms.insert({ name: name, owner: userId, description: description, currentActivity: null, currentActivityComponent: '', open: true, date_created: Date.parse(new Date) });
 		}
 	},
 	setCurrentActivity: function(classroomId, activityId) {
