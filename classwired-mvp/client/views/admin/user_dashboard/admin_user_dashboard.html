@@ -7,15 +7,15 @@
 			{{#each users}}
 				<li class="user">
 					<a>
-						{{#if true}}
+						{{#unless showDetails this}}
 							<span> + </span>
 						{{else}}
 							<span> - </span>
-						{{/if}}
+						{{/unless}}
 						<span>{{emailAddress this}}</span>
 					</a>
 					<div class="details {{#unless showDetails this}}hide{{/unless}}">
-						<span>{{profileName this}}</span>
+						<div class="name">{{profileName this}}</div>
 						<div class="roles">
 							{{#each availablePermissions}}
 								<span>{{this}}</span>
