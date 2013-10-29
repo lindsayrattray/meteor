@@ -406,7 +406,7 @@ div.login
 }
 
 // ==============================================
-//
+// Utility areas
 // ==============================================
 
 .main > .not-found
@@ -427,6 +427,114 @@ div.login
 
     display: block;
     margin: 0 auto;
+  }
+}
+
+// ==============================================
+// Admin styles
+// ==============================================
+
+.admin
+{
+  &.users
+  {
+    @include grid-row();
+
+    height: 100%;
+
+    > .header
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      text-align: center;
+
+      border: 1px solid #ddd;
+      background: #f5f5f5;
+
+      line-height: 2em;
+
+      span
+      {
+        font-weight: 600;
+      }
+    }
+
+    > ul
+    {
+      @include grid-row($behavior: nest-collapse);
+
+      height: 60%;
+      overflow-y: auto;
+
+      list-style: none;
+
+      border:
+      {
+        left: 1px solid #ddd;
+        right: 1px solid #ddd;
+        bottom: 1px solid #ddd;
+      }
+
+      .user
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        &:nth-child(even)
+        {
+          background-color: #f9f9f9;
+        }
+
+        a
+        {
+          line-height: 2em;
+        }
+
+        .details
+        {
+          @include grid-column(12);
+
+          text-align: center;
+
+          border:
+          {
+            top: 1px solid #ddd;
+            bottom: 1px solid #ddd;
+          }
+
+          .name
+          {
+            @include grid-row($behavior: nest-collapse);
+
+            font-weight: 600;
+
+            border-bottom: 1px solid #ddd;
+          }
+
+          .roles
+          {
+            text-align: left;
+
+            > span
+            {
+              &:nth-child(odd)
+              {
+                @include grid-column(8);
+              }
+
+              &:nth-child(even)
+              {
+                @include grid-column(4);
+              }
+            }
+          }
+
+          .delete
+          {
+            @include button($button-med, $alert-color, false, true);
+          }
+        }
+      }
+    }
   }
 }
 

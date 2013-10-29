@@ -37,7 +37,7 @@ Handlebars.registerHelper('availablePermissions', function() {
 });
 
 Handlebars.registerHelper('profileName', function(userId) {
-	var user = Meteor.users.find(userId).fetch()[0];
+	var user = Meteor.users.findOne(userId);
 	if(user && user.profile && user.profile.name)
 	{
 		return user.profile.name;
@@ -60,4 +60,8 @@ Handlebars.registerHelper('emailAddress', function(user) {
 
 Handlebars.registerHelper('thisUserHasRole', function(rolename) {
 	return UserController.thisUserHasRole(rolename);
+});
+
+Handlebars.registerHelper('userHasRole', function(userId, rolename) {
+	return UserController.userHasRole(userId, rolename);
 });

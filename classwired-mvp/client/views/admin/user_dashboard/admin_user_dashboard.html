@@ -1,18 +1,37 @@
 <template name="adminUserDashboard">
-	<table border="1">
-		<tbody>
-			<tr>
-				<th>ID</th>
-				<th>Email Address</th>
-				<th>Name</th>
-				<th>Roles</th>
-				{{#each availablePermissions}}
-					<th>{{this}}</th>
-				{{/each}}
-			</tr>
+	<div class="admin users">
+		<div class="header">
+			<span>Users</span>
+		</div>
+		<ul>
 			{{#each users}}
-				{{> adminUserDashboardItem this}}
+				<li class="user">
+					<a>
+						{{#unless showDetails this}}
+							<span> + </span>
+						{{else}}
+							<span> - </span>
+						{{/unless}}
+						<span>{{emailAddress this}}</span>
+					</a>
+					<div class="details {{#unless showDetails this}}hide{{/unless}}">
+						<div class="name">{{profileName this}}</div>
+						<div class="roles">
+							{{#each availablePermissions}}
+								<span>{{this}}</span>
+								<span>
+									{{#if userHasRole ../this this}}
+									<input class="role-checkbox" type="checkbox" checked />
+									{{else}}
+									<input class="role-checkbox" type="checkbox" />
+									{{/if}}
+								</span>
+							{{/each}}
+						</div>
+						<button class="delete">Delete</button>
+					</div>
+				</li>
 			{{/each}}
-		</tbody>
-	</table>
+		</div>
+	</div>
 </template>
