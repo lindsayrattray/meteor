@@ -3,24 +3,28 @@
 		<div class="container">
 			{{#unless loggingIn}}
 				<div>
-					<img class="logo" src="/images/logo.png" alt="Classwired logo" />
+
 				</div>
 				<div class="login-details">
 					<div class="email">
 						<p>What's your email address?</p>
 						<input type="email" placeholder="Your email@address.com" />
+						<button type="submit">Submit</button>
 					</div>
 					<div class="name">
 						<p>Hi! What's your name?</p>
 						<input type="text" placeholder="Your name" />
+						<button type="submit">Submit</button>
 					</div>
 					<div class="password">
 						<p>Hi {{studentName}}! What's your password?</p>
 						<input type="password" placeholder="Password" />
+						<button type="submit">Submit</button>
 					</div>
 					<div class="confirm-password">
 						<p>Could you repeat your password?</p>
 						<input type="password" placeholder="Confirm Password" />
+						<button type="submit">Submit</button>
 					</div>
 				</div>
 			{{else}}
@@ -30,4 +34,5 @@
 				</div>
 			{{/unless}}
 		</div>
+	</div>
 </template>
