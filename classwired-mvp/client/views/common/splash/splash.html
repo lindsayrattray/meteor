@@ -1,10 +1,33 @@
 <template name="splash">
 	<div class="splash">
-		<img class="logo" src="/images/logo.png" alt="Classwired logo" />
-		{{#unless loggingIn}}
-			{{> login}}
-		{{else}}
-			{{> spinner}}
-		{{/unless}}
-	</div>
+		<div class="container">
+			{{#unless loggingIn}}
+				<div>
+					<img class="logo" src="/images/logo.png" alt="Classwired logo" />
+				</div>
+				<div class="login-details">
+					<div class="email">
+						<p>What's your email address?</p>
+						<input type="email" placeholder="Your email@address.com" />
+					</div>
+					<div class="name">
+						<p>Hi! What's your name?</p>
+						<input type="text" placeholder="Your name" />
+					</div>
+					<div class="password">
+						<p>Hi {{studentName}}! What's your password?</p>
+						<input type="password" placeholder="Password" />
+					</div>
+					<div class="confirm-password">
+						<p>Could you repeat your password?</p>
+						<input type="password" placeholder="Confirm Password" />
+					</div>
+				</div>
+			{{else}}
+				<div>
+					<img class="logo" src="/images/logo.png" alt="Classwired logo" />
+					{{> spinner}}
+				</div>
+			{{/unless}}
+		</div>
 </template>
