@@ -18,7 +18,7 @@ Template.activityBrainstorm_Main.rendered = function() {
 		if(Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') !== -1)
 		{
 			Session.set('forwardButton', true);
-			Session.set('forwardMenu');
+			Session.set('forwardMenu', 'activityBrainstorm_UI_Teacher_ForwardMenu');
 			Session.set('leftButton');
 			Session.set('rightButton');
 		}

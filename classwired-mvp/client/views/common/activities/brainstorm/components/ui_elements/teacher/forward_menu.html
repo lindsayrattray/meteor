@@ -1,0 +1,9 @@
+<template name="activityBrainstorm_UI_Teacher_ForwardMenu">
+	<li class="controls">
+		<button class="play-pause">{{#if classroomPaused}}<img src="/images/play.png" alt="Play" />{{else}}<img src="/images/pause.png" alt="Pause" />{{/if}}</button>
+		<button class="stop"><img src="/images/stop.png" alt="Stop" /></button>
+	</li>
+	{{#each components}}
+		<li class="component"><a>{{this.title}}</a></li>
+	{{/each}}
+</template>
