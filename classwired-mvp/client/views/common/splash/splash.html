@@ -1,32 +1,41 @@
 <template name="splash">
 	<div class="splash">
-		<div class="container">
+		<div class="viewport">
 			{{#unless loggingIn}}
-				<div>
-
+			<div class="container hide-login">
+				<div class="home-screen">
+					<img class="logo" src="/images/logo.png" alt="Classwired logo" />
+					<button type="button">Login</button>
 				</div>
-				<div class="login-details">
-					<div class="email">
-						<p>What's your email address?</p>
-						<input type="email" placeholder="Your email@address.com" />
-						<button type="submit">Submit</button>
-					</div>
-					<div class="name">
-						<p>Hi! What's your name?</p>
-						<input type="text" placeholder="Your name" />
-						<button type="submit">Submit</button>
-					</div>
-					<div class="password">
-						<p>Hi {{studentName}}! What's your password?</p>
-						<input type="password" placeholder="Password" />
-						<button type="submit">Submit</button>
-					</div>
-					<div class="confirm-password">
-						<p>Could you repeat your password?</p>
-						<input type="password" placeholder="Confirm Password" />
-						<button type="submit">Submit</button>
-					</div>
+				<div class="login-container">
+					<form class="login-details stage-email">
+						<div class="email">
+							<p>What's your email address?</p>
+							<input id="login-email" type="email" placeholder="Your email@address.com" />
+							<button type="submit">Next</button>
+							<button type="reset">Cancel</button>
+						</div>
+						<div class="name">
+							<p>Hi! What's your name?</p>
+							<input id="login-name" type="text" placeholder="Your name" />
+							<button type="submit">Next</button>
+							<button type="reset">Cancel</button>
+						</div>
+						<div class="password">
+							<p>Hi {{studentName}}! What's your password?</p>
+							<input id="login-password" type="password" placeholder="Password" />
+							<button type="submit">{{passwordSubmit}}</button>
+							<button type="reset">Cancel</button>
+						</div>
+						<div class="confirm-password">
+							<p>Could you repeat your password?</p>
+							<input id="login-confirm-password" type="password" placeholder="Confirm Password" />
+							<button type="submit">Submit</button>
+							<button type="reset">Cancel</button>
+						</div>
+					</form>
 				</div>
+			</div>
 			{{else}}
 				<div>
 					<img class="logo" src="/images/logo.png" alt="Classwired logo" />
@@ -35,4 +44,5 @@
 			{{/unless}}
 		</div>
 	</div>
+	{{debug}}
 </template>
