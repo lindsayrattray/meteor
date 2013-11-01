@@ -2,7 +2,7 @@ Deps.autorun(function() {
 	var userId = Meteor.userId();
 	var classroomId = Session.get('currentClassroom');
 
-	if(user)
+	if(userId)
 	{
 		var group = GroupManager.getGroupByMember(userId, classroomId);
 
@@ -33,7 +33,7 @@ Template.activityBrainstorm_Main.helpers({
 		{
 			if(this.classroom.state === 'stopped')
 			{
-				return; //Template stuff
+				return Template['activityExplainTheWord_Stopped']({ activity: this.activity, classroom: this.classroom });
 			}
 		}
 
@@ -48,7 +48,7 @@ Template.activityBrainstorm_Main.helpers({
 		}
 		else
 		{
-			return //template stuff again
+			return Template[component.template]({ activity: this.activity, classroom: this.classroom });
 		}
 	},
 	toggleModal: function() {
