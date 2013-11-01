@@ -23,7 +23,7 @@ Template.activityBrainstorm_Main.rendered = function() {
 			Session.set('rightButton');
 		}
 
-		Session.set('currentContext');
+		Session.set('currentContext', 'activityBrainstorm_UI_Context');
 	}
 };
 
