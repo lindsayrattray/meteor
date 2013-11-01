@@ -1,0 +1,14 @@
+<template name="activityBrainstorm_Main">
+	<div class="brainstorm activity-main">
+		{{{component}}}
+		{{#unless thisUserHasRole 'teacher'}}
+			<div class="modal {{toggleModal}}">
+				<div>
+					<div>
+						<p>Your teacher has paused this lesson, you will need to wait for them to continue.</p>
+					</div>
+				</div>
+			</div>
+		{{/unless}}
+	</div>
+</template>

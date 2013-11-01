@@ -53,7 +53,7 @@ Template.activityExplainTheWord_Main.helpers({
 		var component = Components.findOne(this.classroom.currentActivityComponent);
 		if(!component)
 		{
-			component = Components.find({ name: 'wordlist' }).fetch()[0];
+			component = Components.findOne({ name: 'wordlist' });
 			if(component)
 			{
 				Meteor.call('setCurrentComponent', this.classroom._id, component._id);
