@@ -1,7 +1,11 @@
 <template name="activityBrainstorm_Brainstorm_Student">
 	<div class="brainstorm student">
 		<div class="container">
-
+			{{#each brainstormItems}}
+				<div>
+					<textarea value="{{this.text}}" />
+				</div>
+			{{/each}}
 		</div>
 		<textarea />
 		<button type="button">submit</button>
