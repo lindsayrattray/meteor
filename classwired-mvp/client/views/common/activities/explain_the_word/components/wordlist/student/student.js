@@ -4,7 +4,7 @@ var updateWordlist = _.debounce(function(item, content) {
 }, 1000, false);
 
 Template.activityExplainTheWord_Wordlist_Student.rendered = function() {
-	var isEditing = Session.get('editingItem')
+	var isEditing = Session.get('editingItem');
 	if(!isEditing)
 	{
 		var $wordlistContainer = $('.wordlist.student ul');
