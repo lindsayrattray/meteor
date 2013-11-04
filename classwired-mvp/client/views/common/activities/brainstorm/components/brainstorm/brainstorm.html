@@ -1,0 +1,7 @@
+<template name="activityBrainstorm_Brainstorm">
+	{{#if thisUserHasRole 'teacher'}}
+		{{> activityBrainstorm_Brainstorm_Student}}
+	{{else}}
+		{{> activityBrainstorm_Brainstorm_Student}}
+	{{/if}}
+</template>

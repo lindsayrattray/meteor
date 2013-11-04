@@ -1,0 +1,1 @@
+Brainstorm_Items = new Meteor.Collection('brainstorm_Items');
