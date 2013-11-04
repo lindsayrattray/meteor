@@ -25,7 +25,7 @@ Template.activityBrainstorm_Brainstorm_Student.rendered = function() {
 	var isEditing = Session.get('editingItem');
 	if(!isEditing)
 	{
-		var $brainstormContainer = $('.student ul');
+		var $brainstormContainer = $('.student > ul');
 		$brainstormContainer.stop().animate({ scrollTop: $brainstormContainer.prop("scrollHeight") }, 1000);
 	}	
 };
@@ -33,9 +33,6 @@ Template.activityBrainstorm_Brainstorm_Student.rendered = function() {
 Template.activityBrainstorm_Brainstorm_Student.events({
 	'blur [contenteditable]': function(event, template) {
 		updateBrainstorm(this, trim($(event.target).text()));
-
-		//android fix, but should only happen on android
-		//$(event.target).parent().siblings().show();
 	},
 	'keyup [contenteditable]': function(event, template) {
 		updateBrainstorm(this, trim($(event.target).text()));
@@ -47,10 +44,10 @@ Template.activityBrainstorm_Brainstorm_Student.events({
 		updateBrainstorm(this, trim($(event.target).text()));
 	},
 	'focus [contenteditable]': function(event, template) {
+		var $brainstormContainer = $('.student > ul');
+
 		Session.set('editingItem', true);
-		
-		//android fix, but should only happen on android
-		//$(event.target).parent().siblings().hide();
+		$brainstormContainer.stop().animate({ scrollTop: $(event.target).offset().top }, 600);
 	},
 	'submit .student form': function(event, template) {
 		var user = Meteor.user();
