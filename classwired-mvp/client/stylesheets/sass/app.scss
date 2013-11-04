@@ -1502,3 +1502,61 @@ div.classroom
     }
   }
 }
+
+.brainstorm
+{
+  &.activity-main
+  {
+    @include grid-row();
+
+    height: 100%;
+
+    .student
+    {
+      @include grid-row();
+
+      height: 100%;
+
+      ul
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        height: 60%;
+        overflow-y: auto;
+
+        li
+        {
+          @media screen and (max-width: 767px)
+          {
+            @include grid-column(10, false, true);
+          }
+
+          @media screen and (min-width: 768px) and (max-width: 1279px)
+          {
+            @include grid-column(6);
+          }
+
+          @media screen and (min-width: 1280px)
+          {
+            @include grid-column(4);
+          }
+
+          padding: 1em;
+
+          > div
+          {
+            background-color: grey;
+
+            min-height: 14em;
+
+            textarea
+            {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

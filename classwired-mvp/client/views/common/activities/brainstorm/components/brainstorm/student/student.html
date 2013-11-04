@@ -1,10 +1,10 @@
 <template name="activityBrainstorm_Brainstorm_Student">
-	<div class="brainstorm student">
+	<div class="student">
 		<ul>
 			{{#each brainstormItems}}
 				<li>
-					<div>
-						<input type="text" value="{{this.text}}" />
+					<div contenteditable="true">
+						{{this.text}}
 					</div>
 				</li>
 			{{/each}}

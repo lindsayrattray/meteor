@@ -1,5 +1,23 @@
+function trim (str) {
+    str = str.replace(/^\s+/, '');
+    for (var i = str.length - 1; i >= 0; i--) {
+        if (/\S/.test(str.charAt(i))) {
+            str = str.substring(0, i + 1);
+            break;
+        }
+    }
+    return str;
+}
+
 var updateBrainstorm = _.debounce(function(item, content) {
-	Brainstorm_Items.update(item._id, { $set: { item: content } });
+	var oldItem = Brainstorm_Items.findOne(item._id);
+
+	if(oldItem && oldItem.text !== content)
+	{
+		console.log(item);
+		Brainstorm_Items.update(item._id, { $set: { text: content } });
+	}
+
 	Session.set('editingItem', false);
 }, 1000, false);
 
@@ -7,27 +25,33 @@ Template.activityBrainstorm_Brainstorm_Student.rendered = function() {
 	var isEditing = Session.get('editingItem');
 	if(!isEditing)
 	{
-		var $brainstormContainer = $('.brainstorm.student ul');
+		var $brainstormContainer = $('.student ul');
 		$brainstormContainer.stop().animate({ scrollTop: $brainstormContainer.prop("scrollHeight") }, 1000);
 	}	
 };
 
 Template.activityBrainstorm_Brainstorm_Student.events({
-	'input .brainstorm.student ul input': function(event, template) {
-		updateBrainstorm(this, event.target.value);
+	'blur [contenteditable]': function(event, template) {
+		updateBrainstorm(this, trim($(event.target).text()));
 	},
-	'focus .brainstorm.student ul input': function() {
+	'keyup [contenteditable]': function(event, template) {
+		updateBrainstorm(this, trim($(event.target).text()));
+	},
+	'cut [contenteditable]': function(event, template) {
+		updateBrainstorm(this, trim($(event.target).text()));
+	},
+	'paste [contenteditable]': function(event, template) {
+		updateBrainstorm(this, trim($(event.target).text()));
+	},
+	'focus [contenteditable]': function() {
 		Session.set('editingItem', true);
 	},
-	'blur .brainstorm.student ul input': function() {
-		Session.set('editingItem', false);
-	},
-	'submit .brainstorm.student form': function(event, template) {
+	'submit .student form': function(event, template) {
 		var user = Meteor.user();
 		if(user)
 		{
 			var brainstormItem = {
-				text: template.find('.brainstorm.student form input').value,
+				text: template.find('.student form input').value,
 				userId: user._id,
 				classroomId: template.data.classroom._id
 			};
@@ -37,7 +61,7 @@ Template.activityBrainstorm_Brainstorm_Student.events({
 				Brainstorm_Items.insert(brainstormItem);
 			}
 		}
-		template.find('.brainstorm.student form input').value = '';
+		template.find('.student form input').value = '';
 
 		event.preventDefault();
 	}
@@ -47,4 +71,4 @@ Template.activityBrainstorm_Brainstorm_Student.helpers({
 	brainstormItems: function() {
 		return Brainstorm_Items.find({}, { sort: { created_timestamp: 1 } });
 	}
-})
+});
