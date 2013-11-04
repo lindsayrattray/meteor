@@ -1521,8 +1521,10 @@ div.classroom
       {
         @include grid-row($behavior: nest-collapse);
 
-        height: 60%;
+        height: 70%;
         overflow-y: auto;
+
+        list-style: none;
 
         li
         {
@@ -1549,12 +1551,32 @@ div.classroom
 
             min-height: 14em;
 
-            textarea
-            {
-              width: 100%;
-              height: 100%;
-            }
+            padding: 1em;
           }
+        }
+      }
+
+      form
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        height: 20%;
+
+        input
+        {
+          @include grid-column(10);
+
+          line-height: 2em;
+          height: 2.4em;
+        }
+
+        button
+        {
+          @include grid-column(2);
+
+          line-height: 2em;
+
+          padding: 0;
         }
       }
     }

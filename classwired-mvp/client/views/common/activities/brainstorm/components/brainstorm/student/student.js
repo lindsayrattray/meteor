@@ -33,6 +33,9 @@ Template.activityBrainstorm_Brainstorm_Student.rendered = function() {
 Template.activityBrainstorm_Brainstorm_Student.events({
 	'blur [contenteditable]': function(event, template) {
 		updateBrainstorm(this, trim($(event.target).text()));
+
+		//android fix, but should only happen on android
+		//$(event.target).parent().siblings().show();
 	},
 	'keyup [contenteditable]': function(event, template) {
 		updateBrainstorm(this, trim($(event.target).text()));
@@ -43,8 +46,11 @@ Template.activityBrainstorm_Brainstorm_Student.events({
 	'paste [contenteditable]': function(event, template) {
 		updateBrainstorm(this, trim($(event.target).text()));
 	},
-	'focus [contenteditable]': function() {
+	'focus [contenteditable]': function(event, template) {
 		Session.set('editingItem', true);
+		
+		//android fix, but should only happen on android
+		//$(event.target).parent().siblings().hide();
 	},
 	'submit .student form': function(event, template) {
 		var user = Meteor.user();

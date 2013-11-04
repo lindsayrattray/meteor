@@ -9716,8 +9716,9 @@ div.classroom > .container > div {
   margin: 0;
   max-width: none;
   *zoom: 1;
-  height: 60%;
+  height: 70%;
   overflow-y: auto;
+  list-style: none;
 }
 /* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
 .brainstorm.activity-main .student ul:before, .brainstorm.activity-main .student ul:after {
@@ -9728,12 +9729,12 @@ div.classroom > .container > div {
 .brainstorm.activity-main .student ul:after {
   clear: both;
 }
-/* line 1528, sass/app.scss */
+/* line 1530, sass/app.scss */
 .brainstorm.activity-main .student ul li {
   padding: 1em;
 }
 @media screen and (max-width: 767px) {
-  /* line 1528, sass/app.scss */
+  /* line 1530, sass/app.scss */
   .brainstorm.activity-main .student ul li {
     position: relative;
     padding-left: 0.9375em;
@@ -9746,7 +9747,7 @@ div.classroom > .container > div {
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  /* line 1528, sass/app.scss */
+  /* line 1530, sass/app.scss */
   .brainstorm.activity-main .student ul li {
     position: relative;
     padding-left: 0.9375em;
@@ -9756,7 +9757,7 @@ div.classroom > .container > div {
   }
 }
 @media screen and (min-width: 1280px) {
-  /* line 1528, sass/app.scss */
+  /* line 1530, sass/app.scss */
   .brainstorm.activity-main .student ul li {
     position: relative;
     padding-left: 0.9375em;
@@ -9765,13 +9766,46 @@ div.classroom > .container > div {
     float: left;
   }
 }
-/* line 1547, sass/app.scss */
+/* line 1549, sass/app.scss */
 .brainstorm.activity-main .student ul li > div {
   background-color: grey;
   min-height: 14em;
+  padding: 1em;
 }
-/* line 1553, sass/app.scss */
-.brainstorm.activity-main .student ul li > div textarea {
-  width: 100%;
-  height: 100%;
+/* line 1560, sass/app.scss */
+.brainstorm.activity-main .student form {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+  height: 20%;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.brainstorm.activity-main .student form:before, .brainstorm.activity-main .student form:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.brainstorm.activity-main .student form:after {
+  clear: both;
+}
+/* line 1566, sass/app.scss */
+.brainstorm.activity-main .student form input {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 83.33333%;
+  float: left;
+  line-height: 2em;
+  height: 2.4em;
+}
+/* line 1574, sass/app.scss */
+.brainstorm.activity-main .student form button {
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 16.66667%;
+  float: left;
+  line-height: 2em;
+  padding: 0;
 }
