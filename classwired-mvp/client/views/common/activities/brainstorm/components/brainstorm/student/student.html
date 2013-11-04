@@ -3,15 +3,22 @@
 		<ul>
 			{{#each brainstormItems}}
 				<li>
-					<div contenteditable="true">
+					<div>
+						<div {{#unless thisUserHasRole 'teacher'}} contenteditable="true"{{/unless}}>
 						{{this.text}}
+						</div>
+						<div>
+							{{profileName this.userId}}
+						</div>
 					</div>
 				</li>
 			{{/each}}
 		</ul>
-		<form>
-			<input type="text" />
-			<button type="submit">submit</button>
-		</form>
+		{{#unless thisUserHasRole 'teacher'}}
+			<form>
+				<input type="text" />
+				<button type="submit">submit</button>
+			</form>
+		{{/unless}}
 	</div>
 </template>

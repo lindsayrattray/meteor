@@ -1,3 +1,6 @@
+
+//some internet dude's string trim function, it's not functional but it'll
+//do for now
 function trim (str) {
     str = str.replace(/^\s+/, '');
     for (var i = str.length - 1; i >= 0; i--) {
@@ -44,10 +47,7 @@ Template.activityBrainstorm_Brainstorm_Student.events({
 		updateBrainstorm(this, trim($(event.target).text()));
 	},
 	'focus [contenteditable]': function(event, template) {
-		var $brainstormContainer = $('.student > ul');
-
 		Session.set('editingItem', true);
-		$brainstormContainer.stop().animate({ scrollTop: $(event.target).offset().top }, 600);
 	},
 	'submit .student form': function(event, template) {
 		var user = Meteor.user();

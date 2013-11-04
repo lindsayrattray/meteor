@@ -702,6 +702,8 @@ div.classroom
       -ms-transform: translate(-50%, 0);
       -o-transform: translate(-50%, 0);
       transform: translate(-50%, 0);
+
+      overflow: hidden;
     }
 
     >div
@@ -1521,10 +1523,12 @@ div.classroom
       {
         @include grid-row($behavior: nest-collapse);
 
-        height: 70%;
+        height: 100%;
         overflow-y: auto;
 
         list-style: none;
+
+        padding-bottom: 2.4em;
 
         li
         {
@@ -1547,11 +1551,85 @@ div.classroom
 
           > div
           {
-            background-color: grey;
+            min-height: 224px;
 
-            min-height: 14em;
+            padding: 0.66em;
 
-            padding: 1em;
+            box-shadow: 0.33em 0.33em 0.66em 0 #ddd;
+
+            font-size: 150%;
+            font-weight: 600;
+
+            > div
+            {
+              &:nth-child(1)
+              {
+                height: 8.7em;
+              }
+
+              &:nth-child(2)
+              {
+                height: 1em;
+
+                text-align: right;
+              }
+            }
+          }
+
+          //Post it note-ify!
+          &:nth-child(n+1) > div
+          {
+            -webkit-transform: rotate(4deg);
+            -moz-transform: rotate(4deg);
+            -ms-transform: rotate(4deg);
+            -o-transform: rotate(4deg);
+            transform: rotate(4deg);
+
+            background-color: #cfc;
+          }
+
+          &:nth-child(2n+2) > div
+          {
+            -webkit-transform: rotate(-3deg);
+            -moz-transform: rotate(-3deg);
+            -ms-transform: rotate(-3deg);
+            -o-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+
+            background-color: #ccf;
+          }
+
+          &:nth-child(3n+3) > div
+          {
+            -webkit-transform: rotate(2deg);
+            -moz-transform: rotate(2deg);
+            -ms-transform: rotate(2deg);
+            -o-transform: rotate(2deg);
+            transform: rotate(2deg);
+
+            background-color: #fcc;
+          }
+
+          &:nth-child(4n+4) > div
+          {
+            -webkit-transform: rotate(-1deg);
+            -moz-transform: rotate(-1deg);
+            -ms-transform: rotate(-1deg);
+            -o-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+
+            background-color: #ffc;
+          }
+
+          &:nth-child(5n+5) > div
+          {
+            -webkit-transform: rotate(-2deg);
+            -moz-transform: rotate(-2deg);
+            -ms-transform: rotate(-2deg);
+            -o-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+
+            background-color: #fcf;
           }
         }
       }
@@ -1560,7 +1638,12 @@ div.classroom
       {
         @include grid-row($behavior: nest-collapse);
 
-        height: 20%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        height: 2.1em;
 
         input
         {
@@ -1568,6 +1651,8 @@ div.classroom
 
           line-height: 2em;
           height: 2.4em;
+
+          margin-bottom: 0;
         }
 
         button
@@ -1577,6 +1662,8 @@ div.classroom
           line-height: 2em;
 
           padding: 0;
+
+          margin-bottom: 0;
         }
       }
     }
