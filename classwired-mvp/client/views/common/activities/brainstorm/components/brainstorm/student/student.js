@@ -13,21 +13,21 @@ Template.activityBrainstorm_Brainstorm_Student.rendered = function() {
 };
 
 Template.activityBrainstorm_Brainstorm_Student.events({
-	'input .brainstorm.student ul textarea': function(event, template) {
+	'input .brainstorm.student ul input': function(event, template) {
 		updateBrainstorm(this, event.target.value);
 	},
-	'focus .brainstorm.student ul textarea': function() {
+	'focus .brainstorm.student ul input': function() {
 		Session.set('editingItem', true);
 	},
-	'blur .wordlist.student ul textarea': function() {
+	'blur .brainstorm.student ul input': function() {
 		Session.set('editingItem', false);
 	},
-	'submit .wordlist.student form': function(event, template) {
-		var user= Meteor.user();
+	'submit .brainstorm.student form': function(event, template) {
+		var user = Meteor.user();
 		if(user)
 		{
 			var brainstormItem = {
-				text: template.find('.brainstorm.student form textarea').value,
+				text: template.find('.brainstorm.student form input').value,
 				userId: user._id,
 				classroomId: template.data.classroom._id
 			};
@@ -37,7 +37,7 @@ Template.activityBrainstorm_Brainstorm_Student.events({
 				Brainstorm_Items.insert(brainstormItem);
 			}
 		}
-		template.find('.brainstorm.student form textarea').value = '';
+		template.find('.brainstorm.student form input').value = '';
 
 		event.preventDefault();
 	}
