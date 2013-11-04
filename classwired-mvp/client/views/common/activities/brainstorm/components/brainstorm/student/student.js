@@ -7,19 +7,19 @@ Template.activityBrainstorm_Brainstorm_Student.rendered = function() {
 	var isEditing = Session.get('editingItem');
 	if(!isEditing)
 	{
-		var $brainstormContainer = $('');
+		var $brainstormContainer = $('.brainstorm.student ul');
 		$brainstormContainer.stop().animate({ scrollTop: $brainstormContainer.prop("scrollHeight") }, 1000);
 	}	
 };
 
 Template.activityBrainstorm_Brainstorm_Student.events({
-	'input .brainstorm.student textarea': function(event, template) {
+	'input .brainstorm.student ul textarea': function(event, template) {
 		updateBrainstorm(this, event.target.value);
 	},
-	'focus .brainstorm.student textarea': function() {
+	'focus .brainstorm.student ul textarea': function() {
 		Session.set('editingItem', true);
 	},
-	'blur .wordlist.student textarea': function() {
+	'blur .wordlist.student ul textarea': function() {
 		Session.set('editingItem', false);
 	},
 	'submit .wordlist.student form': function(event, template) {
@@ -27,7 +27,7 @@ Template.activityBrainstorm_Brainstorm_Student.events({
 		if(user)
 		{
 			var brainstormItem = {
-				text: template.find('').value,
+				text: template.find('.brainstorm.student form textarea').value,
 				userId: user._id,
 				classroomId: template.data.classroom._id
 			};
@@ -37,7 +37,7 @@ Template.activityBrainstorm_Brainstorm_Student.events({
 				Brainstorm_Items.insert(brainstormItem);
 			}
 		}
-		template.find('').value = '';
+		template.find('.brainstorm.student form textarea').value = '';
 
 		event.preventDefault();
 	}
