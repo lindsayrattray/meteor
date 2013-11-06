@@ -28,15 +28,23 @@ function showLoginStage(loginStage)
 	{
 		case 'email':
 			container.removeClass('stage-name stage-password stage-confirm-password').addClass('stage-email');
+			$('.login-details div').not('.email').children('input, button').prop('disabled', true);
+			$('.login-details .email input').children('input, button').prop('disabled', false);
 			break;
 		case 'name':
 			container.removeClass('stage-email stage-password stage-confirm-password').addClass('stage-name');
+			$('.login-details div').not('.name').children('input, button').prop('disabled', true);
+			$('.login-details .name input').children('input, button').prop('disabled', false);
 			break;
 		case 'password':
 			container.removeClass('stage-email stage-name stage-confirm-password').addClass('stage-password');
+			$('.login-details div').not('.password').children('input, button').prop('disabled', true);
+			$('.login-details .password input').children('input, button').prop('disabled', false);
 			break;
 		case 'confirm-password':
 			container.removeClass('stage-email stage-name stage-password').addClass('stage-confirm-password');
+			$('.login-details div').not('.password-confirm').children('input, button').prop('disabled', true);
+			$('.login-details .password-confirm').children('input, button').prop('disabled', false);
 			break;
 		default:
 			break;
@@ -89,6 +97,11 @@ Template.splash.events({
 
 					Session.set('loginState', state);
 					Session.set('loginStage', nextStage);
+
+					if(user)
+					{
+						Session.set('loginName', user.profile.name);
+					}
 				}
 				else
 				{
@@ -100,6 +113,7 @@ Template.splash.events({
 				if(nameField.value && nameField.value !== '')
 				{
 					Session.set('loginStage', 'password');
+					Session.set('loginName', nameField.value);
 				}
 				else
 				{
@@ -165,6 +179,10 @@ Template.splash.events({
 	},
 	'click .container > div > button': function(event, template) {
 		Session.set('loginStage', 'email');
+	},
+	'focus input': function(event, template) {
+		event.preventDefault();
+		window.scrollTo(0,0);
 	}
 });
 
@@ -173,7 +191,7 @@ Template.splash.helpers({
 		return Meteor.loggingIn();
 	},
 	studentName: function() {
-		return;
+		return Session.get('loginName');
 	},
 	debug: function() {
 		console.log();
