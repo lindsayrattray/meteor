@@ -7763,7 +7763,23 @@ footer {
   margin-top: 1em;
 }
 /* line 420, sass/app.scss */
-.splash .viewport .container > div .login-details {
+.splash .viewport .container > div.login-container {
+  width: auto;
+  margin: 0;
+  max-width: none;
+  *zoom: 1;
+}
+/* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.splash .viewport .container > div.login-container:before, .splash .viewport .container > div.login-container:after {
+  content: " ";
+  display: table;
+}
+/* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
+.splash .viewport .container > div.login-container:after {
+  clear: both;
+}
+/* line 424, sass/app.scss */
+.splash .viewport .container > div.login-container .login-details {
   width: auto;
   margin: 0;
   max-width: none;
@@ -7776,16 +7792,16 @@ footer {
   transition: all 500ms ease;
 }
 /* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.splash .viewport .container > div .login-details:before, .splash .viewport .container > div .login-details:after {
+.splash .viewport .container > div.login-container .login-details:before, .splash .viewport .container > div.login-container .login-details:after {
   content: " ";
   display: table;
 }
 /* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.splash .viewport .container > div .login-details:after {
+.splash .viewport .container > div.login-container .login-details:after {
   clear: both;
 }
-/* line 426, sass/app.scss */
-.splash .viewport .container > div .login-details > div {
+/* line 430, sass/app.scss */
+.splash .viewport .container > div.login-container .login-details > div {
   width: auto;
   margin: 0;
   max-width: none;
@@ -7794,20 +7810,20 @@ footer {
   text-align: center;
 }
 /* line 121, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.splash .viewport .container > div .login-details > div:before, .splash .viewport .container > div .login-details > div:after {
+.splash .viewport .container > div.login-container .login-details > div:before, .splash .viewport .container > div.login-container .login-details > div:after {
   content: " ";
   display: table;
 }
 /* line 122, ../../../../../.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.splash .viewport .container > div .login-details > div:after {
+.splash .viewport .container > div.login-container .login-details > div:after {
   clear: both;
 }
-/* line 434, sass/app.scss */
-.splash .viewport .container > div .login-details > div input {
+/* line 438, sass/app.scss */
+.splash .viewport .container > div.login-container .login-details > div input {
   font-size: 120%;
 }
-/* line 439, sass/app.scss */
-.splash .viewport .container > div .login-details > div button {
+/* line 443, sass/app.scss */
+.splash .viewport .container > div.login-container .login-details > div button {
   position: relative;
   padding-left: 0.9375em;
   padding-right: 0.9375em;
@@ -7815,32 +7831,32 @@ footer {
   float: left;
   float: none;
 }
-/* line 453, sass/app.scss */
-.splash .viewport .container > div .login-details.stage-email {
+/* line 457, sass/app.scss */
+.splash .viewport .container > div.login-container .login-details.stage-email {
   -webkit-transform: translate(0, 0%);
   -moz-transform: translate(0, 0%);
   -ms-transform: translate(0, 0%);
   -o-transform: translate(0, 0%);
   transform: translate(0, 0%);
 }
-/* line 462, sass/app.scss */
-.splash .viewport .container > div .login-details.stage-name {
+/* line 466, sass/app.scss */
+.splash .viewport .container > div.login-container .login-details.stage-name {
   -webkit-transform: translate(0, -25%);
   -moz-transform: translate(0, -25%);
   -ms-transform: translate(0, -25%);
   -o-transform: translate(0, -25%);
   transform: translate(0, -25%);
 }
-/* line 471, sass/app.scss */
-.splash .viewport .container > div .login-details.stage-password {
+/* line 475, sass/app.scss */
+.splash .viewport .container > div.login-container .login-details.stage-password {
   -webkit-transform: translate(0, -50%);
   -moz-transform: translate(0, -50%);
   -ms-transform: translate(0, -50%);
   -o-transform: translate(0, -50%);
   transform: translate(0, -50%);
 }
-/* line 480, sass/app.scss */
-.splash .viewport .container > div .login-details.stage-confirm-password {
+/* line 484, sass/app.scss */
+.splash .viewport .container > div.login-container .login-details.stage-confirm-password {
   -webkit-transform: translate(0, -75%);
   -moz-transform: translate(0, -75%);
   -ms-transform: translate(0, -75%);
@@ -7848,7 +7864,7 @@ footer {
   transform: translate(0, -75%);
 }
 
-/* line 500, sass/app.scss */
+/* line 505, sass/app.scss */
 .admin.users {
   width: 100%;
   margin-left: auto;
@@ -7868,7 +7884,7 @@ footer {
 .admin.users:after {
   clear: both;
 }
-/* line 506, sass/app.scss */
+/* line 511, sass/app.scss */
 .admin.users > .header {
   width: auto;
   margin: 0;
@@ -7888,11 +7904,11 @@ footer {
 .admin.users > .header:after {
   clear: both;
 }
-/* line 517, sass/app.scss */
+/* line 522, sass/app.scss */
 .admin.users > .header span {
   font-weight: 600;
 }
-/* line 523, sass/app.scss */
+/* line 528, sass/app.scss */
 .admin.users > ul {
   width: auto;
   margin: 0;
@@ -7914,7 +7930,7 @@ footer {
 .admin.users > ul:after {
   clear: both;
 }
-/* line 539, sass/app.scss */
+/* line 544, sass/app.scss */
 .admin.users > ul .user {
   width: auto;
   margin: 0;
@@ -7930,15 +7946,15 @@ footer {
 .admin.users > ul .user:after {
   clear: both;
 }
-/* line 543, sass/app.scss */
+/* line 548, sass/app.scss */
 .admin.users > ul .user:nth-child(even) {
   background-color: #f9f9f9;
 }
-/* line 548, sass/app.scss */
+/* line 553, sass/app.scss */
 .admin.users > ul .user a {
   line-height: 2em;
 }
-/* line 553, sass/app.scss */
+/* line 558, sass/app.scss */
 .admin.users > ul .user .details {
   position: relative;
   padding-left: 0.9375em;
@@ -7949,7 +7965,7 @@ footer {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
-/* line 565, sass/app.scss */
+/* line 570, sass/app.scss */
 .admin.users > ul .user .details .name {
   width: auto;
   margin: 0;
@@ -7967,11 +7983,11 @@ footer {
 .admin.users > ul .user .details .name:after {
   clear: both;
 }
-/* line 574, sass/app.scss */
+/* line 579, sass/app.scss */
 .admin.users > ul .user .details .roles {
   text-align: left;
 }
-/* line 580, sass/app.scss */
+/* line 585, sass/app.scss */
 .admin.users > ul .user .details .roles > span:nth-child(odd) {
   position: relative;
   padding-left: 0.9375em;
@@ -7979,7 +7995,7 @@ footer {
   width: 66.66667%;
   float: left;
 }
-/* line 585, sass/app.scss */
+/* line 590, sass/app.scss */
 .admin.users > ul .user .details .roles > span:nth-child(even) {
   position: relative;
   padding-left: 0.9375em;
@@ -7987,7 +8003,7 @@ footer {
   width: 33.33333%;
   float: left;
 }
-/* line 592, sass/app.scss */
+/* line 597, sass/app.scss */
 .admin.users > ul .user .details .delete {
   border-style: solid;
   border-width: 1px;
@@ -8023,7 +8039,7 @@ footer {
   color: white;
 }
 
-/* line 605, sass/app.scss */
+/* line 610, sass/app.scss */
 .classroom-manager {
   width: 100%;
   margin-left: auto;
@@ -8043,7 +8059,7 @@ footer {
 .classroom-manager:after {
   clear: both;
 }
-/* line 611, sass/app.scss */
+/* line 616, sass/app.scss */
 .classroom-manager ul {
   width: auto;
   margin: 0;
@@ -8063,7 +8079,7 @@ footer {
 .classroom-manager ul:after {
   clear: both;
 }
-/* line 622, sass/app.scss */
+/* line 627, sass/app.scss */
 .classroom-manager ul li.classroom {
   position: relative;
   padding-left: 0.9375em;
@@ -8075,7 +8091,7 @@ footer {
   float: left;
   padding: 1em;
 }
-/* line 628, sass/app.scss */
+/* line 633, sass/app.scss */
 .classroom-manager ul li.classroom > div {
   width: auto;
   margin: 0;
@@ -8096,15 +8112,15 @@ footer {
 .classroom-manager ul li.classroom > div:after {
   clear: both;
 }
-/* line 640, sass/app.scss */
+/* line 645, sass/app.scss */
 .classroom-manager ul li.classroom > div span {
   font-weight: 600;
 }
-/* line 647, sass/app.scss */
+/* line 652, sass/app.scss */
 .classroom-manager ul li.classroom > div .details p {
   text-align: left;
 }
-/* line 653, sass/app.scss */
+/* line 658, sass/app.scss */
 .classroom-manager ul li.classroom > div .join {
   border-style: solid;
   border-width: 1px;
@@ -8140,7 +8156,7 @@ footer {
 .classroom-manager ul li.classroom > div .join:hover, .classroom-manager ul li.classroom > div .join:focus {
   color: white;
 }
-/* line 663, sass/app.scss */
+/* line 668, sass/app.scss */
 .classroom-manager button.new {
   border-style: solid;
   border-width: 1px;
@@ -8180,7 +8196,7 @@ footer {
 .classroom-manager button.new:hover, .classroom-manager button.new:focus {
   color: white;
 }
-/* line 675, sass/app.scss */
+/* line 680, sass/app.scss */
 .classroom-manager .modal {
   position: absolute;
   top: 0;
@@ -8189,7 +8205,7 @@ footer {
   right: 0;
   background-color: rgba(0, 0, 0, 0.6);
 }
-/* line 685, sass/app.scss */
+/* line 690, sass/app.scss */
 .classroom-manager .modal > div {
   width: auto;
   margin: 0;
@@ -8207,7 +8223,7 @@ footer {
 .classroom-manager .modal > div:after {
   clear: both;
 }
-/* line 693, sass/app.scss */
+/* line 698, sass/app.scss */
 .classroom-manager .modal > div form {
   position: relative;
   padding-left: 0.9375em;
@@ -8223,7 +8239,7 @@ footer {
   text-align: center;
   padding-top: 1em;
 }
-/* line 706, sass/app.scss */
+/* line 711, sass/app.scss */
 .classroom-manager .modal > div form input {
   width: auto;
   margin: 0;
@@ -8242,7 +8258,7 @@ footer {
 .classroom-manager .modal > div form input:after {
   clear: both;
 }
-/* line 719, sass/app.scss */
+/* line 724, sass/app.scss */
 .classroom-manager .modal > div form button {
   position: relative;
   padding-left: 0.9375em;
@@ -8252,7 +8268,7 @@ footer {
   float: none;
 }
 
-/* line 730, sass/app.scss */
+/* line 735, sass/app.scss */
 div.classroom {
   width: 100%;
   margin-left: auto;
@@ -8274,7 +8290,7 @@ div.classroom:before, div.classroom:after {
 div.classroom:after {
   clear: both;
 }
-/* line 739, sass/app.scss */
+/* line 744, sass/app.scss */
 div.classroom > .container {
   width: 200%;
   height: 100%;
@@ -8284,7 +8300,7 @@ div.classroom > .container {
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-/* line 750, sass/app.scss */
+/* line 755, sass/app.scss */
 div.classroom > .container.groups {
   -webkit-transform: translate(0%, 0);
   -moz-transform: translate(0%, 0);
@@ -8292,7 +8308,7 @@ div.classroom > .container.groups {
   -o-transform: translate(0%, 0);
   transform: translate(0%, 0);
 }
-/* line 759, sass/app.scss */
+/* line 764, sass/app.scss */
 div.classroom > .container.activity {
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
@@ -8301,7 +8317,7 @@ div.classroom > .container.activity {
   transform: translate(-50%, 0);
   overflow: hidden;
 }
-/* line 770, sass/app.scss */
+/* line 775, sass/app.scss */
 div.classroom > .container > div {
   position: relative;
   padding-left: 0.9375em;
@@ -8311,7 +8327,7 @@ div.classroom > .container > div {
   height: 100%;
 }
 
-/* line 783, sass/app.scss */
+/* line 788, sass/app.scss */
 .group-manager {
   width: 100%;
   margin-left: auto;
@@ -8331,7 +8347,7 @@ div.classroom > .container > div {
 .group-manager:after {
   clear: both;
 }
-/* line 789, sass/app.scss */
+/* line 794, sass/app.scss */
 .group-manager > .container {
   width: auto;
   margin: 0;
@@ -8349,7 +8365,7 @@ div.classroom > .container > div {
 .group-manager > .container:after {
   clear: both;
 }
-/* line 796, sass/app.scss */
+/* line 801, sass/app.scss */
 .group-manager > .container .group {
   position: relative;
   padding-left: 0.9375em;
@@ -8361,7 +8377,7 @@ div.classroom > .container > div {
   float: left;
   padding: 1em;
 }
-/* line 802, sass/app.scss */
+/* line 807, sass/app.scss */
 .group-manager > .container .group > div {
   width: auto;
   margin: 0;
@@ -8381,7 +8397,7 @@ div.classroom > .container > div {
 .group-manager > .container .group > div:after {
   clear: both;
 }
-/* line 813, sass/app.scss */
+/* line 818, sass/app.scss */
 .group-manager > .container .group > div ul {
   width: auto;
   margin: 0;
@@ -8398,7 +8414,7 @@ div.classroom > .container > div {
 .group-manager > .container .group > div ul:after {
   clear: both;
 }
-/* line 819, sass/app.scss */
+/* line 824, sass/app.scss */
 .group-manager > .container .group > div ul li {
   width: auto;
   margin: 0;
@@ -8414,7 +8430,7 @@ div.classroom > .container > div {
 .group-manager > .container .group > div ul li:after {
   clear: both;
 }
-/* line 825, sass/app.scss */
+/* line 830, sass/app.scss */
 .group-manager > .container .group > div button {
   border-style: solid;
   border-width: 1px;
@@ -8450,12 +8466,12 @@ div.classroom > .container > div {
 .group-manager > .container .group > div button:hover, .group-manager > .container .group > div button:focus {
   color: white;
 }
-/* line 831, sass/app.scss */
+/* line 836, sass/app.scss */
 .group-manager > .container .group > div button.hide {
   display: none;
 }
 
-/* line 845, sass/app.scss */
+/* line 850, sass/app.scss */
 .activity-manager {
   width: 100%;
   margin-left: auto;
@@ -8475,7 +8491,7 @@ div.classroom > .container > div {
 .activity-manager:after {
   clear: both;
 }
-/* line 851, sass/app.scss */
+/* line 856, sass/app.scss */
 .activity-manager .header {
   width: auto;
   margin: 0;
@@ -8494,7 +8510,7 @@ div.classroom > .container > div {
 .activity-manager .header:after {
   clear: both;
 }
-/* line 860, sass/app.scss */
+/* line 865, sass/app.scss */
 .activity-manager .header span {
   position: relative;
   padding-left: 0.9375em;
@@ -8503,7 +8519,7 @@ div.classroom > .container > div {
   float: left;
   font-weight: 600;
 }
-/* line 867, sass/app.scss */
+/* line 872, sass/app.scss */
 .activity-manager > ul {
   width: auto;
   margin: 0;
@@ -8525,7 +8541,7 @@ div.classroom > .container > div {
 .activity-manager > ul:after {
   clear: both;
 }
-/* line 883, sass/app.scss */
+/* line 888, sass/app.scss */
 .activity-manager > ul li {
   width: auto;
   margin: 0;
@@ -8542,11 +8558,11 @@ div.classroom > .container > div {
 .activity-manager > ul li:after {
   clear: both;
 }
-/* line 889, sass/app.scss */
+/* line 894, sass/app.scss */
 .activity-manager > ul li:nth-child(even) {
   background-color: #f9f9f9;
 }
-/* line 894, sass/app.scss */
+/* line 899, sass/app.scss */
 .activity-manager > ul li a {
   position: relative;
   padding-left: 0.9375em;
@@ -8555,7 +8571,7 @@ div.classroom > .container > div {
   float: left;
 }
 
-/* line 910, sass/app.scss */
+/* line 915, sass/app.scss */
 .explain-the-word.activity-main {
   width: 100%;
   margin-left: auto;
@@ -8576,7 +8592,7 @@ div.classroom > .container > div {
 .explain-the-word.activity-main:after {
   clear: both;
 }
-/* line 917, sass/app.scss */
+/* line 922, sass/app.scss */
 .explain-the-word.activity-main > .modal {
   position: absolute;
   top: 0;
@@ -8585,7 +8601,7 @@ div.classroom > .container > div {
   right: 0;
   background-color: rgba(0, 0, 0, 0.6);
 }
-/* line 927, sass/app.scss */
+/* line 932, sass/app.scss */
 .explain-the-word.activity-main > .modal > div {
   width: auto;
   margin: 0;
@@ -8603,7 +8619,7 @@ div.classroom > .container > div {
 .explain-the-word.activity-main > .modal > div:after {
   clear: both;
 }
-/* line 934, sass/app.scss */
+/* line 939, sass/app.scss */
 .explain-the-word.activity-main > .modal > div > div {
   position: relative;
   padding-left: 0.9375em;
@@ -8619,7 +8635,7 @@ div.classroom > .container > div {
   text-align: center;
   padding-top: 1em;
 }
-/* line 951, sass/app.scss */
+/* line 956, sass/app.scss */
 .explain-the-word.activity-main > .stopped > span {
   position: relative;
   padding-left: 0.9375em;
@@ -8631,7 +8647,7 @@ div.classroom > .container > div {
   float: left;
   text-align: center;
 }
-/* line 962, sass/app.scss */
+/* line 967, sass/app.scss */
 .explain-the-word .wordlist.student {
   width: 100%;
   margin-left: auto;
@@ -8651,7 +8667,7 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.student:after {
   clear: both;
 }
-/* line 968, sass/app.scss */
+/* line 973, sass/app.scss */
 .explain-the-word .wordlist.student > .header {
   width: auto;
   margin: 0;
@@ -8670,7 +8686,7 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.student > .header:after {
   clear: both;
 }
-/* line 977, sass/app.scss */
+/* line 982, sass/app.scss */
 .explain-the-word .wordlist.student > .header span {
   position: relative;
   padding-left: 0.9375em;
@@ -8679,7 +8695,7 @@ div.classroom > .container > div {
   float: left;
   font-weight: 600;
 }
-/* line 985, sass/app.scss */
+/* line 990, sass/app.scss */
 .explain-the-word .wordlist.student > ul {
   width: auto;
   margin: 0;
@@ -8701,7 +8717,7 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.student > ul:after {
   clear: both;
 }
-/* line 1001, sass/app.scss */
+/* line 1006, sass/app.scss */
 .explain-the-word .wordlist.student > ul > li {
   width: auto;
   margin: 0;
@@ -8718,11 +8734,11 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.student > ul > li:after {
   clear: both;
 }
-/* line 1007, sass/app.scss */
+/* line 1012, sass/app.scss */
 .explain-the-word .wordlist.student > ul > li:nth-child(even) {
   background-color: #f9f9f9;
 }
-/* line 1012, sass/app.scss */
+/* line 1017, sass/app.scss */
 .explain-the-word .wordlist.student > ul > li > span {
   position: relative;
   padding-left: 0.9375em;
@@ -8732,11 +8748,11 @@ div.classroom > .container > div {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-/* line 1022, sass/app.scss */
+/* line 1027, sass/app.scss */
 .explain-the-word .wordlist.student > ul > li > span input {
   margin: 0;
 }
-/* line 1030, sass/app.scss */
+/* line 1035, sass/app.scss */
 .explain-the-word .wordlist.student form {
   width: auto;
   margin: 0;
@@ -8753,7 +8769,7 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.student form:after {
   clear: both;
 }
-/* line 1036, sass/app.scss */
+/* line 1041, sass/app.scss */
 .explain-the-word .wordlist.student form input {
   position: relative;
   padding-left: 0.9375em;
@@ -8763,7 +8779,7 @@ div.classroom > .container > div {
   line-height: 2em;
   height: 2.4em;
 }
-/* line 1044, sass/app.scss */
+/* line 1049, sass/app.scss */
 .explain-the-word .wordlist.student form button {
   position: relative;
   padding-left: 0.9375em;
@@ -8773,7 +8789,7 @@ div.classroom > .container > div {
   line-height: 2em;
   padding: 0;
 }
-/* line 1055, sass/app.scss */
+/* line 1060, sass/app.scss */
 .explain-the-word .wordlist.teacher {
   width: 100%;
   margin-left: auto;
@@ -8793,7 +8809,7 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.teacher:after {
   clear: both;
 }
-/* line 1061, sass/app.scss */
+/* line 1066, sass/app.scss */
 .explain-the-word .wordlist.teacher > .container {
   width: auto;
   margin: 0;
@@ -8815,7 +8831,7 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.teacher > .container:after {
   clear: both;
 }
-/* line 1073, sass/app.scss */
+/* line 1078, sass/app.scss */
 .explain-the-word .wordlist.teacher > .container.activity {
   -webkit-transform: translate(0, 0%);
   -moz-transform: translate(0, 0%);
@@ -8823,7 +8839,7 @@ div.classroom > .container > div {
   -o-transform: translate(0, 0%);
   transform: translate(0, 0%);
 }
-/* line 1082, sass/app.scss */
+/* line 1087, sass/app.scss */
 .explain-the-word .wordlist.teacher > .container.class {
   -webkit-transform: translate(0, -50%);
   -moz-transform: translate(0, -50%);
@@ -8831,7 +8847,7 @@ div.classroom > .container > div {
   -o-transform: translate(0, -50%);
   transform: translate(0, -50%);
 }
-/* line 1091, sass/app.scss */
+/* line 1096, sass/app.scss */
 .explain-the-word .wordlist.teacher > .container > div {
   width: auto;
   margin: 0;
@@ -8848,7 +8864,7 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.teacher > .container > div:after {
   clear: both;
 }
-/* line 1100, sass/app.scss */
+/* line 1105, sass/app.scss */
 .explain-the-word .wordlist.stats {
   width: 100%;
   margin-left: auto;
@@ -8868,7 +8884,7 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.stats:after {
   clear: both;
 }
-/* line 1106, sass/app.scss */
+/* line 1111, sass/app.scss */
 .explain-the-word .wordlist.stats > .header {
   width: auto;
   margin: 0;
@@ -8887,7 +8903,7 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.stats > .header:after {
   clear: both;
 }
-/* line 1115, sass/app.scss */
+/* line 1120, sass/app.scss */
 .explain-the-word .wordlist.stats > .header span {
   position: relative;
   padding-left: 0.9375em;
@@ -8896,7 +8912,7 @@ div.classroom > .container > div {
   float: left;
   font-weight: 600;
 }
-/* line 1123, sass/app.scss */
+/* line 1128, sass/app.scss */
 .explain-the-word .wordlist.stats > ul {
   width: auto;
   margin: 0;
@@ -8918,7 +8934,7 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.stats > ul:after {
   clear: both;
 }
-/* line 1139, sass/app.scss */
+/* line 1144, sass/app.scss */
 .explain-the-word .wordlist.stats > ul li {
   width: auto;
   margin: 0;
@@ -8935,11 +8951,11 @@ div.classroom > .container > div {
 .explain-the-word .wordlist.stats > ul li:after {
   clear: both;
 }
-/* line 1145, sass/app.scss */
+/* line 1150, sass/app.scss */
 .explain-the-word .wordlist.stats > ul li:nth-child(even) {
   background-color: #f9f9f9;
 }
-/* line 1150, sass/app.scss */
+/* line 1155, sass/app.scss */
 .explain-the-word .wordlist.stats > ul li span {
   position: relative;
   padding-left: 0.9375em;
@@ -8947,7 +8963,7 @@ div.classroom > .container > div {
   width: 50%;
   float: left;
 }
-/* line 1159, sass/app.scss */
+/* line 1164, sass/app.scss */
 .explain-the-word .explain {
   width: 100%;
   margin-left: auto;
@@ -8967,7 +8983,7 @@ div.classroom > .container > div {
 .explain-the-word .explain:after {
   clear: both;
 }
-/* line 1166, sass/app.scss */
+/* line 1171, sass/app.scss */
 .explain-the-word .explain.student .container {
   width: auto;
   margin: 0;
@@ -8984,15 +9000,15 @@ div.classroom > .container > div {
 .explain-the-word .explain.student .container:after {
   clear: both;
 }
-/* line 1172, sass/app.scss */
+/* line 1177, sass/app.scss */
 .explain-the-word .explain.student .container.answered.tick {
   background-color: #abe37d;
 }
-/* line 1177, sass/app.scss */
+/* line 1182, sass/app.scss */
 .explain-the-word .explain.student .container.answered.cross {
   background-color: #f8a9aa;
 }
-/* line 1182, sass/app.scss */
+/* line 1187, sass/app.scss */
 .explain-the-word .explain.student .container .word {
   width: auto;
   margin: 0;
@@ -9010,7 +9026,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.student .container .word:after {
   clear: both;
 }
-/* line 1191, sass/app.scss */
+/* line 1196, sass/app.scss */
 .explain-the-word .explain.student .container > div {
   width: auto;
   margin: 0;
@@ -9026,7 +9042,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.student .container > div:after {
   clear: both;
 }
-/* line 1197, sass/app.scss */
+/* line 1202, sass/app.scss */
 .explain-the-word .explain.student .container > div .answer.tick {
   border-style: solid;
   border-width: 1px;
@@ -9067,12 +9083,12 @@ div.classroom > .container > div {
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
 }
-/* line 1205, sass/app.scss */
+/* line 1210, sass/app.scss */
 .explain-the-word .explain.student .container > div .answer.tick img {
   width: 1.5em;
   height: 1.5em;
 }
-/* line 1212, sass/app.scss */
+/* line 1217, sass/app.scss */
 .explain-the-word .explain.student .container > div .answer.cross {
   border-style: solid;
   border-width: 1px;
@@ -9113,12 +9129,12 @@ div.classroom > .container > div {
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
 }
-/* line 1220, sass/app.scss */
+/* line 1225, sass/app.scss */
 .explain-the-word .explain.student .container > div .answer.cross img {
   width: 1.2em;
   height: 1.2em;
 }
-/* line 1229, sass/app.scss */
+/* line 1234, sass/app.scss */
 .explain-the-word .explain.student .container .new {
   border-style: solid;
   border-width: 1px;
@@ -9163,7 +9179,7 @@ div.classroom > .container > div {
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
 }
-/* line 1236, sass/app.scss */
+/* line 1241, sass/app.scss */
 .explain-the-word .explain.student .container > span {
   position: relative;
   padding-left: 0.9375em;
@@ -9175,7 +9191,7 @@ div.classroom > .container > div {
   float: left;
   text-align: center;
 }
-/* line 1247, sass/app.scss */
+/* line 1252, sass/app.scss */
 .explain-the-word .explain.teacher > .container {
   width: auto;
   margin: 0;
@@ -9197,7 +9213,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container:after {
   clear: both;
 }
-/* line 1259, sass/app.scss */
+/* line 1264, sass/app.scss */
 .explain-the-word .explain.teacher > .container.activity {
   -webkit-transform: translate(0, 0%);
   -moz-transform: translate(0, 0%);
@@ -9205,7 +9221,7 @@ div.classroom > .container > div {
   -o-transform: translate(0, 0%);
   transform: translate(0, 0%);
 }
-/* line 1268, sass/app.scss */
+/* line 1273, sass/app.scss */
 .explain-the-word .explain.teacher > .container.class {
   -webkit-transform: translate(0, -50%);
   -moz-transform: translate(0, -50%);
@@ -9213,7 +9229,7 @@ div.classroom > .container > div {
   -o-transform: translate(0, -50%);
   transform: translate(0, -50%);
 }
-/* line 1277, sass/app.scss */
+/* line 1282, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div {
   width: auto;
   margin: 0;
@@ -9230,7 +9246,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div:after {
   clear: both;
 }
-/* line 1285, sass/app.scss */
+/* line 1290, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity {
   width: 100%;
   margin-left: auto;
@@ -9250,7 +9266,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.activity:after {
   clear: both;
 }
-/* line 1291, sass/app.scss */
+/* line 1296, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity button {
   border-style: solid;
   border-width: 1px;
@@ -9296,7 +9312,7 @@ div.classroom > .container > div {
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
 }
-/* line 1300, sass/app.scss */
+/* line 1305, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > .header {
   width: auto;
   margin: 0;
@@ -9315,7 +9331,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.activity > .header:after {
   clear: both;
 }
-/* line 1309, sass/app.scss */
+/* line 1314, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > .header span {
   position: relative;
   padding-left: 0.9375em;
@@ -9324,7 +9340,7 @@ div.classroom > .container > div {
   float: left;
   font-weight: 600;
 }
-/* line 1317, sass/app.scss */
+/* line 1322, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul {
   width: auto;
   margin: 0;
@@ -9346,7 +9362,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul:after {
   clear: both;
 }
-/* line 1333, sass/app.scss */
+/* line 1338, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li {
   width: auto;
   margin: 0;
@@ -9363,11 +9379,11 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li:after {
   clear: both;
 }
-/* line 1339, sass/app.scss */
+/* line 1344, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li:nth-child(even) {
   background-color: #f9f9f9;
 }
-/* line 1344, sass/app.scss */
+/* line 1349, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li a {
   width: auto;
   margin: 0;
@@ -9383,7 +9399,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li a:after {
   clear: both;
 }
-/* line 1348, sass/app.scss */
+/* line 1353, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li a span {
   position: relative;
   padding-left: 0.9375em;
@@ -9391,7 +9407,7 @@ div.classroom > .container > div {
   width: 50%;
   float: left;
 }
-/* line 1354, sass/app.scss */
+/* line 1359, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div {
   width: auto;
   margin: 0;
@@ -9407,7 +9423,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div:after {
   clear: both;
 }
-/* line 1358, sass/app.scss */
+/* line 1363, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header {
   width: auto;
   margin: 0;
@@ -9424,11 +9440,11 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header:after {
   clear: both;
 }
-/* line 1364, sass/app.scss */
+/* line 1369, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span {
   font-weight: 600;
 }
-/* line 1368, sass/app.scss */
+/* line 1373, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span:nth-child(1) {
   position: relative;
   padding-left: 0.9375em;
@@ -9436,7 +9452,7 @@ div.classroom > .container > div {
   width: 50%;
   float: left;
 }
-/* line 1373, sass/app.scss */
+/* line 1378, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span:nth-child(2) {
   position: relative;
   padding-left: 0.9375em;
@@ -9444,7 +9460,7 @@ div.classroom > .container > div {
   width: 33.33333%;
   float: left;
 }
-/* line 1378, sass/app.scss */
+/* line 1383, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span:nth-child(3) {
   position: relative;
   padding-left: 0.9375em;
@@ -9452,17 +9468,17 @@ div.classroom > .container > div {
   width: 16.66667%;
   float: left;
 }
-/* line 1384, sass/app.scss */
+/* line 1389, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span:nth-child(3) .tick img {
   height: 1em;
   width: 1em;
 }
-/* line 1393, sass/app.scss */
+/* line 1398, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div > .header > span:nth-child(3) .cross img {
   height: 0.8em;
   width: 0.8em;
 }
-/* line 1403, sass/app.scss */
+/* line 1408, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul {
   width: auto;
   margin: 0;
@@ -9480,7 +9496,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul:after {
   clear: both;
 }
-/* line 1413, sass/app.scss */
+/* line 1418, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li {
   width: auto;
   margin: 0;
@@ -9497,7 +9513,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li:after {
   clear: both;
 }
-/* line 1421, sass/app.scss */
+/* line 1426, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li span:nth-child(1) {
   position: relative;
   padding-left: 0.9375em;
@@ -9505,7 +9521,7 @@ div.classroom > .container > div {
   width: 50%;
   float: left;
 }
-/* line 1426, sass/app.scss */
+/* line 1431, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li span:nth-child(2) {
   position: relative;
   padding-left: 0.9375em;
@@ -9513,7 +9529,7 @@ div.classroom > .container > div {
   width: 33.33333%;
   float: left;
 }
-/* line 1431, sass/app.scss */
+/* line 1436, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li span:nth-child(3) {
   position: relative;
   padding-left: 0.9375em;
@@ -9521,17 +9537,17 @@ div.classroom > .container > div {
   width: 16.66667%;
   float: left;
 }
-/* line 1437, sass/app.scss */
+/* line 1442, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li span:nth-child(3).tick img {
   height: 1em;
   width: 1em;
 }
-/* line 1446, sass/app.scss */
+/* line 1451, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.activity > ul > li div ul li span:nth-child(3).cross img {
   height: 0.8em;
   width: 0.8em;
 }
-/* line 1461, sass/app.scss */
+/* line 1466, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class {
   width: 100%;
   margin-left: auto;
@@ -9551,7 +9567,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.class:after {
   clear: both;
 }
-/* line 1467, sass/app.scss */
+/* line 1472, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class > .header {
   width: auto;
   margin: 0;
@@ -9570,11 +9586,11 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.class > .header:after {
   clear: both;
 }
-/* line 1476, sass/app.scss */
+/* line 1481, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class > .header span {
   font-weight: 600;
 }
-/* line 1480, sass/app.scss */
+/* line 1485, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class > .header span:nth-child(1) {
   position: relative;
   padding-left: 0.9375em;
@@ -9582,7 +9598,7 @@ div.classroom > .container > div {
   width: 33.33333%;
   float: left;
 }
-/* line 1485, sass/app.scss */
+/* line 1490, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class > .header span:nth-child(2) {
   position: relative;
   padding-left: 0.9375em;
@@ -9590,7 +9606,7 @@ div.classroom > .container > div {
   width: 25%;
   float: left;
 }
-/* line 1490, sass/app.scss */
+/* line 1495, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class > .header span:nth-child(3) {
   position: relative;
   padding-left: 0.9375em;
@@ -9598,7 +9614,7 @@ div.classroom > .container > div {
   width: 41.66667%;
   float: left;
 }
-/* line 1497, sass/app.scss */
+/* line 1502, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class ul {
   width: auto;
   margin: 0;
@@ -9621,15 +9637,15 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.class ul:after {
   clear: both;
 }
-/* line 1514, sass/app.scss */
+/* line 1519, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class ul li {
   line-height: 2em;
 }
-/* line 1518, sass/app.scss */
+/* line 1523, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class ul li:nth-child(even) {
   background-color: #f9f9f9;
 }
-/* line 1523, sass/app.scss */
+/* line 1528, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class ul li a {
   width: auto;
   margin: 0;
@@ -9645,7 +9661,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.class ul li a:after {
   clear: both;
 }
-/* line 1529, sass/app.scss */
+/* line 1534, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class ul li a span:nth-child(1) {
   position: relative;
   padding-left: 0.9375em;
@@ -9653,7 +9669,7 @@ div.classroom > .container > div {
   width: 33.33333%;
   float: left;
 }
-/* line 1534, sass/app.scss */
+/* line 1539, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class ul li a span:nth-child(2) {
   position: relative;
   padding-left: 0.9375em;
@@ -9661,7 +9677,7 @@ div.classroom > .container > div {
   width: 25%;
   float: left;
 }
-/* line 1539, sass/app.scss */
+/* line 1544, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class ul li a span:nth-child(3) {
   position: relative;
   padding-left: 0.9375em;
@@ -9669,7 +9685,7 @@ div.classroom > .container > div {
   width: 41.66667%;
   float: left;
 }
-/* line 1545, sass/app.scss */
+/* line 1550, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class ul li > div {
   width: auto;
   margin: 0;
@@ -9687,7 +9703,7 @@ div.classroom > .container > div {
 .explain-the-word .explain.teacher > .container > div .stats.class ul li > div:after {
   clear: both;
 }
-/* line 1554, sass/app.scss */
+/* line 1559, sass/app.scss */
 .explain-the-word .explain.teacher > .container > div .stats.class ul li > div > div {
   position: relative;
   padding-left: 0.9375em;
@@ -9696,7 +9712,7 @@ div.classroom > .container > div {
   float: left;
 }
 
-/* line 1571, sass/app.scss */
+/* line 1576, sass/app.scss */
 .brainstorm.activity-main {
   width: 100%;
   margin-left: auto;
@@ -9716,7 +9732,7 @@ div.classroom > .container > div {
 .brainstorm.activity-main:after {
   clear: both;
 }
-/* line 1577, sass/app.scss */
+/* line 1582, sass/app.scss */
 .brainstorm.activity-main .student {
   width: 100%;
   margin-left: auto;
@@ -9736,7 +9752,7 @@ div.classroom > .container > div {
 .brainstorm.activity-main .student:after {
   clear: both;
 }
-/* line 1583, sass/app.scss */
+/* line 1588, sass/app.scss */
 .brainstorm.activity-main .student ul {
   width: auto;
   margin: 0;
@@ -9756,12 +9772,12 @@ div.classroom > .container > div {
 .brainstorm.activity-main .student ul:after {
   clear: both;
 }
-/* line 1594, sass/app.scss */
+/* line 1599, sass/app.scss */
 .brainstorm.activity-main .student ul li {
   padding: 1em;
 }
 @media screen and (max-width: 767px) {
-  /* line 1594, sass/app.scss */
+  /* line 1599, sass/app.scss */
   .brainstorm.activity-main .student ul li {
     position: relative;
     padding-left: 0.9375em;
@@ -9774,7 +9790,7 @@ div.classroom > .container > div {
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  /* line 1594, sass/app.scss */
+  /* line 1599, sass/app.scss */
   .brainstorm.activity-main .student ul li {
     position: relative;
     padding-left: 0.9375em;
@@ -9784,7 +9800,7 @@ div.classroom > .container > div {
   }
 }
 @media screen and (min-width: 1280px) {
-  /* line 1594, sass/app.scss */
+  /* line 1599, sass/app.scss */
   .brainstorm.activity-main .student ul li {
     position: relative;
     padding-left: 0.9375em;
@@ -9793,7 +9809,7 @@ div.classroom > .container > div {
     float: left;
   }
 }
-/* line 1613, sass/app.scss */
+/* line 1618, sass/app.scss */
 .brainstorm.activity-main .student ul li > div {
   min-height: 224px;
   padding: 0.66em;
@@ -9801,16 +9817,16 @@ div.classroom > .container > div {
   font-size: 150%;
   font-weight: 600;
 }
-/* line 1626, sass/app.scss */
+/* line 1631, sass/app.scss */
 .brainstorm.activity-main .student ul li > div > div:nth-child(1) {
   height: 8.7em;
 }
-/* line 1631, sass/app.scss */
+/* line 1636, sass/app.scss */
 .brainstorm.activity-main .student ul li > div > div:nth-child(2) {
   height: 1em;
   text-align: right;
 }
-/* line 1641, sass/app.scss */
+/* line 1646, sass/app.scss */
 .brainstorm.activity-main .student ul li:nth-child(n+1) > div {
   -webkit-transform: rotate(4deg);
   -moz-transform: rotate(4deg);
@@ -9819,7 +9835,7 @@ div.classroom > .container > div {
   transform: rotate(4deg);
   background-color: #cfc;
 }
-/* line 1652, sass/app.scss */
+/* line 1657, sass/app.scss */
 .brainstorm.activity-main .student ul li:nth-child(2n+2) > div {
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
@@ -9828,7 +9844,7 @@ div.classroom > .container > div {
   transform: rotate(-3deg);
   background-color: #ccf;
 }
-/* line 1663, sass/app.scss */
+/* line 1668, sass/app.scss */
 .brainstorm.activity-main .student ul li:nth-child(3n+3) > div {
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
@@ -9837,7 +9853,7 @@ div.classroom > .container > div {
   transform: rotate(2deg);
   background-color: #fcc;
 }
-/* line 1674, sass/app.scss */
+/* line 1679, sass/app.scss */
 .brainstorm.activity-main .student ul li:nth-child(4n+4) > div {
   -webkit-transform: rotate(-1deg);
   -moz-transform: rotate(-1deg);
@@ -9846,7 +9862,7 @@ div.classroom > .container > div {
   transform: rotate(-1deg);
   background-color: #ffc;
 }
-/* line 1685, sass/app.scss */
+/* line 1690, sass/app.scss */
 .brainstorm.activity-main .student ul li:nth-child(5n+5) > div {
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
@@ -9855,7 +9871,7 @@ div.classroom > .container > div {
   transform: rotate(-2deg);
   background-color: #fcf;
 }
-/* line 1698, sass/app.scss */
+/* line 1703, sass/app.scss */
 .brainstorm.activity-main .student form {
   width: auto;
   margin: 0;
@@ -9876,7 +9892,7 @@ div.classroom > .container > div {
 .brainstorm.activity-main .student form:after {
   clear: both;
 }
-/* line 1709, sass/app.scss */
+/* line 1714, sass/app.scss */
 .brainstorm.activity-main .student form input {
   position: relative;
   padding-left: 0.9375em;
@@ -9887,7 +9903,7 @@ div.classroom > .container > div {
   height: 2.4em;
   margin-bottom: 0;
 }
-/* line 1719, sass/app.scss */
+/* line 1724, sass/app.scss */
 .brainstorm.activity-main .student form button {
   position: relative;
   padding-left: 0.9375em;

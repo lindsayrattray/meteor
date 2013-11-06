@@ -416,75 +416,80 @@ footer
           }
         }
 
-        .login-details
+        &.login-container
         {
           @include grid-row($behavior: nest-collapse);
 
-          height: 400%;
-
-          > div
+          .login-details
           {
             @include grid-row($behavior: nest-collapse);
 
-            height: 25%;
+            height: 400%;
 
-            text-align: center;
-
-            input
+            > div
             {
-              font-size: 120%;
+              @include grid-row($behavior: nest-collapse);
+
+              height: 25%;
+
+              text-align: center;
+
+              input
+              {
+                font-size: 120%;
+              }
+
+              button
+              {
+                @include grid-column(5);
+
+                float: none;
+              }
             }
 
-            button
+            -webkit-transition: all 500ms ease;
+            -moz-transition: all 500ms ease;
+            -ms-transition: all 500ms ease;
+            -o-transition: all 500ms ease;
+            transition: all 500ms ease;
+
+            &.stage-email
             {
-              @include grid-column(5);
-
-              float: none;
+              -webkit-transform: translate(0, 0%);
+              -moz-transform: translate(0, 0%);
+              -ms-transform: translate(0, 0%);
+              -o-transform: translate(0, 0%);
+              transform: translate(0, 0%);
             }
-          }
 
-          -webkit-transition: all 500ms ease;
-          -moz-transition: all 500ms ease;
-          -ms-transition: all 500ms ease;
-          -o-transition: all 500ms ease;
-          transition: all 500ms ease;
+            &.stage-name
+            {
+              -webkit-transform: translate(0, -25%);
+              -moz-transform: translate(0, -25%);
+              -ms-transform: translate(0, -25%);
+              -o-transform: translate(0, -25%);
+              transform: translate(0, -25%);
+            }
 
-          &.stage-email
-          {
-            -webkit-transform: translate(0, 0%);
-            -moz-transform: translate(0, 0%);
-            -ms-transform: translate(0, 0%);
-            -o-transform: translate(0, 0%);
-            transform: translate(0, 0%);
-          }
+            &.stage-password
+            {
+              -webkit-transform: translate(0, -50%);
+              -moz-transform: translate(0, -50%);
+              -ms-transform: translate(0, -50%);
+              -o-transform: translate(0, -50%);
+              transform: translate(0, -50%);
+            }
 
-          &.stage-name
-          {
-            -webkit-transform: translate(0, -25%);
-            -moz-transform: translate(0, -25%);
-            -ms-transform: translate(0, -25%);
-            -o-transform: translate(0, -25%);
-            transform: translate(0, -25%);
-          }
-
-          &.stage-password
-          {
-            -webkit-transform: translate(0, -50%);
-            -moz-transform: translate(0, -50%);
-            -ms-transform: translate(0, -50%);
-            -o-transform: translate(0, -50%);
-            transform: translate(0, -50%);
-          }
-
-          &.stage-confirm-password
-          {
-            -webkit-transform: translate(0, -75%);
-            -moz-transform: translate(0, -75%);
-            -ms-transform: translate(0, -75%);
-            -o-transform: translate(0, -75%);
-            transform: translate(0, -75%);
-          }
-        } 
+            &.stage-confirm-password
+            {
+              -webkit-transform: translate(0, -75%);
+              -moz-transform: translate(0, -75%);
+              -ms-transform: translate(0, -75%);
+              -o-transform: translate(0, -75%);
+              transform: translate(0, -75%);
+            }
+          } 
+        }
       }
     }
   }

@@ -91,7 +91,7 @@ Template.splash.events({
 			{
 				if(emailField.value && emailField.value !== '')
 				{
-					var user = Meteor.users.findOne({ "emails.address": emailField.value });
+					var user = Meteor.users.findOne({ "emails.address": emailField.value.toLowerCase() });
 					var state = user ? 'login' : 'signup';
 					var nextStage = state === 'login' ? 'password' : 'name';
 
@@ -126,7 +126,7 @@ Template.splash.events({
 				{
 					if(Session.get('loginState') === 'login')
 					{
-						Meteor.loginWithPassword({ email: emailField.value }, passwordField.value, function(error) { debugLogin(error) });
+						Meteor.loginWithPassword({ email: emailField.value.toLowerCase() }, passwordField.value, function(error) { debugLogin(error) });
 					}
 					else
 					{
@@ -144,7 +144,7 @@ Template.splash.events({
 				{
 					if(confirmPasswordField.value === passwordField.value)
 					{
-						var email = emailField.value;
+						var email = emailField.value.toLowerCase();
 						Accounts.createUser({
 												email: email,
 												password: passwordField.value,
