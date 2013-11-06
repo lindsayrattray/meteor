@@ -43,8 +43,8 @@ function showLoginStage(loginStage)
 			break;
 		case 'confirm-password':
 			container.removeClass('stage-email stage-name stage-password').addClass('stage-confirm-password');
-			$('.login-details div').not('.password-confirm').children('input, button').prop('disabled', true);
-			$('.login-details .password-confirm').children('input, button').prop('disabled', false);
+			$('.login-details div').not('.confirm-password').children('input, button').prop('disabled', true);
+			$('.login-details .confirm-password').children('input, button').prop('disabled', false);
 			break;
 		default:
 			break;

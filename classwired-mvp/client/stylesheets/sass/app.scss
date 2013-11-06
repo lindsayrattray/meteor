@@ -372,8 +372,6 @@ footer
 
       height: 200%;
 
-      background: gray;
-
       -webkit-transition: all 500ms ease;
       -moz-transition: all 500ms ease;
       -ms-transition: all 500ms ease;
@@ -404,6 +402,20 @@ footer
         
         height: 50%;
 
+        &.home-screen
+        {
+          @include grid-row($behavior: nest-collapse);
+
+          text-align: center;
+
+          button
+          {
+            @include grid-column(10, false, true);
+
+            margin-top: 1em;
+          }
+        }
+
         .login-details
         {
           @include grid-row($behavior: nest-collapse);
@@ -415,6 +427,20 @@ footer
             @include grid-row($behavior: nest-collapse);
 
             height: 25%;
+
+            text-align: center;
+
+            input
+            {
+              font-size: 120%;
+            }
+
+            button
+            {
+              @include grid-column(5);
+
+              float: none;
+            }
           }
 
           -webkit-transition: all 500ms ease;
