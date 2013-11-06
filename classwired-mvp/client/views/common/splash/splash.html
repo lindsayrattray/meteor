@@ -1,10 +1,48 @@
 <template name="splash">
 	<div class="splash">
-		<img class="logo" src="/images/logo.png" alt="Classwired logo" />
-		{{#unless loggingIn}}
-			{{> login}}
-		{{else}}
-			{{> spinner}}
-		{{/unless}}
+		<div class="viewport">
+			{{#unless loggingIn}}
+			<div class="container hide-login">
+				<div class="home-screen">
+					<img class="logo" src="/images/logo.png" alt="Classwired logo" />
+					<button type="button">Login</button>
+				</div>
+				<div class="login-container">
+					<form class="login-details stage-email">
+						<div class="email">
+							<h3>What's your email address?</h3>
+							<input id="login-email" type="email" placeholder="Your email@address.com"/>
+							<button type="submit">Next</button>
+							<button type="reset">Cancel</button>
+						</div>
+						<div class="name">
+							<h3>Hi! What's your name?</h3>
+							<input id="login-name" type="text" placeholder="Your name" />
+							<button type="submit">Next</button>
+							<button type="reset">Cancel</button>
+						</div>
+						<div class="password">
+							<h3>Hi {{studentName}}! What's your password?</h3>
+							<input id="login-password" type="password" placeholder="Password" />
+							<button type="submit">{{passwordSubmit}}</button>
+							<button type="reset">Cancel</button>
+						</div>
+						<div class="confirm-password">
+							<h3>Could you repeat your password?</h3>
+							<input id="login-confirm-password" type="password" placeholder="Confirm Password" />
+							<button type="submit">Submit</button>
+							<button type="reset">Cancel</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			{{else}}
+				<div>
+					<img class="logo" src="/images/logo.png" alt="Classwired logo" />
+					{{> spinner}}
+				</div>
+			{{/unless}}
+		</div>
 	</div>
+	{{debug}}
 </template>
