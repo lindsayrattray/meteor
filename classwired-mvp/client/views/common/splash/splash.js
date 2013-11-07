@@ -180,10 +180,6 @@ Template.splash.events({
 	'click .container > div > button': function(event, template) {
 		Session.set('loginStage', 'email');
 	},
-	'focus input': function(event, template) {
-		event.preventDefault();
-		window.scrollTo(0,0);
-	}
 });
 
 Template.splash.helpers({
