@@ -1,4 +1,8 @@
-Meteor.subscribe('systemUsers');
+/*Meteor.subscribe('systemUsers');
+if(CurrentUser)
+{
+	console.log('foo');	
+}
 
 Handlebars.registerHelper('isAdmin', function() {
 	return UserController.isAdmin();
@@ -64,4 +68,4 @@ Handlebars.registerHelper('thisUserHasRole', function(rolename) {
 
 Handlebars.registerHelper('userHasRole', function(userId, rolename) {
 	return UserController.userHasRole(userId, rolename);
-});
+});*/
