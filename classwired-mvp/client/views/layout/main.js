@@ -67,5 +67,8 @@ Template.main.helpers({
 		var context = Session.get('currentContext') || 'context';
 
 		return Template[context]();
+	},
+	debug: function() {
+		console.log(location.host);
 	}
 });
