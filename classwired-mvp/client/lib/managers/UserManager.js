@@ -1,4 +1,9 @@
-//TODO move roles into common lib
+//TODO 
+//		- move roles into common lib
+//		- add systemUsers subscription
+//		- restructure directory to allow 
+//			handlebars helpers to be declared
+//			in a different file
 
 Roles = {};
 Roles.ADMIN = 'administrator';
