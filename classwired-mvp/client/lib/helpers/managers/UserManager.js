@@ -1,17 +1,3 @@
-//TODO 
-//		- move roles into common lib
-//		- add systemUsers subscription
-//		- restructure directory to allow 
-//			handlebars helpers to be declared
-//			in a different file
-
-Roles = {};
-Roles.ADMIN = 'administrator';
-Roles.SCHOOL = 'school';
-Roles.TEACHER = 'teacher';
-Roles.STUDENT = 'student';
-
-
 // ==============================================
 // User Manager object, client side handling of
 // users to allow for multiple users on a single
@@ -22,6 +8,7 @@ Roles.STUDENT = 'student';
 //TODO 
 //		- fill out coUser methods
 //		- fill out reset and change password functionality
+//		- add systemUsers subscription
 
 UserManager = function() {
 	this.get = function() {
@@ -29,25 +16,14 @@ UserManager = function() {
 	};
 
 	this.getValue = function(keys) {
-		var result = this.get();
-		for(index in keys)
-		{
-			if(result)
-			{
-				result = result[keys[index]]
-			}
-			else
-			{
-				return null;
-			}
-		}
-		return result;
+		return GetValue(this.get(), keys);
 	}
 
 	// Checks if the user has the role specified
 	// eg. Roles.ADMIN
 	this.hasRole = function(role) {
-		return this.getValue === role;
+		var roles = GetValue(this.get(), ['permissions']);
+		return roles && roles.indexOf(role) !== -1;
 	};
 
 	// Logs a user in if an account exists, otherwise
@@ -75,6 +51,7 @@ UserManager = function() {
 	// Logout and redirect to root url causing a refresh
 	// and dropping all existing session etc.
 	this.logout = function() {
+		Meteor.logoutOtherClients();
 		Meteor.logout(this.logoutCallback(error));
 		window.location = location.host;
 		location.reload(true);
@@ -138,11 +115,7 @@ UserManager = function() {
 	// Returns an array of users currently on this
 	// device
 	this.coUsers = function() {
-		if(this.get() && this.get().coUsers)
-		{
-			return this.get().coUsers;
-		}
-		return null;
+		return GetValue(this.get(), ['coUsers']);
 	};
 
 	// Selector should be in the same format as a
@@ -177,92 +150,4 @@ UserManager = function() {
 	this.removeCoUser = function(selector) {
 
 	};
-}
-
-// ==============================================
-// Instantiate UserManager as CurrentUser
-// ==============================================
-
-CurrentUser = new UserManager();
-
-// ==============================================
-// Handlebars helpers
-// ==============================================
-
-// Utility Functions
-
-//TODO
-//		- move getValue to a global function
-
-// Compare a given user to the currently logged in user
-function isCurrentUser(user)
-{
-	return Meteor.user() === Meteor.users.findOne(user);
-}
-
-// Safe way to access an object's values, returns null if any
-// of the keys don't exist
-function getValue(object, keys)
-{
-	var result = object;
-	for(index in keys)
-	{
-		if(result)
-		{
-			result = result[keys[index]]
-		}
-		else
-		{
-			return null;
-		}
-	}
-	return result;
-}
-
-// Helpers
-
-// Get the currently logged in user's ID
-Handlebars.registerHelper('currentUserId', function() {
-	return Meteor.userId().toString();
-});
-
-// Get the currently logged in user object
-Handlebars.registerHelper('currentUser', function() {
-	return Meteor.user();
-});
-
-// Check whether a user matches the currently logged in user
-Handlebars.registerHelper('isCurrentUser', function(user) {
-	return isCurrentUser(user)
-});
-
-// Check whether a userId matches the currently logged in user
-// or the currently logged in user has a specified role
-Handlebars.registerHelper('isCurrentUserOrRole', function(user, role) {
-	return isCurrentUser(user) || CurrentUser.hasRole(role);
-});
-
-// Get an array of all available roles
-Handlebars.registerHelper('roles', function() {
-	return _.values(Roles);
-});
-
-// Get the profile name of a given user
-Handlebars.registerHelper('profileName', function(user) {
-	var target = Meteor.users.findOne(user);
-	return getValue(target, ['profile', 'name']);
-});
-
-// Get the email address of a given user
-Handlebars.registerHelper('emailAddress', function(user) {
-	var target = Meteor.users.findOne(user);
-	return getValue(target, ['emails', [0], 'address']);
-});
-
-// Check whether a given user has a specified role
-Handlebars.registerHelper('userHasRole', function(user, role) {
-	var target = Meteor.users.findOne(user);
-	var roles = getValue(target, ['permissions']);
-
-	return roles ? roles.indexOf(role) !== -1 : false;
-});
+};

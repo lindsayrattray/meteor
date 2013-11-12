@@ -69,6 +69,6 @@ Template.main.helpers({
 		return Template[context]();
 	},
 	debug: function() {
-		console.log(location.host);
+
 	}
 });
