@@ -11,6 +11,8 @@
 //		- add systemUsers subscription
 
 UserManager = function() {
+	var systemUsersHandle = Meteor.subscribe('systemUsers');
+
 	this.get = function() {
 		return Meteor.user();
 	};
