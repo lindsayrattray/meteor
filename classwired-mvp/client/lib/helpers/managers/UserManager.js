@@ -8,15 +8,20 @@
 //TODO 
 //		- fill out coUser methods
 //		- fill out reset and change password functionality
-//		- add systemUsers subscription
+//		- add default callback functionality
 
 UserManager = function() {
-	var systemUsersHandle = Meteor.subscribe('systemUsers');
 
+	this.subscriptions = {
+		systemUsersHandle = Meteor.subscribe('systemUsers');
+	}
+
+	// Gets the current user object
 	this.get = function() {
 		return Meteor.user();
 	};
 
+	// Gets a value from the current user object
 	this.getValue = function(keys) {
 		return GetValue(this.get(), keys);
 	}

@@ -5,31 +5,46 @@
 // ==============================================
 
 //TODO
+//		- Make set set the current classroom on the user
+//		- Add past activities collection
+//		- Add overrideable callback for set classroom
+
 
 ClassroomManager = function(classroom) {
 	var thisClassroom = classroom;
 
+	this.subscriptions = {
+		classroomsHandle: Meteor.subscribe('classrooms');
+		pastActivitiesHandle: Meteor.subscribe('pastActivities', thisClassroom);
+		activitiesHandle: Meteor.subscribe('activities');
+		componentsHandle: Meteor.subscribe('components');
+	};
+
+	// Gets the current classroom object
 	this.get = function() {
 		return Meteor.findOne(thisClassroom);
 	};
 
+	// Sets the current classroom object
 	this.set = function(classroom) {
 		thisClassroom = classroom;
+		this.subscriptions.pastActivitiesHandle = Meteor.subscribe('pastActivities', thisClassroom);
 	};
 
+	// Gets a value from the current classroom object
 	this.getValue = function(keys) {
 		return GetValue(this.get(), keys);
 	};
 
-	this.currentGroup = function() {
-		return;
-	};
+	// Handle for a GroupManager object
+	this.currentGroup = null;
 
-	this.currentActivity = function() {
-		return;
-	};
+	// Handle for an ActivityManager object
+	this.currentActivity = null;
 
+	// Get all activities that have been associated
+	// with the current classroom
 	this.pastActivities = function() {
 		return;
 	};
-}
+};
