@@ -8,6 +8,7 @@
 //		- Make set set the current classroom on the user
 //		- Add past activities collection
 //		- Add overrideable callback for set classroom
+//		- Add UI State defaults
 
 
 ClassroomManager = function(classroom) {
@@ -19,6 +20,8 @@ ClassroomManager = function(classroom) {
 		activitiesHandle: Meteor.subscribe('activities');
 		componentsHandle: Meteor.subscribe('components');
 	};
+
+	this.uiState = {};
 
 	// Gets the current classroom object
 	this.get = function() {
