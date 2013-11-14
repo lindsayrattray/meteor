@@ -21,7 +21,7 @@ Meteor.publish('classroomGroups', function(classroomId) {
 	{
 		return Groups.find({classroomId: classroomId});
 	}
-})
+});
 
 Meteor.publish('classrooms', function() {
 	return Classrooms.find();
@@ -33,6 +33,14 @@ Meteor.publish('systemUsers', function() {
 
 Meteor.publish('activities', function() {
 	return Activities.find();
+});
+
+Meteor.publish('pastActivities', function(classroom) {
+	var thisClassroom = Classrooms.findOne(classroom)
+	if(thisClassroom)
+	{
+		return ActivityInstances.findOne({ classroomId: thisClassroom._id })
+	}
 });
 
 Meteor.publish('components', function(activityId) {
