@@ -1,15 +1,3 @@
-// TODO
-//		- Move login logic entirely into UserManager,
-//			allowing a more functional and terse method
-
-// Login Stages
-var LoginStage = {
-	EMAIL: 'email',
-	NAME: 'name',
-	PASSWORD: 'password',
-	CONFIRM_PASSWORD: 'confirm-password'
-};
-
 function alertError(error)
 {
 	if(error)
@@ -31,6 +19,8 @@ CurrentUser.onLogin = function(options, error)
 	alertError(error)
 }
 
+var loginHandler = new LoginManager(CurrentUser);
+
 function toggleLoginVisible(loginStage)
 {
 	var container = $('.container');
@@ -45,42 +35,43 @@ function toggleLoginVisible(loginStage)
 	}
 }
 
-function showLoginStage(loginStage)
-{
-	var container = $('.login-details');
+var showLoginStage = {
+	$container: $('.login-details'),
 
-	switch(loginStage)
-	{
-		case 'email':
-			container.removeClass('stage-name stage-password stage-confirm-password').addClass('stage-email');
-			$('.login-details div').not('.email').children('input, button').prop('disabled', true);
-			$('.login-details .email input').children('input, button').prop('disabled', false);
-			break;
-		case 'name':
-			container.removeClass('stage-email stage-password stage-confirm-password').addClass('stage-name');
-			$('.login-details div').not('.name').children('input, button').prop('disabled', true);
-			$('.login-details .name input').children('input, button').prop('disabled', false);
-			break;
-		case 'password':
-			container.removeClass('stage-email stage-name stage-confirm-password').addClass('stage-password');
-			$('.login-details div').not('.password').children('input, button').prop('disabled', true);
-			$('.login-details .password input').children('input, button').prop('disabled', false);
-			break;
-		case 'confirm-password':
-			container.removeClass('stage-email stage-name stage-password').addClass('stage-confirm-password');
-			$('.login-details div').not('.confirm-password').children('input, button').prop('disabled', true);
-			$('.login-details .confirm-password').children('input, button').prop('disabled', false);
-			break;
-		default:
-			break;
+	email: function() {
+		$container.removeClass('stage-name stage-password stage-confirm-password').addClass('stage-email');
+		$('.login-details div').not('.email').children('input, button').prop('disabled', true);
+		$('.login-details .email input').children('input, button').prop('disabled', false);
+	},
+
+	name: function() {
+		$container.removeClass('stage-email stage-password stage-confirm-password').addClass('stage-name');
+		$('.login-details div').not('.name').children('input, button').prop('disabled', true);
+		$('.login-details .name input').children('input, button').prop('disabled', false);
+	},
+
+	password: function() {
+		$container.removeClass('stage-email stage-name stage-confirm-password').addClass('stage-password');
+		$('.login-details div').not('.password').children('input, button').prop('disabled', true);
+		$('.login-details .password input').children('input, button').prop('disabled', false);
+	},
+
+	confirmPassword: function() {
+		$container.removeClass('stage-email stage-name stage-password').addClass('stage-confirm-password');
+		$('.login-details div').not('.confirm-password').children('input, button').prop('disabled', true);
+		$('.login-details .confirm-password').children('input, button').prop('disabled', false);
 	}
-}
+};
 
 Deps.autorun(function() {
+	var currentStage = loginHandler.loginState.reactiveCurrentStage();
+
+	console.log(currentStage);
+
 	if(!Meteor.loggingIn())
 	{
 		toggleLoginVisible(CurrentUser.uiState.loginStage);
-		showLoginStage(CurrentUser.uiState.loginStage);
+		showLoginStage;
 	}
 });
 
@@ -88,23 +79,26 @@ Template.splash.rendered = function() {
 	if(!Meteor.loggingIn())
 	{
 		toggleLoginVisible(CurrentUser.uiState.loginStage);
-		showLoginStage(CurrentUser.uiState.loginStage);
+		showLoginStage;
 	}
 };
 
 Template.splash.events({
 	'submit form': function(event, template) {
-		var emailField = template.find('.email input');
-		var nameField = template.find('.name input');
-		var passwordField = template.find('.password input');
-		var confirmPasswordField = template.find('.confirm-password input');
+		var options = {};
+		options.email = template.find('.email input').value;
+		options.name = template.find('.name input').value;
+		options.password = template.find('.password input').value;
+		options.confirmPassword = template.find('.confirm-password input');
 
 		event.preventDefault();
 
 		$('input').blur();
 		document.activeElement.blur();
 
-		if(CurrentUser.uiState.loginStage)
+		LoginHandler.doLogin(options);
+
+		/*if(CurrentUser.uiState.loginStage)
 		{
 			if(CurrentUser.uiState.loginStage === 'email')
 			{
@@ -187,17 +181,23 @@ Template.splash.events({
 					alert('Please confirm your password!')
 				}
 			}
-		}
+		}*/
 	},
 	'reset form': function(event, template) {
 		event.preventDefault();
 
 		$('input').val('');
-		Session.set('loginState', null);
-		Session.set('loginStage', null);
+		loginHandler.loginState.reset();
 	},
 	'click .container > div > button': function(event, template) {
-		Session.set('loginStage', 'email');
+		var options = {};
+		options.email = template.find('.email input').value;
+		options.name = template.find('.name input').value;
+		options.password = template.find('.password input').value;
+		options.confirmPassword = template.find('.confirm-password input');
+
+		loginHandler.doLogin()
+		console.log(loginHandler);
 	},
 });
 

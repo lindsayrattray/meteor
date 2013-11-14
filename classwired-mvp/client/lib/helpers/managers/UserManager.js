@@ -83,7 +83,7 @@ UserManager = function() {
 	// and dropping all existing session etc.
 	this.logout = function() {
 		Meteor.logoutOtherClients();
-		Meteor.logout(this.onLogout(error));
+		Meteor.logout(function(error) { this.onLogout(error) });
 		window.location = location.host;
 		location.reload(true);
 	};
@@ -187,7 +187,7 @@ UserManager = function() {
 // Login Handler utility object
 // ==============================================
 
-LoginHandler = function(userManager)
+LoginManager = function(userManager)
 {
 	var thisUserManager = userManager;
 
@@ -208,6 +208,11 @@ LoginHandler = function(userManager)
 		currentStage: null,
 		currentStageDeps: null,
 
+		reset: function() {
+			this.currentStage = null;
+			this.currentStageDeps.changed();
+		},
+
 		ensureCurrentStageDeps: function() {
 			if(!this.currentStageDeps)
 			{
@@ -215,9 +220,13 @@ LoginHandler = function(userManager)
 			}
 		},
 
-		//may need deps on current stage
+		reactiveCurrentStage: function() {
+			this.ensureCurrentStageDeps();
+			this.currentStageDeps.depend();
+			return this.currentStage;
+		},
 
-		email: function(options, userManager) {
+		email: function(options) {
 			if(options.email && options.email !== '')
 			{
 				var user = Meteor.users.findOne({ "emails.address": options.email });
@@ -242,7 +251,7 @@ LoginHandler = function(userManager)
 			}
 		},
 
-		name: function(options, userManager) {
+		name: function(options) {
 			this.ensureCurrentStageDeps();
 
 			if(options.name && options.name !== '')
@@ -256,16 +265,15 @@ LoginHandler = function(userManager)
 			}
 		},
 
-		password: function(options, userManager) {
+		password: function(options) {
 			this.ensureCurrentStageDeps();
 
 			if(options.password && options.password !== '')
 			{
 				if(this.currentState === this.STATE.LOGIN)
 				{
-					userManager.login(options);
-					this.currentStage = null;
-					this.currentStageDeps.changed();
+					thisUserManager.login(options);
+					this.reset();
 				}
 				else
 				{
@@ -279,14 +287,13 @@ LoginHandler = function(userManager)
 			}
 		},
 
-		confirmPassword: function(options, userManager) {
+		confirmPassword: function(options) {
 			this.ensureCurrentStageDeps();
 
 			if(options.confirmPassword && options.confirmPassword === options.password)
 			{
-				userManager.signUp(options);
-				this.currentStage = null;
-				this.currentStageDeps.changed();
+				thisUserManager.signUp(options);
+				this.reset();
 			}
 			else
 			{
@@ -295,7 +302,7 @@ LoginHandler = function(userManager)
 		}
 	};
 
-	this.doLogin(options)
+	this.doLogin = function(options)
 	{
 		if(this.loginState.currentStage)
 		{
