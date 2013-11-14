@@ -14,7 +14,9 @@ UserManager = function() {
 
 	this.subscriptions = {
 		systemUsersHandle: Meteor.subscribe('systemUsers')
-	}
+	};
+
+	this.uiState = {};
 
 	// Gets the current user object
 	this.get = function() {
@@ -45,7 +47,7 @@ UserManager = function() {
 			Meteor.loginWithPassword({  email: options.email },
 										options.password,
 										function(error) {
-											this.loginCallback(options, error);
+											this.onLogin(options, error);
 										}
 									);
 		}
@@ -59,7 +61,7 @@ UserManager = function() {
 	// and dropping all existing session etc.
 	this.logout = function() {
 		Meteor.logoutOtherClients();
-		Meteor.logout(this.logoutCallback(error));
+		Meteor.logout(this.onLogout(error));
 		window.location = location.host;
 		location.reload(true);
 	};
@@ -73,7 +75,7 @@ UserManager = function() {
 							},
 							function(error)
 							{
-								this.signupCallback(options, error);
+								this.onSignup(options, error);
 							});
 	};
 
@@ -91,28 +93,28 @@ UserManager = function() {
 
 	// Overridable callback for signups, takes an options
 	// and an error argument
-	this.signupCallback = function(options, error) {
+	this.onSignup = function(options, error) {
 
 	};
 
 	// Overridable callback for logins, takes an options
 	// and an error argument
-	this.loginCallback = function(options, error) {
+	this.onLogin = function(options, error) {
 
 	};
 
 	// Overridable callback for logouts, takes an error
 	// argument
-	this.logoutCallback = function(error) {
+	this.onLogout = function(error) {
 
 	};
 
 	// Callback testing function, just runs each of the
 	// callbacks as they are
 	this.callbackCheck = function(options, error) {
-		this.loginCallback(options, error);
-		this.signupCallback(options, error);
-		this.logoutCallback(error);
+		this.onLogin(options, error);
+		this.onSignup(options, error);
+		this.onLogout(error);
 	}
 
 // ==============================================

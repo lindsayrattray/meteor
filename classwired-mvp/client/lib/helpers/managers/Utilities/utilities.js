@@ -1,3 +1,6 @@
+//TODO
+//		- Create a maybe monad
+
 // General purpose getter for objects
 
 GetValue = function(object, keys)

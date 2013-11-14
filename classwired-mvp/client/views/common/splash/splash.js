@@ -1,9 +1,22 @@
-function debugLogin(error)
+function alertError(error)
 {
 	if(error)
 	{
 		alert(error.reason || "Unknown error");
 	}
+}
+
+CurrentUser.onSignup = function(options, error)
+{
+	var user = Meteor.users.findOne({ "emails.address": options.email });
+	var userId = user ? user._id : null;
+	Meteor.call('addUserToRole', userId, 'student');
+	alertError(error);
+};
+
+CurrentUser.onLogin = function(options, error)
+{
+	alertError(error)
 }
 
 function toggleLoginVisible(loginStage)
