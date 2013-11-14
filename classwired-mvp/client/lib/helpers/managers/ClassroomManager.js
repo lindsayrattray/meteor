@@ -18,7 +18,6 @@ ClassroomManager = function(classroom) {
 		classroomsHandle: Meteor.subscribe('classrooms');
 		pastActivitiesHandle: Meteor.subscribe('pastActivities', thisClassroom);
 		activitiesHandle: Meteor.subscribe('activities');
-		componentsHandle: Meteor.subscribe('components');
 	};
 
 	this.uiState = {};
