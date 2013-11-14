@@ -1,3 +1,15 @@
+// TODO
+//		- Move login logic entirely into UserManager,
+//			allowing a more functional and terse method
+
+// Login Stages
+var LoginStage = {
+	EMAIL: 'email',
+	NAME: 'name',
+	PASSWORD: 'password',
+	CONFIRM_PASSWORD: 'confirm-password'
+};
+
 function alertError(error)
 {
 	if(error)
@@ -65,22 +77,18 @@ function showLoginStage(loginStage)
 }
 
 Deps.autorun(function() {
-	var loginStage = Session.get('loginStage');
-
 	if(!Meteor.loggingIn())
 	{
-		toggleLoginVisible(loginStage);
-		showLoginStage(loginStage);
+		toggleLoginVisible(CurrentUser.uiState.loginStage);
+		showLoginStage(CurrentUser.uiState.loginStage);
 	}
 });
 
 Template.splash.rendered = function() {
-	var loginStage = Session.get('loginStage');
-
 	if(!Meteor.loggingIn())
 	{
-		toggleLoginVisible(loginStage);
-		showLoginStage(loginStage);
+		toggleLoginVisible(CurrentUser.uiState.loginStage);
+		showLoginStage(CurrentUser.uiState.loginStage);
 	}
 };
 
@@ -91,30 +99,27 @@ Template.splash.events({
 		var passwordField = template.find('.password input');
 		var confirmPasswordField = template.find('.confirm-password input');
 
-		var currentStage = Session.get('loginStage');
-		var currentState = Session.get('loginState');
-
 		event.preventDefault();
 
 		$('input').blur();
 		document.activeElement.blur();
 
-		if(currentStage)
+		if(CurrentUser.uiState.loginStage)
 		{
-			if(currentStage === 'email')
+			if(CurrentUser.uiState.loginStage === 'email')
 			{
 				if(emailField.value && emailField.value !== '')
 				{
 					var user = Meteor.users.findOne({ "emails.address": emailField.value.toLowerCase() });
-					var state = user ? 'login' : 'signup';
-					var nextStage = state === 'login' ? 'password' : 'name';
+					var state = user ? LoginState.LOGIN : LoginState.SIGNUP;
+					var nextStage = CurrentUser.uiState.loginState === LoginState.LOGIN ? LoginStage.PASSWORD : LoginStage.NAME;
 
-					Session.set('loginState', state);
-					Session.set('loginStage', nextStage);
+					CurrentUser.uiState.loginState = state;
+					CurrentUser.uiState.loginStage = nextStage;
 
 					if(user)
 					{
-						Session.set('loginName', user.profile.name);
+						CurrentUser.uiState.loginName = user.profile.name;
 					}
 				}
 				else
@@ -122,19 +127,19 @@ Template.splash.events({
 					alert('Please enter your email address!');
 				}
 			}
-			else if(currentStage === 'name')
+			else if(CurrentUser.uiState.loginStage === LoginStage.NAME)
 			{
 				if(nameField.value && nameField.value !== '')
 				{
-					Session.set('loginStage', 'password');
-					Session.set('loginName', nameField.value);
+					CurrentUser.uiState.loginStage = LoginStage.PASSWORD;
+					CurrentUser.uiState.loginName = user.profile.name;
 				}
 				else
 				{
 					alert('Please enter your name!');
 				}
 			}
-			else if(currentStage === 'password')
+			else if(CurrentUser.uiState.loginStage === LoginStage.PASSWORD)
 			{
 				if(passwordField.value && passwordField.value !== '')
 				{
