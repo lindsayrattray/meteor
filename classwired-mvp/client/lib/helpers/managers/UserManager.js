@@ -6,9 +6,9 @@
 // ==============================================
 
 //TODO 
+//		- Set up login handler stuff
 //		- fill out coUser methods
 //		- fill out reset and change password functionality
-//		- add default callback functionality
 
 UserManager = function() {
 
@@ -16,7 +16,29 @@ UserManager = function() {
 		systemUsersHandle: Meteor.subscribe('systemUsers')
 	};
 
-	this.uiState = {};
+	this.uiState = {
+		
+		datasource: {},
+		deps: {},
+
+		get: function(key) {
+			this.ensureDeps(key);
+			this.deps[key].depend();
+			return this.datasource[key];
+		},
+		
+		set: function(key, value) {
+			this.ensureDeps(key);
+			this.datasource[key] = value;
+			this.deps[key].changed();
+		},
+
+		ensureDeps: function(key) {
+			if(!this.deps[key]) {
+				this.deps[key] = new Deps.Dependency;
+			}
+		}
+	};
 
 	// Gets the current user object
 	this.get = function() {
@@ -160,3 +182,128 @@ UserManager = function() {
 
 	};
 };
+
+// ==============================================
+// Login Handler utility object
+// ==============================================
+
+LoginHandler = function(userManager)
+{
+	var thisUserManager = userManager;
+
+	this.loginState = {
+		STATE: {
+			LOGIN: 0,
+			SIGNUP: 1
+		},
+
+		STAGE: {
+			EMAIL: 'email',
+			NAME: 'name',
+			PASSWORD: 'password',
+			CONFIRM_PASSWORD: 'confirmPassword'
+		},
+
+		currentState: null,
+		currentStage: null,
+		currentStageDeps: null,
+
+		ensureCurrentStageDeps: function() {
+			if(!this.currentStageDeps)
+			{
+				this.currentStageDeps = new Deps.Dependency;
+			}
+		},
+
+		//may need deps on current stage
+
+		email: function(options, userManager) {
+			if(options.email && options.email !== '')
+			{
+				var user = Meteor.users.findOne({ "emails.address": options.email });
+				this.ensureCurrentStageDeps();
+
+				if(user)
+				{
+					this.currentState = this.STATE.LOGIN;
+					this.currentStage = this.STAGE.PASSWORD;
+				}
+				else
+				{
+					this.currentState = this.STATE.SIGNUP;
+					this.currentStage = this.STAGE.NAME;
+				}
+
+				this.currentStageDeps.changed();
+			}
+			else
+			{
+				alert('Please enter your email address!');
+			}
+		},
+
+		name: function(options, userManager) {
+			this.ensureCurrentStageDeps();
+
+			if(options.name && options.name !== '')
+			{
+				this.currentStage = this.STAGE.PASSWORD;
+				this.currentStageDeps.changed();
+			}
+			else
+			{
+				alert('Please enter your name!');
+			}
+		},
+
+		password: function(options, userManager) {
+			this.ensureCurrentStageDeps();
+
+			if(options.password && options.password !== '')
+			{
+				if(this.currentState === this.STATE.LOGIN)
+				{
+					userManager.login(options);
+					this.currentStage = null;
+					this.currentStageDeps.changed();
+				}
+				else
+				{
+					this.currentStage = this.STAGE.CONFIRM_PASSWORD;
+					this.currentStageDeps.changed();
+				}
+			}
+			else
+			{
+				alert('Please enter your password!');
+			}
+		},
+
+		confirmPassword: function(options, userManager) {
+			this.ensureCurrentStageDeps();
+
+			if(options.confirmPassword && options.confirmPassword === options.password)
+			{
+				userManager.signUp(options);
+				this.currentStage = null;
+				this.currentStageDeps.changed();
+			}
+			else
+			{
+				alert('Passwords don\'t match');
+			}
+		}
+	};
+
+	this.doLogin(options)
+	{
+		if(this.loginState.currentStage)
+		{
+			this.loginState[this.loginState.currentStage](options, thisUserManager);
+		}
+		else
+		{
+			this.loginState.currentStage = this.loginState.STAGE.EMAIL;
+		}
+	}
+}
