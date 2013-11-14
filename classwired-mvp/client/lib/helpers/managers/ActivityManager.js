@@ -9,7 +9,7 @@ ActivityManager = function(activity) {
 	var thisActivity = activity;
 
 	this.subscriptions = {
-		componentsHandle: Meteor.subscribe('components');
+		componentsHandle: Meteor.subscribe('components')
 	};
 
 	this.uiState = {};

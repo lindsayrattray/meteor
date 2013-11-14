@@ -13,7 +13,7 @@
 UserManager = function() {
 
 	this.subscriptions = {
-		systemUsersHandle = Meteor.subscribe('systemUsers');
+		systemUsersHandle: Meteor.subscribe('systemUsers');
 	}
 
 	// Gets the current user object
