@@ -12,10 +12,12 @@
 
 UserManager = function() {
 
+	// Subscription handle container
 	this.subscriptions = {
 		systemUsersHandle: Meteor.subscribe('systemUsers')
 	};
 
+	// Reactive datastore for ui related variables
 	this.uiState = {
 		
 		datasource: {},
@@ -57,26 +59,34 @@ UserManager = function() {
 		return roles && roles.indexOf(role) !== -1;
 	};
 
-	// Overridable callback for signups, takes an options
+	// Overridable callback closure for signups, takes an options
 	// and an error argument
 	var onSignup = function(options, error) {};
 
+	// Set the setOnSignup callback to fn, fn must accept
+	// an options object then an error value as its
+	// two arguments
 	this.setOnSignup = function(fn) {
 		onSignup = fn;
 	};
 
-	// Overridable callback for logins, takes an options
+	// Overridable callback closure for logins, takes an options
 	// and an error argument
 	var onLogin = function(options, error) {};
 
+	// Set the login callback to fn, fn must accept
+	// an options object then an error value as its
+	// two arguments
 	this.setOnLogin = function(fn) {
 		onLogin = fn;
 	};
 
-	// Overridable callback for logouts, takes an error
+	// Overridable callback closure for logouts, takes an error
 	// argument
 	var onLogout = function(error) {};
 
+	// Set the logout callback to fn, fn must accept
+	// an error value as its only argument
 	this.setOnLogout = function(fn) {
 		onLogout = fn;
 	}
@@ -94,8 +104,7 @@ UserManager = function() {
 										options.password,
 										function(error) {
 											onLogin(options, error);
-										}
-									);
+									});
 		}
 		else
 		{
@@ -107,9 +116,9 @@ UserManager = function() {
 	// and dropping all existing session etc.
 	this.logout = function() {
 		Meteor.logoutOtherClients();
-		Meteor.logout(function(error) { this.onLogout(error) });
-		window.location = location.host;
-		location.reload(true);
+		Meteor.logout(function(error)   { 
+											onLogout(error);
+										});
 	};
 
 	// Signup is a private function, called by login
@@ -195,14 +204,19 @@ UserManager = function() {
 
 LoginManager = function(userManager)
 {
+	// Keep a reference to a UserManager instance
 	var thisUserManager = userManager;
 
+	// Object to handle login states
 	this.loginState = {
+		
+		// Definition of available states
 		STATE: {
 			LOGIN: 0,
 			SIGNUP: 1
 		},
 
+		// Definition of available login/signup stages
 		STAGE: {
 			EMAIL: 'email',
 			NAME: 'name',
@@ -210,16 +224,22 @@ LoginManager = function(userManager)
 			CONFIRM_PASSWORD: 'confirmPassword'
 		},
 
+		// Keep track of currentState and Stage,
+		// currentStage is intended for use as a
+		// reactive data source
 		currentState: null,
 		currentStage: null,
 		currentStageDeps: null,
 
+		// Resets the current login state and stage
 		reset: function() {
 			this.currentStage = null;
 			this.currentState = null;
 			this.currentStageDeps.changed();
 		},
 
+		// Ensures the currentStage dependencies are
+		// set up
 		ensureCurrentStageDeps: function() {
 			if(!this.currentStageDeps)
 			{
@@ -227,12 +247,19 @@ LoginManager = function(userManager)
 			}
 		},
 
+		// Reactive accessor for the currentStage
 		reactiveCurrentStage: function() {
 			this.ensureCurrentStageDeps();
 			this.currentStageDeps.depend();
 			return this.currentStage;
 		},
 
+		// Function to execute in the 'email' stage
+		// validation can be handled here, takes a user's
+		// email and checks if it already exists in the
+		// database. If it already exists, progress to 
+		// login state and password stage, otherwise
+		// progress to the signup state and the name stage
 		email: function(options) {
 			if(options.email && options.email !== '')
 			{
@@ -258,6 +285,9 @@ LoginManager = function(userManager)
 			}
 		},
 
+		// Function to execute in the 'name' stage
+		// validation can be handled here, takes a user's
+		// name and progresses to the password stage
 		name: function(options) {
 			this.ensureCurrentStageDeps();
 
@@ -272,6 +302,10 @@ LoginManager = function(userManager)
 			}
 		},
 
+		// Function to execute in the 'password' stage
+		// validation can be handled here, logs in a user
+		// if in the login state, otherwise progresses to
+		// the confirmation stage
 		password: function(options) {
 			this.ensureCurrentStageDeps();
 
@@ -294,6 +328,10 @@ LoginManager = function(userManager)
 			}
 		},
 
+		// Function to execute in the 'confirmPassword' stage
+		// validation can be handled here, signs up a user if
+		// their password matches the confirmation, then resets
+		// login state for next time
 		confirmPassword: function(options) {
 			this.ensureCurrentStageDeps();
 
@@ -309,6 +347,7 @@ LoginManager = function(userManager)
 		}
 	};
 
+	// Handles calls to the loginState handler functions 
 	this.doLogin = function(options)
 	{
 		if(this.loginState.currentStage)

@@ -14,7 +14,13 @@ CurrentUser.setOnSignup(function(options, error) {
 });
 
 CurrentUser.setOnLogin(function(options, error) {
-	alertError(error)
+	alertError(error);
+});
+
+CurrentUser.setOnLogout(function(error) {
+	window.location = location.host;
+	location.reload(true);
+	alertError(error);
 });
 
 var loginHandler = new LoginManager(CurrentUser);
@@ -85,6 +91,7 @@ Template.splash.rendered = function() {
 
 Template.splash.events({
 	'submit form': function(event, template) {
+		console.log('submit')
 		var options = {};
 		options.email = template.find('.email input').value;
 		options.name = template.find('.name input').value;
