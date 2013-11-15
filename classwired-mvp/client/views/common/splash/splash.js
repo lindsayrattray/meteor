@@ -6,18 +6,16 @@ function alertError(error)
 	}
 }
 
-CurrentUser.onSignup = function(options, error)
-{
+CurrentUser.setOnSignup(function(options, error) {
 	var user = Meteor.users.findOne({ "emails.address": options.email });
 	var userId = user ? user._id : null;
 	Meteor.call('addUserToRole', userId, 'student');
 	alertError(error);
-};
+});
 
-CurrentUser.onLogin = function(options, error)
-{
+CurrentUser.setOnLogin(function(options, error) {
 	alertError(error)
-}
+});
 
 var loginHandler = new LoginManager(CurrentUser);
 

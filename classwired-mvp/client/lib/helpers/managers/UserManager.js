@@ -57,6 +57,30 @@ UserManager = function() {
 		return roles && roles.indexOf(role) !== -1;
 	};
 
+	// Overridable callback for signups, takes an options
+	// and an error argument
+	var onSignup = function(options, error) {};
+
+	this.setOnSignup = function(fn) {
+		onSignup = fn;
+	};
+
+	// Overridable callback for logins, takes an options
+	// and an error argument
+	var onLogin = function(options, error) {};
+
+	this.setOnLogin = function(fn) {
+		onLogin = fn;
+	};
+
+	// Overridable callback for logouts, takes an error
+	// argument
+	var onLogout = function(error) {};
+
+	this.setOnLogout = function(fn) {
+		onLogout = fn;
+	}
+
 	// Logs a user in if an account exists, otherwise
 	// signs them up, opitions object must include
 	// email and password, if new signup it will need a
@@ -69,7 +93,7 @@ UserManager = function() {
 			Meteor.loginWithPassword({  email: options.email },
 										options.password,
 										function(error) {
-											this.onLogin(options, error);
+											onLogin(options, error);
 										}
 									);
 		}
@@ -97,7 +121,7 @@ UserManager = function() {
 							},
 							function(error)
 							{
-								this.onSignup(options, error);
+								onSignup(options, error);
 							});
 	};
 
@@ -110,24 +134,6 @@ UserManager = function() {
 	// Change the user's password, requires the old
 	// password to be passed within options
 	this.changePassword = function(options) {
-
-	};
-
-	// Overridable callback for signups, takes an options
-	// and an error argument
-	this.onSignup = function(options, error) {
-
-	};
-
-	// Overridable callback for logins, takes an options
-	// and an error argument
-	this.onLogin = function(options, error) {
-
-	};
-
-	// Overridable callback for logouts, takes an error
-	// argument
-	this.onLogout = function(error) {
 
 	};
 
