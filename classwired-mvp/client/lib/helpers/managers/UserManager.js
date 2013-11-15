@@ -5,8 +5,7 @@
 // dealing with the currently logged in user
 // ==============================================
 
-//TODO 
-//		- Set up login handler stuff
+//TODO
 //		- fill out coUser methods
 //		- fill out reset and change password functionality
 
@@ -201,6 +200,9 @@ UserManager = function() {
 // ==============================================
 // Login Handler utility object
 // ==============================================
+
+//TODO
+//		- Move LoginManager into its own file
 
 LoginManager = function(userManager)
 {

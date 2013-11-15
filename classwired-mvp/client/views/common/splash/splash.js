@@ -91,7 +91,6 @@ Template.splash.rendered = function() {
 
 Template.splash.events({
 	'submit form': function(event, template) {
-		console.log('submit')
 		var options = {};
 		options.email = template.find('.email input').value;
 		options.name = template.find('.name input').value;
