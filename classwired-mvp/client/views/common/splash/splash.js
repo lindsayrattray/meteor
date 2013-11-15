@@ -23,8 +23,6 @@ var loginHandler = new LoginManager(CurrentUser);
 
 function toggleLoginVisible(loginStage)
 {
-	var container = $('.container');
-
 	if(loginStage)
 	{
 		$('.splash .viewport .container').removeClass('hide-login').addClass('show-login');
@@ -36,50 +34,54 @@ function toggleLoginVisible(loginStage)
 }
 
 var showLoginStage = {
-	$container: $('.login-details'),
 
 	email: function() {
-		$container.removeClass('stage-name stage-password stage-confirm-password').addClass('stage-email');
+		$('.login-details').removeClass('stage-name stage-password stage-confirm-password').addClass('stage-email');
 		$('.login-details div').not('.email').children('input, button').prop('disabled', true);
-		$('.login-details .email input').children('input, button').prop('disabled', false);
+		$('.login-details .email').children('input, button').prop('disabled', false);
 	},
 
 	name: function() {
-		$container.removeClass('stage-email stage-password stage-confirm-password').addClass('stage-name');
+		$('.login-details').removeClass('stage-email stage-password stage-confirm-password').addClass('stage-name');
 		$('.login-details div').not('.name').children('input, button').prop('disabled', true);
-		$('.login-details .name input').children('input, button').prop('disabled', false);
+		$('.login-details .name').children('input, button').prop('disabled', false);
 	},
 
 	password: function() {
-		$container.removeClass('stage-email stage-name stage-confirm-password').addClass('stage-password');
+		$('.login-details').removeClass('stage-email stage-name stage-confirm-password').addClass('stage-password');
 		$('.login-details div').not('.password').children('input, button').prop('disabled', true);
-		$('.login-details .password input').children('input, button').prop('disabled', false);
+		$('.login-details .password').children('input, button').prop('disabled', false);
 	},
 
 	confirmPassword: function() {
-		$container.removeClass('stage-email stage-name stage-password').addClass('stage-confirm-password');
+		$('.login-details').removeClass('stage-email stage-name stage-password').addClass('stage-confirm-password');
 		$('.login-details div').not('.confirm-password').children('input, button').prop('disabled', true);
 		$('.login-details .confirm-password').children('input, button').prop('disabled', false);
-	}
+	},
+
+	home: function() {
+		$('.login-details').removeClass('stage-email stage-name stage-password stage-confirm-password');
+		$('.login-details div').children('input, button').prop('disabled', true);
+	},
 };
 
 Deps.autorun(function() {
 	var currentStage = loginHandler.loginState.reactiveCurrentStage();
 
-	console.log(currentStage);
-
 	if(!Meteor.loggingIn())
 	{
-		toggleLoginVisible(CurrentUser.uiState.loginStage);
-		showLoginStage;
+		toggleLoginVisible(currentStage);
+		showLoginStage[currentStage || 'home']();
 	}
 });
 
 Template.splash.rendered = function() {
+	var currentStage = loginHandler.loginState.reactiveCurrentStage();
+
 	if(!Meteor.loggingIn())
 	{
-		toggleLoginVisible(CurrentUser.uiState.loginStage);
-		showLoginStage;
+		toggleLoginVisible(currentStage);
+		showLoginStage[currentStage || 'home']();
 	}
 };
 
@@ -96,92 +98,7 @@ Template.splash.events({
 		$('input').blur();
 		document.activeElement.blur();
 
-		LoginHandler.doLogin(options);
-
-		/*if(CurrentUser.uiState.loginStage)
-		{
-			if(CurrentUser.uiState.loginStage === 'email')
-			{
-				if(emailField.value && emailField.value !== '')
-				{
-					var user = Meteor.users.findOne({ "emails.address": emailField.value.toLowerCase() });
-					var state = user ? LoginState.LOGIN : LoginState.SIGNUP;
-					var nextStage = CurrentUser.uiState.loginState === LoginState.LOGIN ? LoginStage.PASSWORD : LoginStage.NAME;
-
-					CurrentUser.uiState.loginState = state;
-					CurrentUser.uiState.loginStage = nextStage;
-
-					if(user)
-					{
-						CurrentUser.uiState.loginName = user.profile.name;
-					}
-				}
-				else
-				{
-					alert('Please enter your email address!');
-				}
-			}
-			else if(CurrentUser.uiState.loginStage === LoginStage.NAME)
-			{
-				if(nameField.value && nameField.value !== '')
-				{
-					CurrentUser.uiState.loginStage = LoginStage.PASSWORD;
-					CurrentUser.uiState.loginName = user.profile.name;
-				}
-				else
-				{
-					alert('Please enter your name!');
-				}
-			}
-			else if(CurrentUser.uiState.loginStage === LoginStage.PASSWORD)
-			{
-				if(passwordField.value && passwordField.value !== '')
-				{
-					if(Session.get('loginState') === 'login')
-					{
-						Meteor.loginWithPassword({ email: emailField.value.toLowerCase() }, passwordField.value, function(error) { debugLogin(error) });
-					}
-					else
-					{
-						Session.set('loginStage', 'confirm-password');
-					}
-				}
-				else
-				{
-					alert('Please enter your password!');
-				}
-			}
-			else if(currentStage === 'confirm-password')
-			{
-				if(confirmPasswordField.value && confirmPasswordField.value !== '')
-				{
-					if(confirmPasswordField.value === passwordField.value)
-					{
-						var email = emailField.value.toLowerCase();
-						Accounts.createUser({
-												email: email,
-												password: passwordField.value,
-												profile: { name: nameField.value }
-											},
-											function(error)
-											{
-												var user = Meteor.users.findOne({ "emails.address": email });
-												var userId = user ? user._id : null;
-												Meteor.call('addUserToRole', userId, 'student');
-												debugLogin(error);
-											});
-					}
-					else
-					{
-						alert('Passwords don\'t match');
-					}
-				}
-				else
-				{
-					alert('Please confirm your password!')
-				}
-			}
-		}*/
+		loginHandler.doLogin(options);
 	},
 	'reset form': function(event, template) {
 		event.preventDefault();
@@ -197,7 +114,6 @@ Template.splash.events({
 		options.confirmPassword = template.find('.confirm-password input');
 
 		loginHandler.doLogin()
-		console.log(loginHandler);
 	},
 });
 

@@ -210,6 +210,7 @@ LoginManager = function(userManager)
 
 		reset: function() {
 			this.currentStage = null;
+			this.currentState = null;
 			this.currentStageDeps.changed();
 		},
 
@@ -310,7 +311,9 @@ LoginManager = function(userManager)
 		}
 		else
 		{
+			this.loginState.ensureCurrentStageDeps();
 			this.loginState.currentStage = this.loginState.STAGE.EMAIL;
+			this.loginState.currentStageDeps.changed();
 		}
 	}
 }
