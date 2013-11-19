@@ -1,3 +1,5 @@
+
+
 var toggleModal = function(showModal) {
 	var $modal = $('.modal');
 

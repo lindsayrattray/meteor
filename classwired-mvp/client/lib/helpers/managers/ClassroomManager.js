@@ -20,7 +20,38 @@ ClassroomManager = function(classroom) {
 		activitiesHandle: Meteor.subscribe('activities')
 	};
 
-	this.uiState = {};
+	this.uiState = {
+		datasource: {};
+		deps: {};
+
+		ensureDeps: function(key) {
+			if(!this.deps[key]) {
+				this.deps[key] = new Deps.Dependency;
+			}
+		},
+
+		get: function(key) {
+			this.ensureDeps(key);
+			this.deps[key].depend();
+			return this.datasource[key];
+		},
+
+		set: function(key, value) {
+			this.ensureDeps(key);
+			this.datasource[key] = value;
+			this.deps[key].changed();
+		},
+
+		clear: function() {
+			for(key in this.datasource)
+			{
+				this.set(this.datasource[key], null);
+			}
+
+			this.datasource = {};
+			this.deps = {};
+		}
+	};
 
 	// Gets the current classroom object
 	this.get = function() {
