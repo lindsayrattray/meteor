@@ -68,30 +68,42 @@ ClassroomManager = function(classroom) {
 		return GetValue(this.get(), keys);
 	};
 
-	this.createClassroom = function(name, userManager, description) {
-		var hasPermission = (userManager.hasRole(Roles.TEACHER));
-		var hasAdvancedPermission = (userManager.hasRole(Roles.SCHOOL)  ||
-							 		 userManager.hasRole(Roles.ADMIN));
+	this.createClassroom = function(options) {
+		var hasPermission = (options.userManager.hasRole(Roles.TEACHER));
+		var hasAdvancedPermission = (options.userManager.hasRole(Roles.SCHOOL)  ||
+							 		 options.userManager.hasRole(Roles.ADMIN));
+		var result = {};
+		var error = {};
 
-		if(userManager.get() && (hasPermission || hasAdvancedPermission))
+		if(options.userManager.get() && (hasPermission || hasAdvancedPermission))
 		{
-			if(Classrooms.findOne({ name: name }))
+			if(Classrooms.findOne({ name: options.name }))
 			{
-				alert('Classroom with name: \"' + name + '\" already exists!');
+				result.success = false;
+				error.code = 0;
+				error.text = 'Classroom with name: \"' + options.name + '\" already exists!';
 			}
 			else
 			{
-				Meteor.call('createClassroom', name, userManager.get(), description);
+				Meteor.call('createClassroom', options.name, options.userManager.get(), options.description);
+				result.success = true;
 			}
-		}
-		else if(userManager.get())
-		{
-			alert('Insufficient permissions to create classroom!');
 		}
 		else
 		{
-			alert('You need to be logged in to create a classroom!');
+			result.success = false;
+			error.code = 0;
+			error.text = options.userManager.get() ? 'Insufficient permissions to create classroom!' : 
+													 'You need to be logged in to create classroom!';
 		}
+
+		onCreate(result, error);
+	};
+
+	var onCreate = function(result, error) {};
+
+	this.setOnCreate = function(fn) {
+		onCreate = fn;
 	};
 
 	this.deleteClassroom = function(classroom, userManager) {

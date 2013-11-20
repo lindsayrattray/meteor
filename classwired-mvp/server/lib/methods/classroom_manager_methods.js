@@ -12,7 +12,7 @@ Meteor.methods({
 		{
 			Classrooms.remove(target._id);
 		}
-	}
+	},
 	setCurrentActivity: function(classroomId, activityId) {
 		var classroom = Classrooms.findOne(classroomId);
 		if(classroom && classroom.currentActivity !== activityId && Activities.findOne(activityId))
