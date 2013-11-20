@@ -3,6 +3,8 @@
 // ==============================================
 
 CurrentUser = new UserManager();
+CurrentUser.uiState.load();
+console.log('foo');
 
 // ==============================================
 // Handlebars helpers

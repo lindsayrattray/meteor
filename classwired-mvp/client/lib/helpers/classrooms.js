@@ -3,6 +3,7 @@
 // ==============================================
 
 CurrentClassroom = new ClassroomManager()
+CurrentClassroom.uiState.load();
 
 // ==============================================
 // Handlebars helpers

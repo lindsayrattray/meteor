@@ -11,7 +11,7 @@
 
 
 ClassroomManager = function(classroom) {
-	var thisClassroom = classroom;
+	var thisClassroom = Meteor._localStorage.getItem('Classwired.classroom');
 
 	this.subscriptions = {
 		classroomsHandle: Meteor.subscribe('classrooms'),
@@ -39,6 +39,8 @@ ClassroomManager = function(classroom) {
 			this.ensureDeps(key);
 			this.datasource[key] = value;
 			this.deps[key].changed();
+
+			this.save();
 		},
 
 		clear: function() {
@@ -49,6 +51,16 @@ ClassroomManager = function(classroom) {
 
 			this.datasource = {};
 			this.deps = {};
+		},
+
+		save: function() {
+			var data = JSON.stringify(this.datasource);
+			Meteor._localStorage.setItem('Classwired.ClassroomManager.uiState', data);
+		},
+
+		load: function() {
+			var data = JSON.parse(Meteor._localStorage.getItem('Classwired.ClassroomManager.uiState'));
+			this.datasource = data || {};
 		}
 	};
 
@@ -134,10 +146,10 @@ ClassroomManager = function(classroom) {
 	};
 
 	// Handle for a GroupManager object
-	this.currentGroup = null;
+	this.currentGroup = this.currentGroup || null;
 
 	// Handle for an ActivityManager object
-	this.currentActivity = null;
+	this.currentActivity = this.currentActivity || null;
 
 	// Get all activities that have been associated
 	// with the current classroom

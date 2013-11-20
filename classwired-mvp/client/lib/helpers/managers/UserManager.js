@@ -32,12 +32,34 @@ UserManager = function() {
 			this.ensureDeps(key);
 			this.datasource[key] = value;
 			this.deps[key].changed();
+
+			this.save();
 		},
 
 		ensureDeps: function(key) {
 			if(!this.deps[key]) {
 				this.deps[key] = new Deps.Dependency;
 			}
+		},
+
+		clear: function() {
+			for(key in this.datasource)
+			{
+				this.set(this.datasource[key], null);
+			}
+
+			this.datasource = {};
+			this.deps = {};
+		},
+
+		save: function() {
+			var data = JSON.stringify(this.datasource);
+			Meteor._localStorage.setItem('Classwired.UserManager.uiState');
+		},
+
+		load: function() {
+			var data = JSON.parse(Meteor._localStorage.getItem('Classwired.UserManager.uiState'));
+			this.datasource = data || {};
 		}
 	};
 
