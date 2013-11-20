@@ -68,9 +68,58 @@ ClassroomManager = function(classroom) {
 		return GetValue(this.get(), keys);
 	};
 
-	this.createClassroom = function(name, userManager, description) {};
+	this.createClassroom = function(name, userManager, description) {
+		var hasPermission = (userManager.hasRole(Roles.TEACHER));
+		var hasAdvancedPermission = (userManager.hasRole(Roles.SCHOOL)  ||
+							 		 userManager.hasRole(Roles.ADMIN));
 
-	this.deleteClassroom = function(userManager) {};
+		if(userManager.get() && (hasPermission || hasAdvancedPermission))
+		{
+			if(Classrooms.findOne({ name: name }))
+			{
+				alert('Classroom with name: \"' + name + '\" already exists!');
+			}
+			else
+			{
+				Meteor.call('createClassroom', name, userManager.get(), description);
+			}
+		}
+		else if(userManager.get())
+		{
+			alert('Insufficient permissions to create classroom!');
+		}
+		else
+		{
+			alert('You need to be logged in to create a classroom!');
+		}
+	};
+
+	this.deleteClassroom = function(classroom, userManager) {
+		var hasPermission = (userManager.hasRole(Roles.TEACHER));
+		var hasAdvancedPermission = (userManager.hasRole(Roles.SCHOOL)  ||
+							 		 userManager.hasRole(Roles.ADMIN));
+
+		if(userManager.get() && (hasPermission || hasAdvancedPermission))
+		{
+			var target = Classrooms.findOne(classroom);
+			if(target.owner === userManager.getValue(['_id']) || hasAdvancedPermission)
+			{
+				Meteor.call('deleteClassroom', target, userManager.get());
+			}
+			else
+			{
+				alert('You do not have permission to delete this classroom');
+			}
+		}
+		else if(userManager.get())
+		{
+			alert('Insufficient permissions to delete classroom!');
+		}
+		else
+		{
+			alert('You need to be logged in to delete a classroom!');
+		}
+	};
 
 	// Handle for a GroupManager object
 	this.currentGroup = null;
