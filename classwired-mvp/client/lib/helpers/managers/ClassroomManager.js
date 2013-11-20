@@ -6,9 +6,8 @@
 
 //TODO
 //		- Make set set the current classroom on the user
-//		- Add past activities collection
 //		- Add overrideable callback for set classroom
-//		- Add UI State defaults
+//		- Fill out create and delete classrooms
 
 
 ClassroomManager = function(classroom) {
@@ -21,8 +20,8 @@ ClassroomManager = function(classroom) {
 	};
 
 	this.uiState = {
-		datasource: {};
-		deps: {};
+		datasource: {},
+		deps: {},
 
 		ensureDeps: function(key) {
 			if(!this.deps[key]) {
@@ -68,6 +67,10 @@ ClassroomManager = function(classroom) {
 	this.getValue = function(keys) {
 		return GetValue(this.get(), keys);
 	};
+
+	this.createClassroom = function(name, userManager, description) {};
+
+	this.deleteClassroom = function(userManager) {};
 
 	// Handle for a GroupManager object
 	this.currentGroup = null;

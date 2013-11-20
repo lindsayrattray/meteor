@@ -14,9 +14,7 @@ var toggleModal = function(showModal) {
 }
 
 Deps.autorun(function() {
-	var showModal = Session.get('classroomManager_ModalVisible');
-	
-	toggleModal(showModal);
+	toggleModal(CurrentClassroom.uiState.get('showCreateModal'));
 });
 
 Template.classroomManager.rendered = function() {
@@ -25,10 +23,8 @@ Template.classroomManager.rendered = function() {
 	Session.set('forwardButton', false);
 	Session.set('forwardMenu', null);
 	Session.set('currentClassroom', null);
-
-	var showModal = Session.get('classroomManager_ModalVisible');
 	
-	toggleModal(showModal);
+	toggleModal(CurrentClassroom.uiState.get('showCreateModal'));
 };
 
 Template.classroomManager.helpers({
@@ -39,13 +35,13 @@ Template.classroomManager.helpers({
 
 Template.classroomManager.events({
 	'click button.new': function(event, template) {
-		var nameInput = template.find('.modal div form input');
-		Session.set('classroomManager_ModalVisible', true);
+		var nameInput = template.find('#classroom-name');
+		CurrentClassroom.uiState.set('showCreateModal', true);
 		nameInput.focus();
 	},
 	'submit .modal form': function(event, template) {
-		var nameInput = template.find('.modal form .name');
-		var descriptionInput = template.find('.modal form .description')
+		var nameInput = template.find('#classroom-name');
+		var descriptionInput = template.find('#classroom-description')
 
 		if(Classrooms.findOne({ name: nameInput.value }))
 		{
@@ -56,22 +52,20 @@ Template.classroomManager.events({
 			Meteor.call('createClassroom', nameInput.value, Meteor.user()._id, descriptionInput.value);
 			nameInput.value = '';
 			descriptionInput.value = '';
-			Session.set('classroomManager_ModalVisible', false);
+			CurrentClassroom.uiState.set('showCreateModal', false);
 		}
 		
 		event.preventDefault();
 	},
 	'reset .modal form': function(event, template) {
-		var nameInput = template.find('.modal div form input');
+		var nameInput = template.find('#classroom-name');
 		nameInput.value = '';
-		Session.set('classroomManager_ModalVisible', false);
+		CurrentClassroom.uiState.set('showCreateModal', false);
 
 		event.preventDefault();
 	},
 	'click .classroom-manager .classroom .join': function(event, template) {
-		var destination = Classrooms.findOne(this._id);
-		Session.set('leavingCurrentRoom', false);
-		Meteor.call('setUserCurrentRoom', Meteor.user()._id, this._id);
-		Router.go('classroom', destination);
+		CurrentClassroom.set(this);
+		Router.go('classroom', CurrentClassroom.get());
 	}
 });
