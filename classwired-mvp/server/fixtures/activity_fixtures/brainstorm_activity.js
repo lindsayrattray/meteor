@@ -1,5 +1,5 @@
 var brainstormActivity = Activities.findOne({ name: 'brainstorm' });
-var brainstormActivityId = brainstormActivity ? brainstormActivityId : null;
+var brainstormActivityId = brainstormActivity ? brainstormActivity._id : null;
 
 if(!brainstormActivityId)
 {

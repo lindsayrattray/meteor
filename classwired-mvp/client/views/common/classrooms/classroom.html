@@ -6,7 +6,7 @@
 					{{> groupManager}}
 				</div>
 				<div>
-					{{#if thisUserHasRole 'teacher'}}
+					{{#if userHasRole currentUser 'teacher'}}
 						{{{activity}}}
 					{{else}}
 						{{#if currentActivity}}

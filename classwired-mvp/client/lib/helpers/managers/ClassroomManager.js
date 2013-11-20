@@ -54,7 +54,7 @@ ClassroomManager = function(classroom) {
 
 	// Gets the current classroom object
 	this.get = function() {
-		return Meteor.findOne(thisClassroom);
+		return Classrooms.findOne(thisClassroom);
 	};
 
 	// Sets the current classroom object
