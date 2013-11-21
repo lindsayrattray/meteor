@@ -46,15 +46,17 @@ UserManager = function() {
 			for(key in this.datasource)
 			{
 				this.set(this.datasource[key], null);
+
 			}
 
 			this.datasource = {};
 			this.deps = {};
+			this.save();
 		},
 
 		save: function() {
 			var data = JSON.stringify(this.datasource);
-			Meteor._localStorage.setItem('Classwired.UserManager.uiState');
+			Meteor._localStorage.setItem('Classwired.UserManager.uiState', data);
 		},
 
 		load: function() {

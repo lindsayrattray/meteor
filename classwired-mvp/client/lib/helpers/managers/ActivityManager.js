@@ -50,7 +50,7 @@ ActivityManager = function(activity, classroom) {
 
 		save: function() {
 			var data = JSON.stringify(this.datasource);
-			Meteor._localStorage.setItem('Classwired.ActivityManager.uiState');
+			Meteor._localStorage.setItem('Classwired.ActivityManager.uiState', data);
 		},
 
 		load: function() {
