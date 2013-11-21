@@ -1,15 +1,33 @@
 Meteor.methods({
-	setCurrentActivity: function(classroom, activity) {
-		var classroom = Classrooms.findOne(classroom);
-		var activity = Activities.findOne(activity);
-		console.log(classroom);
-		console.log(activity);
-
+	addActivity: function(classroom, activity) {
+		var thisClassroom = Classrooms.findOne(classroom);
+		var thisActivity = Activities.findOne(activity);
 		
-		/*if(classroom && classroom.currentActivity !== activityId && Activities.findOne(activityId))
+		if(classroom && activity)
 		{
-			Classrooms.update(classroomId, { $set: { currentActivity: activityId } });
-		}*/
+			var newInstance = {
+				classroomId: thisClassroom._id,
+				activityId: thisActivity._id,
+				timestamp: new Date()
+			};
+
+			var instanceCheck = ActivityInstances.findOne(newInstance);
+			if(!instanceCheck)
+			{
+				var newInstanceId = ActivityInstances.insert(newInstance);
+				return newInstanceId;
+			}
+		}
+	},
+	setCurrentActivity: function(classroom, activityInstance)
+	{
+		var thisClassroom = Classrooms.findOne(classroom);
+		var thisActivity = ActivityInstances.findOne(activityInstance);
+
+		if(thisClassroom && thisActivity)
+		{
+			Classrooms.update(thisClassroom._id, { $set: { currentActivity: thisActivity.activityId } });
+		}
 	},
 	setCurrentComponent: function(classroomId, componentId) {
 		var classroom = Classrooms.findOne(classroomId);

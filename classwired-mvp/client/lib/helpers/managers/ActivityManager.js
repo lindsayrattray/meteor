@@ -8,7 +8,10 @@
 
 ActivityManager = function(activity, classroom) {
 	var thisClassroom = classroom;
-	var thisActivity = JSON.parse(Meteor._localStorage.getItem('Classwired.activity'));
+	
+	var thisActivity = function() {
+		return classroom.getValue('currentActivity');
+	}
 
 	this.subscriptions = {
 		componentsHandle: Meteor.subscribe('components')
@@ -60,15 +63,36 @@ ActivityManager = function(activity, classroom) {
 	};
 
 	this.get = function() {
-		return ActivityInstances.findOne(thisActivity);
+		return ActivityInstances.findOne(thisActivity());
 	};
 
-	this.set = function(activity) {
-		thisActivity = activity;
-		Meteor._localStorage.setItem('Classwired.activity', JSON.stringify(activity));
+	this.set = function(activityInstance, userManager) {
+		var hasAdvancedPermission = userManager.hasRole(Roles.SCHOOL) || userManager.hasRole(Roles.ADMIN);
+
+		if(thisClassroom.getValue('owner') === userManager.getValue('_id') || hasAdvancedPermission)
+		{
+			Meteor.call('setCurrentActivity', thisClassroom.get(), activityInstance);
+		}
 	};
 
 	this.getValue = function(keys) {
 		return GetValue(this.get(), keys);
 	};
+
+	this.create = function(activity, userManager) {
+		var hasAdvancedPermission = userManager.hasRole(Roles.SCHOOL) || userManager.hasRole(Roles.ADMIN);
+
+		if(thisClassroom.getValue('owner') === userManager.getValue('_id') || hasAdvancedPermission)
+		{
+			Meteor.call('addActivity', thisClassroom.get(), activity, function(error, result) {
+				onCreate(error, result);
+			});
+		}
+	}
+
+	var onCreate = function(error, result) {};
+	
+	this.setOnCreate = function(fn) {
+		onCreate = fn;
+	}
 }

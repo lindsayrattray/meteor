@@ -1,3 +1,9 @@
+CurrentClassroom.currentActivity.setOnCreate(function(error, result) {
+	var activityInstance = ActivityInstances.findOne(result);
+
+	CurrentClassroom.currentActivity.set(activityInstance, CurrentUser);
+});
+
 Template.activityManager.helpers({
 	activities: function() {
 		return Activities.find();
@@ -6,11 +12,7 @@ Template.activityManager.helpers({
 
 Template.activityManager.events({
 	'click .activity-manager ul li a': function(event, template) {
-		CurrentClassroom.currentActivity.set(this);
-		console.log(CurrentClassroom);
-		console.log(this);
-
-		Meteor.call('setCurrentActivity', CurrentClassroom.get(), this, function() {})
+		CurrentClassroom.currentActivity.create(this, CurrentUser);
 		//
 		//Meteor.call('setCurrentActivity', template.data.classroom._id, this._id);
 	}

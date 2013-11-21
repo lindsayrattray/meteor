@@ -39,7 +39,7 @@ Meteor.publish('pastActivities', function(classroom) {
 	var thisClassroom = Classrooms.findOne(classroom)
 	if(thisClassroom)
 	{
-		return ActivityInstances.findOne({ classroomId: thisClassroom._id })
+		return ActivityInstances.find({ classroomId: thisClassroom._id })
 	}
 });
 
