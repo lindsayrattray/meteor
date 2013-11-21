@@ -95,7 +95,7 @@ Template.splash.events({
 		options.email = template.find('.email input').value;
 		options.name = template.find('.name input').value;
 		options.password = template.find('.password input').value;
-		options.confirmPassword = template.find('.confirm-password input');
+		options.confirmPassword = template.find('.confirm-password input').value;
 
 		event.preventDefault();
 
@@ -115,7 +115,7 @@ Template.splash.events({
 		options.email = template.find('.email input').value;
 		options.name = template.find('.name input').value;
 		options.password = template.find('.password input').value;
-		options.confirmPassword = template.find('.confirm-password input');
+		options.confirmPassword = template.find('.confirm-password input').value;
 
 		loginHandler.doLogin()
 	},

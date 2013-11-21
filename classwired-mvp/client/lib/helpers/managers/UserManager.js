@@ -129,7 +129,7 @@ UserManager = function() {
 		}
 		else
 		{
-			this.signUp(options);
+			signUp(options);
 		}
 	};
 
@@ -361,7 +361,8 @@ LoginManager = function(userManager)
 
 			if(options.confirmPassword && options.confirmPassword === options.password)
 			{
-				thisUserManager.signUp(options);
+				console.log(thisUserManager)
+				thisUserManager.login(options);
 				this.reset();
 			}
 			else
@@ -376,7 +377,7 @@ LoginManager = function(userManager)
 	{
 		if(this.loginState.currentStage)
 		{
-			this.loginState[this.loginState.currentStage](options, thisUserManager);
+			this.loginState[this.loginState.currentStage](options);
 		}
 		else
 		{

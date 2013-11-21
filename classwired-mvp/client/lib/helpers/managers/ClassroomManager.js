@@ -11,7 +11,7 @@
 
 
 ClassroomManager = function(classroom) {
-	var thisClassroom = Meteor._localStorage.getItem('Classwired.classroom');
+	var thisClassroom = JSON.parse(Meteor._localStorage.getItem('Classwired.classroom'));
 
 	this.subscriptions = {
 		classroomsHandle: Meteor.subscribe('classrooms'),
@@ -72,6 +72,7 @@ ClassroomManager = function(classroom) {
 	// Sets the current classroom object
 	this.set = function(classroom) {
 		thisClassroom = classroom;
+		Meteor._localStorage.setItem('Classwired.classroom', JSON.stringify(thisClassroom));
 		this.subscriptions.pastActivitiesHandle = Meteor.subscribe('pastActivities', thisClassroom);
 	};
 
