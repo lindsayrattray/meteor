@@ -22,11 +22,14 @@
 				</div>
 				<div class="options">
 					<button>Start New</button>
-					<h2>Resume Existing</h2>
+					<h2>Or</h2>
+					<div>
+						<h2>Resume Existing</h2>
+					</div>
 					<ul>
-						{{#each activityInstances}}
+						{{#each pastActivities}}
 							<li>
-								<a>{{formattedTimestamp this}}</a>
+								<a>{{activityTitle selection}} {{formattedTimestamp this.attempt_timestamp}}</a>
 							</li>
 						{{/each}}
 					</ul>

@@ -915,6 +915,8 @@ div.classroom
 
       .description
       {
+        min-height: 50%;
+
         > img
         {
           float: left;
@@ -923,6 +925,42 @@ div.classroom
 
           border-radius: 50%;
           border: 2px solid #fff;
+
+          margin:
+          {
+            left: 1em;
+            right: 1em;
+          }
+        }
+      }
+
+      .options
+      {
+        text-align: center;
+
+        button
+        {
+          @include button($button-med, $primary-color, false, true);
+
+          margin-bottom: 0;
+        }
+
+        h2
+        {
+          font-size: 1.2em;
+        }
+
+        > div
+        {
+          > h2
+          {
+            @include button($button-med, gray, false, true, true);
+          }
+        }
+
+        ul
+        {
+
         }
       }
     }

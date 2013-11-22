@@ -31,6 +31,23 @@ Template.activityManager.rendered = function() {
 Template.activityManager.helpers({
 	activities: function() {
 		return Activities.find();
+	},
+	pastActivities: function() {
+		var thisActivityId = CurrentClassroom.currentActivity.uiState.get('selectedActivity');
+		var thisActivity = Activities.findOne(thisActivityId);
+
+		if(thisActivity)
+		{
+			return ActivityInstances.find({ activityId: thisActivity._id }, { sort: { attempt_timestamp: 1 } });
+		}
+	},
+	selection: function() {
+		var thisActivityId = CurrentClassroom.currentActivity.uiState.get('selectedActivity');
+		return Activities.findOne(thisActivityId);
+	},
+	formattedTimestamp: function(timestamp) {
+		var date = new Date(timestamp);
+		return date.toString("MMM dd yyyy, h:mm tt");
 	}
 });
 
