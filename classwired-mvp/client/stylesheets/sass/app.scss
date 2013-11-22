@@ -849,10 +849,12 @@ div.classroom
 {
   @include grid-row();
 
+  overflow-x: auto;
   height: 100%;
 
   .container
   {
+    height: 100%;
     width: 200%;
 
     > ul
@@ -860,6 +862,47 @@ div.classroom
       height: 100%;
       width: 50%;
       float: left;
+
+      list-style: none;
+      overflow-y: auto;
+
+      li
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        height: 8em;
+
+        padding:
+        {
+          top: 1em;
+          bottom: 1em;
+        }
+
+        a
+        {
+          height: 100%;
+          width: 100%;
+          display: block;
+          background-color: yellow;
+
+          > img
+          {
+            float: left;
+
+            height: 5em;
+            width: 5em;
+
+            border-radius: 50%;
+            border: 2px solid #fff;
+
+            margin:
+            {
+              left: 1em;
+              right: 1em;
+            }
+          }
+        }
+      }
     }
 
     .information
@@ -867,6 +910,21 @@ div.classroom
       height: 100%;
       width: 50%;
       float: left;
+
+      overflow-y: auto;
+
+      .description
+      {
+        > img
+        {
+          float: left;
+          height: 10em;
+          width: 10em;
+
+          border-radius: 50%;
+          border: 2px solid #fff;
+        }
+      }
     }
   }
 }
