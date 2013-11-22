@@ -21,3 +21,23 @@ CurrentClassroom.currentActivity.uiState.load();
 Handlebars.registerHelper('currentClassroom', function() {
 	return CurrentClassroom.get();
 });
+
+// ==============================================
+//	Activity helpers (thanks to meteor's crappy
+//	load order, these need to be defined here)
+// ==============================================
+
+Handlebars.registerHelper('activityTitle', function(activity) {
+	var thisActivity = Activities.findOne(activity);
+	return GetValue(thisActivity, ['title']);
+});
+
+Handlebars.registerHelper('activityDescription', function(activity) {
+	var thisActivity = Activities.findOne(activity);
+	return GetValue(thisActivity, ['description']);
+});
+
+Handlebars.registerHelper('activityIconURL', function(activity) {
+	var thisActivity = Activities.findOne(activity);
+	return GetValue(thisActivity, ['iconURL']);
+});
