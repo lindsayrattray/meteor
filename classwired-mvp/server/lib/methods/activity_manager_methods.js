@@ -1,5 +1,5 @@
 Meteor.methods({
-	addActivity: function(classroom, activity) {
+	addActivity: function(classroom, activity, timestamp) {
 		var thisClassroom = Classrooms.findOne(classroom);
 		var thisActivity = Activities.findOne(activity);
 		
@@ -8,7 +8,7 @@ Meteor.methods({
 			var newInstance = {
 				classroomId: thisClassroom._id,
 				activityId: thisActivity._id,
-				timestamp: new Date()
+				created_timestamp: timestamp
 			};
 
 			var instanceCheck = ActivityInstances.findOne(newInstance);
@@ -19,7 +19,7 @@ Meteor.methods({
 			}
 		}
 	},
-	setCurrentActivity: function(classroom, activityInstance)
+	setCurrentActivity: function(classroom, activityInstance, timestamp)
 	{
 		var thisClassroom = Classrooms.findOne(classroom);
 		var thisActivity = ActivityInstances.findOne(activityInstance);
@@ -27,6 +27,7 @@ Meteor.methods({
 		if(thisClassroom && thisActivity)
 		{
 			Classrooms.update(thisClassroom._id, { $set: { currentActivity: thisActivity._id } });
+			ActivityInstances.update(thisActivity._id, { $set: { attempt_timestamp: timestamp } });
 		}
 	},
 	setCurrentComponent: function(classroomId, componentId) {

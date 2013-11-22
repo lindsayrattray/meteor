@@ -11,9 +11,7 @@ Template.activityManager.helpers({
 });
 
 Template.activityManager.events({
-	'click .activity-manager ul li a': function(event, template) {
-		CurrentClassroom.currentActivity.create(this, CurrentUser);
-		//
-		//Meteor.call('setCurrentActivity', template.data.classroom._id, this._id);
+	'click .activity-manager > ul li a': function(event, template) {
+		
 	}
 });
