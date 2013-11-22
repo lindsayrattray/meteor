@@ -83,7 +83,8 @@ Template.splash.events({
 
 		event.preventDefault();
 
-		console.log(currentStage);
+		$('input').blur();
+		document.activeElement.blur();
 
 		if(currentStage)
 		{
