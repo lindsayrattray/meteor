@@ -8,6 +8,7 @@
 //		- Make set set the current classroom on the user
 //		- Add overrideable callback for set classroom
 //		- Fill out create and delete classrooms
+//		- Make local storage store id of classroom only
 
 
 ClassroomManager = function(classroom) {
@@ -15,7 +16,7 @@ ClassroomManager = function(classroom) {
 
 	this.subscriptions = {
 		classroomsHandle: Meteor.subscribe('classrooms'),
-		pastActivitiesHandle: Meteor.subscribe('pastActivities', thisClassroom),
+		pastActivitiesHandle: Meteor.subscribe('pastActivities', thisClassroom._id),
 		activitiesHandle: Meteor.subscribe('activities')
 	};
 
@@ -66,7 +67,7 @@ ClassroomManager = function(classroom) {
 
 	// Gets the current classroom object
 	this.get = function() {
-		return Classrooms.findOne(thisClassroom);
+		return Classrooms.findOne(thisClassroom._id);
 	};
 
 	// Sets the current classroom object

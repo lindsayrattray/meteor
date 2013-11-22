@@ -10,7 +10,7 @@ ActivityManager = function(activity, classroom) {
 	var thisClassroom = classroom;
 	
 	var thisActivity = function() {
-		return classroom.getValue('currentActivity');
+		return thisClassroom.getValue(['currentActivity']);
 	}
 
 	this.subscriptions = {
@@ -69,7 +69,7 @@ ActivityManager = function(activity, classroom) {
 	this.set = function(activityInstance, userManager) {
 		var hasAdvancedPermission = userManager.hasRole(Roles.SCHOOL) || userManager.hasRole(Roles.ADMIN);
 
-		if(thisClassroom.getValue('owner') === userManager.getValue('_id') || hasAdvancedPermission)
+		if(thisClassroom.getValue('owner') === userManager.getValue(['_id']) || hasAdvancedPermission)
 		{
 			Meteor.call('setCurrentActivity', thisClassroom.get(), activityInstance);
 		}
@@ -82,7 +82,7 @@ ActivityManager = function(activity, classroom) {
 	this.create = function(activity, userManager) {
 		var hasAdvancedPermission = userManager.hasRole(Roles.SCHOOL) || userManager.hasRole(Roles.ADMIN);
 
-		if(thisClassroom.getValue('owner') === userManager.getValue('_id') || hasAdvancedPermission)
+		if(thisClassroom.getValue('owner') === userManager.getValue(['_id']) || hasAdvancedPermission)
 		{
 			Meteor.call('addActivity', thisClassroom.get(), activity, function(error, result) {
 				onCreate(error, result);

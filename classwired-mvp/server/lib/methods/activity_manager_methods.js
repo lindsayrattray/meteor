@@ -26,7 +26,7 @@ Meteor.methods({
 
 		if(thisClassroom && thisActivity)
 		{
-			Classrooms.update(thisClassroom._id, { $set: { currentActivity: thisActivity.activityId } });
+			Classrooms.update(thisClassroom._id, { $set: { currentActivity: thisActivity._id } });
 		}
 	},
 	setCurrentComponent: function(classroomId, componentId) {

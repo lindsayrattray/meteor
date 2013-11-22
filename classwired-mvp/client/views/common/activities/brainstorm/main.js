@@ -6,7 +6,7 @@ Deps.autorun(function() {
 	{
 		var group = GroupManager.getGroupByMember(userId, classroomId);
 
-		Meteor.subscribe('brainstorm_Items', userId, classroomId);
+		Meteor.subscribe('brainstorm_Items', userId, classroomId, CurrentClassroom.currentActivity.get());
 	}
 });
 
