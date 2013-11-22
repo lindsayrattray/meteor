@@ -68,10 +68,11 @@ ActivityManager = function(activity, classroom) {
 
 	this.set = function(activityInstance, userManager) {
 		var hasAdvancedPermission = userManager.hasRole(Roles.SCHOOL) || userManager.hasRole(Roles.ADMIN);
+		var timestamp = Date.parse(new Date());
 
 		if(thisClassroom.getValue('owner') === userManager.getValue(['_id']) || hasAdvancedPermission)
 		{
-			Meteor.call('setCurrentActivity', thisClassroom.get(), activityInstance);
+			Meteor.call('setCurrentActivity', thisClassroom.get(), activityInstance, timetamp);
 		}
 	};
 
@@ -81,10 +82,11 @@ ActivityManager = function(activity, classroom) {
 
 	this.create = function(activity, userManager) {
 		var hasAdvancedPermission = userManager.hasRole(Roles.SCHOOL) || userManager.hasRole(Roles.ADMIN);
+		var timestamp = Date.parse(new Date());
 
 		if(thisClassroom.getValue('owner') === userManager.getValue(['_id']) || hasAdvancedPermission)
 		{
-			Meteor.call('addActivity', thisClassroom.get(), activity, function(error, result) {
+			Meteor.call('addActivity', thisClassroom.get(), activity, timestamp, function(error, result) {
 				onCreate(error, result);
 			});
 		}
