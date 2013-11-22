@@ -1,14 +1,37 @@
 <template name="activityManager">
 	<div class="activity-manager">
-		<div class="header">
-			<span>Available Activities</span>
+		<div class="container">
+			<ul>
+				{{#each activities}}
+					<li>
+						<a>
+							<img src="" alt="placeholder"></img>
+							<span>
+								<h2>{{this.title}}</h2>
+								<div>{{this.blurb}}</div>
+							</span>
+						</a>
+					</li>
+				{{/each}}
+			</ul>
+			<div class="information">
+				<div class="description">
+					<img src="" alt="placeholder"></img>
+					<h1>{{activityTitle selection}}</h1>
+					<p>{{activityDescription selection}}</p>
+				</div>
+				<div class="options">
+					<button>Start New</button>
+					<h2>Resume Existing</h2>
+					<ul>
+						{{#each activityInstances}}
+							<li>
+								<a>{{formattedTimestamp this}}</a>
+							</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
 		</div>
-		<ul>
-			{{#each activities}}
-				<li>
-					<a>{{this.title}}</a>
-				</li>
-			{{/each}}
-		</ul>
 	</div>
 </template>
