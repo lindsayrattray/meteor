@@ -1578,6 +1578,38 @@ div.classroom
 
     height: 100%;
 
+    > .modal
+    {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+
+      background-color: rgba(0, 0, 0, 0.6);
+
+      > div
+      {
+        @include grid-row($behavior: nest-collapse);
+
+        margin-top: 5%;
+        height: 50%;
+
+        > div
+        {
+          @include grid-column(8, false, true);
+
+          border: 1px solid #ddd;
+          border-radius: 1em;
+
+          background-color: #fff;
+
+          text-align: center;
+          padding-top: 1em;
+        }
+      }
+    }
+
     .student
     {
       @include grid-row();
