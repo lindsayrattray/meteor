@@ -1,7 +1,7 @@
 Meteor.subscribe('activities');
 
 var setView = function(showGroupManager) {
-	var $container = $('.classroom .container');
+	var $container = $('.classroom > .container');
 
 	if(showGroupManager)
 	{

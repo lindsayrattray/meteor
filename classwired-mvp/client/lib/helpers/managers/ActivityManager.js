@@ -72,7 +72,7 @@ ActivityManager = function(activity, classroom) {
 
 		if(thisClassroom.getValue('owner') === userManager.getValue(['_id']) || hasAdvancedPermission)
 		{
-			Meteor.call('setCurrentActivity', thisClassroom.get(), activityInstance, timetamp);
+			Meteor.call('setCurrentActivity', thisClassroom.get(), activityInstance, timestamp);
 		}
 	};
 
