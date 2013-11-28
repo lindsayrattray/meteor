@@ -371,11 +371,11 @@ footer
 
       height: 200%;
 
-      -webkit-transition: all 500ms ease;
-      -moz-transition: all 500ms ease;
-      -ms-transition: all 500ms ease;
-      -o-transition: all 500ms ease;
-      transition: all 500ms ease;
+      -webkit-transition: all 300ms ease;
+      -moz-transition: all 300ms ease;
+      -ms-transition: all 300ms ease;
+      -o-transition: all 300ms ease;
+      transition: all 300ms ease;
 
       &.show-login
       {
@@ -446,11 +446,11 @@ footer
               }
             }
 
-            -webkit-transition: all 500ms ease;
-            -moz-transition: all 500ms ease;
-            -ms-transition: all 500ms ease;
-            -o-transition: all 500ms ease;
-            transition: all 500ms ease;
+            -webkit-transition: all 300ms ease;
+            -moz-transition: all 300ms ease;
+            -ms-transition: all 300ms ease;
+            -o-transition: all 300ms ease;
+            transition: all 300ms ease;
 
             &.stage-email
             {
@@ -744,11 +744,11 @@ div.classroom
     width: 200%;
     height: 100%;
 
-    -webkit-transition: all 500ms ease;
-    -moz-transition: all 500ms ease;
-    -ms-transition: all 500ms ease;
-    -o-transition: all 500ms ease;
-    transition: all 500ms ease;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
 
     &.groups
     {
@@ -857,6 +857,12 @@ div.classroom
     height: 100%;
     width: 200%;
 
+    -webkit-transition: all 300ms ease;
+       -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+         -o-transition: all 300ms ease;
+            transition: all 300ms ease;
+
     &.show-info
     {
       -webkit-transform: translate(-50%, 0);
@@ -864,6 +870,15 @@ div.classroom
           -ms-transform: translate(-50%, 0);
            -o-transform: translate(-50%, 0);
               transform: translate(-50%, 0);
+    }
+
+    &.hide-info
+    {
+      -webkit-transform: translate(0, 0);
+         -moz-transform: translate(0, 0);
+          -ms-transform: translate(0, 0);
+           -o-transform: translate(0, 0);
+              transform: translate(0, 0);
     }
 
     > ul
@@ -892,7 +907,6 @@ div.classroom
           height: 100%;
           width: 100%;
           display: block;
-          background-color: yellow;
 
           > img
           {
@@ -1159,11 +1173,11 @@ div.classroom
 
         height: 200%;
 
-        -webkit-transition: all 500ms ease;
-        -moz-transition: all 500ms ease;
-        -ms-transition: all 500ms ease;
-        -o-transition: all 500ms ease;
-        transition: all 500ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
 
         &.activity
         {
@@ -1345,11 +1359,11 @@ div.classroom
 
         height: 200%;
 
-        -webkit-transition: all 500ms ease;
-        -moz-transition: all 500ms ease;
-        -ms-transition: all 500ms ease;
-        -o-transition: all 500ms ease;
-        transition: all 500ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
 
         &.activity
         {

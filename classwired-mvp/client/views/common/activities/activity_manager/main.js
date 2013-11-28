@@ -8,11 +8,11 @@ var toggleView = function(selectedActivity)
 {
 	if(selectedActivity)
 	{
-		$('.activity-manager > .container').addClass('show-info');
+		$('.activity-manager > .container').removeClass('hide-info').addClass('show-info');
 	}
 	else
 	{
-		$('.activity-manager > .container').removeClass('show-info');
+		$('.activity-manager > .container').removeClass('show-info').addClass('hide-info');
 	}
 }
 

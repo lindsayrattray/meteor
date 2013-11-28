@@ -1,0 +1,12 @@
+<template name="activityExplainTheWord_Stopped">
+	<div class="stopped">
+		{{#unless userHasRole currentUser teacherRole}}
+			<span>
+				<h3>Your teacher has stopped the activity.</h3>
+				<hr />
+			</span>
+		{{else}}
+		
+		{{/unless}}
+	</div>
+</template>
