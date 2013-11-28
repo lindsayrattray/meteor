@@ -1,11 +1,11 @@
 <template name="activityManager">
 	<div class="activity-manager">
 		<div class="container">
-			<ul>
+			<ul class="activities">
 				{{#each activities}}
 					<li>
 						<a>
-							<img src="" alt="placeholder"></img>
+							<img src="http://placehold.it/65x65/2ba6cb/ffffff" alt="{{this.title}} logo"></img>
 							<span>
 								<h2>{{this.title}}</h2>
 								<div>{{this.blurb}}</div>
@@ -16,17 +16,17 @@
 			</ul>
 			<div class="information">
 				<div class="description">
-					<img src="" alt="placeholder"></img>
-					<h1>{{activityTitle selection}}</h1>
+					<img src="http://placehold.it/130x130/f18609/ffffff" alt="{{activityTitle selection}} logo"></img>
+					<h1>{{activityTitle selection}}</h1><button class="back">Back</button>
 					<p>{{activityDescription selection}}</p>
 				</div>
 				<div class="options">
-					<button>Start New</button>
+					<button class="new">Start New</button>
 					<h2>Or</h2>
 					<div>
 						<h2>Resume Existing</h2>
 					</div>
-					<ul>
+					<ul class="past-activities">
 						{{#each pastActivities}}
 							<li>
 								<a>{{activityTitle selection}} {{formattedTimestamp this.attempt_timestamp}}</a>

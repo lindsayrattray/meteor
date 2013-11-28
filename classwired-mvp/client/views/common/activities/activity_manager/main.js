@@ -1,7 +1,7 @@
 CurrentClassroom.currentActivity.setOnCreate(function(error, result) {
 	var activityInstance = ActivityInstances.findOne(result);
 
-	//CurrentClassroom.currentActivity.set(activityInstance, CurrentUser);
+	CurrentClassroom.currentActivity.set(activityInstance, CurrentUser);
 });
 
 var toggleView = function(selectedActivity)
@@ -47,16 +47,23 @@ Template.activityManager.helpers({
 	},
 	formattedTimestamp: function(timestamp) {
 		var date = new Date(timestamp);
-		return date.toString("MMM dd yyyy, h:mm tt");
+		var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+		var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+		return days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear() + ' at ' + date.getHours() + ':' + date.getMinutes();
 	}
 });
 
 Template.activityManager.events({
-	'click .activity-manager ul li a': function(event, template) {
+	'click .activity-manager .activities > li > a': function(event, template) {
 		CurrentClassroom.currentActivity.uiState.set('selectedActivity', this._id);
-
-		//CurrentClassroom.currentActivity.create(this, CurrentUser);
-		//
-		//Meteor.call('setCurrentActivity', template.data.classroom._id, this._id);
-	}
+	},
+	'click .activity-manager .past-activities > li > a': function(event, template) {
+		CurrentClassroom.currentActivity.set(this, CurrentUser)
+	},
+	'click .activity-manager .back': function(event, template) {
+		CurrentClassroom.currentActivity.uiState.set('selectedActivity', null);
+	},
+	'click .activity-manager .new': function(event, template) {
+		CurrentClassroom.currentActivity.create(CurrentClassroom.currentActivity.uiState.get('selectedActivity'), CurrentUser);
+	},
 });

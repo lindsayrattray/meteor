@@ -849,13 +849,22 @@ div.classroom
 {
   @include grid-row();
 
-  overflow-x: auto;
   height: 100%;
+  overflow: hidden;
 
   .container
   {
     height: 100%;
     width: 200%;
+
+    &.show-info
+    {
+      -webkit-transform: translate(-50%, 0);
+         -moz-transform: translate(-50%, 0);
+          -ms-transform: translate(-50%, 0);
+           -o-transform: translate(-50%, 0);
+              transform: translate(-50%, 0);
+    }
 
     > ul
     {
@@ -955,12 +964,30 @@ div.classroom
           > h2
           {
             @include button($button-med, gray, false, true, true);
+            
+            margin-bottom: 0;
           }
         }
 
         ul
         {
+          padding-top: 1em;
+          border: 1px solid #ddd;
+          height: 12em;
 
+          overflow-y: auto;
+
+          text-align: left;
+
+          li
+          {
+            line-height: 2em;
+
+            &:nth-child(even)
+            {
+              background-color: #f9f9f9;
+            }
+          }
         }
       }
     }
