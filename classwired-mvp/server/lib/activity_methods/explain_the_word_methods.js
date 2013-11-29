@@ -1,6 +1,6 @@
 Meteor.methods({
-	reassignGroupWords: function(classroomId) {
-		var wordlistItems = ExplainTheWord_WordlistItems.find({ classroomId: classroomId }).fetch();
+	reassignGroupWords: function(activityInstanceId, classroomId) {
+		var wordlistItems = ExplainTheWord_WordlistItems.find({ classroomId: classroomId, activityInstanceId: activityInstanceId }).fetch();
 		var user, group;
 
 		for(itemIndex in wordlistItems)
@@ -14,10 +14,10 @@ Meteor.methods({
 			}
 		}
 	},
-	calculateTimes: function(items, classroomId) {
+	calculateTimes: function(items, activityInstanceId, classroomId) {
 		for(itemIndex in items)
 		{
-			var explainItems = ExplainTheWord_ExplainItems.find({ item: items[itemIndex], classroomId: classroomId }).fetch();
+			var explainItems = ExplainTheWord_ExplainItems.find({ item: items[itemIndex], classroomId: classroomId, activityInstanceId: activityInstanceId }).fetch();
 			var explainedItems = _.filter(explainItems, function(item) { return item.answered_timestamp });
 			var fastestItem = _.chain(explainItems).min(function(item) {
 				var result = Date.parse(item.answered_timestamp) - Date.parse(item.assigned_timestamp);
@@ -61,7 +61,7 @@ Meteor.methods({
 			avg = (isNaN(avg) ? 0 : avg).toFixed(2);
 			fastestTime = (isNaN(fastestTime) ? 0 : fastestTime);
 
-			var matchItem = ExplainTheWord_ExplainItemTimes.findOne({ item: items[itemIndex], classroomId: classroomId }, { reactive: false });
+			var matchItem = ExplainTheWord_ExplainItemTimes.findOne({ item: items[itemIndex], activityInstanceId: activityInstanceId, classroomId: classroomId }, { reactive: false });
 			var item = { avgTime: avg };
 
 			if(fastestTime)
@@ -86,6 +86,7 @@ Meteor.methods({
 			{
 				item.item = items[itemIndex];
 				item.classroomId = classroomId;
+				item.activityInstanceId = activityInstanceId;
 
 				ExplainTheWord_ExplainItemTimes.insert(item);				
 			}

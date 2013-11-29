@@ -5,6 +5,6 @@ Meteor.publish('explainTheWord_WordlistItems', function(groupId, classroomId, ac
 	}
 	if(groupId && classroomId)
 	{
-		return ExplainTheWord_WordlistItems.find({ $or: [{ groupId: groupId, classroomId: classroomId, activityInstanceId: activityInstanceId }, { userId: userId, classroomId: classroomId }] });
+		return ExplainTheWord_WordlistItems.find({ $or: [{ groupId: groupId, classroomId: classroomId, activityInstanceId: activityInstanceId }, { userId: userId, classroomId: classroomId, activityInstanceId: activityInstanceId }] });
 	}
 });
