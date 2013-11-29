@@ -1,5 +1,5 @@
 Template.activityExplainTheWord_UI_Teacher_RightButton.events({
 	'click button.right': function() {
-		Session.set('statsMode', 'activity');
+		CurrentClassroom.currentActivity.uiState.set('statsMode', 'activity');
 	}
 });

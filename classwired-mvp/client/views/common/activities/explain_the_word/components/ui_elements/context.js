@@ -1,15 +1,9 @@
 Template.activityExplainTheWord_UI_Context.helpers({
 	isPaused: function() {
-		var classroomId = Session.get('currentClassroom');
-		var classroom = Classrooms.findOne(classroomId);
-
-		return classroom.state === 'paused';
+		return CurrentClassroom.currentActivity.getValue(['state']) === 'paused';
 	},
 	isStopped: function() {
-		var classroomId = Session.get('currentClassroom');
-		var classroom = Classrooms.findOne(classroomId);
-
-		return classroom.state === 'stopped';
+		return CurrentClassroom.currentActivity.getValue(['state']) === 'stopped';
 	},
 	context: function() {
 		return 'Explain the Word';
