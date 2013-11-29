@@ -65,6 +65,7 @@ Template.classroom.helpers({
 	activity: function() {
 		var activityInstance = ActivityInstances.findOne(CurrentClassroom.currentActivity.get());
 		var activity = activityInstance ? Activities.findOne(activityInstance.activityId) : null;
+		
 		if(!activity)
 		{
 			return Template['activityManager']({ classroom: this });

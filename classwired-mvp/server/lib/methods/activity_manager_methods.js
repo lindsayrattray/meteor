@@ -14,6 +14,8 @@ Meteor.methods({
 			var instanceCheck = ActivityInstances.findOne(newInstance);
 			if(!instanceCheck)
 			{
+				newInstance.currentComponent = null;
+
 				var newInstanceId = ActivityInstances.insert(newInstance);
 				return newInstanceId;
 			}
@@ -30,11 +32,11 @@ Meteor.methods({
 			ActivityInstances.update(thisActivity._id, { $set: { attempt_timestamp: timestamp } });
 		}
 	},
-	setCurrentComponent: function(classroomId, componentId) {
-		var classroom = Classrooms.findOne(classroomId);
-		if(classroom && classroom.currentActivityComponent !== componentId && Components.findOne(componentId))
+	setCurrentComponent: function(activityInstance, componentId) {
+		var thisInstance = ActivityInstances.findOne(activityInstance);
+		if(thisInstance && thisInstance.currentComponent !== componentId && Components.findOne(componentId))
 		{
-			Classrooms.update(classroomId, { $set: { currentActivityComponent: componentId } });
+			ActivityInstances.update(thisInstance._id, { $set: { currentComponent: componentId } });
 		}
 	}
 });
