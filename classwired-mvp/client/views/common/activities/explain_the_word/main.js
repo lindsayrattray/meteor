@@ -30,7 +30,7 @@ Deps.autorun(function() {
 Template.activityExplainTheWord_Main.rendered = function() {
 	if(Meteor.userId())
 	{
-		if(!CurrentUser.hasRole(Roles.TEACHER))
+		if(CurrentUser.hasRole(Roles.TEACHER))
 		{
 			//TODO this stuff will be moving somewhere into a uistate or something
 			Session.set('forwardButton', true);
@@ -45,12 +45,9 @@ Template.activityExplainTheWord_Main.rendered = function() {
 
 Template.activityExplainTheWord_Main.helpers({
 	component: function() {
-		if(!CurrentUser.hasRole(Roles.TEACHER))
+		if(CurrentClassroom.currentActivity.getValue(['state']) === 'stopped')
 		{
-			if(CurrentClassroom.currentActivity.getValue(['state']) === 'stopped')
-			{
-				return Template['activityExplainTheWord_Stopped']({activity: this.activity, classroom: this.classroom});
-			}
+			return Template['activityExplainTheWord_Stopped']({activity: this.activity, classroom: this.classroom});
 		}
 
 		var component = Components.findOne(CurrentClassroom.currentActivity.getValue(['currentComponent']));

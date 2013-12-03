@@ -31,6 +31,10 @@ Meteor.methods({
 			Classrooms.update(thisClassroom._id, { $set: { currentActivity: thisActivity._id } });
 			ActivityInstances.update(thisActivity._id, { $set: { attempt_timestamp: timestamp } });
 		}
+		else if(thisClassroom)
+		{
+			Classrooms.update(thisClassroom._id, { $set: { currentActivity: null } });
+		}
 	},
 	setCurrentComponent: function(activityInstance, componentId) {
 		var thisInstance = ActivityInstances.findOne(activityInstance);
