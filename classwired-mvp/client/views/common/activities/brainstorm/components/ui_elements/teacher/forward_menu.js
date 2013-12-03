@@ -4,43 +4,31 @@ Template.activityBrainstorm_UI_Teacher_ForwardMenu.events({
 		Session.set('forward_MenuVisible', false);
 	},
 	'click .play-pause': function() {
-		var classroomId = Session.get('currentClassroom');
-		var classroom = Classrooms.findOne(classroomId);
-
-		if(classroom.state === 'paused' || classroom.state === 'stopped')
+		if(CurrentClassroom.currentActivity.getValue(['state']) === 'paused' || classroom.state === 'stopped')
 		{
-			Classrooms.update(classroomId, { $set: { state: 'running' } });
+			Classrooms.update(CurrentClassroom.getValue(['_id']), { $set: { state: 'running' } });
 		}
 		else
 		{
-			Classrooms.update(classroomId, { $set: { state: 'paused' } });
+			Classrooms.update(CurrentClassroom.getValue(['_id']), { $set: { state: 'paused' } });
 		}
 	},
 	'click .stop': function() {
-		var classroomId = Session.get('currentClassroom');
-		var classroom = Classrooms.findOne(classroomId);
-
-		if(classroom.state !== 'stopped')
+		if(CurrentClassroom.currentActivity.getValue(['state']) !== 'stopped')
 		{
-			Classrooms.update(classroomId, { $set: { state: 'stopped' } });
+			Classrooms.update(CurrentClassroom.getValue(['_id']), { $set: { state: 'stopped' } });
 		}
 	}
 });
 
 Template.activityBrainstorm_UI_Teacher_ForwardMenu.helpers({
 	components: function() {
-		var classroomId = Session.get('currentClassroom');
-		var classroom = Classrooms.findOne(classroomId);
-		var activityId = classroom ? classroom.currentActivity : null;
-		var components = activityId ? Components.find({ activityId: activityId}, { reactive: false }) : null;
+		var components = Components.find({ activityId: CurrentClassroom.currentActivity.getValue(['activityId']) }, { reactive: false });
 	
 		return components;
 	},
 	classroomPaused: function() {
-		var classroomId = Session.get('currentClassroom');
-		var classroom = Classrooms.findOne(classroomId);
-
-		if(classroom.state === 'paused' || classroom.state === 'stopped')
+		if(CurrentClassroom.currentActivity.getValue(['state']) === 'paused' || CurrentClassroom.currentActivity.getValue(['state']) === 'stopped')
 		{
 			return true;
 		}

@@ -3,7 +3,7 @@ Meteor.publish('brainstorm_Items', function(userId, classroomId, activityInstanc
 	{
 		return Brainstorm_Items.find({ classroomId: classroomId, activityInstanceId: activityInstanceId });
 	}
-	if(userId && classroomId)
+	if(userId && classroomId && activityInstanceId)
 	{
 		return Brainstorm_Items.find({ userId: userId, classroomId: classroomId, activityInstanceId: activityInstanceId });
 	}
