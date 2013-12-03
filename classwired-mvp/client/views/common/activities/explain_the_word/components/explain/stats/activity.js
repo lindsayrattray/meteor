@@ -2,18 +2,18 @@ Template.activityExplainTheWord_Explain_Stats_Activity.events({
 	'click .stats.activity > ul li a': function(event, template) {
 		if(Session.get('explainStudentStat') === this.toString())
 		{
-			Session.set('explainStudentStat', null);
+			CurrentClassroom.currentActivity.uiState.set('explainStudentStat', null);
 		}
 		else
 		{
-			Session.set('explainStudentStat', this.toString());
+			CurrentClassroom.currentActivity.uiState.set('explainStudentStat', this.toString());
 		}
 	}
 });
 
 Template.activityExplainTheWord_Explain_Stats_Activity.helpers({
 	students: function() {
-		var groups = Groups.find({ classroomId: this.classroom._id }).fetch();
+		var groups = Groups.find({ classroomId: CurrentClassroom.getValue(['_id']) }).fetch();
 		var students = [];
 
 		for(groupIndex in groups)
@@ -24,14 +24,14 @@ Template.activityExplainTheWord_Explain_Stats_Activity.helpers({
 		return _.flatten(students);
 	},
 	currentItem: function(userId) {
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ classroomId: Session.get('currentClassroom'), assigned_to: userId });
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ classroomId: CurrentClassroom.getValue(['_id']), activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']), assigned_to: userId });
 		if(currentItem)
 		{
 			return currentItem.item;
 		}
 	},
 	isCurrentItem: function() {
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ assigned_to: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom')});
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ assigned_to: CurrentClassroom.currentActivity.uiState.get('explainStudentStat'), classroomId: CurrentClassroom.getValue(['_id']), activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id'])});
 		if(currentItem && this.item === currentItem.item)
 		{
 			return true;

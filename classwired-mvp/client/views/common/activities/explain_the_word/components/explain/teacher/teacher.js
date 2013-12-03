@@ -20,13 +20,13 @@ var setView = function(statsMode) {
 }
 
 Deps.autorun(function() {
-	var statsMode = Session.get('statsMode');
+	var statsMode = CurrentClassroom.currentActivity.uiState.get('statsMode');
 
 	setView(statsMode);
 });
 
 Template.activityExplainTheWord_Explain_Teacher.rendered = function() {
-	var statsMode = Session.get('statsMode');
+	var statsMode = CurrentClassroom.currentActivity.uiState.get('statsMode');
 
 	setView(statsMode);
 }
