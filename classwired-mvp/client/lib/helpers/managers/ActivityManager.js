@@ -14,7 +14,7 @@ ActivityManager = function(activity, classroom) {
 	}
 
 	this.subscriptions = {
-		componentsHandle: Meteor.subscribe('components')
+		
 	};
 
 	this.uiState = {
@@ -72,7 +72,9 @@ ActivityManager = function(activity, classroom) {
 
 		if(thisClassroom.getValue('owner') === userManager.getValue(['_id']) || hasAdvancedPermission)
 		{
+			var thisActivityInstance = ActivityInstances.findOne(activityInstance);
 			Meteor.call('setCurrentActivity', thisClassroom.get(), activityInstance, timestamp);
+			this.subscriptions.componentsHandle = Meteor.subscribe('components', GetValue(thisActivityInstance, ['activityId']));
 		}
 	};
 
