@@ -1063,6 +1063,11 @@ div.classroom
         
         text-align: center;
       }
+
+      button.end
+      {
+        @include button($button-med, $primary-color, false, true);
+      }
     }
   }
 
