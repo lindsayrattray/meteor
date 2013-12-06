@@ -102,7 +102,6 @@ Template.splash.events({
 
 		if(matchedUser)
 		{
-			console.log(matchedUser);
 			CurrentUser.uiState.set('loginName', GetValue(matchedUser, ['profile', 'name']));
 		}
 		else if(options.name)

@@ -363,7 +363,6 @@ LoginManager = function(userManager)
 
 			if(options.confirmPassword && options.confirmPassword === options.password)
 			{
-				console.log(thisUserManager)
 				thisUserManager.login(options);
 				this.reset();
 			}
