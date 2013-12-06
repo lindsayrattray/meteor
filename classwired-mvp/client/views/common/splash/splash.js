@@ -7,8 +7,7 @@ function alertError(error)
 }
 
 CurrentUser.setOnSignup(function(options, error) {
-	var user = Meteor.users.findOne({ "emails.address": options.email });
-	var userId = user ? user._id : null;
+	var userId = Meteor.userId();
 	Meteor.call('addUserToRole', userId, 'student');
 	alertError(error);
 });
