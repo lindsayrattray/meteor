@@ -67,7 +67,7 @@ ClassroomManager = function(classroom) {
 
 	// Gets the current classroom object
 	this.get = function() {
-		return Classrooms.findOne(thisClassroom._id);
+		return Classrooms.findOne(this.getValue(['_id']));
 	};
 
 	// Sets the current classroom object
