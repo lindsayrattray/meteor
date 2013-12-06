@@ -16,7 +16,7 @@ ClassroomManager = function(classroom) {
 
 	this.subscriptions = {
 		classroomsHandle: Meteor.subscribe('classrooms'),
-		pastActivitiesHandle: Meteor.subscribe('pastActivities', thisClassroom._id),
+		pastActivitiesHandle: Meteor.subscribe('pastActivities', this.getValue(['_id'])),
 		activitiesHandle: Meteor.subscribe('activities')
 	};
 
