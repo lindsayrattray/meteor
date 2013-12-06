@@ -98,6 +98,17 @@ Template.splash.events({
 
 		event.preventDefault();
 
+		var matchedUser = Meteor.users.find({ "emails.address": options.email });
+
+		if(matchUser)
+		{
+			CurrentUser.uiState.set('loginName', GetValue(matchedUser, ['profile', 'name']));
+		}
+		else if(options.name)
+		{
+			CurrentUser.uiState.set('loginName', options.name);
+		}
+
 		$('input').blur();
 		document.activeElement.blur();
 
@@ -125,7 +136,7 @@ Template.splash.helpers({
 		return Meteor.loggingIn();
 	},
 	studentName: function() {
-		return Session.get('loginName');
+		return CurrentUser.uiState.get('loginName');
 	},
 	debug: function() {
 		console.log();
