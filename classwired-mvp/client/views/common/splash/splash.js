@@ -98,10 +98,11 @@ Template.splash.events({
 
 		event.preventDefault();
 
-		var matchedUser = Meteor.users.find({ "emails.address": options.email });
+		var matchedUser = Meteor.users.findOne({ "emails.address": options.email });
 
-		if(matchUser)
+		if(matchedUser)
 		{
+			console.log(matchedUser);
 			CurrentUser.uiState.set('loginName', GetValue(matchedUser, ['profile', 'name']));
 		}
 		else if(options.name)
