@@ -4,19 +4,22 @@ Template.activityBrainstorm_UI_Teacher_ForwardMenu.events({
 		Session.set('forward_MenuVisible', false);
 	},
 	'click .play-pause': function() {
-		if(CurrentClassroom.currentActivity.getValue(['state']) === 'paused' || classroom.state === 'stopped')
+		if(CurrentClassroom.currentActivity.getValue(['state']) === 'paused' || CurrentClassroom.currentActivity.getValue(['state']) === 'stopped')
 		{
-			Classrooms.update(CurrentClassroom.getValue(['_id']), { $set: { state: 'running' } });
+			//TODO these should be server side methods, but for now leave them client side
+			ActivityInstances.update(CurrentClassroom.currentActivity.getValue(['_id']), { $set: { state: 'running' } });
 		}
 		else
 		{
-			Classrooms.update(CurrentClassroom.getValue(['_id']), { $set: { state: 'paused' } });
+			ActivityInstances.update(CurrentClassroom.currentActivity.getValue(['_id']), { $set: { state: 'paused' } });
 		}
 	},
 	'click .stop': function() {
+		console.log('foo');
 		if(CurrentClassroom.currentActivity.getValue(['state']) !== 'stopped')
 		{
-			Classrooms.update(CurrentClassroom.getValue(['_id']), { $set: { state: 'stopped' } });
+			console.log('bar');
+			ActivityInstances.update(CurrentClassroom.currentActivity.getValue(['_id']), { $set: { state: 'stopped' } });
 		}
 	}
 });
