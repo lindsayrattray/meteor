@@ -1689,7 +1689,22 @@ div.classroom
 
     height: 100%;
 
-    /*> .modal
+    > .stopped
+    {
+      > span
+      {
+        @include grid-column(10, false, true);
+        
+        text-align: center;
+      }
+
+      button.end
+      {
+        @include button($button-med, $primary-color, false, true);
+      }
+    }
+
+    > .modal
     {
       position: absolute;
       top: 0;
@@ -1719,7 +1734,7 @@ div.classroom
           padding-top: 1em;
         }
       }
-    }*/
+    }
 
     .student
     {

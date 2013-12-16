@@ -19,8 +19,7 @@ CurrentUser.setOnLogin(function(options, error) {
 });
 
 CurrentUser.setOnLogout(function(error) {
-	window.location = location.host;
-	location.reload(true);
+	window.location = window.location.origin;
 	alertError(error);
 });
 
