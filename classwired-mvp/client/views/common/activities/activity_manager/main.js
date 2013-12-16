@@ -1,3 +1,15 @@
+var formatTime = function(timeToFormat)
+{
+	var result = timeToFormat;
+
+	if(timeToFormat.length = 1)
+	{
+		result = '0' + timeToFormat;
+	}
+
+	return result;
+}
+
 CurrentClassroom.currentActivity.setOnCreate(function(error, result) {
 	var activityInstance = ActivityInstances.findOne(result);
 
@@ -49,7 +61,7 @@ Template.activityManager.helpers({
 		var date = new Date(timestamp);
 		var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 		var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-		return days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear() + ' at ' + date.getHours() + ':' + date.getMinutes();
+		return days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear() + ' at ' + formatTime(date.getHours()) + ':' + formatTime(date.getMinutes());
 	}
 });
 
