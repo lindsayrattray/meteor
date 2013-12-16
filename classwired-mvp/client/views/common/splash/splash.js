@@ -16,11 +16,11 @@ CurrentUser.setOnLogin(function(options, error) {
 	alertError(error);
 });
 
-CurrentUser.setOnLogout(function(error) {
+/*CurrentUser.setOnLogout(function(error) {
 	window.location = location.host;
-	location.reload(true);
+	//location.reload(true);
 	alertError(error);
-});
+});*/
 
 var loginHandler = new LoginManager(CurrentUser);
 
