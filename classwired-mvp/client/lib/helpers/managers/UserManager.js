@@ -138,7 +138,6 @@ UserManager = function() {
 	// Logout and redirect to root url causing a refresh
 	// and dropping all existing session etc.
 	this.logout = function() {
-		Meteor.logoutOtherClients();
 		Meteor.logout(function(error)   { 
 											onLogout(error);
 										});

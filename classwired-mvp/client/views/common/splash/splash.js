@@ -9,18 +9,20 @@ function alertError(error)
 CurrentUser.setOnSignup(function(options, error) {
 	var userId = Meteor.userId();
 	Meteor.call('addUserToRole', userId, 'student');
+	Meteor.logoutOtherClients();
 	alertError(error);
 });
 
 CurrentUser.setOnLogin(function(options, error) {
+	Meteor.logoutOtherClients();
 	alertError(error);
 });
 
-/*CurrentUser.setOnLogout(function(error) {
+CurrentUser.setOnLogout(function(error) {
 	window.location = location.host;
-	//location.reload(true);
+	location.reload(true);
 	alertError(error);
-});*/
+});
 
 var loginHandler = new LoginManager(CurrentUser);
 
