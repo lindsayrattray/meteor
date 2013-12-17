@@ -10,8 +10,14 @@ Deps.autorun(function() {
 });
 
 Template.activityBrainstorm_Main.rendered = function() {
-	if(Meteor.user())
+	var userId = Meteor.userId();
+
+	if(userId)
 	{
+		var group = GroupManager.getGroupByMember(userId, CurrentClassroom.getValue(['_id']));
+
+		Meteor.subscribe('brainstorm_Items', userId, CurrentClassroom.getValue(['_id']), CurrentClassroom.currentActivity.getValue(['_id']));
+		
 		if(CurrentUser.hasRole(Roles.TEACHER))
 		{
 			Session.set('forwardButton', true);
