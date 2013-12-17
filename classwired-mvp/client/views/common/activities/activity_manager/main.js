@@ -71,7 +71,7 @@ Template.activityManager.events({
 	},
 	'click .activity-manager .past-activities > li > a': function(event, template) {
 		CurrentClassroom.currentActivity.uiState.clear();
-		CurrentClassroom.currentActivity.set(this, CurrentUser)
+		CurrentClassroom.currentActivity.set(this, CurrentUser);
 	},
 	'click .activity-manager .back': function(event, template) {
 		CurrentClassroom.currentActivity.uiState.set('selectedActivity', null);
