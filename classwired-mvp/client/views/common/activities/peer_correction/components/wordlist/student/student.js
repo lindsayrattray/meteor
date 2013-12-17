@@ -3,6 +3,10 @@ var updateWordlist = _.debounce(function(item, content) {
 	Session.set('editingItem', false);
 }, 1000, false);
 
+Deps.autorun(function() {
+	var result = PeerCorrection_WordlistItems.find({}, { sort: { created_timestamp: 1 } }).fetch();
+});
+
 Template.activityPeerCorrection_Wordlist_Student.rendered = function() {
 	var isEditing = Session.get('editingItem');
 	if(!isEditing)
@@ -47,7 +51,7 @@ Template.activityPeerCorrection_Wordlist_Student.events({
 	}
 });
 
-Template.activityExplainTheWord_Wordlist_Student.helpers({
+Template.activityPeerCorrection_Wordlist_Student.helpers({
 	wordlistItems: function() {
 		return PeerCorrection_WordlistItems.find({}, { sort: { created_timestamp: 1 } });
 	}

@@ -55,6 +55,7 @@ Template.activityPeerCorrection_Main.helpers({
 		if(!component)
 		{
 			component = Components.findOne({ name: 'wordlist' });
+			console.log(component);
 			if(component)
 			{
 				Meteor.call('setCurrentComponent', CurrentClassroom.currentActivity.getValue(['_id']), component._id);
