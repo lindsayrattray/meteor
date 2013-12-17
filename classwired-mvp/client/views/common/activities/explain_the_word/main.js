@@ -47,7 +47,7 @@ Template.activityExplainTheWord_Main.helpers({
 	component: function() {
 		if(CurrentClassroom.currentActivity.getValue(['state']) === 'stopped')
 		{
-			return Template['activityExplainTheWord_Stopped']({activity: this.activity, classroom: this.classroom});
+			return Template['activityExplainTheWord_Stopped']({ activity: this.activity, classroom: this.classroom });
 		}
 
 		var component = Components.findOne(CurrentClassroom.currentActivity.getValue(['currentComponent']));

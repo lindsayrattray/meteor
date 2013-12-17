@@ -1,0 +1,14 @@
+<template name="activityPeerCorrection_Main">
+	<div class="peer-correction activity-main">
+		{{{component}}}
+		{{#unless userHasRole currentUser teacherRole}}
+			<div class="modal {{toggleModal}}">
+				<div>
+					<div>
+						<p>Your teacher has paused this lesson, you will need to wait for them to continue.</p>
+					</div>
+				</div>
+			</div>
+		{{/unless}}
+	</div>
+</template>

@@ -6,7 +6,7 @@ if(!peerCorrectionActivityId)
 }
 
 var peerCorrectionComponentsObjects =  [{ name: 'wordlist', title: 'Wordlist', template: 'activityPeerCorrection_Wordlist', activityId: peerCorrectionActivityId },
-										{ name: 'explain', title: 'Explain', template: 'activityPeerCorrection_Correct', activityId: peerCorrectionActivityId }];
+										{ name: 'correct', title: 'Correct', template: 'activityPeerCorrection_Correct', activityId: peerCorrectionActivityId }];
 
 for(component in peerCorrectionComponentsObjects)
 {
