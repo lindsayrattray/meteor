@@ -28,8 +28,18 @@ Deps.autorun(function() {
 });
 
 Template.activityExplainTheWord_Main.rendered = function() {
-	if(Meteor.userId())
+	var userId = Meteor.userId();
+	var classroomId = CurrentClassroom.getValue(['_id']);
+	var activityInstanceId = CurrentClassroom.currentActivity.getValue(['_id']);
+
+	if(userId)
 	{
+		var group = Groups.findOne({ members: userId, classroomId: classroomId });
+		group = group ? group._id : null;
+
+		Meteor.subscribe('explainTheWord_WordlistItems', group, classroomId, activityInstanceId, userId);
+		Meteor.subscribe('explainTheWord_ExplainItems', group, classroomId, activityInstanceId, userId);
+
 		if(CurrentUser.hasRole(Roles.TEACHER))
 		{
 			//TODO this stuff will be moving somewhere into a uistate or something
