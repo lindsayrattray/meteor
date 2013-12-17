@@ -1,1 +1,1 @@
-PeerCorrection_CorrectionItemStats = new Meteor.collection('PeerCorrection_CorrectionItemStats');
+PeerCorrection_CorrectionItemStats = new Meteor.Collection('PeerCorrection_CorrectionItemStats');
