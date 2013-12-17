@@ -1,6 +1,6 @@
 Template.activityExplainTheWord_UI_Teacher_ForwardMenu.events({
 	'click .component a': function() {
-		Meteor.call('setCurrentComponent', Session.get('currentClassroom'), this._id);
+		Meteor.call('setCurrentComponent', CurrentClassroom.currentActivity.getValue(['_id']), this._id);
 		Session.set('forward_MenuVisible', false);
 	},
 	'click .play-pause': function(event, template) {

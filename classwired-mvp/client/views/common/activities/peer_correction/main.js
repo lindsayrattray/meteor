@@ -22,8 +22,8 @@ Deps.autorun(function() {
 		var group = Groups.findOne({ members: userId });
 		group = group ? group._id : null;
 
-		Meteor.subscribe('');
-		Meteor.subscribe('');
+		Meteor.subscribe('PeerCorrection_WordlistItems', group, classroomId, activityInstanceId, userId);
+		Meteor.subscribe('PeerCorrection_CorrectionItems', group, classroomId, activityInstanceId, userId);
 	}
 });
 
@@ -34,12 +34,12 @@ Template.activityPeerCorrection_Main.rendered = function() {
 		{
 			//TODO this stuff will eventually be moving into a uiState object or something
 			Session.set('forwardButton', true);
-			Session.set('forwardMenu', '');
-			Session.set('leftButton', '');
-			Session.set('rightButton', '');
+			Session.set('forwardMenu', 'activityPeerCorrection_UI_Teacher_ForwardMenu');
+			Session.set('leftButton', 'activityPeerCorrection_UI_Teacher_LeftButton');
+			Session.set('rightButton', 'activityPeerCorrection_UI_Teacher_RightButton');
 		}
 
-		Session.set('currentContext', '')
+		Session.set('currentContext', 'activityPeerCorrection_UI_Context')
 	}
 };
 

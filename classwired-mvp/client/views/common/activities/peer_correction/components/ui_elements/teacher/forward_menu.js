@@ -1,9 +1,9 @@
-Template.activityBrainstorm_UI_Teacher_ForwardMenu.events({
+Template.activityPeerCorrection_UI_Teacher_ForwardMenu.events({
 	'click .component a': function() {
 		Meteor.call('setCurrentComponent', CurrentClassroom.currentActivity.getValue(['_id']), this._id);
 		Session.set('forward_MenuVisible', false);
 	},
-	'click .play-pause': function() {
+	'click .play-pause': function(event, template) {
 		if(CurrentClassroom.currentActivity.getValue(['state']) === 'paused' || CurrentClassroom.currentActivity.getValue(['state']) === 'stopped')
 		{
 			//TODO these should be server side methods, but for now leave them client side
@@ -15,19 +15,17 @@ Template.activityBrainstorm_UI_Teacher_ForwardMenu.events({
 		}
 	},
 	'click .stop': function() {
-		console.log('foo');
 		if(CurrentClassroom.currentActivity.getValue(['state']) !== 'stopped')
 		{
-			console.log('bar');
 			ActivityInstances.update(CurrentClassroom.currentActivity.getValue(['_id']), { $set: { state: 'stopped' } });
 		}
 	}
 });
 
-Template.activityBrainstorm_UI_Teacher_ForwardMenu.helpers({
+Template.activityPeerCorrection_UI_Teacher_ForwardMenu.helpers({
 	components: function() {
 		var components = Components.find({ activityId: CurrentClassroom.currentActivity.getValue(['activityId']) }, { reactive: false });
-	
+
 		return components;
 	},
 	classroomPaused: function() {
@@ -37,4 +35,4 @@ Template.activityBrainstorm_UI_Teacher_ForwardMenu.helpers({
 		}
 		return false;
 	}
-})
+});
