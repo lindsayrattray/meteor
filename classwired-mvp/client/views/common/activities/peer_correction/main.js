@@ -7,8 +7,8 @@ Deps.autorun(function() {
 		var activityInstanceId = CurrentClassroom.currentActivity.getValue(['_id']);
 		var group = Groups.findOne({ members: userId });
 
-		Meteor.call('');
-		Meteor.call('');
+		Meteor.call('peerCorrection_reassignGroupWords', activityInstanceId, classroomId, function(error, result) { return });
+		Meteor.call('peerCorrection_unassignItem', userId, activityInstanceId, classroomId, function() { Meteor.call('peerCorrection_populateItems', userId, activityInstanceId, classroomId); });
 	}
 });
 
