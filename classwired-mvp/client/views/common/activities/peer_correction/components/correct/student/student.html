@@ -1,0 +1,25 @@
+<template name="activityPeerCorrection_Correct_Student">
+	<div class="correct student">
+		{{#if currentItem}}
+		<div class="container {{backgroundColor}}">
+			<div class="word">
+				<h1>{{currentItem}}</h1>
+			</div>
+			
+			<div>
+				<button class="answer tick"><img src="/images/tick.png" alt="Tick" /></button>
+				<button class="answer cross"><img src="/images/cross.png" alt="Cross" /></button>
+			</div>
+			<button class="new">Next</button>
+			
+		</div>
+		{{else}}
+		<div class="container">
+			<span>
+				<h3>There are no words left!</h3>
+				<hr />
+			</span>
+		</div>
+		{{/if}}
+	</div>
+</template>
