@@ -1,0 +1,1 @@
+PeerCorrection_CorrectionItems = new Meteor.collection('PeerCorrection_CorrectionItems');
