@@ -7,6 +7,7 @@ Meteor.methods({
 			var correctionItems = _.pluck(PeerCorrection_CorrectionItems.find({ classroomId: classroomId, activityInstanceId: activityInstanceId, groupId: groupId }).fetch(), 'item');
 			var wordlistItems = _.chain(PeerCorrection_WordlistItems.find({ classroomId: classroomId, activityInstanceId: activityInstanceId }).fetch()).pluck('item').uniq().difference(correctionItems).value();
 			var currentItem = PeerCorrection_CorrectionItems.findOne({ assigned_to: userId.toString(), classroomId: classroomId, activityInstanceId: activityInstanceId });
+			console.log(currentItem);
 
 			if(wordlistItems.length > 0)
 			{
@@ -18,7 +19,7 @@ Meteor.methods({
 
 			if(!currentItem)
 			{
-				Meteor.call('peerCorrection.assignNewItem', userId, activityInstanceId, classroomId);
+				Meteor.call('peerCorrection_assignNewItem', userId, activityInstanceId, classroomId);
 			}
 		}
 	},

@@ -41,7 +41,7 @@ Template.activityPeerCorrection_Main.rendered = function() {
 		Meteor.subscribe('PeerCorrection_WordlistItems', group, classroomId, activityInstanceId, userId);
 		Meteor.subscribe('PeerCorrection_CorrectionItems', group, classroomId, activityInstanceId, userId);
 
-		if(CurrentUser.hasRole(Roles.Teacher))
+		if(CurrentUser.hasRole(Roles.TEACHER))
 		{
 			//TODO this stuff will eventually be moving into a uiState object or something
 			Session.set('forwardButton', true);
