@@ -9,7 +9,6 @@ function alertError(error)
 CurrentUser.setOnSignup(function(options, error) {
 	var userId = Meteor.userId();
 	Meteor.call('addUserToRole', userId, 'student');
-	Meteor.logoutOtherClients();
 	alertError(error);
 });
 
