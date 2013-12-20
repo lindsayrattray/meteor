@@ -20,15 +20,15 @@ Meteor.methods({
 		var items = PeerCorrection_CorrectionItems.find({ activityInstanceId: activityInstanceId }, { sort: { item: -1 } }).fetch();
 		var uniqueItems = _.chain(items).pluck('item').uniq(true).value();
 
+		var statsTuple = { correct: 0, incorrect: 0 }
+
 		for(index in uniqueItems)
 		{
 			var theseItems = _.filter(items, function(item) { return item.item === uniqueItems[index]; });
 			var matchItem = PeerCorrection_CorrectionItemStats.findOne({ activityInstanceId: activityInstanceId, item: uniqueItems[index]});
 			
-			var statsTuple = {
-				correct: 0,
-				incorrect: 0
-			};
+			statsTuple.correct = 0;
+			statsTuple.incorrect = 0;
 
 			for(thisIndex in theseItems)
 			{

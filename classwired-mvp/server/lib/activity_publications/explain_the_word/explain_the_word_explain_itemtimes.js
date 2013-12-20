@@ -1,3 +1,3 @@
-Meteor.publish('explainTheWord_ExplainItemTimes', function(classroomId, activityInstanceId) {
-	return ExplainTheWord_ExplainItemTimes.find({ classroomId: classroomId, activityInstanceId: activityInstanceId });
+Meteor.publish('explainTheWord_ExplainItemTimes', function(activityInstanceId) {
+	return ExplainTheWord_ExplainItemTimes.find({ activityInstanceId: activityInstanceId });
 });
