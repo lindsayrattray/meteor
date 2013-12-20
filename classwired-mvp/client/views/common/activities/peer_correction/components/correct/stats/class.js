@@ -7,13 +7,13 @@ Deps.autorun(function() {
 
 Template.activityPeerCorrection_Correct_Stats_Class.events({
 	'click .stats.class > ul li a': function(event, template) {
-		if(CurrentClassroom.currentActivity.uiState.get('explainClassStat') === this._id.toString())
+		if(CurrentClassroom.currentActivity.uiState.get('correctClassStat') === this._id.toString())
 		{
-			CurrentClassroom.currentActivity.uiState.set('explainClassStat', null);
+			CurrentClassroom.currentActivity.uiState.set('correctClassStat', null);
 		}
 		else
 		{
-			CurrentClassroom.currentActivity.uiState.set('explainClassStat', this._id.toString());
+			CurrentClassroom.currentActivity.uiState.set('correctClassStat', this._id.toString());
 		}
 	}
 });
@@ -26,7 +26,7 @@ Template.activityPeerCorrection_Correct_Stats_Class.helpers({
 		return PeerCorrection_CorrectionItemStats.find({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']) });
 	},
 	showStatDetails: function(item) {
-		if(item._id.toString() === CurrentClassroom.currentActivity.uiState.get('explainClassStat'))
+		if(item._id.toString() === CurrentClassroom.currentActivity.uiState.get('correctClassStat'))
 		{
 			return true;
 		}

@@ -7,13 +7,13 @@ Deps.autorun(function() {
 
 Template.activityPeerCorrection_Correct_Stats_Activity.events({
 	'click .stats.activity > ul li a': function(event, template) {
-		if(CurrentClassroom.currentActivity.uiState.get('explainActivityStat') === this._id.toString())
+		if(CurrentClassroom.currentActivity.uiState.get('correctActivityStat') === this._id.toString())
 		{
-			CurrentClassroom.currentActivity.uiState.set('explainActivityStat', null);
+			CurrentClassroom.currentActivity.uiState.set('correctActivityStat', null);
 		}
 		else
 		{
-			CurrentClassroom.currentActivity.uiState.set('explainActivityStat', this._id.toString());
+			CurrentClassroom.currentActivity.uiState.set('correctActivityStat', this._id.toString());
 		}
 	}
 });
@@ -53,7 +53,7 @@ Template.activityPeerCorrection_Correct_Stats_Activity.helpers({
 		return false;
 	},
 	showStatDetails: function(item) {
-		if(item._id.toString() === CurrentClassroom.currentActivity.uiState.get('explainActivityStat'))
+		if(item._id.toString() === CurrentClassroom.currentActivity.uiState.get('correctActivityStat'))
 		{
 			return true;
 		}
