@@ -31,7 +31,7 @@ Template.activityExplainTheWord_Explain_Stats_Class.helpers({
 	},
 	time: function(explainItem) {
 		return calcTime(explainItem);
-	}
+	},
 	showStatDetails: function(groupId) {
 		if(groupId === CurrentClassroom.currentActivity.uiState.get('explainGroupStat'))
 		{

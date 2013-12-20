@@ -24,7 +24,7 @@ Template.activityExplainTheWord_Explain_Stats_Activity.helpers({
 	},
 	groups: function() {
 		return Groups.find({ classroomId: CurrentClassroom.getValue(['_id']) });
-	}
+	},
 	itemAnswerTime: function(groupId, item) {
 		var thisItem = ExplainTheWord_ExplainItems.find({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']), groupId: groupId, item: item });
 		return ((thisItem.answered_timestamp - thisItem.assigned_timestamp) / 1000) | 1;
