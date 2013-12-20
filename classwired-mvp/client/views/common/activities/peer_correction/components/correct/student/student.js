@@ -2,14 +2,14 @@ Deps.autorun(function () {
 	var group = Groups.findOne({ classroomId: CurrentClassroom.getValue(['_id']), members: Meteor.userId() });
 	if(group && !CurrentUser.hasRole(Roles.TEACHER))
 	{
-		Meteor.call('peerCorrection_populateItems', Meteor.userId().toString(), CurrentClassroom.getValue(['_id']));
+		Meteor.call('peerCorrection_populateItems', Meteor.userId().toString(), CurrentClassroom.currentActivity.getValue(['_id']), CurrentClassroom.getValue(['_id']));
 	}
 });
 
 Template.activityPeerCorrection_Correct_Student.rendered = function() {
 	if(!CurrentUser.hasRole(Roles.TEACHER))
 	{
-		Meteor.call('peerCorrection_populateItems', Meteor.userId().toString(), CurrentClassroom.getValue(['_id']));
+		Meteor.call('peerCorrection_populateItems', Meteor.userId().toString(), CurrentClassroom.currentActivity.getValue(['_id']), CurrentClassroom.getValue(['_id']));
 	}
 }
 

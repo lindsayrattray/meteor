@@ -5,8 +5,14 @@ Meteor.methods({
 		if(groupId)
 		{
 			var correctionItems = _.map(PeerCorrection_CorrectionItems.find({ classroomId: classroomId, activityInstanceId: activityInstanceId, groupId: groupId }).fetch(), function(item) { return { item: item.item, userId: userId } });
-			var wordlistItems = _.chain(PeerCorrection_WordlistItems.find({ classroomId: classroomId, activityInstanceId: activityInstanceId }).fetch()).map(function(item) { return { item: item.item, userId: userId }; }).uniq().difference(correctionItems).value();
+			var wordlistItems = _.chain(PeerCorrection_WordlistItems.find({ classroomId: classroomId, activityInstanceId: activityInstanceId }).fetch()).map(function(item) { return { item: item.item, userId: userId }; }).uniq().reject(function(item) { return _.findWhere(correctionItems, { item: item.item, userId: item.userId }) }).value();
 			var currentItem = PeerCorrection_CorrectionItems.findOne({ assigned_to: userId.toString(), classroomId: classroomId, activityInstanceId: activityInstanceId });
+
+			console.log('correction Items');
+			console.log(correctionItems);
+			console.log();
+			console.log('wordlistItems');
+			console.log(wordlistItems);
 
 			if(wordlistItems.length > 0)
 			{

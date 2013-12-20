@@ -1,3 +1,5 @@
+//TODO switch calculation methods over to _.countBy
+
 Meteor.methods({
 	peerCorrection_reassignGroupWords: function(activityInstanceId, classroomId) {
 		var wordlistItems = PeerCorrection_WordlistItems.find({ classroomId: classroomId, activityInstanceId: activityInstanceId }).fetch();
@@ -16,7 +18,7 @@ Meteor.methods({
 	},
 	peerCorrection_calculateItemAverages: function(activityInstanceId) {
 		var items = PeerCorrection_CorrectionItems.find({ activityInstanceId: activityInstanceId }, { sort: { item: -1 } })
-		var uniqueItems = _.chain(items).fetch()).pluck('item').uniq(true).value();
+		var uniqueItems = _.chain(items).fetch().pluck('item').uniq(true).value();
 		
 		for(index in uniqueItems)
 		{
@@ -52,7 +54,7 @@ Meteor.methods({
 	},
 	peerCorrection_calculateUserAverages: function(activityInstanceId) {
 		var items = PeerCorrection_CorrectionItems.find({ activityInstanceId: activityInstanceId }, { sort: { userId: -1 } })
-		var uniqueItems = _.chain(items).fetch()).pluck('userId').uniq(true).value();
+		var uniqueItems = _.chain(items).fetch().pluck('userId').uniq(true).value();
 		
 		for(index in uniqueItems)
 		{
