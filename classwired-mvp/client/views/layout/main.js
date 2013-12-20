@@ -1,5 +1,18 @@
 Template.main.rendered = function() {
 	$(document).foundation();
+
+	var user = Meteor.user();
+
+	if(user)
+	{
+		var classroomId = CurrentClassroom.getValue(['_id']);
+		var classroom = Classrooms.findOne(classroomId);
+		Meteor.subscribe('groups', user._id, classroomId);
+		if(classroom)
+		{
+			Meteor.subscribe('classroomGroups', classroomId);
+		}
+	}
 }
 
 Deps.autorun(function() {
@@ -7,7 +20,7 @@ Deps.autorun(function() {
 
 	if(user)
 	{
-		var classroomId = Session.get('currentClassroom');
+		var classroomId = CurrentClassroom.getValue(['_id']);
 		var classroom = Classrooms.findOne(classroomId);
 		Meteor.subscribe('groups', user._id, classroomId);
 		if(classroom)

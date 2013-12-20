@@ -21,6 +21,7 @@ Template.activityPeerCorrection_Correct_Stats_Activity.events({
 Template.activityPeerCorrection_Correct_Stats_Activity.helpers({
 	students: function() {
 		var groups = Groups.find({ classroomId: CurrentClassroom.getValue(['_id']) }).fetch();
+
 		var students = [];
 
 		for(groupIndex in groups)
@@ -36,7 +37,7 @@ Template.activityPeerCorrection_Correct_Stats_Activity.helpers({
 	answeredTick: function(userId, item) {
 		var answeredItem = PeerCorrection_CorrectionItems.findOne({ item: item.item, answered_by: userId});
 
-		if(answeredItem.answered)
+		if(GetValue(answeredItem, ['answered']))
 		{
 			return answeredItem.answer;
 		}
@@ -45,7 +46,7 @@ Template.activityPeerCorrection_Correct_Stats_Activity.helpers({
 	answeredCross: function(userId, item) {
 		var answeredItem = PeerCorrection_CorrectionItems.findOne({ item: item.item, answered_by: userId});
 
-		if(answeredItem.answered)
+		if(GetValue(answeredItem, ['answered']))
 		{
 			return !answeredItem.answer;
 		}
@@ -57,5 +58,14 @@ Template.activityPeerCorrection_Correct_Stats_Activity.helpers({
 			return true;
 		}
 		return false;
+	},
+	tickPercentage: function(item) {
+		return (item.correct / ((item.correct + item.incorrect) | 1) * 100) + '%';
+	},
+	crossPercentage: function(item) {
+		return (item.incorrect / ((item.correct + item.incorrect) | 1) * 100) + '%';
+	},
+	debug: function(arg) {
+		console.log(arg);
 	}
 });

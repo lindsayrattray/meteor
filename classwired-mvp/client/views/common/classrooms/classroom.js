@@ -1,5 +1,3 @@
-Meteor.subscribe('activities');
-
 var setView = function(showGroupManager) {
 	var $container = $('.classroom > .container');
 
