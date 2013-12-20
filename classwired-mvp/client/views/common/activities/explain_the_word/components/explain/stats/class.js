@@ -3,7 +3,7 @@ var calcTime = function(explainObject) {
 }
 
 Deps.autorun(function() {
-	Meteor.subscribe('explainTheWord_ExplainGroupTimes', Session.get('currentClassroom'))
+	Meteor.subscribe('explainTheWord_ExplainGroupTimes', CurrentClassroom.currentActivity.getValue(['_id']));
 	var items = _.chain(ExplainTheWord_ExplainItems.find({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']) }, { sort: { item: -1 } }).fetch()).pluck('item').uniq(true).value();
 
 	Meteor.call('explainTheWord_claculateGroupTimes', CurrentClassroom.currentActivity.getValue(['_id']));

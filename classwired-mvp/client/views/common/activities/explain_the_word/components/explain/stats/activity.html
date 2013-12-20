@@ -5,7 +5,7 @@
 			<span>Current Word</span>
 		</div>
 		<ul>
-			{{#each students}}
+			{{#each explainItems}}
 				<li>
 					<a>
 						<span>
@@ -14,34 +14,19 @@
 							{{else}}
 								+
 							{{/if}}
-							{{profileName this}}
+							{{this.item}}
 						</span>
-						<span>{{currentItem this}}</span>
+						<span>{{this.averageTime}}</span>
 					</a>
 					<div class="dropdown {{#unless showStatDetails this}}hide{{/unless}}">
-						{{#if showStatDetails this}}
-							<div class="header">
-								<span>Word</span>
-								<span>Time (sec)</span>
-								<span>
-									<span class="tick"><img src="/images/tick_green.png" alt="tick" /></span>/<span class="cross"><img src="/images/cross_red.png" alt="cross" /></span>
-								</span>
-							</div>
-							<ul>
-								{{#each studentAllItems}}
-									<li>
-										<span>{{this.item}}</span>
-										<span>{{itemAnswerTime}}</span>
-										{{#if answeredTick}}
-											<span class="tick"><img src="/images/tick_green.png" alt="Answer" /></span>
-										{{/if}}
-										{{#if answeredCross}}
-											<span class="cross"><img src="/images/cross_red.png" alt="Answer" /></span>
-										{{/if}}
-									</li>
-								{{/each}}
-							</ul>
-						{{/if}}
+						<ul>
+							{{#each groups}}
+								<li>
+									<span>{{groupMembers this._id}}</span>
+									<span>{{itemAnswerTime this._id ../this.item}}</span>
+								</li>
+							{{/each}}
+						</ul>
 					</div>
 				</li>
 			{{/each}}
