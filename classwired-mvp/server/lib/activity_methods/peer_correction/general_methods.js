@@ -45,18 +45,16 @@ Meteor.methods({
 			if(matchItem)
 			{
 				PeerCorrection_CorrectionItemStats.update(matchItem._id, { $set: { correct: statsTuple.correct, incorrect: statsTuple.incorrect } });
-				console.log('updating');
 			}
 			else
 			{
 				PeerCorrection_CorrectionItemStats.insert({ item: uniqueItems[index], activityInstanceId: activityInstanceId, correct: statsTuple.correct, incorrect: statsTuple.incorrect });
-				console.log('inserting');
 			}
 		}
 	},
 	peerCorrection_calculateUserAverages: function(activityInstanceId) {
-		var items = PeerCorrection_CorrectionItems.find({ activityInstanceId: activityInstanceId }, { sort: { userId: -1 } })
-		var uniqueItems = _.chain(items).fetch().pluck('userId').uniq(true).value();
+		var items = PeerCorrection_CorrectionItems.find({ activityInstanceId: activityInstanceId }, { sort: { userId: -1 } }).fetch();
+		var uniqueItems = _.chain(items).pluck('userId').uniq(true).value();
 		
 		for(index in uniqueItems)
 		{
@@ -83,10 +81,12 @@ Meteor.methods({
 			if(matchItem)
 			{
 				PeerCorrection_CorrectionUserStats.update(matchItem._id, { $set: { correct: statsTuple.correct, incorrect: statsTuple.incorrect } });
+				console.log('updating');
 			}
 			else
 			{
-				PeerCorrection_CorrectionUserStats.insert({ item: uniqueItems[index], correct: statsTuple.correct, incorrect: statsTuple.incorrect });
+				PeerCorrection_CorrectionUserStats.insert({ userId: uniqueItems[index], activityInstanceId: activityInstanceId, correct: statsTuple.correct, incorrect: statsTuple.incorrect });
+				console.log('inserting');
 			}
 		}
 	}

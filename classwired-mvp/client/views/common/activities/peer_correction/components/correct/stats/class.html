@@ -1,25 +1,21 @@
 <template name="activityPeerCorrection_Correct_Stats_Class">
 	<div class="stats class">
 		<div class="header">
-			<span>Word</span>
-			<span>Average (sec)</span>
-			<span>Fastest Group</span>
+			<span>Student</span>
+			<span>Average Correct</span>
 		</div>
 		<ul>
-			{{#each explainItems}}
+			{{#each students}}
 				<li>
 					<a>
-						<span>{{this.item}}</span>
-						<span>{{this.avgTime}}</span>
-						<span>{{groupMembers this.fastestGroup}}</span>
+						<span>{{profileName this.userId}}</span>
+						<span>{{avgCorrect this}}</span>
 					</a>
-					<div class="{{#unless showStatDetails this._id}}hide{{/unless}}">
-						<div><strong>Fastest Time (sec):</strong> {{this.fastestTime}}</div>
-						<div><strong>Fastest Group:</strong> {{groupMembers this.fastestGroup}}</div>
-						<div><strong>Fastest Student:</strong> {{profileName this.fastestUser}}</div>
-						<div><strong>Slowest Time (sec):</strong> {{this.slowestTime}}</div>
-						<div><strong>Slowest Group:</strong> {{groupMembers this.slowestGroup}}</div>
-						<div><strong>Slowest Student:</strong> {{profileName this.slowestUser}}</div>
+					<div class="{{#unless showStatDetails this}}hide{{/unless}}">
+						{{#each words}}
+							<span>{{this.item}}</span>
+							<span>{{avgCorrect this}}</span>
+						{{/each}}
 					</div>
 				</li>
 			{{/each}}
