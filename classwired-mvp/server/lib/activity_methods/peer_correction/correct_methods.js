@@ -7,13 +7,12 @@ Meteor.methods({
 			var correctionItems = _.map(PeerCorrection_CorrectionItems.find({ classroomId: classroomId, activityInstanceId: activityInstanceId, groupId: groupId }).fetch(), function(item) { return { item: item.item, userId: userId } });
 			var wordlistItems = _.chain(PeerCorrection_WordlistItems.find({ classroomId: classroomId, activityInstanceId: activityInstanceId }).fetch()).map(function(item) { return { item: item.item, userId: userId }; }).uniq().difference(correctionItems).value();
 			var currentItem = PeerCorrection_CorrectionItems.findOne({ assigned_to: userId.toString(), classroomId: classroomId, activityInstanceId: activityInstanceId });
-			console.log(currentItem);
 
 			if(wordlistItems.length > 0)
 			{
 				for(itemIndex in wordlistItems)
 				{
-					PeerCorrection_CorrectionItems.insert({ item: wordlistItems[itemIndex], classroomId: classroomId, activityInstanceId: activityInstanceId, groupId: groupId, assigned_to: null, assigned_timestamp: null, answered: false, answer: null, answered_by: null });
+					PeerCorrection_CorrectionItems.insert({ item: wordlistItems[itemIndex].item, userId: wordlistItems[itemIndex].userId, classroomId: classroomId, activityInstanceId: activityInstanceId, groupId: groupId, assigned_to: null, assigned_timestamp: null, answered: false, answer: null, answered_by: null });
 				}
 			}
 

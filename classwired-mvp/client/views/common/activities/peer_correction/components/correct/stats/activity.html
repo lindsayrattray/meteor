@@ -1,3 +1,51 @@
 <template name="activityPeerCorrection_Correct_Stats_Activity">
-	
+	<div class="stats activity">
+		<div class="header">
+			<span>Word</span>
+			<span>% Correct</span>
+			<span>% Incorrect</span>
+		</div>
+		<ul>
+			{{#each words}}
+				<li>
+					<a>
+						<span>
+							{{#if showStatDetails this}}
+								-
+							{{else}}
+								+
+							{{/if}}
+							{{words.item}}
+						</span>
+						<span>{{tickPercentage}}</span>
+						<span>{{crossPercentage}}</span>
+					</a>
+					<div class="dropdown {{#unless showStatDetails this}}hide{{/unless}}">
+						{{#if showStatDetails this}}
+							<div class="header">
+								<span>Word</span>
+								<span>Time (sec)</span>
+								<span>
+									<span class="tick"><img src="/images/tick_green.png" alt="tick" /></span>/<span class="cross"><img src="/images/cross_red.png" alt="cross" /></span>
+								</span>
+							</div>
+							<ul>
+								{{#each students}}
+									<li>
+										<span>{{profileName this}}</span>
+										{{#if answeredTick this}}
+											<span class="tick"><img src="/images/tick_green.png" alt="Answer" /></span>
+										{{/if}}
+										{{#if answeredCross false}}
+											<span class="cross"><img src="/images/cross_red.png" alt="Answer" /></span>
+										{{/if}}
+									</li>
+								{{/each}}
+							</ul>
+						{{/if}}
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
 </template>
