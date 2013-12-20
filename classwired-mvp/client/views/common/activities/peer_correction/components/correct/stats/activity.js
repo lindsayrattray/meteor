@@ -1,19 +1,19 @@
 Deps.autorun(function() {
-	Meteor.subscribe('PeerCorrection_CorrectionItemStats', CurrentClassroom.getValue(['_id']), CurrentClassroom.currentActivity.getValue(['_id']));
+	Meteor.subscribe('PeerCorrection_CorrectionItemStats', CurrentClassroom.currentActivity.getValue(['_id']));
 	var items = _.chain(PeerCorrection_CorrectionItemStats.find({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']) }, { sort: { item: -1 } }).fetch()).pluck('item').uniq(true).value();
 
-	Meteor.call('peerCorrection_CalculateItemAverages', CurrentClassroom.currentActivity.getValue(['_id']), function() { return; });
+	Meteor.call('peerCorrection_calculateItemAverages', CurrentClassroom.currentActivity.getValue(['_id']), function() { return; });
 });
 
 Template.activityPeerCorrection_Correct_Stats_Activity.events({
 	'click .stats.activity > ul li a': function(event, template) {
-		if(Session.get('explainStudentStat') === this.toString())
+		if(CurrentClassroom.currentActivity.uiState.get('explainActivityStat') === this._id.toString())
 		{
 			CurrentClassroom.currentActivity.uiState.set('explainActivityStat', null);
 		}
 		else
 		{
-			CurrentClassroom.currentActivity.uiState.set('explainActivityStat', this.toString());
+			CurrentClassroom.currentActivity.uiState.set('explainActivityStat', this._id.toString());
 		}
 	}
 });
@@ -51,7 +51,7 @@ Template.activityPeerCorrection_Correct_Stats_Activity.helpers({
 		}
 		return false;
 	},
-	showStatDetails: function(itemId) {
+	showStatDetails: function(item) {
 		if(item._id.toString() === CurrentClassroom.currentActivity.uiState.get('explainActivityStat'))
 		{
 			return true;

@@ -17,9 +17,9 @@ Meteor.methods({
 		}
 	},
 	peerCorrection_calculateItemAverages: function(activityInstanceId) {
-		var items = PeerCorrection_CorrectionItems.find({ activityInstanceId: activityInstanceId }, { sort: { item: -1 } })
-		var uniqueItems = _.chain(items).fetch().pluck('item').uniq(true).value();
-		
+		var items = PeerCorrection_CorrectionItems.find({ activityInstanceId: activityInstanceId }, { sort: { item: -1 } }).fetch();
+		var uniqueItems = _.chain(items).pluck('item').uniq(true).value();
+
 		for(index in uniqueItems)
 		{
 			var theseItems = _.filter(items, function(item) { return item.item === uniqueItems[index]; });
@@ -45,10 +45,12 @@ Meteor.methods({
 			if(matchItem)
 			{
 				PeerCorrection_CorrectionItemStats.update(matchItem._id, { $set: { correct: statsTuple.correct, incorrect: statsTuple.incorrect } });
+				console.log('updating');
 			}
 			else
 			{
-				PeerCorrection_CorrectionItemStats.insert({ item: uniqueItems[index], correct: statsTuple.correct, incorrect: statsTuple.incorrect });
+				PeerCorrection_CorrectionItemStats.insert({ item: uniqueItems[index], activityInstanceId: activityInstanceId, correct: statsTuple.correct, incorrect: statsTuple.incorrect });
+				console.log('inserting');
 			}
 		}
 	},
