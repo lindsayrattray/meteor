@@ -1270,7 +1270,7 @@ div.classroom
     }
   }
 
-  .correct
+  .correct, .explain
   {
     @include grid-row();
     height: 100%;

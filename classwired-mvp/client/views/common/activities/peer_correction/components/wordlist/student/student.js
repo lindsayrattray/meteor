@@ -28,7 +28,7 @@ Template.activityPeerCorrection_Wordlist_Student.events({
 	},
 	'submit .wordlist.student form': function(event, template) {
 		var userId = Meteor.userId();
-		if(userId)
+		if(userId && template.find('.wordlist.student #wordlist-entry').value !== '')
 		{
 			var group = Groups.findOne({ members: userId });
 			var wordlistItem =  {
