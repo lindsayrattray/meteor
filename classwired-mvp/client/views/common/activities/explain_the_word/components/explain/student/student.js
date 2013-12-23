@@ -19,7 +19,7 @@ Template.activityExplainTheWord_Explain_Student.events({
 	'click .explain.student .container .new': function(event, template) {
 		if(!CurrentUser.hasRole(Roles.TEACHER))
 		{
-			Meteor.call('assignNewItem', Meteor.userId(), CurrentClassroom.currentActivity.getValue(['_id']), CurrentClassroom.getValue(['_id']));
+			Meteor.call('explainTheWord_FinishedItem', Meteor.userId(), CurrentClassroom.currentActivity.getValue(['_id']), CurrentClassroom.getValue(['_id']));
 		}
 	}
 });
@@ -27,7 +27,6 @@ Template.activityExplainTheWord_Explain_Student.events({
 Template.activityExplainTheWord_Explain_Student.helpers({
 	currentItem: function() {
 		var thisItem = ExplainTheWord_ExplainItems.findOne({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']), assigned_to: Meteor.userId() });
-		console.log(thisItem);
 		if(!CurrentUser.hasRole(Roles.TEACHER) && thisItem)
 		{
 			return thisItem.item;

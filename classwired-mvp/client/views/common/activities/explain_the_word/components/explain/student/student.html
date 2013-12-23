@@ -1,18 +1,21 @@
 <template name="activityExplainTheWord_Explain_Student">
 	<div class="explain student">
-		<div class="container {{backgroundColor}}">
-			<div class="word">
-				<h1>{{currentItem}}</h1>
+		{{#if currentItem}}
+			<div class="container">
+				<div class="word">
+					<h1>{{currentItem}}</h1>
+				</div>
+				
+				<button class="new">Next</button>
+				
 			</div>
-			
-			<button class="new">Next</button>
-			
-		</div>
-		<div class="container">
-			<span>
-				<h3>There are no words left!</h3>
-				<hr />
-			</span>
-		</div>
+		{{else}}
+			<div class="container">
+				<span>
+					<h3>There are no words left!</h3>
+					<hr />
+				</span>
+			</div>
+		{{/if}}
 	</div>
 </template>

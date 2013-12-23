@@ -12,7 +12,7 @@ Meteor.methods({
 			{
 				for(itemIndex in wordlistItems)
 				{
-					ExplainTheWord_ExplainItems.insert({ item: wordlistItems[itemIndex], classroomId: classroomId, activityInstanceId: activityInstanceId, groupId: groupId, assigned_to: null, assigned_timestamp: null, answered: false, answer: null, answered_by: null });
+					ExplainTheWord_ExplainItems.insert({ item: wordlistItems[itemIndex], classroomId: classroomId, activityInstanceId: activityInstanceId, groupId: groupId, assigned_to: null, assigned_timestamp: null, answered: false, answered_by: null });
 				}
 			}
 
@@ -28,7 +28,7 @@ Meteor.methods({
 		var explainItems = ExplainTheWord_ExplainItems.find({ groupId: groupId, classroomId: classroomId, activityInstanceId: activityInstanceId }).fetch();
 		var availableItems = _.reject(explainItems, function(item) { return (!_.isNull(item.assigned_to) || item.answered) });
 		var currentItem = _.findWhere(explainItems, { assigned_to: userId });
-		var timestamp = new Date();
+		var timestamp = Date.parse(new Date());
 
 		if(currentItem)
 		{
@@ -42,6 +42,17 @@ Meteor.methods({
 
 			timestamp = existingItem.assigned_timestamp ? existingItem.assigned_timestamp : timestamp;
 			ExplainTheWord_ExplainItems.update(newItem._id, { $set: { assigned_to: userId, assigned_timestamp: timestamp } });
+		}
+	},
+	explainTheWord_FinishedItem: function(userId, activityInstanceId, classroomId) {
+		var currentItem = ExplainTheWord_ExplainItems.findOne({ activityInstanceId: activityInstanceId, assigned_to: userId });
+		var timestamp = Date.parse(new Date());
+
+		if(currentItem)
+		{
+			ExplainTheWord_ExplainItems.update(currentItem._id, { $set: { answered: true, answered_timestamp: timestamp, answered_by: userId } });
+
+			Meteor.call('assignNewItem', userId, activityInstanceId, classroomId);
 		}
 	},
 	unassignItem: function(userId, activityInstanceId, classroomId) {
