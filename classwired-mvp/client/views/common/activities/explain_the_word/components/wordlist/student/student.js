@@ -26,7 +26,7 @@ Template.activityExplainTheWord_Wordlist_Student.events({
 		var userId = Meteor.userId();
 		if(userId)
 		{
-			var group = Groups.findOne({ members: userId, classroomId: template.data.classroom._id });
+			var group = Groups.findOne({ members: userId, classroomId: CurrentClassroom.getValue(['_id']) });
 			var wordlistItem =  {
 									item: template.find('.wordlist.student #wordlist-entry').value,
 									userId: userId,
