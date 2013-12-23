@@ -26,7 +26,7 @@ Template.activityPeerCorrection_Correct_Student.events({
 		var timestamp = new Date();
 		PeerCorrection_CorrectionItems.update(currentItem._id, { $set: { answered: true, answer: false, answered_timestamp: timestamp, answered_by: Meteor.userId() } });
 	},
-	'click .explain.student .container .new': function(event, template) {
+	'click .correct.student .container .new': function(event, template) {
 		if(!CurrentUser.hasRole(Roles.TEACHER))
 		{
 			Meteor.call('peerCorrection_assignNewItem', Meteor.userId(), CurrentClassroom.currentActivity.getValue(['_id']), CurrentClassroom.getValue(['_id']));

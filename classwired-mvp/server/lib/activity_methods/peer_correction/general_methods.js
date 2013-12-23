@@ -81,12 +81,10 @@ Meteor.methods({
 			if(matchItem)
 			{
 				PeerCorrection_CorrectionUserStats.update(matchItem._id, { $set: { correct: statsTuple.correct, incorrect: statsTuple.incorrect } });
-				console.log('updating');
 			}
 			else
 			{
 				PeerCorrection_CorrectionUserStats.insert({ userId: uniqueItems[index], activityInstanceId: activityInstanceId, correct: statsTuple.correct, incorrect: statsTuple.incorrect });
-				console.log('inserting');
 			}
 		}
 	}

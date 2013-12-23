@@ -26,6 +26,9 @@ Meteor.methods({
 		var group = GroupManager.getGroupByMember(userId, classroomId);
 		var groupId = group ? group._id : null;
 		var correctionItems = PeerCorrection_CorrectionItems.find({ groupId: groupId, classroomId: classroomId, activityInstanceId: activityInstanceId }).fetch();
+
+		var debug = PeerCorrection_CorrectionItems.find().fetch();
+
 		var availableItems = _.reject(correctionItems, function(item) { return (!_.isNull(item.assigned_to) || item.answered) });
 		var currentItem = _.findWhere(correctionItems, { assigned_to: userId });
 		var timestamp = new Date();
