@@ -2,7 +2,7 @@
 	<div class="stats class">
 		<div class="header">
 			<span>Group</span>
-			<span>Average (sec)</span>
+			<span>Average Time (sec)</span>
 		</div>
 		<ul>
 			{{#each groups}}
@@ -13,7 +13,7 @@
 					</a>
 					<div class="{{#unless showStatDetails this._id}}hide{{/unless}}">
 						<ul>
-						{{#each explainItems this._id}}
+						{{#each explainItems this.groupId}}
 							<li>
 								<span>{{this.item}}</span>
 								<span>{{time this}}</span>

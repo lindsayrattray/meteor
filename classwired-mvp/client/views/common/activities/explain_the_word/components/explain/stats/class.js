@@ -1,5 +1,5 @@
 var calcTime = function(explainObject) {
-	return ((explainObject.answered_timestamp - explainObject.assigned_timestamp) / 1000) | 0;
+	return (((explainObject.answered_timestamp - explainObject.assigned_timestamp) / 1000) | 0).toFixed(2);
 }
 
 Deps.autorun(function() {

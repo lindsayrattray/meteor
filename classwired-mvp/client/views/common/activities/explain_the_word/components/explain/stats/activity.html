@@ -1,15 +1,15 @@
 <template name="activityExplainTheWord_Explain_Stats_Activity">
 	<div class="stats activity">
 		<div class="header">
-			<span>Student</span>
-			<span>Current Word</span>
+			<span>Word</span>
+			<span>Average Time (sec)</span>
 		</div>
 		<ul>
 			{{#each explainItems}}
 				<li>
 					<a>
 						<span>
-							{{#if showStatDetails this}}
+							{{#if showStatDetails this._id}}
 								-
 							{{else}}
 								+
@@ -18,7 +18,7 @@
 						</span>
 						<span>{{this.averageTime}}</span>
 					</a>
-					<div class="dropdown {{#unless showStatDetails this}}hide{{/unless}}">
+					<div class="dropdown {{#unless showStatDetails this._id}}hide{{/unless}}">
 						<ul>
 							{{#each groups}}
 								<li>
