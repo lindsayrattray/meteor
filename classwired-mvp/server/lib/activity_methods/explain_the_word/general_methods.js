@@ -30,7 +30,8 @@ Meteor.methods({
 				time += theseItems[thisIndex].answered_timestamp - theseItems[thisIndex].assigned_timestamp;
 			}
 
-			time /= (theseItems.length | 1);
+			time /= (theseItems.length | 1) * 1000;
+			time = time.toFixed(2);
 
 			if(matchItem)
 			{
@@ -42,7 +43,7 @@ Meteor.methods({
 			}
 		}
 	},
-	explainTheWord_claculateGroupTimes: function(activityInstanceId) {
+	explainTheWord_calculateGroupTimes: function(activityInstanceId) {
 		var explainItems = _.filter(ExplainTheWord_ExplainItems.find({ activityInstanceId: activityInstanceId }, { sort: { groupId: -1 } }).fetch(), function(item) { return item.answered_timestamp });
 		var uniqueItems = _.chain(explainItems).pluck('groupId').uniq(true).value();
 
@@ -50,6 +51,7 @@ Meteor.methods({
 		{
 			var theseItems = _.filter(explainItems, function(item) { return item.groupId === uniqueItems[index] });
 			var matchItem = ExplainTheWord_ExplainGroupTimes.findOne({ activityInstanceId: activityInstanceId, groupId: uniqueItems[index] });
+			console.log(matchItem);
 
 			var time = 0;
 
@@ -58,15 +60,18 @@ Meteor.methods({
 				time += theseItems[thisIndex].answered_timestamp - theseItems[thisIndex].assigned_timestamp;
 			}
 
-			time /= (theseItems.length | 1);
+			time /= (theseItems.length | 1) * 1000;
+			time = time.toFixed(2);
 
 			if(matchItem)
 			{
+				console.log('updating');
 				ExplainTheWord_ExplainGroupTimes.update(matchItem._id, { $set: { averageTime: time } });
 			}
 			else
 			{
-				ExplainTheWord_ExplainItemTimes.insert({ groupId: uniqueItems[index], activityInstanceId: activityInstanceId, averageTime: time });
+				console.log('inserting');
+				ExplainTheWord_ExplainGroupTimes.insert({ groupId: uniqueItems[index], activityInstanceId: activityInstanceId, averageTime: time });
 			}
 		}
 	}

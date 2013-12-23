@@ -2,7 +2,7 @@ Deps.autorun(function() {
 	Meteor.subscribe('explainTheWord_ExplainItemTimes', CurrentClassroom.currentActivity.getValue(['_id']));
 	var items = _.chain(ExplainTheWord_ExplainItems.find({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']) }, { sort: { item: -1 } }).fetch()).pluck('item').uniq(true).value();
 
-	Meteor.call('explainTheWord_claculateItemTimes', CurrentClassroom.currentActivity.getValue(['_id']));
+	Meteor.call('explainTheWord_calculateItemTimes', CurrentClassroom.currentActivity.getValue(['_id']));
 });
 
 Template.activityExplainTheWord_Explain_Stats_Activity.events({
