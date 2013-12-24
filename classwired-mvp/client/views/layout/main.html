@@ -19,7 +19,7 @@
 		</header>
 		<div class="main">
 			<ul class="dropdown {{#unless sessionGet 'main_MenuVisible'}}hide{{/unless}}">
-				{{#if sessionGet 'currentClassroom'}}
+				{{#if currentClassroom}}
 					<li><a class="home">Leave Classroom</a></li>
 				{{/if}}
 				<li>{{> logout}}</li>
@@ -41,4 +41,6 @@
 	{{else}}
 		{{> splash}}
 	{{/if}}
+
+	{{debug}}
 </template>

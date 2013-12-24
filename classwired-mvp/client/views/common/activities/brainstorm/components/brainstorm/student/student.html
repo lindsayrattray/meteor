@@ -4,7 +4,7 @@
 			{{#each brainstormItems}}
 				<li>
 					<div>
-						<div {{#unless thisUserHasRole 'teacher'}} contenteditable="true"{{/unless}}>
+						<div {{#unless userHasRole currentUser teacherUser}} contenteditable="true"{{/unless}}>
 						{{this.text}}
 						</div>
 						<div>
@@ -14,7 +14,7 @@
 				</li>
 			{{/each}}
 		</ul>
-		{{#unless thisUserHasRole 'teacher'}}
+		{{#unless userHasRole currentUser teacherRole}}
 			<form>
 				<input type="text" />
 				<button type="submit">submit</button>

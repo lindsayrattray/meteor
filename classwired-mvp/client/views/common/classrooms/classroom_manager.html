@@ -14,15 +14,15 @@
 				</li>
 			{{/each}}
 		</ul>
-		{{#if thisUserHasRole 'teacher'}}
+		{{#if userHasRole currentUser 'teacher'}}
 			<button class="new">New Classroom</button>
 		{{/if}}
 		<div class="modal">
 			<div>
 				<form>
 					<span>Enter a new classroom name</span>
-					<input class="name" type="text" placeholder="Classroom name" />
-					<input class="description" type="text" placeholder="Optional short classroom description" />
+					<input id="txt-classroom-name" type="text" placeholder="Classroom name" />
+					<input id="txt-classroom-description" type="text" placeholder="Optional short classroom description" />
 					<button type="submit" class="submit">Submit</button>
 					<button type="reset" class="cancel">Cancel</button>
 				</form>

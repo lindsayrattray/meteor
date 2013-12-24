@@ -17,7 +17,6 @@ var updateBrainstorm = _.debounce(function(item, content) {
 
 	if(oldItem && oldItem.text !== content)
 	{
-		console.log(item);
 		Brainstorm_Items.update(item._id, { $set: { text: content } });
 	}
 
@@ -50,13 +49,14 @@ Template.activityBrainstorm_Brainstorm_Student.events({
 		Session.set('editingItem', true);
 	},
 	'submit .student form': function(event, template) {
-		var user = Meteor.user();
-		if(user)
+		var userId = Meteor.userId();
+		if(userId)
 		{
 			var brainstormItem = {
 				text: template.find('.student form input').value,
-				userId: user._id,
-				classroomId: template.data.classroom._id
+				userId: userId,
+				classroomId: CurrentClassroom.getValue(['_id']),
+				activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id'])
 			};
 			if(!Brainstorm_Items.findOne(brainstormItem))
 			{

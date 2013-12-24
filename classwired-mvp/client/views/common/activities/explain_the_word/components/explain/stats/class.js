@@ -1,30 +1,39 @@
-Deps.autorun(function() {
-	Meteor.subscribe('explainTheWord_ExplainItemTimes', Session.get('currentClassroom'))
-	var items = _.chain(ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom' )}, { sort: { item: -1 } }).fetch()).pluck('item').uniq(true).value();
+var calcTime = function(explainObject) {
+	return (((explainObject.answered_timestamp - explainObject.assigned_timestamp) / 1000) | 0).toFixed(2);
+}
 
-	Meteor.call('calculateTimes', items, Session.get('currentClassroom'));
+Deps.autorun(function() {
+	Meteor.subscribe('ExplainTheWord_ExplainGroupTimes', CurrentClassroom.currentActivity.getValue(['_id']));
+	var items = _.chain(ExplainTheWord_ExplainItems.find({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']) }, { sort: { item: -1 } }).fetch()).pluck('item').uniq(true).value();
+
+	Meteor.call('explainTheWord_calculateGroupTimes', CurrentClassroom.currentActivity.getValue(['_id']));
 });
 
 Template.activityExplainTheWord_Explain_Stats_Class.events({
 	'click .stats.class ul li a': function(event, template) {
-		if(Session.get('explainItemStatVisible') === this._id)
+		if(CurrentClassroom.currentActivity.uiState.get('explainGroupStat') === this._id)
 		{
-			Session.set('explainItemStatVisible', null);
+			CurrentClassroom.currentActivity.uiState.set('explainGroupStat', null);
 		}
 		else
 		{
-			Session.set('explainItemStatVisible', this._id);
+			CurrentClassroom.currentActivity.uiState.set('explainGroupStat', this._id);
 		}
 	}
 });
 
 Template.activityExplainTheWord_Explain_Stats_Class.helpers({
-	explainItems: function() {
-		var explainItems = ExplainTheWord_ExplainItemTimes.find({ classroomId: this.classroom._id }).fetch().sort(function(a, b) { return b.avgTime - a.avgTime });
-		return explainItems;
+	groups: function() {
+		return ExplainTheWord_ExplainGroupTimes.find({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']) });
 	},
-	showStatDetails: function(itemId) {
-		if(itemId === Session.get('explainItemStatVisible'))
+	explainItems: function(groupId) {
+		return ExplainTheWord_ExplainItems.find({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']), groupId: groupId }).fetch().sort(function(a, b) { return calcTime(b) - calcTime(a) });
+	},
+	time: function(explainItem) {
+		return calcTime(explainItem);
+	},
+	showStatDetails: function(groupId) {
+		if(groupId === CurrentClassroom.currentActivity.uiState.get('explainGroupStat'))
 		{
 			return true;
 		}

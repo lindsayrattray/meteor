@@ -1,7 +1,5 @@
-Meteor.subscribe('activities');
-
 var setView = function(showGroupManager) {
-	var $container = $('.classroom .container');
+	var $container = $('.classroom > .container');
 
 	if(showGroupManager)
 	{
@@ -27,15 +25,22 @@ Deps.autorun(function() {
 	setView(showGroupManager);
 });
 
+Deps.autorun(function() {
+	var currentActivity = CurrentClassroom.getValue(['currentActivity']);
+
+	CurrentClassroom.currentActivity.subscriptions.componentsHandle = Meteor.subscribe('components', CurrentClassroom.currentActivity.getValue(['activityId']));
+});
+
 Template.classroom.rendered = function() {
 	if(Meteor.user())
 	{	
 		var showGroupManager = Session.get('groupsVisible');
 		var currentGroup = Groups.findOne({members: Meteor.user()._id});
+		var currentActivity = CurrentClassroom.getValue(['currentActivity']);
+
+		CurrentClassroom.currentActivity.subscriptions.componentsHandle = Meteor.subscribe('components', CurrentClassroom.currentActivity.getValue(['activityId']));
 
 		setView(showGroupManager);
-
-		Session.set('currentClassroom', this.data._id)
 		
 		if(!currentGroup && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
 		{
@@ -63,19 +68,21 @@ Template.classroom.rendered = function() {
 
 Template.classroom.helpers({
 	activity: function() {
-		var activity = Activities.findOne(this.currentActivity);
+		var activityInstance = ActivityInstances.findOne(CurrentClassroom.currentActivity.get());
+		var activity = activityInstance ? Activities.findOne(activityInstance.activityId) : null;
+
 		if(!activity)
 		{
-			return Template['activityManager']({ classroom: this });
+			return Template['activityManager']();
 		}
 		
 		if(activity)
 		{
-			return Template[activity.template]({ activity: activity, classroom: this });
+			return Template[activity.template]();
 		}
 	},
 	currentActivity: function() {
-		var activity = Activities.findOne(this.currentActivity);
+		var activity = ActivityInstances.findOne(CurrentClassroom.currentActivity.getValue(['_id']));
 		return activity;
 	},
 	classroomIsValid: function() {

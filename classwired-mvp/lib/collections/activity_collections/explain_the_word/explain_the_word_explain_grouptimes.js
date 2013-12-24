@@ -1,0 +1,1 @@
+ExplainTheWord_ExplainGroupTimes = new Meteor.Collection('ExplainTheWord_ExplainGroupTimes');

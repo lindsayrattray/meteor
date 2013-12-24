@@ -1,5 +1,18 @@
 Template.main.rendered = function() {
 	$(document).foundation();
+
+	var user = Meteor.user();
+
+	if(user)
+	{
+		var classroomId = CurrentClassroom.getValue(['_id']);
+		var classroom = Classrooms.findOne(classroomId);
+		Meteor.subscribe('groups', user._id, classroomId);
+		if(classroom)
+		{
+			Meteor.subscribe('classroomGroups', classroomId);
+		}
+	}
 }
 
 Deps.autorun(function() {
@@ -7,7 +20,7 @@ Deps.autorun(function() {
 
 	if(user)
 	{
-		var classroomId = Session.get('currentClassroom');
+		var classroomId = CurrentClassroom.getValue(['_id']);
 		var classroom = Classrooms.findOne(classroomId);
 		Meteor.subscribe('groups', user._id, classroomId);
 		if(classroom)
@@ -27,9 +40,9 @@ Template.main.events({
 		Session.set('forward_MenuVisible', forward_MenuVisible);
 	},
 	'click .main .dropdown li .home': function () {
-		var destination = Router.url('classroomManager');
-		window.location = destination; // Using iron router causes wierd behavior, so doing it natively
+		window.location = window.location.origin; // Using iron router causes wierd behavior, so doing it natively
 		Session.set('main_MenuVisible', false);
+		CurrentClassroom.set(null);
 	},
 	'click': function(event, template) {
 		if(!$(event.srcElement).parents().filter('.dropdown')[0] && !$(event.srcElement).hasClass('icon'))
@@ -67,5 +80,8 @@ Template.main.helpers({
 		var context = Session.get('currentContext') || 'context';
 
 		return Template[context]();
+	},
+	debug: function() {
+
 	}
 });

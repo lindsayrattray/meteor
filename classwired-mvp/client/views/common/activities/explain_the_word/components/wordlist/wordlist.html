@@ -1,5 +1,5 @@
 <template name="activityExplainTheWord_Wordlist">
-	{{#if thisUserHasRole 'teacher'}}
+	{{#if userHasRole currentUser teacherRole}}
 		{{> activityExplainTheWord_Wordlist_Teacher}}
 	{{else}}
 		{{> activityExplainTheWord_Wordlist_Student}}

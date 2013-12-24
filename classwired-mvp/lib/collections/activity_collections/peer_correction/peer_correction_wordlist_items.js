@@ -1,0 +1,1 @@
+PeerCorrection_WordlistItems = new Meteor.Collection('PeerCorrection_WordlistItems');

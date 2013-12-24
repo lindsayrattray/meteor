@@ -1,0 +1,16 @@
+<template name="activityPeerCorrection_Wordlist_Stats">
+	<div class="wordlist stats">
+		<div class="header">
+			<span>Words</span>
+			<span>Group</span>
+		</div>
+		<ul>
+			{{#each groups}}
+				<li>
+					<span>{{groupWordCount this._id}}</span>
+					<span>{{groupMembers this._id}}</span>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</template>

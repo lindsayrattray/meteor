@@ -1,74 +1,46 @@
+Deps.autorun(function() {
+	Meteor.subscribe('explainTheWord_ExplainItemTimes', CurrentClassroom.currentActivity.getValue(['_id']));
+	var items = _.chain(ExplainTheWord_ExplainItems.find({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']) }, { sort: { item: -1 } }).fetch()).pluck('item').uniq(true).value();
+
+	Meteor.call('explainTheWord_calculateItemTimes', CurrentClassroom.currentActivity.getValue(['_id']));
+});
+
 Template.activityExplainTheWord_Explain_Stats_Activity.events({
 	'click .stats.activity > ul li a': function(event, template) {
-		if(Session.get('explainStudentStat') === this.toString())
+		if(CurrentClassroom.currentActivity.uiState.get('explainActivityStat') === this._id.toString())
 		{
-			Session.set('explainStudentStat', null);
+			CurrentClassroom.currentActivity.uiState.set('explainActivityStat', null);
 		}
 		else
 		{
-			Session.set('explainStudentStat', this.toString());
+			CurrentClassroom.currentActivity.uiState.set('explainActivityStat', this._id.toString());
 		}
 	}
 });
 
 Template.activityExplainTheWord_Explain_Stats_Activity.helpers({
-	students: function() {
-		var groups = Groups.find({ classroomId: this.classroom._id }).fetch();
-		var students = [];
-
-		for(groupIndex in groups)
-		{
-			students.push(groups[groupIndex].members);
-		}
-
-		return _.flatten(students);
+	explainItems: function() {
+		return ExplainTheWord_ExplainItemTimes.find({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']) }, { sort: { averageTime: -1 } });
 	},
-	currentItem: function(userId) {
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ classroomId: Session.get('currentClassroom'), assigned_to: userId });
-		if(currentItem)
-		{
-			return currentItem.item;
-		}
+	groups: function() {
+		return Groups.find({ classroomId: CurrentClassroom.getValue(['_id']) });
 	},
-	isCurrentItem: function() {
-		var currentItem = ExplainTheWord_ExplainItems.findOne({ assigned_to: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom')});
-		if(currentItem && this.item === currentItem.item)
+	itemAnswerTime: function(groupId, item) {
+		var thisItem = ExplainTheWord_ExplainItems.findOne({ activityInstanceId: CurrentClassroom.currentActivity.getValue(['_id']), groupId: groupId, item: item });
+		var answered = GetValue(thisItem, ['answered_timestamp']);
+		var assigned = GetValue(thisItem, ['assigned_timestamp']);
+
+		return ((answered - assigned) / 1000).toFixed(2);
+	},
+	showStatDetails: function(itemId) {
+
+		if(itemId.toString() === CurrentClassroom.currentActivity.uiState.get('explainActivityStat'))
 		{
 			return true;
 		}
 		return false;
 	},
-	studentAllItems: function() {
-		var group = GroupManager.getGroupByMember(Session.get('explainStudentStat'), Session.get('currentClassroom'));
-		var groupId = group ? group._id : null;
-		return ExplainTheWord_ExplainItems.find({ classroomId: Session.get('currentClassroom'), groupId: groupId, $or: [{ answered_by: Session.get('explainStudentStat') }, { assigned_to: Session.get('explainStudentStat') }] }, { sort: { assigned_to: -1, answered: -1, item: 1 } });
-	},
-	itemAnswerTime: function() {
-		var thisItem = ExplainTheWord_ExplainItems.findOne({ answered_by: Session.get('explainStudentStat'), classroomId: Session.get('currentClassroom'), item: this.item });
-		if(thisItem)
-		{
-			var time = ((Date.parse(thisItem.answered_timestamp) - Date.parse(thisItem.assigned_timestamp)) / 1000);
-			var isAttempting = thisItem.assigned_to ? 'currently attempting' : 'not attempted';
-			return isNaN(time) ? isAttempting : time;
-		}
-	},
-	answeredTick: function() {
-		if(this.answered)
-		{
-			return this.answer;
-		}
-	},
-	answeredCross: function() {
-		if(this.answered)
-		{
-			return !this.answer;
-		}
-	},
-	showStatDetails: function(userId) {
-		if(userId.toString() === Session.get('explainStudentStat'))
-		{
-			return true;
-		}
-		return false;
+	debug: function(data) {
+		console.log(data);
 	}
 });

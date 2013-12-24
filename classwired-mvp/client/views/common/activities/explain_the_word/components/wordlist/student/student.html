@@ -2,7 +2,7 @@
 	<div class="wordlist student">
 		<div class="header">
 			<span>Word</span>
-			{{#unless thisUserHasRole 'teacher'}}
+			{{#unless userHasRole currentUser teacherRole}}
 				<span>Student</span>
 			{{else}}
 				<span>Group</span>
@@ -18,7 +18,7 @@
 							{{/unless}} />
 					</span>
 					<span>
-						{{#if thisUserHasRole 'teacher'}}
+						{{#if userHasRole currentUser teacherRole}}
 							{{groupMembers this.groupId}}
 						{{else}}
 							{{profileName this.userId}}
@@ -27,9 +27,9 @@
 				</li>
 			{{/each}}
 		</ul>
-		{{#unless thisUserHasRole 'teacher'}}
+		{{#unless userHasRole currentUser teacherRole}}
 			<form>
-				<input type="text" placeholder="Enter a Word"/>
+				<input id="wordlist-entry" type="text" placeholder="Enter a Word"/>
 				<button class="submit">Submit</button>
 			</form>
 		{{/unless}}

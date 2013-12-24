@@ -1,14 +1,40 @@
 <template name="activityManager">
 	<div class="activity-manager">
-		<div class="header">
-			<span>Available Activities</span>
+		<div class="container">
+			<ul class="activities">
+				{{#each activities}}
+					<li>
+						<a>
+							<img src="http://placehold.it/65x65/2ba6cb/ffffff" alt="{{this.title}} logo"></img>
+							<span>
+								<h2>{{this.title}}</h2>
+								<div>{{this.shortDescription}}</div>
+							</span>
+						</a>
+					</li>
+				{{/each}}
+			</ul>
+			<div class="information">
+				<div class="description">
+					<img src="http://placehold.it/130x130/f18609/ffffff" alt="{{activityTitle selection}} logo"></img>
+					<h1>{{activityTitle selection}}</h1><button class="back">Back</button>
+					<p>{{activityDescription selection}}</p>
+				</div>
+				<div class="options">
+					<button class="new">Start New</button>
+					<h2>Or</h2>
+					<div>
+						<h2>Resume Existing</h2>
+					</div>
+					<ul class="past-activities">
+						{{#each pastActivities}}
+							<li>
+								<a>{{activityTitle selection}} {{formattedTimestamp this.attempt_timestamp}}</a>
+							</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
 		</div>
-		<ul>
-			{{#each activities}}
-				<li>
-					<a>{{this.title}}</a>
-				</li>
-			{{/each}}
-		</ul>
 	</div>
 </template>

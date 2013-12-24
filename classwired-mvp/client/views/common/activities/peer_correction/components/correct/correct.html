@@ -1,0 +1,7 @@
+<template name="activityPeerCorrection_Correct">
+	{{#if userHasRole currentUser teacherRole}}
+		{{> activityPeerCorrection_Correct_Teacher}}
+	{{else}}
+		{{> activityPeerCorrection_Correct_Student}}
+	{{/if}}
+</template>

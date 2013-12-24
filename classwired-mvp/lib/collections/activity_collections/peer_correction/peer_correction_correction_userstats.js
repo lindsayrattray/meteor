@@ -1,0 +1,1 @@
+PeerCorrection_CorrectionUserStats = new Meteor.Collection('PeerCorrection_CorrectionUserStats');

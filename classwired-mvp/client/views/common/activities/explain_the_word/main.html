@@ -1,7 +1,7 @@
 <template name="activityExplainTheWord_Main">
 	<div class="explain-the-word activity-main">
 		{{{component}}}
-		{{#unless thisUserHasRole 'teacher'}}
+		{{#unless userHasRole currentUser teacherRole}}
 			<div class="modal {{toggleModal}}">
 				<div>
 					<div>

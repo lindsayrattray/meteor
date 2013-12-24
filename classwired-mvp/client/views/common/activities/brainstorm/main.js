@@ -1,21 +1,24 @@
 Deps.autorun(function() {
 	var userId = Meteor.userId();
-	var classroomId = Session.get('currentClassroom');
 
 	if(userId)
 	{
-		var group = GroupManager.getGroupByMember(userId, classroomId);
+		var group = GroupManager.getGroupByMember(userId, CurrentClassroom.getValue(['_id']));
 
-		Meteor.subscribe('brainstorm_Items', userId, classroomId);
+		Meteor.subscribe('brainstorm_Items', userId, CurrentClassroom.getValue(['_id']), CurrentClassroom.currentActivity.getValue(['_id']));
 	}
 });
 
 Template.activityBrainstorm_Main.rendered = function() {
-	if(Meteor.user())
-	{
-		Meteor.subscribe('components', this.data.activity._id);
+	var userId = Meteor.userId();
 
-		if(Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') !== -1)
+	if(userId)
+	{
+		var group = GroupManager.getGroupByMember(userId, CurrentClassroom.getValue(['_id']));
+
+		Meteor.subscribe('brainstorm_Items', userId, CurrentClassroom.getValue(['_id']), CurrentClassroom.currentActivity.getValue(['_id']));
+		
+		if(CurrentUser.hasRole(Roles.TEACHER))
 		{
 			Session.set('forwardButton', true);
 			Session.set('forwardMenu', 'activityBrainstorm_UI_Teacher_ForwardMenu');
@@ -29,30 +32,28 @@ Template.activityBrainstorm_Main.rendered = function() {
 
 Template.activityBrainstorm_Main.helpers({
 	component: function() {
-		if(Meteor.user() && Meteor.user().permissions && Meteor.user().permissions.indexOf('teacher') === -1)
+		if(CurrentClassroom.currentActivity.getValue(['state']) === 'stopped')
 		{
-			if(this.classroom.state === 'stopped')
-			{
-				return Template['activityExplainTheWord_Stopped']({ activity: this.activity, classroom: this.classroom });
-			}
+			return Template['activityExplainTheWord_Stopped']({ activity: this.activity, classroom: this.classroom });
 		}
 
-		var component = Components.findOne(this.classroom.currentActivityComponent);
+		var component = Components.findOne(CurrentClassroom.currentActivity.getValue(['currentComponent']));
+
 		if(!component)
 		{
-			component = Components.findOne({name: 'brainstorm'});
+			component = Components.findOne({ name: 'brainstorm' });
 			if(component)
 			{
-				Meteor.call('setCurrentComponent', this.classroom._id, component._id);
+				Meteor.call('setCurrentComponent', CurrentClassroom.currentActivity.getValue(['_id']), component._id);
 			}
 		}
 		else
 		{
-			return Template[component.template]({ activity: this.activity, classroom: this.classroom });
+			return Template[component.template]();
 		}
 	},
 	toggleModal: function() {
-		if(this.classroom.state === 'paused')
+		if(CurrentClassroom.currentActivity.getValue(['state']) === 'paused')
 		{
 			return;
 		}

@@ -1,3 +1,16 @@
+var onCreateClassroom = function(result, error) {
+	if(result.success)
+	{
+		$('#classroom-name').val('');
+		$('#classroom-description').val('');
+		CurrentClassroom.uiState.set('showCreateModal', false);
+	}
+	else
+	{
+		alert(error.text);
+	}
+}
+
 var toggleModal = function(showModal) {
 	var $modal = $('.modal');
 
@@ -12,9 +25,7 @@ var toggleModal = function(showModal) {
 }
 
 Deps.autorun(function() {
-	var showModal = Session.get('classroomManager_ModalVisible');
-	
-	toggleModal(showModal);
+	toggleModal(CurrentClassroom.uiState.get('showCreateModal'));
 });
 
 Template.classroomManager.rendered = function() {
@@ -23,10 +34,8 @@ Template.classroomManager.rendered = function() {
 	Session.set('forwardButton', false);
 	Session.set('forwardMenu', null);
 	Session.set('currentClassroom', null);
-
-	var showModal = Session.get('classroomManager_ModalVisible');
 	
-	toggleModal(showModal);
+	toggleModal(CurrentClassroom.uiState.get('showCreateModal'));
 };
 
 Template.classroomManager.helpers({
@@ -37,39 +46,31 @@ Template.classroomManager.helpers({
 
 Template.classroomManager.events({
 	'click button.new': function(event, template) {
-		var nameInput = template.find('.modal div form input');
-		Session.set('classroomManager_ModalVisible', true);
+		var nameInput = template.find('#txt-classroom-name');
+		CurrentClassroom.uiState.set('showCreateModal', true);
 		nameInput.focus();
 	},
 	'submit .modal form': function(event, template) {
-		var nameInput = template.find('.modal form .name');
-		var descriptionInput = template.find('.modal form .description')
+		var options = {};
+		options.name = template.find('#txt-classroom-name').value;
+		options.userManager = CurrentUser;
+		options.description = template.find('#txt-classroom-description').value;
 
-		if(Classrooms.findOne({ name: nameInput.value }))
-		{
-			alert('Classroom with name: \"' + nameInput.value + '\" already exists!');
-		}
-		else
-		{
-			Meteor.call('createClassroom', nameInput.value, Meteor.user()._id, descriptionInput.value);
-			nameInput.value = '';
-			descriptionInput.value = '';
-			Session.set('classroomManager_ModalVisible', false);
-		}
-		
+		CurrentClassroom.setOnCreate(function(error, result) {
+			onCreateClassroom(error, result);
+		});
+		CurrentClassroom.createClassroom(options);
+
 		event.preventDefault();
 	},
 	'reset .modal form': function(event, template) {
-		var nameInput = template.find('.modal div form input');
-		nameInput.value = '';
-		Session.set('classroomManager_ModalVisible', false);
+		template.find('#txt-classroom-name').value = '';
+		CurrentClassroom.uiState.set('showCreateModal', false);
 
 		event.preventDefault();
 	},
 	'click .classroom-manager .classroom .join': function(event, template) {
-		var destination = Classrooms.findOne(this._id);
-		Session.set('leavingCurrentRoom', false);
-		Meteor.call('setUserCurrentRoom', Meteor.user()._id, this._id);
-		Router.go('classroom', destination);
+		CurrentClassroom.set(this);
+		Router.go('classroom', CurrentClassroom.get());
 	}
 });

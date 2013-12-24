@@ -371,11 +371,11 @@ footer
 
       height: 200%;
 
-      -webkit-transition: all 500ms ease;
-      -moz-transition: all 500ms ease;
-      -ms-transition: all 500ms ease;
-      -o-transition: all 500ms ease;
-      transition: all 500ms ease;
+      -webkit-transition: all 300ms ease;
+      -moz-transition: all 300ms ease;
+      -ms-transition: all 300ms ease;
+      -o-transition: all 300ms ease;
+      transition: all 300ms ease;
 
       &.show-login
       {
@@ -446,11 +446,11 @@ footer
               }
             }
 
-            -webkit-transition: all 500ms ease;
-            -moz-transition: all 500ms ease;
-            -ms-transition: all 500ms ease;
-            -o-transition: all 500ms ease;
-            transition: all 500ms ease;
+            -webkit-transition: all 300ms ease;
+            -moz-transition: all 300ms ease;
+            -ms-transition: all 300ms ease;
+            -o-transition: all 300ms ease;
+            transition: all 300ms ease;
 
             &.stage-email
             {
@@ -744,11 +744,11 @@ div.classroom
     width: 200%;
     height: 100%;
 
-    -webkit-transition: all 500ms ease;
-    -moz-transition: all 500ms ease;
-    -ms-transition: all 500ms ease;
-    -o-transition: all 500ms ease;
-    transition: all 500ms ease;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
 
     &.groups
     {
@@ -850,53 +850,159 @@ div.classroom
   @include grid-row();
 
   height: 100%;
+  overflow: hidden;
 
-  .header
+  .container
   {
-    @include grid-row($behavior: nest-collapse);
+    height: 100%;
+    width: 200%;
 
-    border: 1px solid #ddd;
-    background-color: #f5f5f5;
+    -webkit-transition: all 300ms ease;
+       -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+         -o-transition: all 300ms ease;
+            transition: all 300ms ease;
 
-    line-height: 2em;
-
-    span
+    &.show-info
     {
-      @include grid-column(12);
-
-      font-weight: 600;
-    }
-  }
-  > ul
-  {
-    @include grid-row($behavior: nest-collapse);
-
-    height: 70%;
-    overflow-y: auto;
-
-    list-style: none;
-
-    border:
-    {
-      left: 1px solid #ddd;
-      right: 1px solid #ddd;
-      bottom: 1px solid #ddd;
+      -webkit-transform: translate(-50%, 0);
+         -moz-transform: translate(-50%, 0);
+          -ms-transform: translate(-50%, 0);
+           -o-transform: translate(-50%, 0);
+              transform: translate(-50%, 0);
     }
 
-    li
+    &.hide-info
     {
-      @include grid-row($behavior: nest-collapse);
+      -webkit-transform: translate(0, 0);
+         -moz-transform: translate(0, 0);
+          -ms-transform: translate(0, 0);
+           -o-transform: translate(0, 0);
+              transform: translate(0, 0);
+    }
 
-      line-height: 2em;
+    > ul
+    {
+      height: 100%;
+      width: 50%;
+      float: left;
 
-      &:nth-child(even)
+      list-style: none;
+      overflow-y: auto;
+
+      li
       {
-        background-color: #f9f9f9;
+        @include grid-row($behavior: nest-collapse);
+
+        height: 8em;
+
+        padding:
+        {
+          top: 1em;
+          bottom: 1em;
+        }
+
+        a
+        {
+          height: 100%;
+          width: 100%;
+          display: block;
+
+          > img
+          {
+            float: left;
+
+            height: 5em;
+            width: 5em;
+
+            border-radius: 50%;
+            border: 2px solid #fff;
+
+            margin:
+            {
+              left: 1em;
+              right: 1em;
+            }
+          }
+        }
+      }
+    }
+
+    .information
+    {
+      height: 100%;
+      width: 50%;
+      float: left;
+
+      overflow-y: auto;
+
+      .description
+      {
+        min-height: 50%;
+
+        > img
+        {
+          float: left;
+          height: 10em;
+          width: 10em;
+
+          border-radius: 50%;
+          border: 2px solid #fff;
+
+          margin:
+          {
+            left: 1em;
+            right: 1em;
+          }
+        }
       }
 
-      a
+      .options
       {
-        @include grid-column(12);
+        text-align: center;
+
+        button
+        {
+          @include button($button-med, $primary-color, false, true);
+
+          margin-bottom: 0;
+        }
+
+        h2
+        {
+          font-size: 1.2em;
+        }
+
+        > div
+        {
+          > h2
+          {
+            @include button($button-med, gray, false, true, true);
+            
+            margin-bottom: 0;
+          }
+        }
+
+        ul
+        {
+          padding-top: 1em;
+          border: 1px solid #ddd;
+          height: 12em;
+
+          overflow-y: auto;
+
+          text-align: left;
+
+          li
+          {
+            line-height: 2em;
+
+            &:nth-child(even)
+            {
+              background-color: #f9f9f9;
+            }
+          }
+        }
       }
     }
   }
@@ -908,7 +1014,7 @@ div.classroom
 // to keep the dependencies at a minimum
 // ==============================================
 
-.explain-the-word
+.explain-the-word, .peer-correction
 {
   &.activity-main
   {
@@ -956,6 +1062,11 @@ div.classroom
         @include grid-column(10, false, true);
         
         text-align: center;
+      }
+
+      button.end
+      {
+        @include button($button-med, $primary-color, false, true);
       }
     }
   }
@@ -1067,11 +1178,11 @@ div.classroom
 
         height: 200%;
 
-        -webkit-transition: all 500ms ease;
-        -moz-transition: all 500ms ease;
-        -ms-transition: all 500ms ease;
-        -o-transition: all 500ms ease;
-        transition: all 500ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
 
         &.activity
         {
@@ -1159,7 +1270,7 @@ div.classroom
     }
   }
 
-  .explain
+  .correct, .explain
   {
     @include grid-row();
     height: 100%;
@@ -1253,11 +1364,11 @@ div.classroom
 
         height: 200%;
 
-        -webkit-transition: all 500ms ease;
-        -moz-transition: all 500ms ease;
-        -ms-transition: all 500ms ease;
-        -o-transition: all 500ms ease;
-        transition: all 500ms ease;
+        -webkit-transition: all 300ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
 
         &.activity
         {
@@ -1304,16 +1415,34 @@ div.classroom
               {
                 @include grid-row($behavior: nest-collapse);
 
+                position: absolute;
+                left: 0;
+                right: 0;
+
                 border: 1px solid #ddd;
                 background-color: #f5f5f5;
 
                 line-height: 2em;
 
-                span
+                &:not(.thirds)
                 {
-                  @include grid-column(6);
+                  span
+                  {
+                    @include grid-column(6);
 
-                  font-weight: 600;
+                    font-weight: 600;
+                  }
+                }
+
+                &.thirds
+                {
+                  span
+                  {
+                    @include grid-column(4);
+
+                    font-weight: 600;
+                    font-size: 90%;
+                  }
                 }
               }
 
@@ -1323,8 +1452,9 @@ div.classroom
 
                 list-style: none;
                 
-                height: 70%;
+                height: 100%;
                 overflow-y: auto;
+                padding-top: 2em;
 
                 border:
                 {
@@ -1348,9 +1478,20 @@ div.classroom
                   {
                     @include grid-row($behavior: nest-collapse);
 
-                    span
+                    &:not(.thirds)
                     {
-                      @include grid-column(6);
+                      span
+                      {
+                        @include grid-column(6);
+                      }
+                    }
+
+                    &.thirds
+                    {
+                      span
+                      {
+                        @include grid-column(4);
+                      }
                     }
                   }
 
@@ -1421,20 +1562,10 @@ div.classroom
 
                         span
                         {
-                          &:nth-child(1)
-                          {
-                            @include grid-column(6);
-                          }
+                          @include grid-column(6);
 
                           &:nth-child(2)
                           {
-                            @include grid-column(4);
-                          }
-
-                          &:nth-child(3)
-                          {
-                            @include grid-column(2);
-
                             &.tick
                             {
                               img
@@ -1471,6 +1602,10 @@ div.classroom
               {
                 @include grid-row($behavior: nest-collapse);
 
+                position: absolute;
+                left: 0;
+                right: 0;
+
                 border: 1px solid #ddd;
                 background-color: #f5f5f5;
 
@@ -1482,30 +1617,27 @@ div.classroom
 
                   &:nth-child(1)
                   {
-                    @include grid-column(4);
+                    @include grid-column(6);
                   }
 
                   &:nth-child(2)
                   {
-                    @include grid-column(3);
-                  }
-
-                  &:nth-child(3)
-                  {
-                    @include grid-column(5);
+                    @include grid-column(6);
                   }
                 }
               }
 
-              ul
+              > ul
               {
                 @include grid-row($behavior: nest-collapse);
 
                 list-style: none;
 
                 display: block;
-                height: 70%;
+                height: 100%;
                 overflow-y: auto;
+
+                padding-top: 2em;
 
                 border:
                 {
@@ -1514,7 +1646,7 @@ div.classroom
                   bottom: 1px solid #ddd;
                 }
 
-                li
+                > li
                 {
                   line-height: 2em;
 
@@ -1531,17 +1663,12 @@ div.classroom
                     {
                       &:nth-child(1)
                       {
-                        @include grid-column(4);
+                        @include grid-column(6);
                       }
 
                       &:nth-child(2)
                       {
-                        @include grid-column(3);
-                      }
-
-                      &:nth-child(3)
-                      {
-                        @include grid-column(5);
+                        @include grid-column(6);
                       }
                     }
                   }
@@ -1554,9 +1681,24 @@ div.classroom
                       top: 1px solid #ddd;
                       bottom: 1px solid #ddd;
                     }
-                    > div
+
+                    > ul
                     {
-                      @include grid-column(12);
+                      @include grid-row($behavior: nest-collapse);
+
+                      list-style: none;
+
+                      li
+                      {
+                        @include grid-row($behavior: nest-collapse);
+
+                        display: block;
+
+                        span
+                        {
+                          @include grid-column(6);
+                        }
+                      }
                     }
                   }
                 }
@@ -1578,7 +1720,22 @@ div.classroom
 
     height: 100%;
 
-    /*> .modal
+    > .stopped
+    {
+      > span
+      {
+        @include grid-column(10, false, true);
+        
+        text-align: center;
+      }
+
+      button.end
+      {
+        @include button($button-med, $primary-color, false, true);
+      }
+    }
+
+    > .modal
     {
       position: absolute;
       top: 0;
@@ -1608,7 +1765,7 @@ div.classroom
           padding-top: 1em;
         }
       }
-    }*/
+    }
 
     .student
     {

@@ -1,0 +1,24 @@
+<template name="activityPeerCorrection_Correct_Stats_Class">
+	<div class="stats class">
+		<div class="header">
+			<span>Student</span>
+			<span>Average Correct</span>
+		</div>
+		<ul>
+			{{#each students}}
+				<li>
+					<a>
+						<span>{{profileName this.userId}}</span>
+						<span>{{avgCorrect this}}</span>
+					</a>
+					<div class="{{#unless showStatDetails this}}hide{{/unless}}">
+						{{#each words}}
+							<span>{{this.item}}</span>
+							<span>{{avgCorrect this}}</span>
+						{{/each}}
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</template>

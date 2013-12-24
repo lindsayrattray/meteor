@@ -1,10 +1,10 @@
-Meteor.publish('explainTheWord_ExplainItems', function(groupId, classroomId, userId) {
-	if(UserController.userHasRole(userId, 'teacher'))
+Meteor.publish('explainTheWord_ExplainItems', function(groupId, classroomId, activityInstanceId, userId) {
+	if(UserController.userHasRole(userId, Roles.TEACHER))
 	{
-		return ExplainTheWord_ExplainItems.find({classroomId: classroomId});
+		return ExplainTheWord_ExplainItems.find({ classroomId: classroomId, activityInstanceId: activityInstanceId });
 	}
-	if(groupId && classroomId)
+	if(groupId && classroomId && userId)
 	{
-		return ExplainTheWord_ExplainItems.find({ groupId: groupId, classroomId: classroomId });
+		return ExplainTheWord_ExplainItems.find({ assigned_to: userId, groupId: groupId, classroomId: classroomId, activityInstanceId: activityInstanceId });
 	}
 });

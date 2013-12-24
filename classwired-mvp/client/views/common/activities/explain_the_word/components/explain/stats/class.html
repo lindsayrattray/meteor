@@ -1,25 +1,25 @@
 <template name="activityExplainTheWord_Explain_Stats_Class">
 	<div class="stats class">
 		<div class="header">
-			<span>Word</span>
-			<span>Average (sec)</span>
-			<span>Fastest Group</span>
+			<span>Group</span>
+			<span>Average Time (sec)</span>
 		</div>
 		<ul>
-			{{#each explainItems}}
+			{{#each groups}}
 				<li>
 					<a>
-						<span>{{this.item}}</span>
-						<span>{{this.avgTime}}</span>
-						<span>{{groupMembers this.fastestGroup}}</span>
+						<span>{{groupMembers this.groupId}}</span>
+						<span>{{this.averageTime}}</span>
 					</a>
 					<div class="{{#unless showStatDetails this._id}}hide{{/unless}}">
-						<div><strong>Fastest Time (sec):</strong> {{this.fastestTime}}</div>
-						<div><strong>Fastest Group:</strong> {{groupMembers this.fastestGroup}}</div>
-						<div><strong>Fastest Student:</strong> {{profileName this.fastestUser}}</div>
-						<div><strong>Slowest Time (sec):</strong> {{this.slowestTime}}</div>
-						<div><strong>Slowest Group:</strong> {{groupMembers this.slowestGroup}}</div>
-						<div><strong>Slowest Student:</strong> {{profileName this.slowestUser}}</div>
+						<ul>
+						{{#each explainItems this.groupId}}
+							<li>
+								<span>{{this.item}}</span>
+								<span>{{time this}}</span>
+							</li>
+						{{/each}}
+						</ul>
 					</div>
 				</li>
 			{{/each}}
