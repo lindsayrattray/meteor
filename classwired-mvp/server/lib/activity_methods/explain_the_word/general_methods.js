@@ -51,7 +51,6 @@ Meteor.methods({
 		{
 			var theseItems = _.filter(explainItems, function(item) { return item.groupId === uniqueItems[index] });
 			var matchItem = ExplainTheWord_ExplainGroupTimes.findOne({ activityInstanceId: activityInstanceId, groupId: uniqueItems[index] });
-			console.log(matchItem);
 
 			var time = 0;
 
@@ -65,12 +64,10 @@ Meteor.methods({
 
 			if(matchItem)
 			{
-				console.log('updating');
 				ExplainTheWord_ExplainGroupTimes.update(matchItem._id, { $set: { averageTime: time } });
 			}
 			else
 			{
-				console.log('inserting');
 				ExplainTheWord_ExplainGroupTimes.insert({ groupId: uniqueItems[index], activityInstanceId: activityInstanceId, averageTime: time });
 			}
 		}
